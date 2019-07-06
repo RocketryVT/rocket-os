@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+
+  <name>transmission</name>
+  <version>1.0.0</version>
+  <description>A package for unified transmission handling</description>
+  <maintainer email="jwade109@vt.edu">Wade Foster</maintainer>
+  <license>MIT</license>
+  <author email="jwade109@vt.edu">Jane Doe</author> -->
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>roscpp</depend>
+  <depend>message_runtime</depend>
+  <depend>message_generation</depend>
+  <depend>std_msgs</depend>
+
+</package>
