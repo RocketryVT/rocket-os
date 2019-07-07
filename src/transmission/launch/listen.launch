@@ -10,7 +10,8 @@
 
     <group ns="logging">
 
-    <node name="rosbag_record" pkg="rosbag" type="record" args="-a" />
+    <node name="rosbag_record" pkg="rosbag" type="record"
+          args="-a -o /home/rocketry/rocket-os/logs/LOG" />
 
     </group>
 
