@@ -1,0 +1,11 @@
+
+<launch>
+
+    <group ns="transmission">
+
+    <node name="interested" pkg="transmission" type="interested.py" output="screen" />
+    <node name="packet_broadcaster" pkg="transmission" type="packet_broadcaster" output="screen" />
+
+    </group>
+
+</launch>

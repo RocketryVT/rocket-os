@@ -13,5 +13,6 @@
   <depend>message_runtime</depend>
   <depend>message_generation</depend>
   <depend>std_msgs</depend>
+  <depend>roslaunch</depend>
 
 </package>
