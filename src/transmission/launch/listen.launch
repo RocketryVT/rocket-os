@@ -8,4 +8,10 @@
 
     </group>
 
+    <group ns="logging">
+
+    <node name="rosbag_record" pkg="rosbag" type="record" args="-a" />
+
+    </group>
+
 </launch>

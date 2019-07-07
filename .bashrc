@@ -104,3 +104,7 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
    . /etc/bash_completion
 fi
+
+if [ -f ~/rocket-os/devel/setup.bash ]; then
+   source ~/rocket-os/devel/setup.bash
+fi

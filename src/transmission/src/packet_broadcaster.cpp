@@ -7,15 +7,13 @@
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "transmission");
+    ros::init(argc, argv, "packet_broadcaster");
     ros::NodeHandle nh;
 
     ros::Publisher publisher = nh.advertise<
         transmission::Packet>("recieved_packets", 1000);
 
     ros::Rate rate(4);
-
-    std::cout << rvt::packet() << std::endl;
 
     while (ros::ok())
     {

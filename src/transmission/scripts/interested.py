@@ -6,7 +6,7 @@ import rospy
 from transmission.msg import Packet
 
 def recieve_packet(data):
-    rospy.loginfo(data.id)
+    rospy.loginfo(str(data.time))
 
 def main():
     rospy.init_node('interested')
