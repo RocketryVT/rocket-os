@@ -18,11 +18,3 @@ RUN echo "rocketry ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 USER rocketry
 WORKDIR /home/rocketry
 RUN touch ~/.hushlogin
-
-RUN git clone https://github.com/RocketryVT/rocket-os ~/rocket-os
-RUN cp ~/rocket-os/.vimrc ~
-RUN cp ~/rocket-os/.bashrc ~
-RUN /bin/bash -c 'source /opt/ros/kinetic/setup.bash && \
-    cd rocket-os/ && catkin_make || \
-    echo -e "\n========== BUILD FAILURE ==========\n"'
-RUN echo 'source ~/rocket-os/devel/setup.bash' >> .bashrc
