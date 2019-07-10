@@ -36,9 +36,12 @@ std::string pprintf(const std::string& fmt, const packet& pack)
     name << std::left << std::setw(9)
         << std::setfill('-') << pack.name();
 
+    auto time_point = std::chrono::system_clock::time_point{} +
+                      std::chrono::milliseconds(pack.time());
+
     std::vector<std::pair<std::string, std::string>> conv
     {
-        { "%@", dateString(pack.time()) },
+        { "%@", dateString(time_point) },
         { "%!", sync.str() },
         { "%#", id.str() },
         { "%$", name.str() },
@@ -64,7 +67,7 @@ std::string packet2str(const packet &pack)
               std::istream_iterator<std::string>(),
               std::back_inserter(tokens));
 
-    auto since_epoch = pack.time().time_since_epoch();
+    auto since_epoch = milliseconds(pack.time());
     auto sec = duration_cast<seconds>(since_epoch);
     auto ms = duration_cast<milliseconds>(since_epoch - sec);
 

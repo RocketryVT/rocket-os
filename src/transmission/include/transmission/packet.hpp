@@ -6,7 +6,6 @@
 #include <vector>
 #include <array>
 #include <set>
-#include <chrono>
 #include <string>
 #include <iostream>
 #include <utility>
@@ -37,8 +36,8 @@ class packet
     uint16_t sync_bytes() const;
     uint16_t& sync_bytes();
 
-    const std::chrono::system_clock::time_point& time() const;
-    std::chrono::system_clock::time_point& time();
+    uint64_t time() const;
+    uint64_t& time();
 
     uint16_t id() const;
     uint16_t& id();
@@ -78,7 +77,7 @@ class packet
     // header, constant length of 16 bytes
     uint16_t _sync_bytes;
     // time is represented as 64-bit unsigned int
-    std::chrono::system_clock::time_point _time;
+    uint64_t _time;
     uint16_t _id;
     uint16_t _data_length;
     uint16_t _checksum;

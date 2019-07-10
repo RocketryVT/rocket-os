@@ -1,17 +1,20 @@
 
 <launch>
 
-    <group ns="transmission">
-
-    <node name="interested" pkg="transmission" type="interested.py" output="screen" />
-    <node name="packet_broadcaster" pkg="transmission" type="packet_broadcaster" output="screen" />
-
-    </group>
-
     <group ns="logging">
 
     <node name="rosbag_record" pkg="rosbag" type="record"
           args="-a -o /home/rocketry/rocket-os/logs/LOG" />
+
+    </group>
+
+    <group ns="transmission">
+
+    <node name="interested" pkg="transmission" 
+          type="interested.py" output="screen" />
+    <node name="packet_broadcaster" pkg="transmission"
+          type="packet_broadcaster" output="screen"
+          args="/home/rocketry/params.bin" />
 
     </group>
 

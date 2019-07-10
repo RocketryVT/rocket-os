@@ -21,7 +21,7 @@ const std::string packet::print_format = "[%@][%#][%$]: %s";
 
 packet::packet() :
     _sync_bytes(0),
-    _time{}, _id(0), _data_length(0),
+    _time(0), _id(0), _data_length(0),
     _checksum(0), _data(),
     _name(), _format() { }
 
@@ -46,8 +46,6 @@ packet::packet(const std::array<uint8_t, header_length> &header,
 
 packet::packet(const std::string& fmt) : packet()
 {
-    _time = std::chrono::system_clock::now();
-
     auto tokens = split_quoted(fmt);
 
     for (auto token : tokens)
@@ -62,8 +60,7 @@ packet::packet(const std::string& fmt) : packet()
         {
             value = token.substr(1);
             double seconds = std::stod(value);
-            auto dur = std::chrono::milliseconds((uint64_t) (seconds*1000));
-            _time = std::chrono::system_clock::time_point{} + dur;
+            _time = static_cast<uint64_t>(seconds*1000);
         }
         else if (begins_with(token, "#") && token.length() > 1)
         {
@@ -201,12 +198,12 @@ uint16_t& packet::sync_bytes()
     return _sync_bytes;
 }
 
-const std::chrono::system_clock::time_point& packet::time() const
+uint64_t packet::time() const
 {
     return _time;
 }
 
-std::chrono::system_clock::time_point& packet::time()
+uint64_t& packet::time()
 {
     return _time;
 }
@@ -354,8 +351,6 @@ bool nextPacket(uint16_t sync_bytes, packet &pack,
         pack.data().insert(pack.data().end(),
             read_iter, read_iter + pack.data_length());
      
-        std::cout << pack << std::endl;
- 
         if (pack.is_valid().first)
         {
             start += packet::header_length + pack.data_length();
@@ -395,7 +390,8 @@ std::ostream& operator << (std::ostream &os, const packet &pack)
 {
     using namespace std::chrono;
 
-    auto since_epoch = pack.time().time_since_epoch();
+    auto since_epoch = milliseconds(pack.time());
+    auto time_point = system_clock::time_point{} + since_epoch;
     auto sec = duration_cast<seconds>(since_epoch);
     auto ms = duration_cast<milliseconds>(since_epoch) - sec;
 
@@ -405,7 +401,7 @@ std::ostream& operator << (std::ostream &os, const packet &pack)
        << std::setw(10) << sec.count() << "."
        << std::setw(3) << std::right << ms.count() << " -- ";
 
-    ss << dateString(pack.time()) << std::endl << std::setfill(' ')
+    ss << dateString(time_point) << std::endl << std::setfill(' ')
        << std::setw(18) << "sync bytes: " << std::hex << std::setw(4)
        << std::setfill('0') << pack.sync_bytes() << std::endl;
 
@@ -455,12 +451,19 @@ std::ostream& operator << (std::ostream &os, const packet &pack)
 std::vector<packet> fromFile(const std::string &ifname, uint16_t sync_bytes)
 {
     std::ifstream infile(ifname, std::ios::binary);
+    std::vector<packet> packets;
+
+    if (!infile)
+    {
+        std::cout << "Failed to open " << ifname << std::endl;
+        return packets;
+    }
+
     std::vector<uint8_t> bytes(
         std::istreambuf_iterator<char>{infile}, {});
 
     auto read_ptr = begin(bytes);
 
-    std::vector<packet> packets;
     packet pack;
     while (nextPacket(sync_bytes, pack, read_ptr, end(bytes)))
     {
