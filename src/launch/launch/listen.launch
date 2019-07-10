@@ -1,10 +1,14 @@
 
 <launch>
 
+    <env name="ROSCONSOLE_CONFIG_FILE"
+         value="$(find launch)/rosconsole.conf"/>
+
     <group ns="logging">
 
     <node name="rosbag_record" pkg="rosbag" type="record"
-          args="-a -o /home/rocketry/rocket-os/logs/LOG" />
+          args="-a -o /home/rocketry/rocket-os/logs/LOG" 
+          output="screen" />
 
     </group>
 
@@ -13,8 +17,7 @@
     <node name="interested" pkg="transmission" 
           type="interested.py" output="screen" />
     <node name="packet_broadcaster" pkg="transmission"
-          type="packet_broadcaster" output="screen"
-          args="/home/rocketry/params.bin" />
+          type="packet_broadcaster" output="screen" />
 
     </group>
 

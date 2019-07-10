@@ -21,6 +21,7 @@ To run the container, which provides an Ubuntu + ROS kinetic environment:
 To build the rocket firmware:
 
 ```
+git clone https://github.com/RocketryVT/rocket-os
 cd ~/rocket-os/
 catkin_make
 ```
