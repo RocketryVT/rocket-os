@@ -5,16 +5,16 @@
 int main()
 {
     std::cout << "altitude "
+              << "temperature "
               << "pressure "
-              << "density "
-              << "temperature" << std::endl;
+              << "density" << std::endl;
     for (double altitude = 0; altitude < 100000 /* m */; altitude += 10)
     {
-        double pressure, density, temperature;
-        std::tie(pressure, density, temperature) = rvt::standard_atmosphere(altitude);
+        double temperature, pressure, density;
+        std::tie(temperature, pressure, density) = rvt::standard_atmosphere(altitude);
         std::cout << altitude << " "
+                  << temperature << " "
                   << pressure << " "
-                  << density << " "
-                  << temperature << std::endl;
+                  << density << std::endl;
     }
 }
