@@ -43,6 +43,13 @@ include_directories(
 ## Declare a C++ library
 add_library(models
   src/models.cpp
+  src/axis_angle.cpp
+  src/complex.cpp
+  src/echelon.cpp
+  src/levenshtein.cpp
+  src/matrix.cpp
+  src/quaternion.cpp
+  src/solve.cpp
 )
 
 catkin_package(
