@@ -8,7 +8,7 @@ RUN apt-get install -y \
     cowsay tree bsdmainutils \
     bash-completion byobu man ntpdate \
     build-essential python-dev python-pip \
-    python-smbus
+    python-smbus wget
 
 RUN useradd -ms /bin/bash rocketry
 RUN usermod -aG sudo rocketry
