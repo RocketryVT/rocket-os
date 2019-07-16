@@ -6,7 +6,9 @@ RUN apt-get install -y \
     git doxygen gdb \
     vim nano sudo gcc g++ fortune \
     cowsay tree bsdmainutils \
-    bash-completion byobu man
+    bash-completion byobu man ntpdate \
+    build-essential python-dev python-pip \
+    python-smbus
 
 RUN useradd -ms /bin/bash rocketry
 RUN usermod -aG sudo rocketry
