@@ -1,0 +1,4 @@
+uint8 OFF=0
+uint8 CLOCKWISE=1
+uint8 COUNTERCLOCKWISE=2
+uint8 command
