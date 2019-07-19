@@ -38,45 +38,34 @@ secant_root_solve(std::function<double(double)> function,
     size_t max_iters = 1000, double epsilon = 1e-12)
 {
     // Check that root exists (Intermediate value theorem)
-    double fa = function(upper_bound);
-    double fb = function(lower_bound);
-    assert(f(upper_bound) * f(lower_bound) <= 0, 'Root does not exist');
+    double f_upper = function(upper_bound);
+    double f_lower = function(lower_bound);
+    // assert(f(upper_bound) * f(lower_bound) <= 0, 'Root does not exist');
 
     // Initialize loop
-    if abs(fa) < abs(fb), pim1 = upper_bound; else, pim1 = lower_bound; end
-    erra = abs(f(pim1));
+    double x_est = lower_bound
+    if (std::abs(f_upper) < std::abs(f_lower)) x_est = upper_bound
 
-    // Loop
-    i = 1; niter = 0;
-    while erra > epsilon && i < max_iters
-    function [x, niter, erra ] =
-        // Secant method
-        p = upper_bound - fa * (lower_bound - upper_bound) / (fb - fa);
+    double error = std::abs(function(x_est));
+    size_t iters = 0;
+    for (; error > epsilon && iters < max_iters; ++iters)
+    {
+        double xi = upper_bound - fa * (lower_bound - upper_bound) / (fb - fa);
 
         // Assign this guess to next bounds
-        fp = f(p);
-        if (fp*fa < 0)
-            lower_bound = p;
-        elseif (fp*fb < 0)
-            upper_bound = p;
-        else // fp = 0
-            break;
-        end
+        double y = function(xi);
+        if (fp*fa < 0) lower_bound = xi;
+        else if (fp*fb < 0) upper_bound = xi;
+        else break;
 
         // Measure error
-        erra = abs( (p - pim1) / pim1 );
-
-        // Stopping criteria for prompt
-        if ~niter && erra < epsilon
-            break;
-        end
+        error = std::abs((p - x_est) / pim1);
 
         // Iterate
-        pim1 = p;
-        i = i + 1;
-    end
-    x = p;
-    niter = i;
+        x_est = p;
+    }
+
+    return std::make_tuple(x_est, iters, error);
 }
 
 } // namespace rvt
