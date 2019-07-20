@@ -88,8 +88,10 @@ include_directories(
 
 ## Declare a C++ executable
 
-# add_executable(motor_driver src/motor_driver.cpp)
-# target_link_libraries(packet_broadcaster ${catkin_LIBRARIES})
-# add_executable(solenoid_driver src/solenoid_driver.cpp)
-# target_link_libraries(solenoid_driver ${catkin_LIBRARIES})
+add_executable(motor_driver src/motor_driver.cpp)
+add_dependencies(motor_driver hardware_generate_messages_cpp)
+target_link_libraries(motor_driver ${catkin_LIBRARIES})
+add_executable(solenoid_driver src/solenoid_driver.cpp)
+add_dependencies(solenoid_driver hardware_generate_messages_cpp)
+target_link_libraries(solenoid_driver ${catkin_LIBRARIES})
 

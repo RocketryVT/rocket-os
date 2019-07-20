@@ -21,4 +21,13 @@
 
     </group>
 
+    <group ns="hardware">
+
+    <node name="motor_driver" pkg="hardware"
+          type="motor_driver" output="screen" />
+    <node name="solenoid_driver" pkg="hardware"
+          type="solenoid_driver" output="screen" />
+
+    </group>
+
 </launch>

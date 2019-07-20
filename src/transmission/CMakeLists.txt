@@ -99,4 +99,5 @@ catkin_install_python(PROGRAMS scripts/interested.py
 add_executable(packet_broadcaster src/packet_broadcaster.cpp)
 target_link_libraries(packet_broadcaster ${catkin_LIBRARIES})
 target_link_libraries(packet_broadcaster ${PROJECT_NAME})
+add_dependencies(packet_broadcaster transmission_generate_messages_cpp)
 

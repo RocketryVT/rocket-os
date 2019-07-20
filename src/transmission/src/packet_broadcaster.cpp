@@ -1,7 +1,7 @@
 // transmission_node.cpp
 
 #include "ros/ros.h"
-#include "transmission/Packet.h"
+#include <transmission/Packet.h>
 #include "transmission/AckPacket.h"
 
 #include <transmission/packet.hpp>
