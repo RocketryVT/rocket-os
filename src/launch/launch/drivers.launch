@@ -1,0 +1,18 @@
+
+<launch>
+
+    <group ns="hardware">
+
+    <node name="valve_motor" pkg="hardware"
+          type="motor_driver" output="screen"
+          args="_positive:=45 _negative:=46" />
+    <node name="pump_motor" pkg="hardware"
+          type="motor_driver" output="screen"
+          args="_positive:=78 _negative:=79" />
+    <node name="solenoid" pkg="hardware"
+          type="solenoid_driver" output="screen"
+          args="_positive:=31 _negative:=32" />
+
+    </group>
+
+</launch>

@@ -30,7 +30,7 @@ int main(int argc, char **argv)
     ROS_INFO("Starting solenoid driver on pins %d, %d",
         positive_pin, negative_pin);
 
-    auto sub = nh.subscribe("solenoid_cmd", 100,
+    auto sub = nh.subscribe("command", 100,
         recieve_solenoid_command);
 
     ros::spin();

@@ -1,0 +1,16 @@
+
+<launch>
+
+    <include file="$(find launch)/launch/logging.launch" />
+    <include file="$(find launch)/launch/transmission.launch" />
+    <include file="$(find launch)/launch/sensors.launch" />
+    <include file="$(find launch)/launch/drivers.launch" />
+
+    <group ns="extra">
+
+    <node name="interested" pkg="transmission" 
+          type="interested.py" output="screen" />
+
+    </group>
+
+</launch>

@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 
     auto pub = nh.advertise<std_msgs::Float64>("pressure", 100);
 
-    ros::Rate rate(50); // update pressure at 50 hz
+    ros::Rate rate(20); // update pressure at 20 hz
     while (ros::ok())
     {
         std_msgs::Float64 update;

@@ -1,0 +1,12 @@
+
+<launch>
+
+    <group ns="logging">
+
+    <node name="rosbag_record" pkg="rosbag" type="record"
+          args="-a -o /home/rocketry/rocket-os/logs/LOG" 
+          output="screen" />
+
+    </group>
+
+</launch>

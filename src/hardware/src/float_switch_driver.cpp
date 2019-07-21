@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 
     auto pub = nh.advertise<std_msgs::Bool>("state", 100);
 
-    ros::Rate rate(50); // update float switch at 50 hz
+    ros::Rate rate(20); // update float switch at 20 hz
     while (ros::ok())
     {
         std_msgs::Bool update;

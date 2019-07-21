@@ -25,6 +25,8 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "motor_driver");
     ros::NodeHandle nh("~");
 
+    ROS_DEBUG("Debug message");
+
     int positive_pin, negative_pin;
     if (!nh.getParam("positive", positive_pin) ||
         !nh.getParam("negative", negative_pin))
@@ -35,7 +37,7 @@ int main(int argc, char **argv)
     ROS_INFO("Starting motor driver on pins %d, %d",
         positive_pin, negative_pin);
 
-    auto sub = nh.subscribe("motor_cmd", 100, recieve_motor_command);
+    auto sub = nh.subscribe("command", 100, recieve_motor_command);
 
     ros::spin();
 
