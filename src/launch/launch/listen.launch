@@ -16,15 +16,32 @@
 
     </group>
 
+    <group ns="sensors">
+
+    <node name="combustion_thermocouple" pkg="hardware"
+          type="thermocouple_driver" output="screen"
+          args="_positive:=34 _negative:=35" />
+    <node name="tank_thermocouple" pkg="hardware"
+          type="thermocouple_driver" output="screen"
+          args="_positive:=34 _negative:=35" />
+    <node name="tank_transducer" pkg="hardware"
+          type="pressure_transducer_driver" output="screen"
+          args="_positive:=90 _negative:=91" />
+    <node name="float_switch" pkg="hardware"
+          type="float_switch_driver" output="screen"
+          args="_positive:=14 _negative:=15" />
+
+    </group>
+
     <group ns="hardware">
 
-    <node name="valve_motor_driver" pkg="hardware"
+    <node name="valve_motor" pkg="hardware"
           type="motor_driver" output="screen"
           args="_positive:=45 _negative:=46" />
-    <node name="pump_motor_driver" pkg="hardware"
+    <node name="pump_motor" pkg="hardware"
           type="motor_driver" output="screen"
           args="_positive:=78 _negative:=79" />
-    <node name="solenoid_driver" pkg="hardware"
+    <node name="solenoid" pkg="hardware"
           type="solenoid_driver" output="screen"
           args="_positive:=31 _negative:=32" />
 

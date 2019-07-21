@@ -6,7 +6,18 @@
 
 void recieve_motor_command(const hardware::MotorCommand &mc)
 {
-    ROS_INFO("Got a motor command.");
+    if (mc.command == hardware::MotorCommand::STOP)
+    {
+        ROS_INFO("Stopping the motor");
+    }
+    else if (mc.command == hardware::MotorCommand::CLOCKWISE)
+    {
+        ROS_INFO("Turning the motor clockwise");
+    }
+    else if (mc.command == hardware::MotorCommand::COUNTERCLOCKWISE)
+    {
+        ROS_INFO("Turning the motor counterclockwise");
+    }
 }
 
 int main(int argc, char **argv)

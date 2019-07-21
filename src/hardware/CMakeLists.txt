@@ -91,7 +91,20 @@ include_directories(
 add_executable(motor_driver src/motor_driver.cpp)
 add_dependencies(motor_driver hardware_generate_messages_cpp)
 target_link_libraries(motor_driver ${catkin_LIBRARIES})
+
 add_executable(solenoid_driver src/solenoid_driver.cpp)
 add_dependencies(solenoid_driver hardware_generate_messages_cpp)
 target_link_libraries(solenoid_driver ${catkin_LIBRARIES})
+
+add_executable(thermocouple_driver src/thermocouple_driver.cpp)
+add_dependencies(thermocouple_driver hardware_generate_messages_cpp)
+target_link_libraries(thermocouple_driver ${catkin_LIBRARIES})
+
+add_executable(pressure_transducer_driver src/pressure_transducer_driver.cpp)
+add_dependencies(pressure_transducer_driver hardware_generate_messages_cpp)
+target_link_libraries(pressure_transducer_driver ${catkin_LIBRARIES})
+
+add_executable(float_switch_driver src/float_switch_driver.cpp)
+add_dependencies(float_switch_driver hardware_generate_messages_cpp)
+target_link_libraries(float_switch_driver ${catkin_LIBRARIES})
 

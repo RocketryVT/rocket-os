@@ -5,7 +5,14 @@
 
 void recieve_solenoid_command(const hardware::SolenoidCommand &sc)
 {
-    ROS_INFO("Got a solenoid command.");
+    if (sc.command == hardware::SolenoidCommand::CLOSE)
+    {
+        ROS_INFO("Closing the solenoid!");
+    }
+    else if (sc.command == hardware::SolenoidCommand::OPEN)
+    {
+        ROS_INFO("Opening the solenoid!");
+    }
 }
 
 int main(int argc, char **argv)
