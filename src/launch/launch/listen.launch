@@ -1,9 +1,6 @@
 
 <launch>
 
-    <env name="ROSCONSOLE_CONFIG_FILE"
-         value="$(find launch)/rosconsole.conf"/>
-
     <group ns="logging">
 
     <node name="rosbag_record" pkg="rosbag" type="record"
@@ -18,15 +15,19 @@
           type="interested.py" output="screen" />
     <node name="packet_broadcaster" pkg="transmission"
           type="packet_broadcaster" output="screen" />
-
     </group>
 
     <group ns="hardware">
 
-    <node name="motor_driver" pkg="hardware"
-          type="motor_driver" output="screen" />
+    <node name="valve_motor_driver" pkg="hardware"
+          type="motor_driver" output="screen"
+          args="_positive:=45 _negative:=46" />
+    <node name="pump_motor_driver" pkg="hardware"
+          type="motor_driver" output="screen"
+          args="_positive:=78 _negative:=79" />
     <node name="solenoid_driver" pkg="hardware"
-          type="solenoid_driver" output="screen" />
+          type="solenoid_driver" output="screen"
+          args="_positive:=31 _negative:=32" />
 
     </group>
 
