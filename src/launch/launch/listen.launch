@@ -11,10 +11,9 @@
 
     <group ns="transmission">
 
-    <node name="interested" pkg="transmission" 
-          type="interested.py" output="screen" />
-    <node name="packet_broadcaster" pkg="transmission"
-          type="packet_broadcaster" output="screen" />
+    <node name="radio_driver" pkg="transmission"
+          type="radio_driver" output="screen" />
+
     </group>
 
     <group ns="hardware">
@@ -28,6 +27,13 @@
     <node name="solenoid_driver" pkg="hardware"
           type="solenoid_driver" output="screen"
           args="_positive:=31 _negative:=32" />
+
+    </group>
+
+    <group ns="user">
+
+    <node name="interested" pkg="transmission" 
+          type="interested.py" output="screen" />
 
     </group>
 

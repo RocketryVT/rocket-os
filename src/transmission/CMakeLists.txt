@@ -96,8 +96,8 @@ catkin_install_python(PROGRAMS scripts/interested.py
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 
-add_executable(packet_broadcaster src/packet_broadcaster.cpp)
-target_link_libraries(packet_broadcaster ${catkin_LIBRARIES})
-target_link_libraries(packet_broadcaster ${PROJECT_NAME})
-add_dependencies(packet_broadcaster transmission_generate_messages_cpp)
+add_executable(radio_driver src/radio_driver.cpp)
+target_link_libraries(radio_driver ${catkin_LIBRARIES})
+target_link_libraries(radio_driver ${PROJECT_NAME})
+add_dependencies(radio_driver transmission_generate_messages_cpp)
 

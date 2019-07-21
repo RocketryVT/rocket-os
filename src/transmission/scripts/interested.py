@@ -6,11 +6,11 @@ import rospy
 from transmission.msg import Packet
 
 def recieve_packet(msg):
-    rospy.loginfo(str(msg.time))
+    rospy.loginfo("Got a message with timestamp " + str(msg.time))
 
 def main():
     rospy.init_node('interested')
-    rospy.Subscriber('recieved_packets',
+    rospy.Subscriber('/transmission/incoming',
         Packet, recieve_packet)
     rospy.spin()
 
