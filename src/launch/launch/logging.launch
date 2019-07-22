@@ -3,8 +3,10 @@
 
     <group ns="logging">
 
+    <arg name="log_destination" value="$(find launch)/logs" />
+
     <node name="rosbag_record" pkg="rosbag" type="record"
-          args="-a -o /home/rocketry/rocket-os/logs/LOG" 
+          args="-a -o $(arg log_destination)/LOG"
           output="screen" />
 
     </group>
