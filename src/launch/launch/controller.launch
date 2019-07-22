@@ -8,8 +8,10 @@
 
     <group ns="extra">
 
-    <node name="interested" pkg="transmission" 
-          type="interested.py" output="screen" />
+    <node name="interested" pkg="transmission"
+          type="interested.py" output="screen">
+        <remap from="incoming" to="/transmission/incoming" />
+    </node>
 
     </group>
 

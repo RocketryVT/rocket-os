@@ -6,12 +6,12 @@ import rospy
 from transmission.msg import Packet
 
 def recieve_packet(msg):
-    rospy.loginfo("Got a message with timestamp " + str(msg.time))
+    if msg.id % 28 == 0:
+        rospy.loginfo("Got a message where id % 28 == 0: " + str(msg.time))
 
 def main():
     rospy.init_node('interested')
-    rospy.Subscriber('/transmission/incoming',
-        Packet, recieve_packet)
+    rospy.Subscriber('incoming', Packet, recieve_packet)
     rospy.spin()
 
 if __name__ == '__main__':
