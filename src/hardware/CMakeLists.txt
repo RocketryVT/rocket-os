@@ -10,6 +10,7 @@ find_package(
   roscpp
   rospy
   std_msgs
+  geometry_msgs
   genmsg
   roslaunch
 )
@@ -45,7 +46,8 @@ add_message_files(
 ## Generate added messages and services with any dependencies listed here
 generate_messages(
   DEPENDENCIES
-  std_msgs  # Or other packages containing msgs
+  std_msgs
+  geometry_msgs
 )
 
 ###################################
@@ -108,3 +110,6 @@ add_executable(float_switch_driver src/float_switch_driver.cpp)
 add_dependencies(float_switch_driver hardware_generate_messages_cpp)
 target_link_libraries(float_switch_driver ${catkin_LIBRARIES})
 
+add_executable(imu_driver src/imu_driver.cpp)
+add_dependencies(imu_driver hardware_generate_messages_cpp)
+target_link_libraries(imu_driver ${catkin_LIBRARIES})

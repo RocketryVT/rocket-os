@@ -15,6 +15,9 @@
     <node name="float_switch" pkg="hardware"
           type="float_switch_driver" output="screen"
           args="_positive:=14 _negative:=15 _frequency:=20" />
+    <node name="imu" pkg="hardware"
+          type="imu_driver" output="screen"
+          args="_positive:=88 _negative:=89 _frequency:=20" />
 
     </group>
 
