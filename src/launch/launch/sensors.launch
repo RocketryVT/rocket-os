@@ -5,7 +5,7 @@
 
     <node name="combustion_thermocouple" pkg="hardware"
           type="thermocouple_driver" output="screen"
-          args="_positive:=34 _negative:=35 _frequency:=40"/>
+          args="_positive:=34 _negative:=35 _frequency:=20"/>
     <node name="tank_thermocouple" pkg="hardware"
           type="thermocouple_driver" output="screen"
           args="_positive:=34 _negative:=35 _frequency:=20" />
