@@ -27,13 +27,8 @@ int main(int argc, char **argv)
 
     ROS_DEBUG("Debug message");
 
-    int positive_pin, negative_pin;
-    if (!nh.getParam("positive", positive_pin) ||
-        !nh.getParam("negative", negative_pin))
-    {
-        ROS_FATAL("Failed to get motor pin mappings!");
-        ros::shutdown();
-    }
+    int positive_pin = nh.param("negative", 20);
+    int negative_pin = nh.param("positive", 21);
     ROS_INFO("Starting motor driver on pins %d, %d",
         positive_pin, negative_pin);
 

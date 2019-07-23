@@ -5,16 +5,16 @@
 
     <node name="combustion_thermocouple" pkg="hardware"
           type="thermocouple_driver" output="screen"
-          args="_positive:=34 _negative:=35" />
+          args="_positive:=34 _negative:=35 _frequency:=40"/>
     <node name="tank_thermocouple" pkg="hardware"
           type="thermocouple_driver" output="screen"
-          args="_positive:=34 _negative:=35" />
+          args="_positive:=34 _negative:=35 _frequency:=20" />
     <node name="tank_transducer" pkg="hardware"
           type="pressure_transducer_driver" output="screen"
-          args="_positive:=90 _negative:=91" />
+          args="_positive:=90 _negative:=91 _frequency:=20" />
     <node name="float_switch" pkg="hardware"
           type="float_switch_driver" output="screen"
-          args="_positive:=14 _negative:=15" />
+          args="_positive:=14 _negative:=15 _frequency:=20" />
 
     </group>
 
