@@ -1,0 +1,45 @@
+timestamp,header,seq,stamp,secs,nsecs,frame_id,level,name,msg,file,function,line,topics
+1563914316352373363,,210,,1563914316,252451568,'',2,"""/sensors/float_switch""","""Starting float switch driver on pins 14, 15, at 20 hz""","""/home/foster/git/rocket-os/src/hardware/src/float_switch_driver.cpp""","""main""",17,[/rosout]
+1563914316352696749,,211,,1563914316,218545024,'',2,"""/sensors/tank_thermocouple""","""Starting thermocouple driver on pins 34, 35, at 20 hz""","""/home/foster/git/rocket-os/src/hardware/src/thermocouple_driver.cpp""","""main""",17,[/rosout]
+1563914316353469969,,212,,1563914316,257673717,'',2,"""/sensors/imu""","""Starting imu driver on pins 88, 89, at 20 hz""","""/home/foster/git/rocket-os/src/hardware/src/imu_driver.cpp""","""main""",16,[/rosout]
+1563914316353480313,,213,,1563914316,161683655,'',2,"""/logging/rosbag_record""","""Subscribing to /rosout_agg""","""/tmp/binarydeb/ros-kinetic-rosbag-1.12.14/src/recorder.cpp""","""shared_ptr<ros",212,[/rosout]
+1563914316454691354,,214,,1563914316,259472225,'',2,"""/hardware/pump_motor""","""Starting motor driver on pins 78, 79""","""/home/foster/git/rocket-os/src/hardware/src/motor_driver.cpp""","""main""",33,[/rosout]
+1563914316454720951,,215,,1563914316,261690020,'',2,"""/hardware/solenoid""","""Starting solenoid driver on pins 31, 32""","""/home/foster/git/rocket-os/src/hardware/src/solenoid_driver.cpp""","""main""",26,[/rosout]
+1563914316455166396,,216,,1563914316,255940380,'',2,"""/hardware/valve_motor""","""Starting motor driver on pins 45, 46""","""/home/foster/git/rocket-os/src/hardware/src/motor_driver.cpp""","""main""",33,[/rosout]
+1563914317193969710,,217,,1563914317,193642917,'',2,"""/logging/rosbag_record""","""Subscribing to /transmission/incoming""","""/tmp/binarydeb/ros-kinetic-rosbag-1.12.14/src/recorder.cpp""","""shared_ptr<ros",212,[/rosout]
+1563914317200313161,,218,,1563914317,200013671,'',2,"""/logging/rosbag_record""","""Subscribing to /sensors/float_switch/state""","""/tmp/binarydeb/ros-kinetic-rosbag-1.12.14/src/recorder.cpp""","""shared_ptr<ros",212,[/rosout]
+1563914317206609988,,219,,1563914317,206361984,'',2,"""/logging/rosbag_record""","""Subscribing to /sensors/imu/acceleration""","""/tmp/binarydeb/ros-kinetic-rosbag-1.12.14/src/recorder.cpp""","""shared_ptr<ros",212,[/rosout]
+1563914317211828025,,220,,1563914317,211554502,'',2,"""/logging/rosbag_record""","""Subscribing to /sensors/tank_transducer/pressure""","""/tmp/binarydeb/ros-kinetic-rosbag-1.12.14/src/recorder.cpp""","""shared_ptr<ros",212,[/rosout]
+1563914317216967578,,221,,1563914317,216693369,'',2,"""/logging/rosbag_record""","""Subscribing to /sensors/tank_thermocouple/temperature""","""/tmp/binarydeb/ros-kinetic-rosbag-1.12.14/src/recorder.cpp""","""shared_ptr<ros",212,[/rosout]
+1563914317222754655,,222,,1563914317,222402486,'',2,"""/logging/rosbag_record""","""Subscribing to /sensors/imu/orientation""","""/tmp/binarydeb/ros-kinetic-rosbag-1.12.14/src/recorder.cpp""","""shared_ptr<ros",212,[/rosout]
+1563914317228952585,,223,,1563914317,228647193,'',2,"""/logging/rosbag_record""","""Subscribing to /sensors/combustion_thermocouple/temperature""","""/tmp/binarydeb/ros-kinetic-rosbag-1.12.14/src/recorder.cpp""","""shared_ptr<ros",212,[/rosout]
+1563914318675836438,,224,,1563914318,675293922,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914326675495668,,225,,1563914326,675052881,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914330675181668,,226,,1563914330,674909114,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914347675598445,,227,,1563914347,675142049,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914353175543112,,228,,1563914353,175121068,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914375675619580,,229,,1563914375,675128936,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914390175600212,,230,,1563914390,175131082,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914398175602767,,231,,1563914398,175120115,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914414175602331,,232,,1563914414,175134897,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914425175564058,,233,,1563914425,175121068,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914448175393055,,234,,1563914448,175026893,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914463675323165,,235,,1563914463,674973011,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914485675447340,,236,,1563914485,674981117,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914487175485114,,237,,1563914487,174949884,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914492175252914,,238,,1563914492,174868106,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914495675233840,,239,,1563914495,674942016,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914517675366282,,240,,1563914517,675024986,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914536675211327,,241,,1563914536,674849033,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914543175105918,,242,,1563914543,174848079,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914544175413886,,243,,1563914544,174895048,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914552675275578,,244,,1563914552,674956083,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914574675263911,,245,,1563914574,674966096,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914580675101574,,246,,1563914580,674810886,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914585675153220,,247,,1563914585,674897909,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914605675162992,,248,,1563914605,674871921,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914630675424096,,249,,1563914630,674947977,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914647675330409,,250,,1563914647,674968004,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914653675485460,,251,,1563914653,674937009,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914659175286992,,252,,1563914659,174926042,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563914665675400858,,253,,1563914665,675041913,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
