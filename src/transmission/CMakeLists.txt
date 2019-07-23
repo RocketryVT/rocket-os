@@ -79,7 +79,6 @@ include_directories(
 add_library(${PROJECT_NAME}
     src/packet.cpp
     src/pprintf.cpp
-    src/server.cpp
     src/serial.cpp
     src/util.cpp
 )
@@ -100,4 +99,3 @@ add_executable(radio_driver src/radio_driver.cpp)
 target_link_libraries(radio_driver ${catkin_LIBRARIES})
 target_link_libraries(radio_driver ${PROJECT_NAME})
 add_dependencies(radio_driver transmission_generate_messages_cpp)
-

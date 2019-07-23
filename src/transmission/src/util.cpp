@@ -77,18 +77,18 @@ std::vector<std::string> split_quoted(const std::string &fstr)
 
 uint16_t xorchecksum(const std::vector<unsigned char> &data)
 {
-	uint8_t c0 = 0;
-	uint8_t c1 = 0;
-	for (size_t i = 0; i < data.size(); i += 2)
-		c0 ^= data[i];
-	for (size_t i = 1; i < data.size(); i += 2)
-		c1 ^= data[i];
+    uint8_t c0 = 0;
+    uint8_t c1 = 0;
+    for (size_t i = 0; i < data.size(); i += 2)
+        c0 ^= data[i];
+    for (size_t i = 1; i < data.size(); i += 2)
+        c1 ^= data[i];
 
     std::vector<uint8_t> cs;
     cs << c0 << c1;
     uint16_t sum = 0;
     cs >> sum;
-	return sum;
+    return sum;
 }
 
 
@@ -110,4 +110,3 @@ std::string dateString(const std::chrono::system_clock::time_point& time)
 }
 
 } // namespace rvt
-
