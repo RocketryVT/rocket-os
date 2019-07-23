@@ -22,8 +22,18 @@ int main(int argc, char **argv)
     while (ros::ok())
     {
         geometry_msgs::Accel accel;
+        accel.linear.x = std::sin(ros::Time::now().toSec());
+        accel.linear.y = std::sin(ros::Time::now().toSec() + 1);
+        accel.linear.z = std::sin(ros::Time::now().toSec()*4 + 1);
+        accel.angular.x = std::sin(ros::Time::now().toSec()*2);
+        accel.angular.y = std::sin(ros::Time::now().toSec()/1.2 + 3);
+        accel.angular.z = std::sin(ros::Time::now().toSec()/3 + 0.2);
         accel_pub.publish(accel);
         geometry_msgs::Quaternion quat;
+        quat.w = std::sin(ros::Time::now().toSec()*2);
+        quat.x = std::sin(ros::Time::now().toSec());
+        quat.y = std::sin(ros::Time::now().toSec() + 1);
+        quat.z = std::sin(ros::Time::now().toSec()*4 + 1);
         quat_pub.publish(quat);
         rate.sleep();
     }

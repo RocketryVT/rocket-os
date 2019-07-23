@@ -20,7 +20,7 @@ int main(int argc, char **argv)
     while (ros::ok())
     {
         std_msgs::Float64 update;
-        update.data = 0; // replace with pressure reading
+        update.data = std::pow(std::sin(ros::Time::now().toSec()), 4)*10;
         pub.publish(update);
         rate.sleep();
     }

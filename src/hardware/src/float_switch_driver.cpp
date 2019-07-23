@@ -3,6 +3,8 @@
 #include <ros/ros.h>
 #include <std_msgs/Bool.h>
 
+#include <cstdlib>
+
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "float_switch_driver");
@@ -20,7 +22,7 @@ int main(int argc, char **argv)
     while (ros::ok())
     {
         std_msgs::Bool update;
-        update.data = false; // replace with float switch reading
+        update.data = rand() % 2; // replace with float switch reading
         pub.publish(update);
         rate.sleep();
     }

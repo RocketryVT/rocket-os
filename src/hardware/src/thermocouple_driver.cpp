@@ -3,6 +3,8 @@
 #include <ros/ros.h>
 #include <std_msgs/Float64.h>
 
+#include <cmath>
+
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "thermocouple_driver");
@@ -20,7 +22,7 @@ int main(int argc, char **argv)
     while (ros::ok())
     {
         std_msgs::Float64 update;
-        update.data = 0; // replace with temperature reading
+        update.data = std::sin(ros::Time::now().toSec()/2); // replace with temperature reading
         pub.publish(update);
         rate.sleep();
     }

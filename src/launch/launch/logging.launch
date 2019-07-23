@@ -6,7 +6,7 @@
     <arg name="log_destination" value="$(find launch)/logs" />
 
     <node name="rosbag_record" pkg="rosbag" type="record"
-          args="-a -o $(arg log_destination)/LOG"
+          args="--split --duration=1h -a -o $(arg log_destination)/LOG"
           output="screen" />
 
     </group>
