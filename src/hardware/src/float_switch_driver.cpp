@@ -8,8 +8,8 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "float_switch_driver");
     ros::NodeHandle nh("~");
 
-    int positive_pin = nh.param("negative", 20);
-    int negative_pin = nh.param("positive", 21);
+    int positive_pin = nh.param("positive", 20);
+    int negative_pin = nh.param("negative", 21);
     int frequency = nh.param("frequency", 20);
     ROS_INFO("Starting float switch driver on pins %d, %d, "
              "at %d hz", positive_pin, negative_pin, frequency);
