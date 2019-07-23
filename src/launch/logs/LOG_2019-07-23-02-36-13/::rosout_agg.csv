@@ -1,0 +1,22 @@
+timestamp,header,seq,stamp,secs,nsecs,frame_id,level,name,msg,file,function,line,topics
+1563849373641624200,,0,,1563849373,393536100,'',2,"""/logging/rosbag_record""","""Subscribing to /rosout_agg""","""/tmp/binarydeb/ros-kinetic-rosbag-1.12.14/src/recorder.cpp""","""shared_ptr<ros",212,[/rosout]
+1563849374343082000,,1,,1563849374,89795100,'',2,"""/sensors/combustion_thermocouple""","""Starting thermocouple driver on pins 34, 35""","""/home/rocketry/rocket-os/src/hardware/src/thermocouple_driver.cpp""","""main""",19,[/rosout]
+1563849374404669700,,2,,1563849374,403498900,'',2,"""/logging/rosbag_record""","""Subscribing to /transmission/incoming""","""/tmp/binarydeb/ros-kinetic-rosbag-1.12.14/src/recorder.cpp""","""shared_ptr<ros",212,[/rosout]
+1563849374414554000,,3,,1563849374,414159200,'',2,"""/logging/rosbag_record""","""Subscribing to /sensors/combustion_thermocouple/temperature""","""/tmp/binarydeb/ros-kinetic-rosbag-1.12.14/src/recorder.cpp""","""shared_ptr<ros",212,[/rosout]
+1563849374647376600,,4,,1563849374,443687400,'',2,"""/sensors/tank_thermocouple""","""Starting thermocouple driver on pins 34, 35""","""/home/rocketry/rocket-os/src/hardware/src/thermocouple_driver.cpp""","""main""",19,[/rosout]
+1563849375052964100,,5,,1563849374,803403200,'',2,"""/sensors/tank_transducer""","""Starting pressure_transducer driver on pins 90, 91""","""/home/rocketry/rocket-os/src/hardware/src/pressure_transducer_driver.cpp""","""main""",19,[/rosout]
+1563849375405033400,,6,,1563849375,404378200,'',2,"""/logging/rosbag_record""","""Subscribing to /sensors/float_switch/state""","""/tmp/binarydeb/ros-kinetic-rosbag-1.12.14/src/recorder.cpp""","""shared_ptr<ros",212,[/rosout]
+1563849375415349800,,7,,1563849375,414875400,'',2,"""/logging/rosbag_record""","""Subscribing to /sensors/tank_transducer/pressure""","""/tmp/binarydeb/ros-kinetic-rosbag-1.12.14/src/recorder.cpp""","""shared_ptr<ros",212,[/rosout]
+1563849375424954700,,8,,1563849375,424396100,'',2,"""/logging/rosbag_record""","""Subscribing to /sensors/tank_thermocouple/temperature""","""/tmp/binarydeb/ros-kinetic-rosbag-1.12.14/src/recorder.cpp""","""shared_ptr<ros",212,[/rosout]
+1563849375455177900,,9,,1563849375,164172800,'',2,"""/sensors/float_switch""","""Starting float switch driver on pins 14, 15""","""/home/rocketry/rocket-os/src/hardware/src/float_switch_driver.cpp""","""main""",19,[/rosout]
+1563849375658978600,,10,,1563849375,514935400,'',2,"""/hardware/valve_motor""","""Starting motor driver on pins 45, 46""","""/home/rocketry/rocket-os/src/hardware/src/motor_driver.cpp""","""main""",38,[/rosout]
+1563849376159638700,,11,,1563849375,868955300,'',2,"""/hardware/pump_motor""","""Starting motor driver on pins 78, 79""","""/home/rocketry/rocket-os/src/hardware/src/motor_driver.cpp""","""main""",38,[/rosout]
+1563849376462968300,,12,,1563849376,235901500,'',2,"""/hardware/solenoid""","""Starting solenoid driver on pins 31, 32""","""/home/rocketry/rocket-os/src/hardware/src/solenoid_driver.cpp""","""main""",31,[/rosout]
+1563849384266240400,,13,,1563849384,265351057,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563849388265867000,,14,,1563849388,265036106,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563849405266360100,,15,,1563849405,265527009,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563849410766253800,,16,,1563849410,765402078,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563849433266418700,,17,,1563849433,265495061,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563849447766601500,,18,,1563849447,765470027,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563849455768234100,,19,,1563849455,766004085,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
+1563849471768852900,,20,,1563849471,767138004,'',2,"""/extra/interested""","""Got a message where id % 28 == 0","""interested.py""","""recieve_packet""",10,"[/rosout, /transmission/incoming]"
