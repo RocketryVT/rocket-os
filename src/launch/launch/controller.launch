@@ -11,6 +11,13 @@
     <node name="interested" pkg="transmission"
           type="interested.py" output="screen">
         <remap from="incoming" to="/transmission/incoming" />
+        <remap from="outgoing" to="/transmission/outgoing" />
+    </node>
+
+    <node name="hardware_client" pkg="hardware"
+          type="hardware_client.py" output="screen">
+        <remap from="motor_command" to="/hardware/valve_motor/command" />
+        <remap from="solenoid_command" to="/hardware/solenoid/command" />
     </node>
 
     </group>

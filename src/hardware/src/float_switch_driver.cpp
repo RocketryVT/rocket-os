@@ -1,7 +1,7 @@
 // float_switch_driver.cpp
 
 #include <ros/ros.h>
-#include <std_msgs/Bool.h>
+#include <std_msgs/UInt8.h>
 
 #include <cstdlib>
 
@@ -16,12 +16,12 @@ int main(int argc, char **argv)
     ROS_INFO("Starting float switch driver on pins %d, %d, "
              "at %d hz", positive_pin, negative_pin, frequency);
 
-    auto pub = nh.advertise<std_msgs::Bool>("state", 100);
+    auto pub = nh.advertise<std_msgs::UInt8>("state", 100);
 
     ros::Rate rate(frequency);
     while (ros::ok())
     {
-        std_msgs::Bool update;
+        std_msgs::UInt8 update;
         update.data = rand() % 2; // replace with float switch reading
         pub.publish(update);
         rate.sleep();
