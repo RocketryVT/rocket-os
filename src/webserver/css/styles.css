@@ -1,0 +1,15 @@
+
+*
+{
+    font-family: Helvetica;
+    box-sizing: border-box;
+}
+
+body
+{
+    border: 5px solid lightgray;
+    height: 100vh;
+    padding: 0 30px;
+}
+
+p { font-size: 18px; }

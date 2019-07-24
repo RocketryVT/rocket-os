@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>webserver</name>
+  <version>0.0.0</version>
+  <description>Simple webserver for viewing diagnostic info about the rocket
+  </description>
+
+  <maintainer email="jwade109@vt.edu">Wade Foster</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_export_depend>std_msgs</build_export_depend>
+  <exec_depend>std_msgs</exec_depend>
+
+</package>
