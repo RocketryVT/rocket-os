@@ -63,7 +63,7 @@ for bagFile in listOfBagFiles:
             listOfTopics.append(topic)
 
     for topicName in listOfTopics:
-        filename = folder + '/' + string.replace(topicName, '/', '::') + '.csv'
+        filename = folder + '/' + string.replace(topicName, '/', '_slash_') + '.csv'
         with open(filename, 'w+') as csvfile:
             filewriter = csv.writer(csvfile, delimiter = ',')
             firstIteration = True

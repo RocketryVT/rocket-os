@@ -17,6 +17,8 @@ RUN echo rocketry:rocketry | chpasswd
 RUN chown rocketry:rocketry /home/rocketry
 RUN echo "rocketry ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
+RUN python -m pip install --user rospy_message_converter
+
 USER rocketry
 WORKDIR /home/rocketry
 RUN touch ~/.hushlogin
