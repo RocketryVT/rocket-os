@@ -1,0 +1,11 @@
+
+<launch>
+
+    <group ns="webserver">
+
+    <node name="webserver" pkg="webserver"
+          type="webserver.py" output="screen" />
+
+    </group>
+
+</launch>
