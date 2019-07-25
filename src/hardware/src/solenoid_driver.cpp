@@ -1,15 +1,17 @@
 // solenoid_driver.cpp
 
 #include <ros/ros.h>
-#include <hardware/SolenoidCommand.h>
+#include <std_msgs/UInt8.h>
 
-void recieve_solenoid_command(const hardware::SolenoidCommand &sc)
+const uint8_t CLOSE = 0, OPEN = 1;
+
+void recieve_solenoid_command(const std_msgs::UInt8 &sc)
 {
-    if (sc.command == hardware::SolenoidCommand::CLOSE)
+    if (sc.data == CLOSE)
     {
         ROS_INFO("Closing the solenoid!");
     }
-    else if (sc.command == hardware::SolenoidCommand::OPEN)
+    else if (sc.data == OPEN)
     {
         ROS_INFO("Opening the solenoid!");
     }

@@ -2,19 +2,21 @@
 
 #include <ros/ros.h>
 #include <std_msgs/String.h>
-#include <hardware/MotorCommand.h>
+#include <std_msgs/UInt8.h>
 
-void recieve_motor_command(const hardware::MotorCommand &mc)
+const uint8_t STOP = 0, CLOCKWISE = 1, COUNTERCLOCKWISE = 2;
+
+void recieve_motor_command(const std_msgs::UInt8 &mc)
 {
-    if (mc.command == hardware::MotorCommand::STOP)
+    if (mc.data == STOP)
     {
         ROS_INFO("Stopping the motor");
     }
-    else if (mc.command == hardware::MotorCommand::CLOCKWISE)
+    else if (mc.data == CLOCKWISE)
     {
         ROS_INFO("Turning the motor clockwise");
     }
-    else if (mc.command == hardware::MotorCommand::COUNTERCLOCKWISE)
+    else if (mc.data == COUNTERCLOCKWISE)
     {
         ROS_INFO("Turning the motor counterclockwise");
     }
