@@ -8,7 +8,7 @@ function onRecieveData(data)
     while (div.firstChild)
         div.removeChild(div.firstChild);
 
-    for (let topic of exclude_topics)
+    for (let topic of excluded_topics)
         delete data[topic];
 
     tracked_topics = Object.keys(data);
