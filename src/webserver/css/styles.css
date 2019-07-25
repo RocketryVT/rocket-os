@@ -7,9 +7,7 @@
 
 body
 {
-    border: 5px solid lightgray;
-    height: 100vh;
-    padding: 0 30px;
+    padding: 0 50px 30px 50px;
 }
 
 p { font-size: 18px; }
