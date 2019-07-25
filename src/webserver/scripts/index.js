@@ -4,12 +4,37 @@ function onRecieveData(data)
     let div = document.getElementById("data-readout");
     while (div.firstChild)
         div.removeChild(div.firstChild);
-    for (let topic in data)
+
+    div.innerHTML = obj2table(data);
+}
+
+function obj2table(object)
+{
+    let html = '<table>';
+    let keys = [];
+    for (let key in object)
     {
-        let p = document.createElement("p");
-        div.appendChild(p);
-        p.innerHTML = "<b>" + topic + ":</b><br>" + data[topic];
+        keys.push(key);
     }
+    keys.sort();
+
+    if (object !== Object(object))
+    {
+        let value = object.toString();
+        if (typeof(object) == 'number') value = object.toFixed(6);
+        html += '<tr><td>' + value + '</tr>'
+    }
+
+    for (let key of keys)
+    {
+        let item = object[key];
+        let value = "";
+        if (typeof(item) == 'number') value = item.toFixed(6);
+        else value = (typeof(item) === 'object') ? obj2table(item) : item.toString();
+        html += '<tr><td>' + key + '</td><td>' + value + '</tr>';
+    }
+    html += '</table>';
+    return html;
 }
 
 const update_frequency = 20; // hz
@@ -21,6 +46,10 @@ const update_loop = window.setInterval(function()
     req.onload = function(e)
     {
         let data = JSON.parse(e.target.response);
+        for (let key in data)
+        {
+            data[key] = JSON.parse(data[key]);
+        }
         onRecieveData(data);
     };
     req.open('POST', '/update', true);
