@@ -53,6 +53,14 @@ class HttpApi(BaseHTTPRequestHandler):
             self.wfile.write(open(package_path + '/html/index.html').read())
             return
 
+        if self.path == '/vis':
+
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/html')
+            self.end_headers()
+            self.wfile.write(open(package_path + '/html/vis.html').read())
+            return
+
         if self.path == '/css/styles.css':
 
             self.send_response(200)
@@ -75,6 +83,14 @@ class HttpApi(BaseHTTPRequestHandler):
             self.send_header('Content-Type', 'text/javascript')
             self.end_headers()
             self.wfile.write(open(package_path + '/scripts/index.js').read())
+            return
+
+        if self.path == '/scripts/three.js':
+
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/javascript')
+            self.end_headers()
+            self.wfile.write(open(package_path + '/scripts/three.js').read())
             return
 
         self.send_response(404)
