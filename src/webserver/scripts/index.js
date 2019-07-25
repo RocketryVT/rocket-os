@@ -1,5 +1,5 @@
 
-const exclude_topics = ["/rosout", "/rosout_agg"];
+let excluded_topics = [];
 let tracked_topics = [];
 
 function onRecieveData(data)
@@ -14,6 +14,14 @@ function onRecieveData(data)
     tracked_topics = Object.keys(data);
 
     div.innerHTML = obj2table(data);
+}
+
+function isArrayOfPrimitives(object)
+{
+    if (!Array.isArray(object)) return false;
+    for (let elem of object)
+        if (elem === Object(elem)) return false;
+    return true;
 }
 
 function obj2table(object)
@@ -37,7 +45,9 @@ function obj2table(object)
     {
         let item = object[key];
         let value = "";
-        if (typeof(item) == 'number') value = item.toFixed(6);
+        if (isArrayOfPrimitives(item))
+            value = item.toString();
+        else if (typeof(item) == 'number') value = item.toFixed(6);
         else value = (typeof(item) === 'object') ? obj2table(item) : item.toString();
         html += '<tr><td>' + key + '</td><td>' + value + '</tr>';
     }
