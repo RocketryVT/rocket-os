@@ -17,11 +17,10 @@ def main():
     rate = rospy.Rate(1);
     while not rospy.is_shutdown():
 
-        cmd = MotorCommand();
-        cmd.command = int(random.random()*3);
+        cmd = UInt8();
+        cmd.data = int(random.random()*3);
         motor_cmd.publish(cmd);
-        cmd = SolenoidCommand();
-        cmd.command = int(random.random()*2);
+        cmd.data = int(random.random()*2);
         solenoid_cmd.publish(cmd);
 
         rate.sleep();
