@@ -1,9 +1,17 @@
 
+const exclude_topics = ["/rosout", "/rosout_agg"];
+let tracked_topics = [];
+
 function onRecieveData(data)
 {
     let div = document.getElementById("data-readout");
     while (div.firstChild)
         div.removeChild(div.firstChild);
+
+    for (let topic of exclude_topics)
+        delete data[topic];
+
+    tracked_topics = Object.keys(data);
 
     div.innerHTML = obj2table(data);
 }
