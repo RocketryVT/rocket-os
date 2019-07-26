@@ -40,6 +40,7 @@ find_package(catkin REQUIRED
 include_directories(
   include
   include/math
+  include/functions/modeling
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -51,6 +52,8 @@ add_library(models
   src/math/matrix.cpp
   src/math/quaternion.cpp
   src/math/solve.cpp
+  src/functions/modeling/standard_atmosphere.cpp
+  src/functions/modeling/compute_drag.cpp
 )
 
 catkin_package(

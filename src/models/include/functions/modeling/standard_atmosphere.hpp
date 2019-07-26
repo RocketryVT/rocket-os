@@ -47,6 +47,8 @@ double to_geopotential(double geometric, double radius);
 
 double to_geometric(double geopotential, double radius);
 
+double pressure_altitude(double pressure);
+
 } // namespace rvt
 
 #endif // RVT_STANDARD_ATMO_HPP

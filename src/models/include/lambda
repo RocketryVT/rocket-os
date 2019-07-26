@@ -1,3 +1,6 @@
+// library include header
+
+// core math
 #include "math/matrix.hpp"
 #include "math/quaternion.hpp"
 #include "math/axis_angle.hpp"
@@ -7,3 +10,11 @@
 #include "math/complex.hpp"
 #include "math/solve.hpp"
 #include "math/kalman_filter.hpp"
+
+// trajectory
+#include "functions/modeling/compute_drag.hpp"
+#include "functions/modeling/hybrid_thrust.hpp"
+#include "functions/modeling/standard_atmosphere.hpp"
+
+// constants
+#include "constants.hpp"

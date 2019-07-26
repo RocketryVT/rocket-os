@@ -27,6 +27,8 @@ const double earth_mean_radius = 63781e6; // [meters]
 // Atmospheric Parameters
 const double molar_gas_constant = 8.31446261815324; // [J/mol-K]
 const double air_ideal_gas_constant = 287.0429126675655880; // [J/kg-K]
+const double standard_pressure = 101325.0; // Pa
+const double standard_temperature = 273.15; // Kelvin
 
 // Latitude and Longitude calculations
 const double a_earth = 6378137.00000; // meters

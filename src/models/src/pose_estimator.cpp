@@ -6,6 +6,8 @@
 #include <geometry_msgs/Quaternion.h>
 #include <nav_msgs/Odometry.h>
 
+#include <lambda>
+
 /*
  * === NAV_MSGS::ODOMETRY =======================
  *
@@ -60,6 +62,11 @@ void recieve_acceleration(const geometry_msgs::Accel &msg)
 
 int main(int argc, char **argv)
 {
+    for (double i = 1; i > 0.3; i -= 0.05)
+    {
+        std::cout << rvt::pressure_altitude(rvt::standard_pressure*i) << std::endl;
+    }
+
     ros::init(argc, argv, "pose_estimator");
     ros::NodeHandle nh("~");
 

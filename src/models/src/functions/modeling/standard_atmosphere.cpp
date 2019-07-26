@@ -58,4 +58,14 @@ double to_geometric(double geopotential, double radius)
     return geopotential * radius / (radius - geopotential);
 }
 
+double pressure_altitude(double pressure)
+{
+    const double g = rvt::earth_standard_gravity;
+    const double R = rvt::air_ideal_gas_constant;
+    const double p0 = rvt::standard_pressure;
+    const double T = rvt::standard_temperature;
+    double altitude = R*T/g * std::log(p0/pressure); // hypsometric equation
+    return altitude;
+}
+
 } // namespace rvt
