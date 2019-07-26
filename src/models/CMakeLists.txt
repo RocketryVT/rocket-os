@@ -39,19 +39,18 @@ find_package(catkin REQUIRED
 ## Your package locations should be listed before other locations
 include_directories(
   include
+  include/math
   ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
 add_library(models
-  src/models.cpp
-  src/axis_angle.cpp
-  src/complex.cpp
-  src/echelon.cpp
-  src/levenshtein.cpp
-  src/matrix.cpp
-  src/quaternion.cpp
-  src/solve.cpp
+  src/math/axis_angle.cpp
+  src/math/complex.cpp
+  src/math/echelon.cpp
+  src/math/matrix.cpp
+  src/math/quaternion.cpp
+  src/math/solve.cpp
 )
 
 catkin_package(

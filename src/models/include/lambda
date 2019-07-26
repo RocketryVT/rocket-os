@@ -1,10 +1,9 @@
-#include <matrix.hpp>
-#include <quaternion.hpp>
-#include <axis_angle.hpp>
-#include <norm.hpp>            // euclidian, frobenian
-#include <echelon.hpp>         // REF, RREF
-#include <decomposition.hpp>   // LU, LDU decomposition
-#include <complex.hpp>
-#include <levenshtein.hpp>
-#include <solve.hpp>
-#include <kalman_filter.hpp>
+#include "math/matrix.hpp"
+#include "math/quaternion.hpp"
+#include "math/axis_angle.hpp"
+#include "math/norm.hpp"            // euclidian, frobenian
+#include "math/echelon.hpp"         // REF, RREF
+#include "math/decomposition.hpp"   // LU, LDU decomposition
+#include "math/complex.hpp"
+#include "math/solve.hpp"
+#include "math/kalman_filter.hpp"
