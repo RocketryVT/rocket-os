@@ -105,3 +105,5 @@ target_link_libraries(float_switch_driver ${catkin_LIBRARIES})
 add_executable(imu_driver src/imu_driver.cpp)
 target_link_libraries(imu_driver ${catkin_LIBRARIES})
 
+add_executable(barometer_driver src/barometer_driver.cpp)
+target_link_libraries(barometer_driver ${catkin_LIBRARIES})

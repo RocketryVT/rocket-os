@@ -5,7 +5,7 @@
 
     <node name="combustion_thermocouple" pkg="hardware"
           type="thermocouple_driver" output="screen"
-          args="_positive:=34 _negative:=35 _frequency:=20"/>
+          args="_positive:=31 _negative:=32 _frequency:=20"/>
     <node name="tank_thermocouple" pkg="hardware"
           type="thermocouple_driver" output="screen"
           args="_positive:=34 _negative:=35 _frequency:=20" />
@@ -18,6 +18,9 @@
     <node name="imu" pkg="hardware"
           type="imu_driver" output="screen"
           args="_positive:=88 _negative:=89 _frequency:=20" />
+    <node name="barometer" pkg="hardware"
+          type="barometer_driver" output="screen"
+          args="_positive:=38 _negative:=39 _frequency:=20" />
 
     </group>
 
