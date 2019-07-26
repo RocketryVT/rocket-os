@@ -8,6 +8,8 @@ find_package(catkin REQUIRED
   roscpp
   rospy
   std_msgs
+  geometry_msgs
+  nav_msgs
   genmsg
   roslaunch
 )
@@ -58,9 +60,8 @@ catkin_package(
 )
 
 ## Declare a C++ executable
-add_executable(executable src/executable.cpp)
+add_executable(pose_estimator src/pose_estimator.cpp)
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(executable models)
-target_link_libraries(executable ${catkin_LIBRARIES})
-
+target_link_libraries(pose_estimator models)
+target_link_libraries(pose_estimator ${catkin_LIBRARIES})

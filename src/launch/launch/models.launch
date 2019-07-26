@@ -1,0 +1,16 @@
+
+<launch>
+
+    <group ns="models">
+
+    <node name="pose_estimator" pkg="models"
+          type="pose_estimator" output="screen"
+          args="_frequency=20">
+        <remap from="/models/pose_estimator/acceleration" to="/sensors/imu/acceleration" />
+        <remap from="/models/pose_estimator/orientation" to="/sensors/imu/orientation" />
+        <remap from="/models/pose_estimator/pressure" to="/sensors/barometer/pressure" />
+    </node>
+
+    </group>
+
+</launch>
