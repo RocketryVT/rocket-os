@@ -41,6 +41,7 @@ include_directories(
   include
   include/math
   include/functions/modeling
+  include/functions/numerical-methods
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -74,5 +75,6 @@ add_executable(unit_tests
   tests/kalman_tests.cpp
   tests/matrix_tests.cpp
   tests/solve_tests.cpp
+  tests/runge_kutta_tests.cpp
 )
 target_link_librarieS(unit_tests models)

@@ -16,5 +16,8 @@
 #include "functions/modeling/hybrid_thrust.hpp"
 #include "functions/modeling/standard_atmosphere.hpp"
 
+// numerical methods
+#include "functions/numerical-methods/runge_kutta_integration.hpp"
+
 // constants
 #include "constants.hpp"

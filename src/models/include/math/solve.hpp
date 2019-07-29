@@ -3,8 +3,9 @@
 
 #include <functional>
 #include <limits>
+#include <vector>
 
-/*! 
+/*!
     \file
     \brief Defines numerical methods for solving and for zeroes,
            computing derivatives, etc.
@@ -12,6 +13,17 @@
 
 namespace lambda
 {
+
+template <typename T>
+std::vector<double> range(T begin, T end, T step = 1)
+{
+    std::vector<double> vec;
+    for (T iter = begin; iter < end; iter += step)
+    {
+        vec.push_back(iter);
+    }
+    return vec;
+}
 
 /// \brief Compute the zero of a function
 ///        using the Newton-Raphson method.
