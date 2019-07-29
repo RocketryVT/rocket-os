@@ -67,3 +67,12 @@ add_executable(pose_estimator src/pose_estimator.cpp)
 ## Specify libraries to link a library or executable target against
 target_link_libraries(pose_estimator models)
 target_link_libraries(pose_estimator ${catkin_LIBRARIES})
+
+add_executable(unit_tests
+  tests/catch_main.cpp
+  tests/complex_tests.cpp
+  tests/kalman_tests.cpp
+  tests/matrix_tests.cpp
+  tests/solve_tests.cpp
+)
+target_link_librarieS(unit_tests models)

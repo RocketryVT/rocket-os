@@ -69,7 +69,7 @@ TEST_CASE("Matrix inverse", "[matrix_inverse]")
     lambda::matrix<5, 5> ref(
        -0.13800100021433165,
         0.15306137029363434,
-        0.02023290705151104, 
+        0.02023290705151104,
        -0.09784953918696863,
        -0.13029934986068442,
        -0.16069157676644996,
@@ -160,4 +160,13 @@ TEST_CASE("Matrix power calculation.", "[matrix]")
     REQUIRE(m5(2, 0) == Approx(-15195));
     REQUIRE(m5(2, 1) == Approx(22031.2));
     REQUIRE(m5(2, 2) == Approx(-2406.84));
+}
+
+TEST_CASE("Computing RREF of a matrix.", "[matrix]")
+{
+    lambda::matrix<2, 2> m(1, 2, 3, 4);
+    lambda::column_vector<2> cv(6, 8);
+    auto aug = lambda::augment(m, cv);
+    auto reduced = lambda::rref(aug);
+    std::cout << reduced << std::endl;
 }
