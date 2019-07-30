@@ -115,16 +115,16 @@ class MessageConverter:
         client_data[self.topic_name] = json
 
 subscribers = {}
+for topic in rospy.get_published_topics():
+    topic_name = topic[0];
+    if topic_name in subscribers:
+        continue;
+    rospy.loginfo("Subscribing: " + topic_name);
+    message_class = rostopic.get_topic_class(topic[0])[0];
+    msgconv = MessageConverter(topic_name);
+    subscribers[topic_name] = rospy.Subscriber(topic_name, message_class,
+        msgconv.callback)
 
 while not rospy.is_shutdown():
     server.handle_request()
 
-    for topic in rospy.get_published_topics():
-        topic_name = topic[0];
-        if topic_name in subscribers:
-            continue;
-        rospy.loginfo("Subscribing: " + topic_name);
-        message_class = rostopic.get_topic_class(topic[0])[0];
-        msgconv = MessageConverter(topic_name);
-        subscribers[topic_name] = rospy.Subscriber(topic_name, message_class,
-            msgconv.callback)

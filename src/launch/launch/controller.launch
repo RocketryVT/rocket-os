@@ -5,7 +5,6 @@
     <include file="$(find launch)/launch/transmission.launch" />
     <include file="$(find launch)/launch/sensors.launch" />
     <include file="$(find launch)/launch/drivers.launch" />
-    <include file="$(find launch)/launch/webserver.launch" />
     <include file="$(find launch)/launch/models.launch" />
 
     <group ns="extra">
