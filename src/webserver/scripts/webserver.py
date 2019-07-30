@@ -125,6 +125,8 @@ for topic in rospy.get_published_topics():
     subscribers[topic_name] = rospy.Subscriber(topic_name, message_class,
         msgconv.callback)
 
+rate = rospy.Rate(10)
 while not rospy.is_shutdown():
     server.handle_request()
+    rate.sleep()
 
