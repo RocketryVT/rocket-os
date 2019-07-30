@@ -75,9 +75,9 @@ for bagFile in listOfBagFiles:
                 msgList = string.split(msgString, '\n')
                 instantaneousListOfData = []
                 for nameValuePair in msgList:
-                    splitPair = string.split(nameValuePair, ':')
+                    splitPair = nameValuePair.split(':', 1)
                     for i in range(len(splitPair)):
-                        splitPair[i] = string.strip(splitPair[i])
+                        splitPair[i] = splitPair[i].strip()
                     instantaneousListOfData.append(splitPair)
                 if firstIteration:    # header
                     headers = ["timestamp"]
