@@ -55,8 +55,8 @@ function obj2table(object)
     return html;
 }
 
-const update_frequency = 20; // hz
-const update_period = 1/20; // seconds
+const update_frequency = 4; // hz
+const update_period = 1/update_frequency; // seconds
 
 const update_loop = window.setInterval(function()
 {
