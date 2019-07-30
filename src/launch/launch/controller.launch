@@ -2,10 +2,10 @@
 <launch>
 
     <include file="$(find launch)/launch/logging.launch" />
-    <include file="$(find launch)/launch/transmission.launch" />
-    <include file="$(find launch)/launch/sensors.launch" />
-    <include file="$(find launch)/launch/drivers.launch" />
-    <include file="$(find launch)/launch/models.launch" />
+    <include file="$(find transmission)/launch/transmission.launch" />
+    <include file="$(find hardware)/launch/sensors.launch" />
+    <include file="$(find hardware)/launch/drivers.launch" />
+    <include file="$(find models)/launch/models.launch" />
 
     <group ns="extra">
 
@@ -22,5 +22,8 @@
     </node>
 
     </group>
+    
+    <node name="watchdog" pkg="launch"
+          type="watchdog" output="screen" />
 
 </launch>
