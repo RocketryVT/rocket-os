@@ -8,7 +8,7 @@ RUN apt-get install -y \
     cowsay tree bsdmainutils \
     bash-completion byobu man ntpdate \
     build-essential python-dev python-pip \
-    python-smbus wget
+    python-smbus wget htop
 
 RUN useradd -ms /bin/bash rocketry
 RUN usermod -aG sudo rocketry
@@ -17,7 +17,7 @@ RUN echo rocketry:rocketry | chpasswd
 RUN chown rocketry:rocketry /home/rocketry
 RUN echo "rocketry ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
-RUN python -m pip install --user rospy_message_converter
+RUN python -m pip install --user rospy_message_converter numpy
 
 USER rocketry
 WORKDIR /home/rocketry
