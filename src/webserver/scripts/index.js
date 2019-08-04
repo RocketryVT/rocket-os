@@ -16,6 +16,17 @@ function onRecieveData(data)
     div.innerHTML = obj2table(data);
 }
 
+function command(string)
+{
+    let req = new XMLHttpRequest();
+    req.onload = function(e)
+    {
+        console.log("Successfully sent.");
+    };
+    req.open('POST', '/command', true);
+    req.send(string);
+}
+
 function isArrayOfPrimitives(object)
 {
     if (!Array.isArray(object)) return false;
@@ -55,7 +66,7 @@ function obj2table(object)
     return html;
 }
 
-const update_frequency = 10; // hz
+const update_frequency = 5; // hz
 const update_period = 1/update_frequency; // seconds
 
 const update_loop = window.setInterval(function()

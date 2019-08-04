@@ -7,11 +7,15 @@ from rospy_message_converter import json_message_converter
 import signal, sys, os
 import rospy, rospkg, rostopic
 import json
+import importlib
+from std_msgs.msg import String
 
 rospack = rospkg.RosPack()
 package_path = rospack.get_path('webserver')
 rospy.init_node('webserver')
 client_data = {}
+
+pub_command = rospy.Publisher("commands", String, queue_size=10)
 
 class HttpApi(BaseHTTPRequestHandler):
 
@@ -27,6 +31,7 @@ class HttpApi(BaseHTTPRequestHandler):
     def do_POST(self):
 
         global client_data
+        global pub_command
 
         if self.path == '/update':
 
@@ -36,6 +41,17 @@ class HttpApi(BaseHTTPRequestHandler):
             self.send_header('Content-Type', 'text/plain')
             self.end_headers()
             self.wfile.write(json_dump)
+            return
+
+        if self.path == '/command':
+
+            length = int(self.headers.getheader('content-length', 0))
+            body = self.rfile.read(length)
+            rospy.loginfo("Recieved POST command: {}".format(body))
+            pub_command.publish(body)
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/plain')
+            self.end_headers()
             return
 
         self.send_response(400)
@@ -53,12 +69,12 @@ class HttpApi(BaseHTTPRequestHandler):
             self.wfile.write(open(package_path + '/html/index.html').read())
             return
 
-        if self.path == '/vis':
+        if self.path == '/console':
 
             self.send_response(200)
             self.send_header('Content-Type', 'text/html')
             self.end_headers()
-            self.wfile.write(open(package_path + '/html/vis.html').read())
+            self.wfile.write(open(package_path + '/html/console.html').read())
             return
 
         if self.path == '/css/styles.css':
@@ -85,12 +101,12 @@ class HttpApi(BaseHTTPRequestHandler):
             self.wfile.write(open(package_path + '/scripts/index.js').read())
             return
 
-        if self.path == '/scripts/three.js':
+        if self.path == '/scripts/console.js':
 
             self.send_response(200)
             self.send_header('Content-Type', 'text/javascript')
             self.end_headers()
-            self.wfile.write(open(package_path + '/scripts/three.js').read())
+            self.wfile.write(open(package_path + '/scripts/console.js').read())
             return
 
         self.send_response(404)
@@ -115,18 +131,19 @@ class MessageConverter:
         client_data[self.topic_name] = json
 
 subscribers = {}
-for topic in rospy.get_published_topics():
-    topic_name = topic[0];
-    if topic_name in subscribers:
-        continue;
-    rospy.loginfo("Subscribing: " + topic_name);
-    message_class = rostopic.get_topic_class(topic[0])[0];
-    msgconv = MessageConverter(topic_name);
-    subscribers[topic_name] = rospy.Subscriber(topic_name, message_class,
-        msgconv.callback)
-
-rate = rospy.Rate(10)
+rate = rospy.Rate(5)
 while not rospy.is_shutdown():
+
+    for topic in rospy.get_published_topics():
+        topic_name = topic[0];
+        if topic_name in subscribers:
+            continue;
+        rospy.loginfo("Subscribing: " + topic_name);
+        message_class = rostopic.get_topic_class(topic[0])[0];
+        msgconv = MessageConverter(topic_name);
+        subscribers[topic_name] = rospy.Subscriber(topic_name, message_class,
+            msgconv.callback)
+
     server.handle_request()
     rate.sleep()
 

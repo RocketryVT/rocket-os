@@ -1,28 +1,12 @@
 
 <launch>
 
+    <include file="$(find webserver)/launch/webserver.launch" />
     <include file="$(find launch)/launch/logging.launch" />
-    <include file="$(find transmission)/launch/transmission.launch" />
     <include file="$(find hardware)/launch/sensors.launch" />
     <include file="$(find hardware)/launch/drivers.launch" />
     <include file="$(find models)/launch/models.launch" />
 
-    <group ns="extra">
-
-    <node name="interested" pkg="transmission"
-          type="interested.py" output="screen">
-        <remap from="incoming" to="/transmission/incoming" />
-        <remap from="outgoing" to="/transmission/outgoing" />
-    </node>
-
-    <node name="hardware_client" pkg="hardware"
-          type="hardware_client.py" output="screen">
-        <remap from="motor_command" to="/hardware/valve_motor/command" />
-        <remap from="solenoid_command" to="/hardware/solenoid/command" />
-    </node>
-
-    </group>
-    
     <node name="watchdog" pkg="launch"
           type="watchdog" output="screen" />
 
