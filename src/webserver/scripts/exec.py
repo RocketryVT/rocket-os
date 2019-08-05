@@ -2,31 +2,65 @@
 
 import rospy
 import subprocess
+import signal, fcntl, os
 from std_msgs.msg import String
 
 rospy.init_node("exec")
 
+timeout = 10
+
 def get_command(cmd):
 
+    global timeout
     tokens = cmd.data.split(" ")
+
+    if tokens[0] == "timeout":
+        try:
+            timeout = float(tokens[1])
+            rospy.loginfo("Set command timeout to {} seconds.".format(timeout))
+        except:
+            rospy.logerr("Error parsing command - expecting: timeout %f")
 
     if tokens[0] == "system":
         rospy.loginfo("$ " + " ".join(tokens[1:]))
         p = subprocess.Popen(" ".join(tokens[1:]),
             shell=True,
-            stderr=subprocess.PIPE,
-            stdout=subprocess.PIPE)
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE)
 
         start = rospy.get_rostime()
+
+        def make_nonblocking(filestream):
+            fd = filestream.fileno()
+            fl = fcntl.fcntl(fd, fcntl.F_GETFL)
+            fcntl.fcntl(fd, fcntl.F_SETFL, fl | os.O_NONBLOCK)
+
+        make_nonblocking(p.stdout)
+        make_nonblocking(p.stderr)
+
+        stdout, stderr = "", ""
         while p.poll() is None:
+
+            try:
+                stdout += p.stdout.read()
+            except:
+                pass
+            try:
+                stderr += p.stderr.read()
+            except:
+                pass
+
             now = rospy.get_rostime()
-            if now - start > rospy.Duration(30):
-                rospy.logwarn("Command timed out after 30 seconds.")
+            if now - start > rospy.Duration(timeout):
                 p.kill()
+                if stdout:
+                    rospy.loginfo(stdout)
+                if stderr:
+                    rospy.logerr(stderr)
+                rospy.logwarn("""Command timed out after"""
+                    """ {} seconds.""".format(timeout))
                 return
 
-        stdout, stderr = p.communicate()
-        exit = p.poll()
         if len(stdout.split("\n")) > 2:
             rospy.loginfo("\n" + stdout)
         elif stdout:
@@ -35,6 +69,7 @@ def get_command(cmd):
             rospy.logerr("\n" + stderr)
         elif stderr:
             rospy.logerr(stderr)
+        exit = p.poll()
         rospy.loginfo("Finished with exit code " + str(exit))
 
 sub = rospy.Subscriber("/webserver/commands", String, get_command)

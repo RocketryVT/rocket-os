@@ -7,8 +7,6 @@
 
 
 let command_history = [];
-if (document.cookie != "")
-    command_history = JSON.parse(document.cookie.substr(8));
 let command_index = command_history.length;
 
 function handleInput(event)
@@ -53,7 +51,7 @@ function onRecieveData(data)
 
         last_log_ts = ts;
         let p = document.createElement("p");
-        p.textContent = logstr(log);
+        p.innerHTML = logstr(log);
         p.style.color = levelcolor(log.level);
         div.appendChild(p);
         new_logs = true;
@@ -94,22 +92,17 @@ function levelcolor(level)
 
 function logstr(log)
 {
-    return "[" + levelstr(log.level) + "] [" +
+    return "<b>[" + levelstr(log.level) + "] [" +
         log.header.stamp.secs.toString().padStart(10, '0') + "." +
         log.header.stamp.nsecs.toString().padStart(9, '0') + "] [" +
-        log.name + "]: " + log.msg;
+        log.name + "]:</b> " + log.msg;
 }
-
-const max_command_history = 200;
 
 function command(string)
 {
-    while (command_history.length > max_command_history)
-        command_history.shift();
     if (string != command_history[command_history.length - 1])
         command_history.push(string);
     command_index = command_history.length;
-    document.cookie = "history=" + JSON.stringify(command_history);
 
     let req = new XMLHttpRequest();
     req.onload = function(e)

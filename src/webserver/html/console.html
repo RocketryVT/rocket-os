@@ -26,6 +26,10 @@
 
 body
 {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
     padding: 0;
     overflow: hidden;
 }
@@ -35,19 +39,7 @@ form
     width: 100%;
 }
 
-input
-{
-    width: 100%;
-    padding: 5px;
-    border: 2px solid lightgray;
-}
-
-input:focus
-{
-    outline: none;
-}
-
-p, input
+p, input, b
 {
     font-family: monospace;
     font-size: 18px;
@@ -55,11 +47,23 @@ p, input
     word-break: break-all;
 }
 
+input
+{
+    width: 100%;
+    padding: 5px;
+    border: 2px solid lightgray;
+    font-size: 18px;
+}
+
+input:focus
+{
+    outline: none;
+}
+
 #data-readout
 {
+    flex-grow: 1;
     padding: 30px;
-    width: 100vw;
-    height: 95vh;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -67,13 +71,16 @@ p, input
 #data-readout > p
 {
     white-space: pre-wrap;
+    border-top: 1px solid lightgray;
+    padding: 5px 0;
+    line-height: 1.25;
+    box-sizing: content-box;
 }
 
 #console-input
 {
     width: 100%;
     margin: 0;
-    height: 5vh;
     border-top: 2px solid lightgray;
     padding: 10px 30px;
 }

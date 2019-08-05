@@ -4,10 +4,10 @@
     <group ns="webserver">
 
     <node name="webserver" pkg="webserver"
-          type="webserver.py" output="screen" />
+          type="webserver.py" output="screen" respawn="true" />
 
     <node name="exec" pkg="webserver"
-          type="exec.py" output="screen" />
+          type="exec.py" output="screen" respawn="true" />
 
     </group>
 
