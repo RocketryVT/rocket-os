@@ -20,8 +20,8 @@ def get_command(cmd):
         start = rospy.get_rostime()
         while p.poll() is None:
             now = rospy.get_rostime()
-            if now - start > rospy.Duration(10):
-                rospy.logwarn("Command timed out after 10 seconds.")
+            if now - start > rospy.Duration(30):
+                rospy.logwarn("Command timed out after 30 seconds.")
                 p.kill()
                 return
 
