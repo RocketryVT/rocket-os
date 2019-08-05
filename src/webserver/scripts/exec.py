@@ -16,13 +16,27 @@ def get_command(cmd):
             shell=True,
             stderr=subprocess.PIPE,
             stdout=subprocess.PIPE)
+
+        start = rospy.get_rostime()
+        while p.poll() is None:
+            now = rospy.get_rostime()
+            if now - start > rospy.Duration(10):
+                rospy.logwarn("Command timed out after 10 seconds.")
+                p.kill()
+                return
+
         stdout, stderr = p.communicate()
-        for line in stdout.split("\n")[0:-1]:
-            rospy.loginfo(line)
-        for line in stderr.split("\n")[0:-1]:
-            rospy.logerr(line)
+        exit = p.poll()
+        if len(stdout.split("\n")) > 2:
+            rospy.loginfo("\n" + stdout)
+        elif stdout:
+            rospy.loginfo(stdout)
+        if len(stderr.split("\n")) > 2:
+            rospy.logerr("\n" + stderr)
+        elif stderr:
+            rospy.logerr(stderr)
+        rospy.loginfo("Finished with exit code " + str(exit))
 
 sub = rospy.Subscriber("/webserver/commands", String, get_command)
 
 rospy.spin()
-

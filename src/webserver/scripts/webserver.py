@@ -9,13 +9,21 @@ import rospy, rospkg, rostopic
 import json
 import importlib
 from std_msgs.msg import String
+from rosgraph_msgs.msg import Log
 
 rospack = rospkg.RosPack()
 package_path = rospack.get_path('webserver')
 rospy.init_node('webserver')
 client_data = {}
 
+rosout_buffer = [];
+def recieve_rosout(msg):
+    global rosout_buffer
+    json = json_message_converter.convert_ros_message_to_json(msg)
+    rosout_buffer.append(json)
+
 pub_command = rospy.Publisher("commands", String, queue_size=10)
+sub_rosout = rospy.Subscriber("/rosout_agg", Log, recieve_rosout)
 
 class HttpApi(BaseHTTPRequestHandler):
 
@@ -32,6 +40,7 @@ class HttpApi(BaseHTTPRequestHandler):
 
         global client_data
         global pub_command
+        global rosout_buffer
 
         if self.path == '/update':
 
@@ -52,6 +61,14 @@ class HttpApi(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header('Content-Type', 'text/plain')
             self.end_headers()
+            return
+
+        if self.path == '/rosout':
+
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/plain')
+            self.end_headers()
+            self.wfile.write(json.dumps(rosout_buffer))
             return
 
         self.send_response(400)
@@ -146,4 +163,3 @@ while not rospy.is_shutdown():
 
     server.handle_request()
     rate.sleep()
-

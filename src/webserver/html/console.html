@@ -15,17 +15,70 @@
 
   <div id="data-readout"></div>
 
+  <div id="console-input">
+    <input type="text">
+    </input>
+  </div>
+
+</body>
+
 <style>
 
-p
+body
+{
+    padding: 0;
+    overflow: hidden;
+}
+
+form
+{
+    width: 100%;
+}
+
+input
+{
+    width: 100%;
+    padding: 5px;
+    border: 2px solid lightgray;
+}
+
+input:focus
+{
+    outline: none;
+}
+
+p, input
 {
     font-family: monospace;
     font-size: 18px;
+    margin: 0;
+    word-break: break-all;
+}
+
+#data-readout
+{
+    padding: 30px;
+    width: 100vw;
+    height: 95vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#data-readout > p
+{
+    white-space: pre-wrap;
+}
+
+#console-input
+{
+    width: 100%;
+    margin: 0;
+    height: 5vh;
+    border-top: 2px solid lightgray;
+    padding: 10px 30px;
 }
 
 </style>
-
-</body>
 
 <script src="scripts/console.js"></script>
 
