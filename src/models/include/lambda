@@ -1,6 +1,6 @@
 // library include header
 
-// core math
+// math
 #include "math/matrix.hpp"
 #include "math/quaternion.hpp"
 #include "math/axis_angle.hpp"
@@ -11,13 +11,11 @@
 #include "math/solve.hpp"
 #include "math/kalman_filter.hpp"
 
-// trajectory
-#include "functions/modeling/compute_drag.hpp"
-#include "functions/modeling/hybrid_thrust.hpp"
-#include "functions/modeling/standard_atmosphere.hpp"
-
-// numerical methods
-#include "functions/numerical-methods/runge_kutta_integration.hpp"
-
-// constants
-#include "constants.hpp"
+// modeling
+#include "modeling/compute_drag.hpp"
+#include "modeling/hybrid_thrust.hpp"
+#include "modeling/standard_atmosphere.hpp"
+#include "modeling/runge_kutta_integration.hpp"
+#include "modeling/secant_root_solve.hpp"
+#include "modeling/constants.hpp"
+#include "modeling/cubic_spline.hpp"

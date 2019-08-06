@@ -1,9 +1,8 @@
-// secant_root_solve.hpp
+// secant_root_solve.cpp
 
-#ifndef RVT_SECANT_ROOT_SOLVE
-#define RVT_SECANT_ROOT_SOLVE
-
-
+#include <cmath>
+#include <tuple>
+#include <functional>
 
 namespace rvt
 {
@@ -35,7 +34,7 @@ namespace rvt
 std::tuple<double, size_t, double>
 secant_root_solve(std::function<double(double)> function,
     double lower_bound, double upper_bound,
-    size_t max_iters = 1000, double epsilon = 1e-12)
+    size_t max_iters, double epsilon)
 {
     // Check that root exists (Intermediate value theorem)
     double f_upper = function(upper_bound);
@@ -43,31 +42,29 @@ secant_root_solve(std::function<double(double)> function,
     // assert(f(upper_bound) * f(lower_bound) <= 0, 'Root does not exist');
 
     // Initialize loop
-    double x_est = lower_bound
-    if (std::abs(f_upper) < std::abs(f_lower)) x_est = upper_bound
+    double x_est = lower_bound;
+    if (std::abs(f_upper) < std::abs(f_lower)) x_est = upper_bound;
 
     double error = std::abs(function(x_est));
     size_t iters = 0;
     for (; error > epsilon && iters < max_iters; ++iters)
     {
-        double xi = upper_bound - fa * (lower_bound - upper_bound) / (fb - fa);
+        double xi = upper_bound - f_upper * (lower_bound - upper_bound)
+            / (f_lower - f_upper);
 
         // Assign this guess to next bounds
         double y = function(xi);
-        if (fp*fa < 0) lower_bound = xi;
-        else if (fp*fb < 0) upper_bound = xi;
-        else break;
+        if (y*f_upper < 0) lower_bound = xi;
+        else if (y*f_lower < 0) upper_bound = xi;
 
         // Measure error
-        error = std::abs((p - x_est) / pim1);
+        error = std::abs((xi - x_est) / x_est);
 
         // Iterate
-        x_est = p;
+        x_est = xi;
     }
 
     return std::make_tuple(x_est, iters, error);
 }
 
 } // namespace rvt
-
-#endif // RVT_SECANT_ROOT_SOLVE

@@ -14,34 +14,11 @@ find_package(catkin REQUIRED
   roslaunch
 )
 
-## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
-
-## Generate messages in the 'msg' folder
-# add_message_files(
-# )
-
-## Generate services in the 'srv' folder
-# add_service_files(
-# )
-
-## Generate actions in the 'action' folder
-# add_action_files(
-# )
-
-## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
-# )
-
-## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
   include
   include/math
-  include/functions/modeling
-  include/functions/numerical-methods
+  include/modeling
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -53,8 +30,11 @@ add_library(models
   src/math/matrix.cpp
   src/math/quaternion.cpp
   src/math/solve.cpp
-  src/functions/modeling/standard_atmosphere.cpp
-  src/functions/modeling/compute_drag.cpp
+  src/modeling/standard_atmosphere.cpp
+  src/modeling/compute_drag.cpp
+  src/modeling/hybrid_thrust.cpp
+  src/modeling/cubic_spline.cpp
+  src/modeling/secant_root_solve.cpp
 )
 
 catkin_package(
@@ -77,4 +57,5 @@ add_executable(unit_tests
   tests/solve_tests.cpp
   tests/runge_kutta_tests.cpp
 )
+
 target_link_librarieS(unit_tests models)

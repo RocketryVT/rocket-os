@@ -26,10 +26,13 @@ hybrid_thrust(double g, double fuel_density,
     double mixing_ratio = modot / fuel_mass_flow_rate;
 
     // Determine characteristic velocity and specific heats using cubic spline
-    double cstar_theory = rvt::cubic_spline(
-        mixing_ratio_spline, cstar_spline, mixing_ratio); // [ft/s]
+    auto spline = rvt::cubic_spline(
+        mixing_ratio_spline, cstar_spline, {mixing_ratio}); // [ft/s]
+    double cstar_theory = std::get<0>(spline)[0];
     double cstar_real = cstar_efficiency * cstar_theory;
-    double k = rvt::cubic_spline(mixing_ratio_spline, ksplinedata, mixing_ratio); // [ft/s]
+    spline = rvt::cubic_spline(
+        mixing_ratio_spline, ksplinedata, {mixing_ratio}); // [ft/s]
+    double k = std::get<0>(spline)[0];
 
     // Determine combustion chamber pressure
     double mdot = fuel_mass_flow_rate + modot;
@@ -48,10 +51,13 @@ hybrid_thrust(double g, double fuel_density,
     };
 
     // Determine Exit Mach number
-    double exit_math_number = rvt::secant_root_solve(mach_error_function, 1, 5);
+    double exit_mach_number, error;
+    size_t iters;
+    std::tie(exit_mach_number, iters, error) = rvt::secant_root_solve(
+        mach_error_function, 1, 5);
 
     // Compute Stagnation Pressure ratio (Stagnation Pressure P0 ~= p1)
-    double p1_p2 = std::pow((1+0.5*(k-1)*std::pow(exit_math_number, 2)), k/(k-1)); // Sutton 3-13
+    double p1_p2 = std::pow((1+0.5*(k-1)*std::pow(exit_mach_number, 2)), k/(k-1)); // Sutton 3-13
     double p2 = p1 / p1_p2;
     double p2_p1 = 1/p1_p2;
     double thrust_coefficient =
