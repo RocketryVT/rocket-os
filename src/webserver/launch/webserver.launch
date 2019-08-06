@@ -9,6 +9,9 @@
     <node name="exec" pkg="webserver"
           type="exec.py" output="screen" respawn="true" />
 
+    <node name="cowsay" pkg="webserver"
+          type="cowsay.py" output="screen" respawn="true" />
+
     </group>
 
 </launch>
