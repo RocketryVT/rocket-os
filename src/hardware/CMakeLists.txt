@@ -82,9 +82,6 @@ include_directories(
 ## either from message generation or dynamic reconfigure
 # add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
-catkin_install_python(PROGRAMS scripts/hardware_client.py
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
-
 ## Declare a C++ executable
 
 add_executable(motor_driver src/motor_driver.cpp)
