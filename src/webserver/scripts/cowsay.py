@@ -13,6 +13,12 @@ def callback(data):
             rospy.loginfo("Sum is: " + str(sum))
         except:
             rospy.logerr("Error parsing command.")
+
+    # exercise for the reader: implement subtract, multiply, and divide commands
+    #
+    # subtract 5 2 -> "difference is 3"
+    # multiply 3 3 -> "product is 9"
+    # divide 6 4 -> "quotient is 1.5"
     
 def listener():
 
