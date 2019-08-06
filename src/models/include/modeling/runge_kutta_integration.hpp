@@ -3,10 +3,12 @@
 #ifndef RVT_RUNGE_KUTTA_INTEGRATION_HPP
 #define RVT_RUNGE_KUTTA_INTEGRATION_HPP
 
-#include <lambda>
-
 namespace rvt
 {
+
+template <size_t N>
+using ordinary_diff_eq = std::function<lambda::column_vector<N>
+    (double, const lambda::column_vector<N>&)>;
 
 template <size_t N> struct runge_kutta_tableau
 {
@@ -81,7 +83,7 @@ const runge_kutta_tableau<7> dormand_prince(
  *                which is a Ny x 1 double vector. Function takes the form
  *                    ydot = f(t, y)
  * y0           - Ny x 1 double vector
- *                Initial condition
+ *                Initial conditiondefault_rk4
  * tlims        - 2 x 1 double
  *                Integration time limits: [ Initial time; Final time ]
  * h            - double
@@ -98,21 +100,20 @@ const runge_kutta_tableau<7> dormand_prince(
  * @date: 2019-04-29
  */
 
-template <size_t M, size_t N = 4>
-std::tuple<std::vector<lambda::column_vector<N>>,
+template <size_t M, size_t N>
+std::tuple<std::vector<lambda::column_vector<M>>,
            std::vector<double>,
-           std::vector<lambda::column_vector<N>>>
-runge_kutta_integration(
-    const std::function<lambda::column_vector<M>
-        (double, const lambda::column_vector<M>&)> &ydot,
+           std::vector<lambda::column_vector<M>>>
+runge_kutta_integration(ordinary_diff_eq<M> &ydot,
     const lambda::column_vector<M> &y0,
     double t_initial, double t_final,
     double timestep,
     const runge_kutta_tableau<N> &tableau = default_rk4)
 {
-    std::vector<lambda::column_vector<N>> y_history, ydot_history;
+    std::vector<lambda::column_vector<M>> y_history, ydot_history;
 
-    std::vector<double> time_history = lambda::range(t_initial, t_final, timestep);
+    std::vector<double> time_history =
+        lambda::range(t_initial, t_final, timestep);
 
     const size_t ny = N;
     const size_t nt = time_history.size();
@@ -125,8 +126,9 @@ runge_kutta_integration(
     for (size_t k = 1; k < nt; ++k)
     {
         // Initialize Runge Kutta step
-        std::vector<lambda::vector<N>> Kjhist;
-        lambda::vector<N> current_y = y_history[k];
+        std::vector<lambda::vector<M>> Kjhist;
+        Kjhist.reserve(ny);
+        lambda::vector<M> current_y = y_history[k-1];
         double current_time = time_history[k];
 
         // Runge-Kutta loop formulation
@@ -134,21 +136,26 @@ runge_kutta_integration(
         for (size_t j = 1; j < N; ++j)
         {
             double targ = current_time + timestep*tableau.c[j];
-            lambda::vector<N> karg = current_y;
+            lambda::vector<M> karg = current_y;
             for (size_t i = 0; i < j; ++i)
                 karg = karg + timestep*tableau.a(j,i)*Kjhist[i];
             Kjhist[j] = ydot(targ, karg);
         }
 
         // Final compute state at time tk
-        // y_history[k] = current_y + timestep*Kjhist*tableau.b;
+        lambda::matrix<M, N> kjhist_mat;
+        for (size_t col = 0; col < N; ++col)
+            for (size_t row = 0; row < M; ++row)
+                kjhist_mat(row, col) = Kjhist[col][row];
+
+        y_history[k] = current_y + timestep*kjhist_mat*tableau.b;
 
         // Save ydot for ouptut
         ydot_history[k] = Kjhist[0];
     }
 
     // Save ydot for ouptut
-    ydot_history[nt] = ydot(t_final, y_history[nt]);
+    ydot_history[nt-1] = ydot(t_final, y_history[nt-1]);
 
     return std::make_tuple(y_history, time_history, ydot_history);
 }
