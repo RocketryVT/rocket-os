@@ -23,7 +23,6 @@ def recieve_rosout(msg):
     rosout_buffer.append(json)
 
 pub_command = rospy.Publisher("commands", String, queue_size=10)
-sub_rosout = rospy.Subscriber("/rosout_agg", Log, recieve_rosout)
 
 class HttpApi(BaseHTTPRequestHandler):
 
@@ -65,10 +64,13 @@ class HttpApi(BaseHTTPRequestHandler):
 
         if self.path == '/rosout':
 
+            length = int(self.headers.getheader('content-length', 0))
+            body = self.rfile.read(length)
+            number_of_logs = int(body)
             self.send_response(200)
             self.send_header('Content-Type', 'text/plain')
             self.end_headers()
-            self.wfile.write(json.dumps(rosout_buffer))
+            self.wfile.write(json.dumps(rosout_buffer[number_of_logs:]))
             return
 
         self.send_response(400)
@@ -134,11 +136,6 @@ def ctrl_c(signal, frame):
     sys.exit(0)
 signal.signal(signal.SIGINT, ctrl_c)
 
-addr = "0.0.0.0"
-port = 7000
-rospy.loginfo("Begin server on " + addr + ":" + str(port))
-server = HTTPServer((addr, port), HttpApi)
-
 class MessageConverter:
     def __init__(self, topic_name):
         self.topic_name = topic_name
@@ -148,9 +145,8 @@ class MessageConverter:
         client_data[self.topic_name] = json
 
 subscribers = {}
-rate = rospy.Rate(5)
-while not rospy.is_shutdown():
-
+subscribers["/rosout"] = rospy.Subscriber("/rosout", Log, recieve_rosout)
+def subscribe_to_new():
     for topic in rospy.get_published_topics():
         topic_name = topic[0];
         if topic_name in subscribers:
@@ -161,5 +157,16 @@ while not rospy.is_shutdown():
         subscribers[topic_name] = rospy.Subscriber(topic_name, message_class,
             msgconv.callback)
 
+subscribe_to_new()
+
+addr = "0.0.0.0"
+port = 7000
+rospy.loginfo("Begin server on " + addr + ":" + str(port))
+server = HTTPServer((addr, port), HttpApi)
+
+rate = rospy.Rate(5)
+while not rospy.is_shutdown():
+
+    subscribe_to_new()
     server.handle_request()
     rate.sleep()

@@ -6,6 +6,7 @@
 })();
 
 
+let log_history = [];
 let command_history = [];
 let command_index = command_history.length;
 
@@ -46,10 +47,7 @@ function onRecieveData(data)
     let new_logs = false;
     for (let log of data)
     {
-        let ts = log.header.stamp.secs + log.header.stamp.nsecs / 1e9;
-        if (last_log_ts >= ts) continue;
-
-        last_log_ts = ts;
+        log_history.push(log);
         let p = document.createElement("p");
         let header = document.createElement("span");
         let body = document.createElement("span");
@@ -120,18 +118,6 @@ function command(string)
     req.send(string);
 }
 
-function getRosout()
-{
-    let req = new XMLHttpRequest();
-    req.onload = function(e)
-    {
-        let array =
-        onRecieveData(JSON.parse(e.target.response));
-    };
-    req.open('POST', '/rosout', true);
-    req.send();
-}
-
 const update_frequency = 1; // hz
 const update_period = 1/update_frequency; // seconds
 
@@ -148,6 +134,6 @@ const update_loop = window.setInterval(function()
         onRecieveData(data);
     };
     req.open('POST', '/rosout', true);
-    req.send();
+    req.send(log_history.length.toString());
 },
 update_period*1000);

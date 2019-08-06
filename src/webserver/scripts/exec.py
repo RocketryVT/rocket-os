@@ -19,11 +19,16 @@ def get_command(cmd):
         rospy.signal_shutdown("Command recieved")
 
     if tokens[0] == "timeout":
-        try:
-            timeout = float(tokens[1])
-            rospy.loginfo("Set command timeout to {} seconds.".format(timeout))
-        except:
-            rospy.logerr("Error parsing command - expecting: timeout %f")
+
+        if len(tokens) == 1:
+            rospy.loginfo("Current timeout is {} seconds.".format(timeout))
+        else:
+            try:
+                timeout = float(tokens[1])
+                rospy.loginfo("Set command timeout to {} seconds.".
+                    format(timeout))
+            except:
+                rospy.logerr("Error parsing command - expecting: timeout %f")
 
     if tokens[0] == "system":
         rospy.loginfo("$ " + " ".join(tokens[1:]))
@@ -57,22 +62,19 @@ def get_command(cmd):
                 except:
                     pass
 
-                if stdout:
+                if len(stdout.split("\n")) > 2:
+                    rospy.loginfo("\n" + stdout)
+                elif stdout:
                     rospy.loginfo(stdout)
-                if stderr:
+                if len(stderr.split("\n")) > 2:
+                    rospy.logerr("\n" + stderr)
+                elif stderr:
                     rospy.logerr(stderr)
                 rospy.logwarn("""Command timed out after"""
                     """ {} seconds.""".format(timeout))
                 return
 
-        try:
-            stdout = p.stdout.read()
-        except:
-            pass
-        try:
-            stderr = p.stderr.read()
-        except:
-            pass
+        stdout, stderr = p.communicate()
 
         if len(stdout.split("\n")) > 2:
             rospy.loginfo("\n" + stdout)
