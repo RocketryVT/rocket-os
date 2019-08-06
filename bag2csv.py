@@ -3,13 +3,6 @@
 '''
 This script saves each topic in a bagfile as a csv.
 
-Accepts a filename as an optional argument. Operates on all bagfiles in current directory if no argument provided
-
-Usage1 (for one bag file):
-    python bag2csv.py filename.bag
-Usage 2 (for all bag files in current directory):
-    python bag2csv.py
-
 Written by Nick Speal in May 2013 at McGill University's Aerospace Mechatronics Laboratory. Bugfixed by Marc Hanheide June 2016.
 www.speal.ca
 
