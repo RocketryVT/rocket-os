@@ -51,8 +51,15 @@ function onRecieveData(data)
 
         last_log_ts = ts;
         let p = document.createElement("p");
-        p.innerHTML = logstr(log);
-        p.style.color = levelcolor(log.level);
+        let header = document.createElement("span");
+        let body = document.createElement("span");
+        header.textContent = logheader(log);
+        header.style.fontWeight = "bold";
+        header.style.color = levelcolor(log.level);
+        body.textContent = log.msg;
+        body.style.color = levelcolor(log.level);
+        p.appendChild(header);
+        p.appendChild(body);
         div.appendChild(p);
         new_logs = true;
     }
@@ -90,12 +97,12 @@ function levelcolor(level)
     return "black";
 }
 
-function logstr(log)
+function logheader(log)
 {
-    return "<b>[" + levelstr(log.level) + "] [" +
+    return "[" + levelstr(log.level) + "] [" +
         log.header.stamp.secs.toString().padStart(10, '0') + "." +
         log.header.stamp.nsecs.toString().padStart(9, '0') + "] [" +
-        log.name + "]:</b> " + log.msg;
+        log.name + "]: "
 }
 
 function command(string)

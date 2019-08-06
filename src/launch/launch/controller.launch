@@ -8,6 +8,6 @@
     <include file="$(find models)/launch/models.launch" />
 
     <node name="watchdog" pkg="launch"
-          type="watchdog" output="screen" />
+          type="watchdog" output="screen" respawn="true" />
 
 </launch>

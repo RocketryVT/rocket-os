@@ -14,6 +14,10 @@ def get_command(cmd):
     global timeout
     tokens = cmd.data.split(" ")
 
+    if tokens[0] == "shutdown":
+
+        rospy.signal_shutdown("Command recieved")
+
     if tokens[0] == "timeout":
         try:
             timeout = float(tokens[1])
@@ -41,18 +45,18 @@ def get_command(cmd):
         stdout, stderr = "", ""
         while p.poll() is None:
 
-            try:
-                stdout += p.stdout.read()
-            except:
-                pass
-            try:
-                stderr += p.stderr.read()
-            except:
-                pass
-
             now = rospy.get_rostime()
             if now - start > rospy.Duration(timeout):
                 p.kill()
+                try:
+                    stdout = p.stdout.read()
+                except:
+                    pass
+                try:
+                    stderr = p.stderr.read()
+                except:
+                    pass
+
                 if stdout:
                     rospy.loginfo(stdout)
                 if stderr:
@@ -60,6 +64,15 @@ def get_command(cmd):
                 rospy.logwarn("""Command timed out after"""
                     """ {} seconds.""".format(timeout))
                 return
+
+        try:
+            stdout = p.stdout.read()
+        except:
+            pass
+        try:
+            stderr = p.stderr.read()
+        except:
+            pass
 
         if len(stdout.split("\n")) > 2:
             rospy.loginfo("\n" + stdout)
