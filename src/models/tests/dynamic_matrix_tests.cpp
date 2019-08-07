@@ -61,3 +61,11 @@ TEST_CASE("Throw dynamic matrix out of bounds exception.", "[dynamic-matrix]")
     REQUIRE_THROWS_WITH( m.at(45, 3),
         "Cannot access element (45, 3) of 3x4 matrix");
 }
+
+TEST_CASE("Throw dynamic matrix multiplication exception.", "[dynamic-matrix]")
+{
+    lambda::dynamic_matrix m(3, 4), n(5, 9);
+
+    REQUIRE_THROWS_WITH( m*n,
+        "Cannot multiply matrices of dimensions 3x4 and 5x9");
+}
