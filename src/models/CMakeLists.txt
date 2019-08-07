@@ -28,6 +28,7 @@ add_library(models
   src/math/complex.cpp
   src/math/echelon.cpp
   src/math/matrix.cpp
+  src/math/dynamic_matrix.cpp
   src/math/quaternion.cpp
   src/math/solve.cpp
   src/modeling/standard_atmosphere.cpp
@@ -54,6 +55,7 @@ add_executable(unit_tests
   tests/complex_tests.cpp
   tests/kalman_tests.cpp
   tests/matrix_tests.cpp
+  tests/dynamic_matrix_tests.cpp
   tests/solve_tests.cpp
   tests/runge_kutta_tests.cpp
 )

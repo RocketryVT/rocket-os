@@ -2,6 +2,7 @@
 
 // math
 #include "math/matrix.hpp"
+#include "math/dynamic_matrix.hpp"
 #include "math/quaternion.hpp"
 #include "math/axis_angle.hpp"
 #include "math/norm.hpp"            // euclidian, frobenian
