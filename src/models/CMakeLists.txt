@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(models)
 
-add_compile_options(-std=c++11)
+add_compile_options(-std=c++11 -Wfatal-errors)
 
 find_package(catkin REQUIRED
   message_generation
@@ -17,25 +17,25 @@ find_package(catkin REQUIRED
 ## Your package locations should be listed before other locations
 include_directories(
   include
-  include/math
-  include/modeling
+  lambda/include
+  lambda/test
   ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
 add_library(models
-  src/math/axis_angle.cpp
-  src/math/complex.cpp
-  src/math/echelon.cpp
-  src/math/matrix.cpp
-  src/math/dynamic_matrix.cpp
-  src/math/quaternion.cpp
-  src/math/solve.cpp
-  src/modeling/standard_atmosphere.cpp
-  src/modeling/compute_drag.cpp
-  src/modeling/hybrid_thrust.cpp
-  src/modeling/cubic_spline.cpp
-  src/modeling/secant_root_solve.cpp
+  lambda/src/axis_angle.cpp
+  lambda/src/complex.cpp
+  lambda/src/echelon.cpp
+  lambda/src/matrix.cpp
+  lambda/src/dynamic_matrix.cpp
+  lambda/src/quaternion.cpp
+  lambda/src/solve.cpp
+  src/standard_atmosphere.cpp
+  src/compute_drag.cpp
+  src/hybrid_thrust.cpp
+  src/cubic_spline.cpp
+  src/secant_root_solve.cpp
 )
 
 catkin_package(
@@ -51,13 +51,13 @@ target_link_libraries(pose_estimator models)
 target_link_libraries(pose_estimator ${catkin_LIBRARIES})
 
 add_executable(unit_tests
-  tests/catch_main.cpp
-  tests/complex_tests.cpp
-  tests/kalman_tests.cpp
-  tests/matrix_tests.cpp
-  tests/dynamic_matrix_tests.cpp
-  tests/solve_tests.cpp
+  lambda/test/catch_main.cpp
+  lambda/test/complex_tests.cpp
+  lambda/test/kalman_tests.cpp
+  lambda/test/matrix_tests.cpp
+  lambda/test/dynamic_matrix_tests.cpp
+  lambda/test/solve_tests.cpp
   tests/runge_kutta_tests.cpp
 )
 
-target_link_librarieS(unit_tests models)
+target_link_libraries(unit_tests models)

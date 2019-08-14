@@ -6,7 +6,7 @@
 #include <geometry_msgs/Quaternion.h>
 #include <nav_msgs/Odometry.h>
 
-#include <lambda>
+#include <models>
 
 /*
  * === NAV_MSGS::ODOMETRY =======================

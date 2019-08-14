@@ -1,5 +1,5 @@
 #include "catch.hpp"
-#include <lambda>
+#include <models>
 
 TEST_CASE("Test runge-kutta forward euler method.", "[runge-kutta]")
 {
