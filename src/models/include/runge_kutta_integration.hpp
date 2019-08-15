@@ -72,6 +72,32 @@ const runge_kutta_tableau<7> dormand_prince(
     // C vector
    {0, 0.2, 0.3, 0.8, 8.0/9, 1, 1});
 
+
+template <size_t M, size_t N>
+std::array<lambda::vector<M>, N> compute_k_coefficients(
+    double t, double timestep,
+    const lambda::vector<M> y,
+    const ordinary_diff_eq<M> &f,
+    const runge_kutta_tableau<N> &rkt)
+{
+    std::array<lambda::vector<M>, N> k;
+
+    k[0] = f(t, y);
+
+    for (size_t i = 0; i < N; ++i)
+    {
+        lambda::vector<M> sum;
+        for (size_t j = 0; j < i; ++j)
+        {
+            sum += rkt.a[i][j]*k[j];
+        }
+        k[i] = f(t + rkt.c[2]*timestep, y + timestep*sum);
+    }
+
+    return k;
+}
+
+
 /*
  * Runge-Kutta integration
  * This function uses a 4th order Runge Kutta integration technique to
@@ -100,6 +126,8 @@ const runge_kutta_tableau<7> dormand_prince(
  * @date: 2019-04-29
  */
 
+
+
 template <size_t M, size_t N>
 std::tuple<std::vector<lambda::column_vector<M>>,
            std::vector<double>,
@@ -125,6 +153,8 @@ runge_kutta_integration(ordinary_diff_eq<M> &ydot,
     // Runge-Kutta integration loop
     for (size_t k = 1; k < nt; ++k)
     {
+        std::cout << ydot_history[k] << std::endl;
+
         // Initialize Runge Kutta step
         std::vector<lambda::vector<M>> Kjhist;
         Kjhist.reserve(ny);
