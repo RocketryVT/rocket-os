@@ -18,6 +18,8 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
+catkin_package()
+
 add_executable(motor_driver src/motor_driver.cpp)
 target_link_libraries(motor_driver ${catkin_LIBRARIES})
 
