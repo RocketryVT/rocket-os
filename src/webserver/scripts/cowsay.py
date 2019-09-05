@@ -14,6 +14,13 @@ def callback(data):
         except:
             rospy.logerr("Error parsing command.")
 
+    if tokens[0]=="subtract":
+        try:
+            subtract=float(tokens[1])-float(tokens[2])
+            rospy.loginfo("Difference is " +str(subtract))
+        except:
+            rospy.logerr("Error parsing command.")
+
     # exercise for the reader: implement subtract, multiply, and divide commands
     #
     # subtract 5 2 -> "difference is 3"
