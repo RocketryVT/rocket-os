@@ -13,8 +13,11 @@ server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 server.setblocking(False)
 
-address = "10.0.0.55"
-port = 8001
+if len(sys.argv) != 3:
+	print("Correct usage: script, IP address, port number")
+	exit()
+address = str(sys.argv[1])
+port = int(sys.argv[2])
 server.bind((address, port))
 server.listen(10)
 
@@ -25,7 +28,7 @@ list_of_clients = []
 def broadcast(string):
 	for id, conn, addr in list_of_clients:
 		try:
-			conn.send(" $ " + string)
+			conn.send(" $ " + string + "\n")
 		except:
 			conn.close()
 			remove(conn)
@@ -33,7 +36,7 @@ def broadcast(string):
 def ping():
 	for id, conn, addr in list_of_clients:
 		try:
-			conn.sendall("(PING " + str(datetime.now()) + ")")
+			conn.sendall("(PING " + str(datetime.now()) + ")\n")
 		except Exception as e:
 			conn.close()
 			remove(conn)
@@ -61,12 +64,12 @@ def remove(connection):
 
 def clientthread(idno, conn, addr):
 
-	conn.send(" $ Connection to master established.")
-	conn.send(" $ You are Client #" + str(idno))
+	conn.sendall(" $ Connection to master established.\n")
+	conn.sendall(" $ You are Client #" + str(idno) + "\n")
 
 	while True:
 		try:
-			message = conn.recv(2048)
+			message = conn.recv(2048).rstrip()
 			if message:
 				print("Command from #" + str(idno) + ": " + message)
 				broadcast("Command from #" + str(idno) + ": " + message)
