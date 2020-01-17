@@ -3,18 +3,24 @@
 
     <group ns="hardware">
 
-    <node name="valve_motor" pkg="hardware"
-          type="motor_driver" output="screen"
-          args="_positive:=45 _negative:=46" />
-    <node name="pump_motor" pkg="hardware"
-          type="motor_driver" output="screen"
-          args="_positive:=78 _negative:=79" />
-    <node name="solenoid" pkg="hardware"
-          type="solenoid_driver" output="screen"
-          args="_positive:=31 _negative:=32" />
+    <node name="ignition_valve_driver" pkg="hardware"
+          type="motor_driver.py" output="screen">
+        <remap from="command" to="/ignition_valve_command"/>
+    </node>
+
+    <node name="linear_actuator_driver" pkg="hardware"
+          type="motor_driver.py" output="screen">
+        <remap from="command" to="/linear_actuator_command"/>
+    </node>
+
+    <node name="solenoid_driver" pkg="hardware"
+          type="solenoid_driver.py" output="screen">
+        <remap from="command" to="/solenoid_command"/>
+    </node>
 
     <node name="dispatcher" pkg="hardware"
-          type="dispatcher.py" output="screen" respawn="true" />
+          type="dispatcher.py" output="screen">
+    </node>
 
     </group>
 

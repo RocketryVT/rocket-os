@@ -1,51 +1,47 @@
 #!/usr/bin/env python
 import rospy
-from std_msgs.msg import UInt8, String
+from std_msgs.msg import UInt8, String, Bool
 
-motor_commands = {
-    "stop": 0,
-    "cw": 1,
-    "ccw": 2
-}
+def recieve_command(msg):
 
-solenoid_commands = {
-    "close": 0,
-    "open": 1
-}
+    global solenoid_cmdr
+    global linear_cmdr
+    global ignition_cmdr
 
-topic_format = "/hardware/{}/command"
-publishers = {}
+    command = msg.data.rstrip()
 
-def recieve_command(data):
+    print(command, len(command))
 
-    tokens = data.data.split(" ")
+    if command == "close solenoid":
+        rospy.loginfo("Got " + command)
+        solenoid_cmdr.publish(False)
 
-    if tokens[0] == "motor":
-        try:
-            command = motor_commands[tokens[1]]
-            topic = topic_format.format(tokens[2])
-            if topic not in publishers:
-                publishers[topic] = rospy.Publisher(topic, UInt8, queue_size=10)
-                rospy.sleep(0.5)
-            publishers[topic].publish(command)
-        except Exception as e:
-            rospy.logerr("""Error parsing command - expected """
-                """'motor {stop|cw|ccw} name'""")
-            rospy.logerr("Exception: " + str(e))
+    elif command == "open solenoid":
+        rospy.loginfo("Got " + command)
+        solenoid_cmdr.publish(True)
 
-    elif tokens[0] == "solenoid":
-        try:
-            command = solenoid_commands[tokens[1]]
-            topic = topic_format.format(tokens[2])
-            if topic not in publishers:
-                publishers[topic] = rospy.Publisher(topic, UInt8, queue_size=10)
-                rospy.sleep(0.5)
-            publishers[topic].publish(command)
-        except Exception as e:
-            rospy.logerr("""Error parsing command - expected """
-                """'solenoid {close|open} name'""")
-            rospy.logerr("Exception: " + str(e))
+    elif command == "close ignition valve":
+        rospy.loginfo("Got " + command)
+        ignition_cmdr.publish(1)
+
+    elif command == "open ignition valve":
+        rospy.loginfo("Got " + command)
+        ignition_cmdr.publish(2)
+
+    elif command == "retract linear actuator":
+        rospy.loginfo("Got " + command)
+        linear_cmdr.publish(1)
+
+    elif command == "extend linear actuator":
+        rospy.loginfo("Got " + command)
+        linear_cmdr.publish(2)
+
 
 rospy.init_node('dispatcher')
-rospy.Subscriber("/webserver/commands", String, recieve_command)
+
+solenoid_cmdr = rospy.Publisher("/solenoid_command", Bool, queue_size=10)
+ignition_cmdr = rospy.Publisher("/ignition_valve_command", UInt8, queue_size=10)
+linear_cmdr = rospy.Publisher("/linear_actuator_command", UInt8, queue_size=10)
+
+rospy.Subscriber("/commands", String, recieve_command)
 rospy.spin()
