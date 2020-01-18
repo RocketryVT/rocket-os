@@ -21,8 +21,11 @@ def recieve_command(command):
 		rospy.loginfo("Turning the motor counterclockwise")
 
 rospy.init_node("motor_driver");
+name = rospy.get_name()
 
-rospy.Subscriber("command", UInt8, recieve_command);
+rospy.Subscriber(name + "/command", UInt8, recieve_command);
+
+rospy.loginfo("Starting DC motor driver.")
 
 rospy.spin()
 

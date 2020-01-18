@@ -87,6 +87,6 @@ def get_command(cmd):
         exit = p.poll()
         rospy.loginfo("Finished with exit code " + str(exit))
 
-sub = rospy.Subscriber("/webserver/commands", String, get_command)
+sub = rospy.Subscriber("/commands", String, get_command)
 
 rospy.spin()

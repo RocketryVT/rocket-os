@@ -3,24 +3,29 @@
 
     <group ns="sensors">
 
-    <node name="combustion_thermocouple" pkg="hardware"
-          type="thermocouple_driver" output="screen"
-          args="_positive:=31 _negative:=32 _frequency:=20"/>
-    <node name="tank_thermocouple" pkg="hardware"
-          type="thermocouple_driver" output="screen"
-          args="_positive:=34 _negative:=35 _frequency:=20" />
-    <node name="tank_transducer" pkg="hardware"
-          type="pressure_transducer_driver" output="screen"
-          args="_positive:=90 _negative:=91 _frequency:=20" />
+    <node name="combustion_thermocouple_1" pkg="hardware"
+          type="thermocouple_driver.py" output="screen">
+    </node>
+
+    <node name="combustion_thermocouple_2" pkg="hardware"
+          type="thermocouple_driver.py" output="screen">
+    </node>
+
+    <node name="combustion_transducer" pkg="hardware"
+          type="pressure_transducer_driver.py" output="screen">
+    </node>
+
+    <node name="ox_tank_thermocouple" pkg="hardware"
+          type="thermocouple_driver.py" output="screen">
+    </node>
+
+    <node name="ox_tank_transducer" pkg="hardware"
+          type="pressure_transducer_driver.py" output="screen">
+    </node>
+
     <node name="float_switch" pkg="hardware"
-          type="float_switch_driver" output="screen"
-          args="_positive:=14 _negative:=15 _frequency:=20" />
-    <node name="imu" pkg="hardware"
-          type="imu_driver" output="screen"
-          args="_positive:=88 _negative:=89 _frequency:=20" />
-    <node name="barometer" pkg="hardware"
-          type="barometer_driver" output="screen"
-          args="_positive:=38 _negative:=39 _frequency:=20" />
+          type="liquid_level_switch_driver.py" output="screen">
+    </node>
 
     </group>
 

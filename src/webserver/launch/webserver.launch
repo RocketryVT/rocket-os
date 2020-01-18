@@ -1,17 +1,10 @@
 
 <launch>
 
-    <group ns="webserver">
-
     <node name="tcp_server" pkg="webserver"
           type="tcp_server.py" output="screen" respawn="true" />
 
     <node name="exec" pkg="webserver"
           type="exec.py" output="screen" respawn="true" />
-
-    <node name="cowsay" pkg="webserver"
-          type="cowsay.py" output="screen" respawn="true" />
-
-    </group>
 
 </launch>

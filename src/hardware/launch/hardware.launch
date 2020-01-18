@@ -1,0 +1,7 @@
+<launch>
+
+    <include file="$(find hardware)/launch/sensors.launch" />
+
+    <include file="$(find hardware)/launch/drivers.launch" />
+
+</launch>
