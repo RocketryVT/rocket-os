@@ -1,0 +1,13 @@
+
+<launch>
+
+    <include file="$(find webserver)/launch/webserver.launch" />
+    <include file="$(find launch)/launch/logging.launch" />
+
+    <node name="watchdog" pkg="launch"
+          type="watchdog" output="screen" />
+
+    <node name="permission_admin" pkg="launch"
+          type="permission_admin.py" output="screen" />
+
+</launch>

@@ -56,7 +56,7 @@ int main(int argc, char **argv)
     ROS_INFO("Hostname is %s", boost::asio::ip::host_name().c_str());
 
     auto keep_timer = nh.createTimer(ros::Duration(1), keep_time);
-    auto check_timer = nh.createTimer(ros::Duration(0.1), check_on_nodes);
+    auto check_timer = nh.createTimer(ros::Duration(1), check_on_nodes);
 
     ros::spin();
 

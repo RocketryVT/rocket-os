@@ -19,7 +19,7 @@ import shutil #for file management, copy file
 overwrite = False
 
 if len(sys.argv) < 2:
-    "usage: ./{} log1.bag log2.bag...".format(sys.argv[0])
+    print("usage: ./{} log1.bag log2.bag...".format(sys.argv[0]))
     exit()
 
 for arg in sys.argv:

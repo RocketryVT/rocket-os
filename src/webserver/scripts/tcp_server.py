@@ -20,12 +20,11 @@ rospy.init_node("tcp_server")
 
 pub_command = rospy.Publisher("commands", String, queue_size=10)
 
-s = sched.scheduler(time.time, time.sleep)
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 server.setblocking(False)
 
-address = "10.0.0.46"
+address = "192.168.1.18"
 port = 8001
 server.bind((address, port))
 server.listen(10)
@@ -34,7 +33,13 @@ rospy.loginfo("Starting server at " + address + ":" + str(port))
 
 list_of_clients = []
 
+last_broadcast = datetime.now()
+
 def broadcast(string):
+
+    global last_broadcast
+    last_broadcast = datetime.now()
+
     for client in list_of_clients:
         id, conn, addr = client
         try:
@@ -45,17 +50,10 @@ def broadcast(string):
 
 def ping(event):
 
-    if len(list_of_clients) > 0:
-        rospy.loginfo("Sending keep-alive message.")
-    return
+    seconds = (datetime.now() - last_broadcast).total_seconds()
 
-    for client in list_of_clients:
-        id, conn, addr = client
-        try:
-            conn.sendall("[" + str(datetime.now()) + "]: Sending keep-alive message.\n")
-        except Exception as e:
-            conn.close()
-            remove(client)
+    if seconds > 10 and len(list_of_clients):
+        rospy.loginfo("Sending keep-alive message.")
 
 def exit_handler():
     server.close()
@@ -110,7 +108,7 @@ def get_rosout(msg):
 
 rospy.Subscriber("/rosout", Log, get_rosout)
 
-rospy.Timer(rospy.Duration(10), ping)
+rospy.Timer(rospy.Duration(2), ping)
 rospy.Timer(rospy.Duration(0.1), handle_connections)
 
 rospy.spin()
