@@ -2,9 +2,9 @@
 <launch>
 
     <node name="tcp_server" pkg="webserver"
-          type="tcp_server.py" output="screen" respawn="true" />
+          type="tcp_server.py" output="screen" />
 
     <node name="exec" pkg="webserver"
-          type="exec.py" output="screen" respawn="true" />
+          type="exec.py" output="screen" />
 
 </launch>
