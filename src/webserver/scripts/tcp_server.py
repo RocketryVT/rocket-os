@@ -24,12 +24,25 @@ server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 server.setblocking(False)
 
-address = "192.168.1.18"
-port = 8001
-server.bind((address, port))
+sys.argv = rospy.myargv(argv=sys.argv)
+
+if len(sys.argv) < 3:
+    rospy.logerr("Require IP address and port number as arguments.")
+    exit()
+
+address = sys.argv[1] # "192.168.1.18"
+port = int(sys.argv[2]) # 8001
+rospy.loginfo("Attempting to start server at " + address + ":" + str(port))
+
+try:
+    server.bind((address, port))
+except:
+    rospy.logerr("Error binding to IP and port provided. Please double check.")
+    exit()
+
 server.listen(10)
 
-rospy.loginfo("Starting server at " + address + ":" + str(port))
+rospy.loginfo("Started server at " + address + ":" + str(port))
 
 list_of_clients = []
 
