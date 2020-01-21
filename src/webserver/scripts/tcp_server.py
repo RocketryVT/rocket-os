@@ -103,7 +103,7 @@ def handle_connections(event):
         pass
 
 def get_rosout(msg):
-    broadcast("[" + str(datetime.now()) + "]: " + msg.msg)
+    broadcast("[" + str(datetime.now()) + "] [" + str(msg.name) + "]: " + msg.msg)
 
 
 rospy.Subscriber("/rosout", Log, get_rosout)

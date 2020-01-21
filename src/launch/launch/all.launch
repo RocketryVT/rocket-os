@@ -13,4 +13,7 @@
 
     <include file="$(find hardware)/launch/hardware.launch" />
 
+    <node name="fill_admin" pkg="launch"
+          type="fill_admin.py" output="screen" />
+
 </launch>
