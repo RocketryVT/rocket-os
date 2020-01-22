@@ -16,6 +16,17 @@ import rospy
 from std_msgs.msg import String
 from rosgraph_msgs.msg import Log
 
+def get_ip():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        s.connect(('10.255.255.255', 1))
+        IP = s.getsockname()[0]
+    except:
+        IP = '127.0.0.1'
+    finally:
+        s.close()
+    return IP
+
 rospy.init_node("tcp_server")
 
 pub_command = rospy.Publisher("commands", String, queue_size=10)
@@ -26,7 +37,7 @@ server.setblocking(False)
 
 sys.argv = rospy.myargv(argv=sys.argv)
 
-address = socket.gethostbyname(socket.gethostname()) # "192.168.1.18"
+address = get_ip()
 port = 8001
 rospy.loginfo("Attempting to start server at " + address + ":" + str(port))
 
