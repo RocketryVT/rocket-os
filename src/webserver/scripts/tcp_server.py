@@ -26,12 +26,8 @@ server.setblocking(False)
 
 sys.argv = rospy.myargv(argv=sys.argv)
 
-if len(sys.argv) < 3:
-    rospy.logerr("Require IP address and port number as arguments.")
-    exit()
-
-address = sys.argv[1] # "192.168.1.18"
-port = int(sys.argv[2]) # 8001
+address = socket.gethostbyname(socket.gethostname()) # "192.168.1.18"
+port = 8001
 rospy.loginfo("Attempting to start server at " + address + ":" + str(port))
 
 try:
