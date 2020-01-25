@@ -1,0 +1,18 @@
+
+<launch>
+
+    <node name="idiot_checker_one" pkg="launch"
+          type="interactive_test.py" output="screen"
+          args="'idiot check one'
+                'What word starts with y? (1)' yes
+                'What word starts with n? (1)' no
+                'Is rocketry really cool? (1)' yes" />
+
+    <node name="idiot_checker_two" pkg="launch"
+          type="interactive_test.py" output="screen"
+          args="'idiot check two'
+                'What word starts with y? (2)' yes
+                'What word starts with n? (2)' no
+                'Is rocketry really cool? (2)' yes" />
+
+</launch>
