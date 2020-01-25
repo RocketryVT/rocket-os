@@ -8,8 +8,8 @@
 
     <include file="$(find webserver)/launch/webserver.launch" />
 
-    <node name="permission_admin" pkg="launch"
-          type="permission_admin.py" output="screen" />
+    <node name="readiness_admin" pkg="launch"
+          type="readiness_admin.py" output="screen" />
 
     <include file="$(find hardware)/launch/hardware.launch" />
 

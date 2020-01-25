@@ -29,7 +29,7 @@ def get_ip():
 
 rospy.init_node("tcp_server")
 
-pub_command = rospy.Publisher("commands", String, queue_size=10)
+pub_command = rospy.Publisher("/requested_commands", String, queue_size=10)
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
