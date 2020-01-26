@@ -30,6 +30,13 @@ def recieve_command(msg):
     elif command == "open vent valve":
         vent_cmdr.publish(2)
 
+    elif command == "crack vent valve":
+        vent_cmdr.publish(2)
+        now = rospy.get_time()
+        rospy.sleep(0.1)
+        later = rospy.get_time()
+        vent_cmdr.publish(0)
+
     elif command == "fire ematch":
         ematch_cmdr.publish()
 
