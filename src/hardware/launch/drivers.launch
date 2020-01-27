@@ -1,32 +1,11 @@
 
 <launch>
 
-    <group ns="hardware">
-
-    <node name="ignition_valve" pkg="hardware"
-          type="motor_driver.py" output="screen">
-    </node>
-
-    <node name="vent_valve" pkg="hardware"
-          type="motor_driver.py" output="screen">
-    </node>
-
-    <node name="linear_actuator" pkg="hardware"
-          type="motor_driver.py" output="screen">
-    </node>
-
-    <node name="solenoid" pkg="hardware"
-          type="solenoid_driver.py" output="screen">
-    </node>
-
-    <node name="ematch" pkg="hardware"
-          type="ematch_driver.py" output="screen">
-    </node>
-
-    <node name="driver_dispatcher" pkg="hardware"
-          type="dispatcher.py" output="screen">
-    </node>
-
-    </group>
+    <include file="$(find hardware)/launch/ignition_valve_driver.launch" />
+    <include file="$(find hardware)/launch/vent_valve_driver.launch" />
+    <include file="$(find hardware)/launch/linear_actuator_driver.launch" />
+    <include file="$(find hardware)/launch/solenoid_driver.launch" />
+    <include file="$(find hardware)/launch/ematch_driver.launch" />
+    <include file="$(find hardware)/launch/dispatcher.launch" />
 
 </launch>

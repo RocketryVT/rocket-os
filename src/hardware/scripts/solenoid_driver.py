@@ -4,12 +4,14 @@
 
 import rospy
 from std_msgs.msg import Bool
-
-nominal_state = False
-current_state = False
+import sys
 import Adafruit_BBIO.GPIO as gpio
 import time
 import signal
+import random
+
+nominal_state = False
+current_state = False
 
 def signal_handler(sig, frame):
     gpio.cleanup()
@@ -48,18 +50,33 @@ def control_loop(event):
 
 gpio.cleanup()
 LED =  [ "USR0" , "USR1", "USR2", "USR3" ]
-
 for i in LED:
     gpio.setup(i, gpio.OUT)
 
 rospy.init_node("solenoid_driver");
+sys.argv = rospy.myargv(argv=sys.argv)
+if len(sys.argv) is not 2:
+    rospy.logerr("Requires a control pin via args")
+    exit()
+
+ctrl_pin = sys.argv[1]
+rospy.loginfo("Starting solenoid driver on pin " + ctrl_pin)
+try:
+    gpio.setup(ctrl_pin, gpio.OUT)
+except:
+    sleep = random.randint(1, 10)
+    rospy.loginfo("Failed to configure. Waiting for " + str(sleep) + " seconds")
+    rospy.sleep(sleep)
+    try:
+        gpio.setup(ctrl_pin, gpio.OUT)
+    except:
+        rospy.logerr("Failed to configure. Exiting.")
+        exit()
+gpio.output(ctrl_pin, gpio.LOW)
+
 name = rospy.get_name()
-
 rospy.Subscriber(name + "/command", Bool, recieve_command);
-
 rospy.Timer(rospy.Duration(0.5), control_loop)
-
-rospy.loginfo("Starting solenoid driver.")
-
+rospy.loginfo("Success.")
 rospy.spin()
 
