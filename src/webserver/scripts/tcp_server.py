@@ -13,7 +13,7 @@ import sched
 from datetime import datetime
 
 import rospy
-from std_msgs.msg import String
+from std_msgs.msg import String, Float32
 from rosgraph_msgs.msg import Log
 
 def get_ip():
@@ -125,10 +125,33 @@ def handle_connections(event):
 def get_rosout(msg):
     broadcast("[" + str(datetime.now()) + "] [" + str(msg.name) + "]: " + msg.msg)
 
+los_start_time = rospy.get_time()
+los_condition = False
+
+def publish_los(event):
+
+    global los_start_time
+    global los_condition
+
+    num_clients = len(list_of_clients)
+    los_duration = rospy.get_time() - los_start_time
+    if num_clients > 0:
+        los_start_time = rospy.get_time()
+        los_duration = 0
+        if los_condition:
+            rospy.logwarn("Connection atleast one client restored.");
+        los_condition = False
+    elif not los_condition:
+        rospy.logwarn("LOS condition detected!");
+        los_condition = True
+
+    pub_los.publish(los_duration)
 
 rospy.Subscriber("/rosout", Log, get_rosout)
+pub_los = rospy.Publisher("/los", Float32, queue_size=10)
 
 rospy.Timer(rospy.Duration(2), ping)
 rospy.Timer(rospy.Duration(0.1), handle_connections)
+rospy.Timer(rospy.Duration(1), publish_los)
 
 rospy.spin()
