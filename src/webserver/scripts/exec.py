@@ -5,7 +5,7 @@ import subprocess
 import signal, fcntl, os
 from std_msgs.msg import String
 
-rospy.init_node("exec")
+rospy.init_node("exec", log_level=rospy.DEBUG)
 
 timeout = 10
 

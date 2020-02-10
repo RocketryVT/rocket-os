@@ -6,6 +6,7 @@ from std_msgs.msg import String, UInt8, Bool, Float32
 last_pressure = None
 last_lls = None
 fill_ongoing = False
+max_safe_pressure = 1100 # psig
 
 def print_relevant_data(event):
 
@@ -15,7 +16,12 @@ def print_relevant_data(event):
 def get_pressure(message):
 
     global last_pressure
+    global fill_ongoing
     last_pressure = message.data
+
+    if message.data > max_safe_pressure and fill_ongoing:
+        rospy.logwarn("Maximum safe pressure exceeded -- stopping fill!")
+        fill_ongoing = False
 
 def get_lls_reading(message):
 
@@ -23,7 +29,7 @@ def get_lls_reading(message):
     global fill_ongoing
     last_lls = message.data
 
-    if message.data:
+    if message.data and fill_ongoing:
         rospy.logwarn("Liquid level switch tripped -- stopping fill!")
         fill_ongoing = False
 

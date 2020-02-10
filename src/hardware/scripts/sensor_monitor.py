@@ -5,11 +5,17 @@ from std_msgs.msg import String, UInt8, Bool, Float32
 import numpy
 import re
 
+suppress_warnings = False
+suppression_reminder_period = 60 # seconds
 moving_average_period = 500; # readings, not seconds
 warning_period = 10 # min seconds between warnings
 error_period = 5 # min seconds between avg warnings
 nitrous_tank_abort_threshold_psi = 1200
 echo_timer = None
+
+def throw_suppression_reminder():
+
+    rospy.logwarn_throttle(suppression_reminder_period, "Warnings are being suppressed.")
 
 class SensorTracker:
 
@@ -30,12 +36,17 @@ class SensorTracker:
         warning = self.name + " {} ({:.2f}) falls outside of nominal bounds (" + str(self.limits) + ")"
 
         if message.data < min or message.data > max:
-            rospy.logwarn_throttle(warning_period, 
-                warning.format("reading", message.data))
+            if not suppress_warnings:
+                rospy.logwarn_throttle(warning_period, warning.format("reading", message.data))
+            else:
+                throw_suppression_reminder()
 
         if avg < min or avg > max:
-            rospy.logerr_throttle(error_period,
-                warning.format("average", avg))
+            if not suppress_warnings:
+                rospy.logerr_throttle(error_period,
+                    warning.format("average", avg))
+            else:
+                throw_suppression_reminder()
 
         if self.ctrl_vent_valve and avg > nitrous_tank_abort_threshold_psi:
             overpressure_detected(message.data, avg)
@@ -58,7 +69,12 @@ def echo_sensors(event):
     for i in range(0, len(trackers)):
         tracker = trackers[i]
         acronym = ''.join([x[0] for x in tracker.name.split()]).upper()
-        output = output + acronym + ": {:.2f}".format(tracker.last_reading()) + " " + tracker.unit
+        last = tracker.last_reading()
+        if last is None:
+            last = 'None'
+        else:
+            last = "{:.2f}".format(last)
+        output = output + acronym + ": " + last + " " + tracker.unit
         if i < len(trackers) - 1:
             output = output + " / "
     rospy.loginfo(output)
@@ -67,6 +83,8 @@ def echo_sensors(event):
 def get_command(message):
 
     global echo_timer
+    global suppress_warnings
+
     command = message.data
     if command == "read data":
         echo_sensors(None)
@@ -83,6 +101,11 @@ def get_command(message):
         if echo_timer:
             echo_timer.shutdown()
         echo_timer = None
+
+    elif command == "toggle sensor warning suppression":
+
+        suppress_warnings = not suppress_warnings
+        rospy.loginfo("Sensor warning suppression set to " + str(suppress_warnings))
 
 
 rospy.init_node("sensor_monitor")

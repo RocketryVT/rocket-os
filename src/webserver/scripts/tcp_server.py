@@ -27,7 +27,7 @@ def get_ip():
         s.close()
     return IP
 
-rospy.init_node("tcp_server")
+rospy.init_node("tcp_server", log_level=rospy.DEBUG)
 
 pub_command = rospy.Publisher("/requested_commands", String, queue_size=10)
 
@@ -73,7 +73,7 @@ def ping(event):
     seconds = (datetime.now() - last_broadcast).total_seconds()
 
     if seconds > 10 and len(list_of_clients):
-        rospy.loginfo("Sending keep-alive message.")
+        rospy.logdebug("Sending keep-alive message.")
 
 def exit_handler():
     server.close()
@@ -122,8 +122,22 @@ def handle_connections(event):
     except:
         pass
 
+def level_to_str(level):
+
+    if level is 1:
+        return '[DEBUG]'
+    if level is 2:
+        return '[INFO] '
+    if level is 4:
+        return '[WARN] '
+    if level is 8:
+        return '[ERROR]'
+    if level is 16:
+        return '[FATAL]'
+    return '[?????]'
+
 def get_rosout(msg):
-    broadcast("[" + str(datetime.now()) + "] [" + str(msg.name) + "]: " + msg.msg)
+    broadcast(level_to_str(msg.level) + " [" + str(datetime.now()) + "] [" + str(msg.name) + "]: " + msg.msg)
 
 los_start_time = rospy.get_time()
 los_condition = False
@@ -139,7 +153,7 @@ def publish_los(event):
         los_start_time = rospy.get_time()
         los_duration = 0
         if los_condition:
-            rospy.logwarn("Connection atleast one client restored.");
+            rospy.loginfo("Connection with atleast one client restored.");
         los_condition = False
     elif not los_condition:
         rospy.logwarn("LOS condition detected!");

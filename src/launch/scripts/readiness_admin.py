@@ -7,16 +7,16 @@ import re
 global_readiness_level = 0
 
 # command whitelist
-persistent_whitelist = ["system .*", "print whitelist", "print readiness level", "set readiness [0-9]+"]
+persistent_whitelist = ["read data", "read data .*", "stop data", "system .*", "print whitelist", "print readiness level", "set readiness [0-9]+"]
 level_whitelist = [
-    ["read data", "idiot check"],
-    ["read data", "close vent valve", "close ignition valve", "abort"],
-    ["read data", "begin fill", "end fill", "open vent valve", "close vent valve", "crack vent valve", "abort"],
-    ["read data", "end fill", "open vent valve", "close vent valve", "crack vent valve", "fill disconnect", "abort"],
-    ["read data", "open vent valve", "crack vent valve", "close vent valve", "idiot check part two", "abort"],
-    ["read data", "open vent valve", "crack vent valve", "close vent valve", "arm rocket", "abort"],
-    ["read data", "get ready to rumble", "abort", "rollback"],
-    ["read data", "launch the rocket", "abort", "rollback"],
+    ["idiot check"],
+    ["close vent valve", "close ignition valve", "abort"],
+    ["begin fill", "end fill", "open vent valve", "close vent valve", "crack vent valve", "abort"],
+    ["end fill", "open vent valve", "close vent valve", "crack vent valve", "fill disconnect", "abort"],
+    ["open vent valve", "crack vent valve", "close vent valve", "idiot check part two", "abort"],
+    ["open vent valve", "crack vent valve", "close vent valve", "arm rocket", "abort"],
+    ["get ready to rumble", "abort", "rollback"],
+    ["launch the rocket", "abort", "rollback"],
     ["abort", ".*"],
     [""],
     [".*"]
@@ -56,14 +56,14 @@ def get_requested_command(message):
 
     for regex in level_whitelist[global_readiness_level]:
         if bool(re.match(re.compile("^" + regex + "$"), command)):
-            print("Command matches current pattern: " + regex + ", " + command)
+            rospy.logdebug("Command matches current pattern: " + regex + ", " + command)
             pub_command.publish(command)
             receive_command(command)
             return
 
     for regex in persistent_whitelist:
         if bool(re.match(re.compile("^" + regex + "$"), command)):
-            print("Command matches persistent pattern: " + regex + ", " + command)
+            rospy.logdebug("Command matches persistent pattern: " + regex + ", " + command)
             pub_command.publish(command)
             receive_command(command)
             return
@@ -74,7 +74,7 @@ def get_requested_command(message):
     rospy.loginfo("Current: " + ", ".join(level_whitelist[global_readiness_level]))
 
 
-rospy.init_node("readiness_admin")
+rospy.init_node("readiness_admin", log_level=rospy.DEBUG)
 rospy.Subscriber("/requested_commands", String, get_requested_command)
 pub_level = rospy.Publisher("/readiness_level", UInt8, queue_size=10)
 pub_command = rospy.Publisher("/commands", String, queue_size=10)

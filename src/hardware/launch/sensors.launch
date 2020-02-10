@@ -27,6 +27,10 @@
           type="liquid_level_switch_driver.py" output="screen">
     </node>
 
+    <node name="sensor_monitor" pkg="hardware"
+          type="sensor_monitor.py" output="screen">
+    </node>
+
     </group>
 
 </launch>

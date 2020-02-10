@@ -30,7 +30,7 @@ def recieve_command(command):
         gpio.output(ccw_pin, gpio.HIGH)
 
 
-rospy.init_node("motor_driver");
+rospy.init_node("motor_driver", log_level=rospy.DEBUG);
 sys.argv = rospy.myargv(argv=sys.argv)
 if len(sys.argv) is not 3:
     rospy.logerr("Requires two pins as arguments: <cw> <ccw>")
