@@ -97,8 +97,8 @@ def remove(client):
 
 def clientthread(idno, conn, addr):
 
-    conn.sendall("[" + str(datetime.now()) + "]: Connection to master established.\n")
-    conn.sendall("[" + str(datetime.now()) + "]: You are client #" + str(idno) + "\n")
+    conn.sendall("[INFO]  [" + str(datetime.now()) + "]: Connection to master established.\n")
+    conn.sendall("[INFO]  [" + str(datetime.now()) + "]: You are client #" + str(idno) + "\n")
 
     while True:
         try:
@@ -137,7 +137,8 @@ def level_to_str(level):
     return '[?????]'
 
 def get_rosout(msg):
-    broadcast(level_to_str(msg.level) + " [" + str(datetime.now()) + "] [" + str(msg.name) + "]: " + msg.msg)
+    time = str(datetime.fromtimestamp(msg.header.stamp.to_sec()))
+    broadcast(level_to_str(msg.level) + " [" + time + "] [" + str(msg.name) + "]: " + msg.msg)
 
 los_start_time = rospy.get_time()
 los_condition = False
