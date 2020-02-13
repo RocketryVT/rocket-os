@@ -30,6 +30,13 @@ def get_command(cmd):
             except:
                 rospy.logerr("Error parsing command - expecting: timeout %f")
 
+    if tokens[0] == "fork":
+        rospy.loginfo("$ " + " ".join(tokens[1:]))
+        process = subprocess.Popen(" ".join(tokens[1:]),
+            shell=True)
+        rospy.loginfo("Done.")
+
+
     if tokens[0] == "system":
         rospy.loginfo("$ " + " ".join(tokens[1:]))
         p = subprocess.Popen(" ".join(tokens[1:]),

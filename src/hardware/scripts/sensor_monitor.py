@@ -60,7 +60,7 @@ class SensorTracker:
 
 def overpressure_detected(current, avg):
 
-    rospy.logwarn_throttle(error_period, "Nitrous tank overpressure ({}, {} >1200 psig) detected!".format(current, avg))
+    rospy.logfatal_throttle(error_period, "Nitrous tank overpressure ({}, {} >1200 psig) detected!".format(current, avg))
 
 
 def echo_sensors(event):

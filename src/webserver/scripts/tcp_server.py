@@ -72,7 +72,7 @@ def ping(event):
 
     seconds = (datetime.now() - last_broadcast).total_seconds()
 
-    if seconds > 10 and len(list_of_clients):
+    if seconds > 2 and len(list_of_clients):
         rospy.logdebug("Sending keep-alive message.")
 
 def exit_handler():
@@ -96,9 +96,6 @@ def remove(client):
             pass
 
 def clientthread(idno, conn, addr):
-
-    conn.sendall("[INFO]  [" + str(datetime.now()) + "]: Connection to master established.\n")
-    conn.sendall("[INFO]  [" + str(datetime.now()) + "]: You are client #" + str(idno) + "\n")
 
     while True:
         try:
