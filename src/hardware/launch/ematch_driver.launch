@@ -5,7 +5,7 @@
 
     <node name="ematch" pkg="hardware"
           type="ematch_driver.py" output="screen"
-          args="P9_15">
+          args="P9_13 P9_15">
     </node>
 
     </group>

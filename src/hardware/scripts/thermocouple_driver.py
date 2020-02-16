@@ -2,27 +2,41 @@
 
 # thermocouple_driver.py
 
+import Adafruit_BBIO.ADC as adc
 import rospy
 from std_msgs.msg import Float32
-from random import random
-import time
+import sys
 
-now = time.time()
+def voltage_to_celsius(voltage):
+
+    return voltage
 
 def read_and_publish(event):
 
-    # get thermocouple measurement
-    temp = (time.time() - now)*2 # random()*120
-    publisher.publish(temp)
+    voltage = adc.read(adc_pin)*1.8
+    celsius = voltage_to_celsius(voltage)
+    publisher.publish(celsius)
 
+
+adc.setup()
 rospy.init_node("thermocouple_driver");
+
+sys.argv = rospy.myargv(sys.argv)
+if len(sys.argv) < 2:
+    rospy.logerr("Thermocouple driver requires ADC pin in args")
+    exit()
+
+adc_pin = sys.argv[1]
+all_pins = ["AIN{}".format(x) for x in range(0,7)]
+if adc_pin not in all_pins:
+    rospy.logerr("Provided pin " + adc_pin + " not a valid ADC pin (" + str(all_pins) + ")")
+    exit()
+
 name = rospy.get_name()
-
 publisher = rospy.Publisher(name + "/temperature", Float32, queue_size=10);
+rospy.Timer(rospy.Duration(1), read_and_publish)
 
-rospy.Timer(rospy.Duration(0.1), read_and_publish)
-
-rospy.loginfo("Starting thermocouple driver.")
+rospy.loginfo("Starting thermocouple driver on ADC " + adc_pin)
 
 rospy.spin()
 

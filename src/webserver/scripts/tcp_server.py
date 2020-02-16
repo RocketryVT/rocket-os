@@ -52,7 +52,7 @@ server.listen(10)
 rospy.loginfo("Started server at " + address + ":" + str(port))
 
 list_of_clients = []
-
+total_connections = 0
 last_broadcast = datetime.now()
 
 def broadcast(string):
@@ -108,15 +108,17 @@ def clientthread(idno, conn, addr):
                 exit()
 
 def handle_connections(event):
+    global total_connections
     try:
         conn, addr = server.accept()
-        idno = len(list_of_clients) + 1
+        idno = total_connections
         client = (idno, conn, addr)
         list_of_clients.append(client)
         rospy.loginfo("New connection: " + str((idno, addr)))
-        rospy.loginfo(str(idno) + " active connection(s)")
+        rospy.loginfo(str(len(list_of_clients)) + " active connection(s)")
         start_new_thread(clientthread, (idno,conn,addr))
-    except:
+        total_connections += 1
+    except Exception as e:
         pass
 
 def level_to_str(level):
