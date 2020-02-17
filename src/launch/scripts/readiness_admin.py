@@ -26,15 +26,20 @@ def publish_readiness_level(event):
 
     pub_level.publish(global_readiness_level)
 
+def print_help_text():
+
+    message = "\n\n\tAvailable commands are...\n"
+    message += "\t" + "Persistent:".ljust(12) + ", ".join(persistent_whitelist) + "\n"
+    for i in range(0, len(level_whitelist)):
+        message += "\t" + ("RL-" + str(i) + ":").ljust(12) + ", ".join(level_whitelist[i]) + "\n"
+    rospy.loginfo(message)
+
 def receive_command(string):
 
     global global_readiness_level
     if string == "print whitelist":
 
-        rospy.loginfo("Available commands are...")
-        rospy.loginfo("Persistent: " + ", ".join(persistent_whitelist))
-        for i in range(0, len(level_whitelist)):
-            rospy.loginfo("RL-" + str(i) + ": " + ", ".join(level_whitelist[i]))
+        print_help_text()
 
     elif string == "print readiness level":
 
@@ -69,10 +74,7 @@ def get_requested_command(message):
             return
 
     rospy.loginfo("Command doesn't match any patterns in the current whitelist.")
-    rospy.loginfo("Available commands are...")
-    rospy.loginfo("Persistent: " + ", ".join(persistent_whitelist))
-    rospy.loginfo("Current: " + ", ".join(level_whitelist[global_readiness_level]))
-
+    print_help_text()
 
 rospy.init_node("readiness_admin", log_level=rospy.DEBUG)
 rospy.Subscriber("/requested_commands", String, get_requested_command)
