@@ -53,6 +53,9 @@ def receive_command(msg):
     if bool(re.match(re.compile(stop), command)):
         stop_listening(command.split()[3])
 
+    if command == "stop listening all":
+        [stop_listening(topic) for topic in subscribed.keys()]
+
 
 subscribed = {}
 
