@@ -16,7 +16,7 @@ signal.signal(signal.SIGINT, signal_handler)
 gpio.setwarnings(1)
 
 # test built in LEDs on BeagleBone Blue
-LED =  [ "USR0" , "USR1", "USR2", "USR3" ]
+LED =  [ "USR0", "USR1", "USR2", "USR3" ]
 
 for i in LED:
     gpio.setup(i, gpio.OUT)
