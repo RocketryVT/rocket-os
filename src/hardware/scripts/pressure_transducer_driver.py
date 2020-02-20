@@ -9,17 +9,18 @@ import sys
 
 def voltage_to_pressure(voltage):
 
-    return voltage
+    return voltage*900
 
 def read_and_publish(event):
 
     voltage = adc.read(adc_pin)*1.8
     pressure = voltage_to_pressure(voltage)
-    publisher.publish(pressure)
+    pub_volt.publish(voltage)
+    pub_press.publish(pressure)
 
 
 adc.setup()
-rospy.init_node("pressure_transducer_driver");
+rospy.init_node("pressure_transducer_driver")
 
 sys.argv = rospy.myargv(sys.argv)
 if len(sys.argv) < 2:
@@ -33,7 +34,8 @@ if adc_pin not in all_pins:
     exit()
 
 name = rospy.get_name()
-publisher = rospy.Publisher(name + "/pressure", Float32, queue_size=10);
+pub_press = rospy.Publisher(name + "/pressure", Float32, queue_size=10);
+pub_volt = rospy.Publisher(name + "/voltage", Float32, queue_size=10);
 rospy.Timer(rospy.Duration(1), read_and_publish)
 
 rospy.loginfo("Starting pressure transducer driver on ADC " + adc_pin)
