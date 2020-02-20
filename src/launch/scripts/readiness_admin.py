@@ -28,10 +28,14 @@ def publish_readiness_level(event):
 
 def print_help_text():
 
-    message = "\n\n\tAvailable commands are...\n"
-    message += "\t" + "Persistent:".ljust(12) + ", ".join(persistent_whitelist) + "\n"
+    message = "\n\n    Available commands are...\n"
+    message += "    " + "Persistent:".ljust(12) + ", ".join(persistent_whitelist) + "\n"
     for i in range(0, len(level_whitelist)):
-        message += "\t" + ("RL-" + str(i) + ":").ljust(12) + ", ".join(level_whitelist[i]) + "\n"
+        if i == global_readiness_level:
+            message += "  > "
+        else:
+            message += "    "
+        message += ("RL-" + str(i) + ":").ljust(12) + ", ".join(level_whitelist[i]) + "\n"
     rospy.loginfo(message)
 
 def receive_command(string):
