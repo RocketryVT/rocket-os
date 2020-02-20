@@ -9,13 +9,22 @@ import sys
 
 def voltage_to_celsius(voltage):
 
-    return voltage
+    return (voltage**8)*-115.855752725240 + \
+           (voltage**7)*999.436833871484 + \
+           (voltage**6)*-3658.156796841630 + \
+           (voltage**5)*7377.417876749070 + \
+           (voltage**4)*-8879.836831 + \
+           (voltage**3)*6439.970948 + \
+           (voltage**2)*-2711.355273 + \
+           (voltage)*1106.923311 - 198.2593002
+
 
 def read_and_publish(event):
 
     voltage = adc.read(adc_pin)*1.8
     celsius = voltage_to_celsius(voltage)
-    publisher.publish(celsius)
+    pub_volt.publish(voltage)
+    pub_temp.publish(celsius)
 
 
 adc.setup()
@@ -33,7 +42,8 @@ if adc_pin not in all_pins:
     exit()
 
 name = rospy.get_name()
-publisher = rospy.Publisher(name + "/temperature", Float32, queue_size=10);
+pub_temp = rospy.Publisher(name + "/temperature", Float32, queue_size=10);
+pub_volt = rospy.Publisher(name + "/voltage", Float32, queue_size=10);
 rospy.Timer(rospy.Duration(1), read_and_publish)
 
 rospy.loginfo("Starting thermocouple driver on ADC " + adc_pin)
