@@ -9,11 +9,15 @@ def get_command(message):
     cmd = message.data
 
     if cmd == "rosnode list":
-        output = "\n" + "\n".join(rosnode.get_node_names()) + "\n"
+        nodes = rosnode.get_node_names()
+        nodes.sort()
+        output = "\n" + "\n".join(nodes) + "\n"
         rospy.loginfo(output)
     
     if cmd == "rostopic list":
-        output = "\n" + "\n".join([x.ljust(60) + y for (x, y) in rospy.get_published_topics()]) + "\n"
+        topics = rospy.get_published_topics()
+        topics.sort(key=lambda x: x[0])
+        output = "\n" + "\n".join([x.ljust(60) + y for (x, y) in topics]) + "\n"
         rospy.loginfo(output)
 
 print(dir(rosnode.rosgraph.network))
