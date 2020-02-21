@@ -1,19 +1,7 @@
 
 <launch>
 
-    <include file="$(find launch)/launch/logging.launch" />
-
-    <node name="watchdog" pkg="launch"
-          type="watchdog" output="screen" />
-
-    <include file="$(find webserver)/launch/webserver.launch" />
-
-    <node name="readiness_admin" pkg="launch"
-          type="readiness_admin.py" output="screen" />
-
+    <include file="$(find launch)/launch/toplevel.launch" />
     <include file="$(find hardware)/launch/hardware.launch" />
-
-    <node name="fill_admin" pkg="launch"
-          type="fill_admin.py" output="screen" />
 
 </launch>

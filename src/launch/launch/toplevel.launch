@@ -2,16 +2,10 @@
 <launch>
 
     <include file="$(find launch)/launch/logging.launch" />
-
-    <node name="watchdog" pkg="launch"
-          type="watchdog" output="screen" />
-
+    <include file="$(find launch)/launch/watchdog.launch" />
     <include file="$(find webserver)/launch/webserver.launch" />
-
-    <node name="readiness_admin" pkg="launch"
-          type="readiness_admin.py" output="screen" />
-
-    <node name="listener" pkg="launch"
-          type="listener.py" output="screen" />
+    <include file="$(find launch)/launch/readiness_admin.launch" />
+    <include file="$(find launch)/launch/listener.launch" />
+    <include file="$(find launch)/launch/rosnode_lister.launch" />
 
 </launch>

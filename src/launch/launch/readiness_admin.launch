@@ -1,0 +1,7 @@
+
+<launch>
+
+    <node name="readiness_admin" pkg="launch"
+          type="readiness_admin.py" output="screen" />
+
+</launch>

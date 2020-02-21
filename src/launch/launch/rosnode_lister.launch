@@ -1,0 +1,6 @@
+<launch>
+
+    <node name="rosnode_lister" pkg="launch"
+          type="rosnode_lister.py" output="screen" />
+
+</launch>

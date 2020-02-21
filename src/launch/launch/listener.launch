@@ -1,0 +1,6 @@
+<launch>
+
+    <node name="listener" pkg="launch"
+          type="listener.py" output="screen" />
+
+</launch>
