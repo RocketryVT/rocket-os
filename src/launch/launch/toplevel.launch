@@ -1,6 +1,7 @@
 
 <launch>
 
+    <rosparam command="load" file="/home/debian/rocket-os/params.yaml" />
     <include file="$(find launch)/launch/logging.launch" />
     <include file="$(find launch)/launch/watchdog.launch" />
     <include file="$(find webserver)/launch/webserver.launch" />

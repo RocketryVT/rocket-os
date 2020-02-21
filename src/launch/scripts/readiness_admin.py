@@ -5,22 +5,10 @@ from std_msgs.msg import String, UInt8
 import re
 
 global_readiness_level = 0
-
-# command whitelist
-persistent_whitelist = ["read data", "read data .*", "stop data", "system .*", "print whitelist", "print readiness level", "set readiness [0-9]+"]
-level_whitelist = [
-    ["idiot check"],
-    ["close vent valve", "close ignition valve", "abort"],
-    ["begin fill", "end fill", "open vent valve", "close vent valve", "crack vent valve", "abort"],
-    ["end fill", "open vent valve", "close vent valve", "crack vent valve", "fill disconnect", "abort"],
-    ["open vent valve", "crack vent valve", "close vent valve", "idiot check part two", "abort"],
-    ["open vent valve", "crack vent valve", "close vent valve", "arm rocket", "abort"],
-    ["get ready to rumble", "abort", "rollback"],
-    ["launch the rocket", "abort", "rollback"],
-    ["abort", ".*"],
-    [""],
-    [".*"]
-]
+max_readiness_level = 10
+level_whitelist = []
+for i in range(0, max_readiness_level+1):
+    level_whitelist.append(set())
 
 def publish_readiness_level(event):
 
@@ -28,14 +16,23 @@ def publish_readiness_level(event):
 
 def print_help_text():
 
-    message = "\n\n    Available commands are...\n"
-    message += "    " + "Persistent:".ljust(12) + ", ".join(persistent_whitelist) + "\n"
-    for i in range(0, len(level_whitelist)):
-        if i == global_readiness_level:
-            message += "  > "
-        else:
-            message += "    "
-        message += ("RL-" + str(i) + ":").ljust(12) + ", ".join(level_whitelist[i]) + "\n"
+    unique_commands = set()
+    for level in level_whitelist:
+        for cmd in level:
+            unique_commands.add(cmd)
+
+    message = "\n\n    " + "Available commands are...".ljust(40)
+    for i in range(0, max_readiness_level+1):
+        message += str(i).ljust(3)
+    message += "\n"
+    for cmd in sorted(unique_commands):
+        message += "    " + cmd.ljust(40)
+        for level in level_whitelist:
+            if cmd in level:
+                message += "[*]"
+            else:
+                message += "   "
+        message += "\n"
     rospy.loginfo(message)
 
 def receive_command(string):
@@ -70,17 +67,32 @@ def get_requested_command(message):
             receive_command(command)
             return
 
-    for regex in persistent_whitelist:
-        if bool(re.match(re.compile("^" + regex + "$"), command)):
-            rospy.logdebug("Command matches persistent pattern: " + regex + ", " + command)
-            pub_command.publish(command)
-            receive_command(command)
-            return
-
-    rospy.loginfo("Command doesn't match any patterns in the current whitelist.")
-    print_help_text()
+    rospy.logwarn("Command doesn't match any patterns in the current whitelist.")
 
 rospy.init_node("readiness_admin", log_level=rospy.DEBUG)
+
+commands = None
+try:
+    commands = rospy.get_param("/commands")
+except:
+    rospy.logerr("Failed to get commands from parameter server. Exiting.")
+    rospy.signal_shutdown("Parameters unavailable.")
+    exit()
+
+
+for dict in commands:
+    cmd = dict.keys()[0]
+    privelage = dict[cmd]
+    if privelage == "all":
+        for s in level_whitelist:
+            s.add(cmd)
+    else:
+        for lv in privelage:
+            if lv <= max_readiness_level:
+                level_whitelist[lv].add(cmd)
+
+rospy.logdebug(str(level_whitelist))
+
 rospy.Subscriber("/requested_commands", String, get_requested_command)
 pub_level = rospy.Publisher("/readiness_level", UInt8, queue_size=10)
 pub_command = rospy.Publisher("/commands", String, queue_size=10)
@@ -88,3 +100,4 @@ pub_command = rospy.Publisher("/commands", String, queue_size=10)
 rospy.Timer(rospy.Duration(1), publish_readiness_level)
 
 rospy.spin()
+

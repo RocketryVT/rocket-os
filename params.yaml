@@ -1,0 +1,42 @@
+solenoid_open_time_sec:                 30
+solenoid_close_time_sec:                30
+
+thermocouple_polling_period_sec:        0.5
+transducer_polling_period_sec:          0.5
+float_switch_polling_period_sec:        1
+
+vent_pressure_start_psi:                1100
+vent_pressure_stop_psi:                 900
+
+commands:
+- read data:                            "all"
+- read data .*:                         "all"
+- stop data:                            "all"
+- listen to .*:                         "all"
+- stop listening to .*:                 "all"
+- stop listening all:                   "all"
+- rosnode list:                         "all"
+- rostopic list:                        "all"
+- uptime:                               "all"
+- print readiness level:                "all"
+- set readiness [0-9]+:                 "all"
+- print whitelist:                      "all"
+- system .*:                            "all"
+- timeout:                              "all"
+- timeout .*:                           "all"
+- fork .*:                              "all"
+- open solenoid:                        [10]
+- close solenoid:                       [10]
+- open ignition valve:                  [10]
+- close ignition valve:                 [10]
+- extend linear actuator:               [10]
+- retract linear actuator:              [10]
+- open vent valve:                      [10]
+- close vent valve:                     [10]
+- crack vent valve:                     [10]
+- fire ematch:                          [10]
+- begin fill:                           [10]
+- end fill:                             [10]
+- launch:                               [10]
+- abort:                                [10]
+- toggle sensor warning suppression:    "all"
