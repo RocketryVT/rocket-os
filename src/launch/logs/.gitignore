@@ -1,4 +1,3 @@
-*
-!.gitignore
-!example/
-!on_beaglebone/
+*.bag
+*.bag.active
+.gitignore

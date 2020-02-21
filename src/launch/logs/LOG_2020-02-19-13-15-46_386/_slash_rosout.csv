@@ -1,0 +1,12 @@
+timestamp,header,seq,stamp,secs,nsecs,frame_id,level,name,msg,file,function,line,topics
+1582136146477181854,,784,,1582136146,466962022,'',2,"""/logging/rosbag_record""","""Closing /home/debian/rocket-os/src/launch/logs/LOG_2020-02-19-13-05-46_385.bag.""","""/home/debian/catkin_ws/src/ros_comm/rosbag/src/recorder.cpp""","""Recorder::stopWriting""",400,[/rosout]
+1582136146534247838,,785,,1582136146,504886227,'',2,"""/logging/rosbag_record""","""Recording to /home/debian/rocket-os/src/launch/logs/LOG_2020-02-19-13-15-46_386.bag.""","""/home/debian/catkin_ws/src/ros_comm/rosbag/src/recorder.cpp""","""Recorder::startWriting""",396,[/rosout]
+1582136204763017940,,3884,,1582136204,758923216,'',2,"""/watchdog""","""Runtime has reached 3860 minutes.""","""/home/debian/rocket-os/src/launch/src/watchdog.cpp""","""TimerEvent&)""",18,"[/rosout, /uptime]"
+1582136265766706914,,3885,,1582136265,760568057,'',2,"""/watchdog""","""Runtime has reached 3861 minutes.""","""/home/debian/rocket-os/src/launch/src/watchdog.cpp""","""TimerEvent&)""",18,"[/rosout, /uptime]"
+1582136326764229239,,3886,,1582136326,758903960,'',2,"""/watchdog""","""Runtime has reached 3863 minutes.""","""/home/debian/rocket-os/src/launch/src/watchdog.cpp""","""TimerEvent&)""",18,"[/rosout, /uptime]"
+1582136387762378827,,3887,,1582136387,758447844,'',2,"""/watchdog""","""Runtime has reached 3864 minutes.""","""/home/debian/rocket-os/src/launch/src/watchdog.cpp""","""TimerEvent&)""",18,"[/rosout, /uptime]"
+1582136448764756902,,3888,,1582136448,759131141,'',2,"""/watchdog""","""Runtime has reached 3865 minutes.""","""/home/debian/rocket-os/src/launch/src/watchdog.cpp""","""TimerEvent&)""",18,"[/rosout, /uptime]"
+1582136509763901740,,3889,,1582136509,758236522,'',2,"""/watchdog""","""Runtime has reached 3866 minutes.""","""/home/debian/rocket-os/src/launch/src/watchdog.cpp""","""TimerEvent&)""",18,"[/rosout, /uptime]"
+1582136569764679233,,3890,,1582136569,758997808,'',2,"""/watchdog""","""Runtime has reached 3867 minutes.""","""/home/debian/rocket-os/src/launch/src/watchdog.cpp""","""TimerEvent&)""",18,"[/rosout, /uptime]"
+1582136630764418581,,3891,,1582136630,759051347,'',2,"""/watchdog""","""Runtime has reached 3868 minutes.""","""/home/debian/rocket-os/src/launch/src/watchdog.cpp""","""TimerEvent&)""",18,"[/rosout, /uptime]"
+1582136691761607885,,3892,,1582136691,757432874,'',2,"""/watchdog""","""Runtime has reached 3869 minutes.""","""/home/debian/rocket-os/src/launch/src/watchdog.cpp""","""TimerEvent&)""",18,"[/rosout, /uptime]"
