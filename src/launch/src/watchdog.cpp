@@ -1,6 +1,7 @@
 // watchdog.cpp
 
 #include <ros/ros.h>
+#include <ros/console.h>
 #include <std_msgs/Duration.h>
 #include <ros/master.h>
 #include <boost/asio/ip/host_name.hpp>
@@ -9,12 +10,18 @@ ros::Time start;
 ros::Publisher pub_uptime;
 std::vector<std::string> nodes;
 
-void keep_time(const ros::TimerEvent &event)
+void publish_time(const ros::TimerEvent &event)
 {
     std_msgs::Duration uptime;
     uptime.data = event.current_real - start;
     pub_uptime.publish(uptime);
-    ROS_INFO_DELAYED_THROTTLE(60, "Runtime has reached %d minutes.",
+}
+
+void print_time(const ros::TimerEvent &event)
+{
+    std_msgs::Duration uptime;
+    uptime.data = event.current_real - start;
+    ROS_DEBUG("Runtime has reached %d minutes.",
         static_cast<int>(uptime.data.toSec()/60));
 }
 
@@ -55,7 +62,11 @@ int main(int argc, char **argv)
     ROS_INFO("Roscore running on URI: %s", ros::master::getURI().c_str());
     ROS_INFO("Hostname is %s", boost::asio::ip::host_name().c_str());
 
-    auto keep_timer = nh.createTimer(ros::Duration(1), keep_time);
+    ros::console::set_logger_level(ROSCONSOLE_DEFAULT_NAME, ros::console::levels::Debug);
+    ros::console::notifyLoggerLevelsChanged();
+
+    auto keep_timer = nh.createTimer(ros::Duration(1), publish_time);
+    auto print_timer = nh.createTimer(ros::Duration(60), print_time);
     auto check_timer = nh.createTimer(ros::Duration(1), check_on_nodes);
 
     ros::spin();
