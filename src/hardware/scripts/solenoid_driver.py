@@ -38,20 +38,15 @@ def control_loop(event):
     if (nominal_state and secs < 4) and not current_state:
         rospy.loginfo("Opening the solenoid")
         current_state = True
-        for i in LED:
-            gpio.output(i, gpio.HIGH)
+        gpio.output(ctrl_pin, gpio.HIGH)
 
     elif not (nominal_state and secs < 4) and current_state:
         rospy.loginfo("Closing the solenoid")
         current_state = False
-        for i in LED:
-            gpio.output(i, gpio.LOW)
+        gpio.output(ctrl_pin, gpio.LOW)
 
 
 gpio.cleanup()
-LED =  [ "USR0" , "USR1", "USR2", "USR3" ]
-for i in LED:
-    gpio.setup(i, gpio.OUT)
 
 rospy.init_node("solenoid_driver");
 sys.argv = rospy.myargv(argv=sys.argv)
