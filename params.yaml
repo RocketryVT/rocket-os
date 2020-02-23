@@ -26,6 +26,7 @@ commands:
 - timeout:                              "all"
 - timeout .*:                           "all"
 - fork .*:                              "all"
+- all stop:                             "all"
 - open solenoid:                        [10]
 - close solenoid:                       [10]
 - open ignition valve:                  [10]

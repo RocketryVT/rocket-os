@@ -4,7 +4,13 @@ from std_msgs.msg import UInt8, String, Bool, Empty
 
 def recieve_command(msg):
 
-    command = msg.data.rstrip()
+    command = msg.data
+
+    if command == "all stop":
+        solenoid_cmdr.publish(False)
+        ignition_cmdr.publish(0)
+        linear_cmdr.publish(0)
+        vent_cmdr.publish(0)
 
     if command == "close solenoid":
         solenoid_cmdr.publish(False)
@@ -12,17 +18,26 @@ def recieve_command(msg):
     elif command == "open solenoid":
         solenoid_cmdr.publish(True)
 
+    elif command == "stop ignition valve":
+        ignition_cmdr.publish(0)
+
     elif command == "close ignition valve":
         ignition_cmdr.publish(1)
 
     elif command == "open ignition valve":
         ignition_cmdr.publish(2)
 
+    elif command == "stop linear actuator":
+        linear_cmdr.publish(0)
+
     elif command == "retract linear actuator":
         linear_cmdr.publish(1)
 
     elif command == "extend linear actuator":
         linear_cmdr.publish(2)
+
+    elif command == "stop vent valve":
+        vent_cmdr.publish(0)
 
     elif command == "close vent valve":
         vent_cmdr.publish(1)

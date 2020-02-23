@@ -5,7 +5,7 @@
 
     <node name="solenoid" pkg="hardware"
           type="solenoid_driver.py" output="screen"
-          args="P9_13">
+          args="P9_26">
     </node>
 
     </group>
