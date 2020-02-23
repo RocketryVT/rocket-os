@@ -9,6 +9,7 @@ vent_pressure_start_psi:                1100
 vent_pressure_stop_psi:                 900
 
 commands:
+- .*:                                   [10]
 - read data:                            "all"
 - read data .*:                         "all"
 - stop data:                            "all"
