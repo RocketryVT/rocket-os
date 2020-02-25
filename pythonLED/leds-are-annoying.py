@@ -17,12 +17,7 @@ LED =  [ "USR0", "USR1", "USR2", "USR3" ]
 for i in LED:
     gpio.setup(i, gpio.OUT)
 
-while True:
-    for i in LED:
-        gpio.output(i, gpio.HIGH)
-        time.sleep(0.5)
-
-    for i in LED:
-        gpio.output(i, gpio.LOW)
-        time.sleep(0.5)
+for i in LED:
+    gpio.output(i, gpio.LOW)
+    time.sleep(0.5)
 
