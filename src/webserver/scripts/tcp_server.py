@@ -11,10 +11,12 @@ import signal
 import time
 import sched
 from datetime import datetime
+import bitarray
 
 import rospy
 from std_msgs.msg import String, Float32
 from rosgraph_msgs.msg import Log
+import Adafruit_BBIO.GPIO as gpio
 
 def get_ip():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -27,33 +29,6 @@ def get_ip():
         s.close()
     return IP
 
-rospy.init_node("tcp_server", log_level=rospy.DEBUG)
-
-pub_command = rospy.Publisher("/requested_commands", String, queue_size=10)
-
-server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-server.setblocking(False)
-
-sys.argv = rospy.myargv(argv=sys.argv)
-
-address = get_ip()
-port = 8001
-rospy.loginfo("Attempting to start server at " + address + ":" + str(port))
-
-try:
-    server.bind((address, port))
-except:
-    rospy.logerr("Error binding to IP and port provided. Please double check.")
-    exit()
-
-server.listen(10)
-
-rospy.loginfo("Started server at " + address + ":" + str(port))
-
-list_of_clients = []
-total_connections = 0
-last_broadcast = datetime.now()
 
 def broadcast(string):
 
@@ -68,6 +43,7 @@ def broadcast(string):
             conn.close()
             remove(client)
 
+
 def ping(event):
 
     seconds = (datetime.now() - last_broadcast).total_seconds()
@@ -75,15 +51,19 @@ def ping(event):
     if seconds > 2 and len(list_of_clients):
         rospy.logdebug("Sending keep-alive message.")
 
+
 def exit_handler():
-    server.close()
+    try:
+        global server
+        server.close()
+    except:
+        pass
     rospy.loginfo("Exiting.")
+
 
 def signal_handler(sig, frame):
     exit()
 
-atexit.register(exit_handler)
-signal.signal(signal.SIGINT, signal_handler)
 
 def remove(client):
     if client in list_of_clients:
@@ -94,6 +74,7 @@ def remove(client):
             rospy.loginfo(str(len(list_of_clients)) + " client(s) remaining")
         except:
             pass
+
 
 def clientthread(idno, conn, addr):
 
@@ -106,6 +87,7 @@ def clientthread(idno, conn, addr):
         except Exception as e:
             if e.errno is 9:
                 exit()
+
 
 def handle_connections(event):
     global total_connections
@@ -121,6 +103,7 @@ def handle_connections(event):
     except Exception as e:
         pass
 
+
 def level_to_str(level):
 
     if level is 1:
@@ -135,12 +118,15 @@ def level_to_str(level):
         return '[FATAL]'
     return '[?????]'
 
+
 def get_rosout(msg):
     time = str(datetime.fromtimestamp(msg.header.stamp.to_sec()))
     broadcast(level_to_str(msg.level) + " [" + time + "] [" + str(msg.name) + "]: " + msg.msg)
+    led = "USR0"
+    gpio.output(led, gpio.HIGH)
+    rospy.sleep(0.1)
+    gpio.output(led, gpio.LOW)
 
-los_start_time = rospy.get_time()
-los_condition = False
 
 def publish_los(event):
 
@@ -161,11 +147,73 @@ def publish_los(event):
 
     pub_los.publish(los_duration)
 
-rospy.Subscriber("/rosout", Log, get_rosout)
-pub_los = rospy.Publisher("/los", Float32, queue_size=10)
 
-rospy.Timer(rospy.Duration(2), ping)
-rospy.Timer(rospy.Duration(0.1), handle_connections)
-rospy.Timer(rospy.Duration(1), publish_los)
+def blink_leds(message):
 
-rospy.spin()
+    word = message.data
+
+    ba = bitarray.bitarray()
+    ba.frombytes(word.encode("utf-8"))
+    l = ba.tolist()
+
+    for led in LEDs:
+        gpio.output(led, gpio.LOW)
+
+    for i in range(len(l)/4):
+        states = l[i*4:(i+1)*4]
+        for led, state in zip(LEDs, states):
+            gpio.output(led, state)
+        time.sleep(0.03)
+
+    for led in LEDs:
+        gpio.output(led, gpio.LOW)
+
+
+if __name__ == "__main__":
+   
+    # register signal handler and exit handler 
+    atexit.register(exit_handler)
+    signal.signal(signal.SIGINT, signal_handler)
+
+    LEDs =  [ "USR0", "USR1", "USR2", "USR3" ]
+    for led in LEDs:
+        gpio.setup(led, gpio.OUT)
+        gpio.output(led, gpio.LOW)
+
+    rospy.init_node("tcp_server", log_level=rospy.DEBUG)
+
+    list_of_clients = []
+    total_connections = 0
+    last_broadcast = datetime.now()
+    los_start_time = rospy.get_time()
+    los_condition = False
+    address = get_ip()
+    port = 8001
+
+    rospy.loginfo("Attempting to start server at " + address + ":" + str(port))
+
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    server.setblocking(False)
+
+    try:
+        server.bind((address, port))
+    except:
+        rospy.logerr("Error binding to IP and port provided. Please double check.")
+        rospy.signal_shutdown("Failed to initialize server.")
+        exit()
+    server.listen(10)
+
+    rospy.loginfo("Started server at " + address + ":" + str(port))
+
+    rospy.Subscriber("/rosout", Log, get_rosout)
+    rospy.Subscriber("/requested_commands", String, blink_leds)
+    pub_los = rospy.Publisher("/los", Float32, queue_size=10)
+    pub_command = rospy.Publisher("/requested_commands", String, queue_size=10)
+
+    rospy.Timer(rospy.Duration(2), ping)
+    rospy.Timer(rospy.Duration(0.1), handle_connections)
+    rospy.Timer(rospy.Duration(1), publish_los)
+
+    rospy.spin()
+
