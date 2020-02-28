@@ -5,7 +5,7 @@
 
     <node name="ox_tank_transducer" pkg="hardware"
           type="pressure_transducer_driver.py" output="screen"
-          args="AIN6">
+          args="AIN5">
     </node>
 
     </group>
