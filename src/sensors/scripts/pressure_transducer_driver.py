@@ -9,7 +9,9 @@ import sys
 
 def voltage_to_pressure(voltage):
 
-    return voltage*900
+    intercept = -106;
+    slope = 50/0.08;
+    return slope*voltage + intercept;
 
 def read_and_publish(event):
 

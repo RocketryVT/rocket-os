@@ -5,7 +5,7 @@
 
     <node name="ignition_valve" pkg="hardware"
           type="motor_driver.py" output="screen"
-          args="P9_18 P9_17">
+          args="P9_17 P9_18">
     </node>
 
     </group>

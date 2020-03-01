@@ -1,0 +1,11 @@
+
+<launch>
+
+    <include file="$(find hardware)/launch/combustion_thermocouple_1.launch" />
+    <include file="$(find hardware)/launch/combustion_thermocouple_2.launch" />
+    <include file="$(find hardware)/launch/combustion_transducer.launch" />
+    <include file="$(find hardware)/launch/ox_tank_thermocouple.launch" />
+    <include file="$(find hardware)/launch/ox_tank_transducer.launch" />
+    <include file="$(find hardware)/launch/float_switch.launch" />
+
+</launch>
