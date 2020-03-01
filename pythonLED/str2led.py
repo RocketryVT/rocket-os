@@ -19,7 +19,7 @@ def blink(word):
         states = l[i*4:(i+1)*4]
         for led, state in zip(LEDs, states):
             gpio.output(led, state)
-        time.sleep(0.03)
+        time.sleep(0.5)
 
     for led in LEDs:
         gpio.output(led, gpio.LOW)

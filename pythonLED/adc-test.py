@@ -18,6 +18,6 @@ pins = ["AIN{}".format(x) for x in range(0,7)]
 while True:
     for pin in pins:
         value = adc.read(pin)*1.8
-        print("{}: {:0.2f} V  ".format(pin, value)),
+        print("{}: {:0.3f} V ".format(pin, value)),
     print("\r"),
 
