@@ -3,7 +3,7 @@
 
     <group ns="sensors">
 
-    <node name="combustion_thermocouple_2" pkg="hardware"
+    <node name="combustion_thermocouple_2" pkg="sensors"
           type="thermocouple_driver.py" output="screen"
           args="AIN2">
     </node>

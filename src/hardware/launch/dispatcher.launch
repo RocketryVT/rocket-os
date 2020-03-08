@@ -3,7 +3,7 @@
 
     <group ns="hardware">
 
-    <node name="driver_dispatcher" pkg="hardware"
+    <node name="dispatcher" pkg="hardware"
           type="dispatcher.py" output="screen">
     </node>
 

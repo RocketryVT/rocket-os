@@ -3,7 +3,7 @@
 
     <group ns="sensors">
 
-    <node name="ox_tank_thermocouple" pkg="hardware"
+    <node name="ox_tank_thermocouple" pkg="sensors"
           type="thermocouple_driver.py" output="screen"
           args="AIN4">
     </node>

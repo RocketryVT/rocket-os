@@ -36,7 +36,7 @@ if adc_pin not in all_pins:
 name = rospy.get_name()
 pub_state = rospy.Publisher(name + "/state", Bool, queue_size=10);
 pub_volt = rospy.Publisher(name + "/voltage", Float32, queue_size=10);
-rospy.Timer(rospy.Duration(1), read_and_publish)
+rospy.Timer(rospy.Duration(0.2), read_and_publish)
 
 rospy.loginfo("Starting float switch driver on ADC " + adc_pin)
 

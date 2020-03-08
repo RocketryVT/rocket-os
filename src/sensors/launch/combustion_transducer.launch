@@ -3,7 +3,7 @@
 
     <group ns="sensors">
 
-    <node name="combustion_transducer" pkg="hardware"
+    <node name="combustion_transducer" pkg="sensors"
           type="pressure_transducer_driver.py" output="screen"
           args="AIN3">
     </node>

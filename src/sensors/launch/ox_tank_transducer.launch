@@ -3,7 +3,7 @@
 
     <group ns="sensors">
 
-    <node name="ox_tank_transducer" pkg="hardware"
+    <node name="ox_tank_transducer" pkg="sensors"
           type="pressure_transducer_driver.py" output="screen"
           args="AIN5">
     </node>

@@ -8,6 +8,23 @@ float_switch_polling_period_sec:        1
 vent_pressure_start_psi:                1100
 vent_pressure_stop_psi:                 900
 
+/hardware/abort_valve/pin_a:            "P9_11"
+/hardware/abort_valve/pin_b:            "P9_12"
+
+/hardware/ematch/pin_a:                 "P9_13"
+/hardware/ematch/pin_b:                 "P9_15"
+/hardware/ematch/delay:                 0.3
+
+/hardware/injection_valve/pin_a:        "P9_18"
+/hardware/injection_valve/pin_b:        "P9_17"
+
+/hardware/linear_actuator/pin_a:        "P9_24"
+/hardware/linear_actuator/pin_b:        "P9_23"
+
+/hardware/solenoid/pin:                 "P9_26"
+/hardware/solenoid/opened:              20
+/hardware/solenoid/closed:              30
+
 commands:
 - .*:                                   [10]
 - read data:                            "all"
