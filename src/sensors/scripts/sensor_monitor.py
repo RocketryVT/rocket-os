@@ -1,129 +1,129 @@
 #! /usr/bin/env python
 
 import rospy
-from std_msgs.msg import String, UInt8, Bool, Float32
+from std_msgs.msg import String, Bool, Float32
 import numpy
 import re
 
-suppress_warnings = False
-suppression_reminder_period = 60 # seconds
-moving_average_period = 500; # readings, not seconds
-warning_period = 10 # min seconds between warnings
-error_period = 5 # min seconds between avg warnings
-nitrous_tank_abort_threshold_psi = 1200
-echo_timer = None
+sensor_timer = None
+voltage_timer = None
 
-def throw_suppression_reminder():
+class Tracker:
 
-    rospy.logwarn_throttle(suppression_reminder_period, "Warnings are being suppressed.")
-
-class SensorTracker:
-
-    def __init__(self, name, unit, limits, ctrl_vent_valve=False):
+    def __init__(self, name, unit=None):
         self.name = name
-        self.limits = limits
         self.unit = unit
-        self.history = []
-        self.ctrl_vent_valve = ctrl_vent_valve
+        self.last = None
 
     def get(self, message):
-        self.history.append(message.data)
-        while len(self.history) > moving_average_period:
-            self.history.pop(0)
-        avg = numpy.mean(self.history)
 
-        (min, max) = self.limits
-        warning = self.name + " {} ({:.2f}) falls outside of nominal bounds (" + str(self.limits) + ")"
+        self.last = message.data
 
-        if message.data < min or message.data > max:
-            if not suppress_warnings:
-                rospy.logwarn_throttle(warning_period, warning.format("reading", message.data))
-            else:
-                throw_suppression_reminder()
+    def to_string(self):
 
-        if avg < min or avg > max:
-            if not suppress_warnings:
-                rospy.logerr_throttle(error_period,
-                    warning.format("average", avg))
-            else:
-                throw_suppression_reminder()
-
-        if self.ctrl_vent_valve and avg > nitrous_tank_abort_threshold_psi:
-            overpressure_detected(message.data, avg)
-
-    def last_reading(self):
-
-        if self.history:
-            return self.history[-1]
-        return None
+        acronym = ''.join([x[0] for x in self.name.split()]).upper()
+        if self.last is None:
+            return "{}: {}".format(acronym, self.last)
+        if self.unit is None:
+            return "{}: {:0.2f}".format(acronym, self.last)
+        return "{}: {:0.2f} {}".format(acronym, self.last, self.unit)
 
 
-def overpressure_detected(current, avg):
+def echo_sensors(event=None):
 
-    rospy.logfatal_throttle(error_period, "Nitrous tank overpressure ({}, {} >1200 psig) detected!".format(current, avg))
+    echo_list_of_trackers(sensor_trackers)
 
 
-def echo_sensors(event):
+def echo_voltage(event=None):
+
+    echo_list_of_trackers(voltage_trackers)
+
+
+def echo_list_of_trackers(trackers):
 
     output = ""
-    for i in range(0, len(trackers)):
-        tracker = trackers[i]
-        acronym = ''.join([x[0] for x in tracker.name.split()]).upper()
-        last = tracker.last_reading()
-        if last is None:
-            last = 'None'
-        else:
-            last = "{:.2f}".format(last)
-        output = output + acronym + ": " + last + " " + tracker.unit
+    for i, tracker in enumerate(trackers):
+        output += tracker.to_string()
         if i < len(trackers) - 1:
             output = output + " / "
     rospy.loginfo(output)
-            
+
 
 def get_command(message):
 
-    global echo_timer
-    global suppress_warnings
+    global sensor_timer
+    global voltage_timer
 
     command = message.data
+
     if command == "read data":
-        echo_sensors(None)
+        echo_sensors()
 
     elif bool(re.match(re.compile("^read data [0-9]+"), command)):
 
         period = float(command.split()[2])
-        if echo_timer:
-            echo_timer.shutdown()
-        echo_timer = rospy.Timer(rospy.Duration(period), echo_sensors)
+        if sensor_timer:
+            sensor_timer.shutdown()
+        sensor_timer = rospy.Timer(rospy.Duration(period), echo_sensors)
 
     elif command == "stop data":
 
-        if echo_timer:
-            echo_timer.shutdown()
-        echo_timer = None
+        if sensor_timer:
+            sensor_timer.shutdown()
+        sensor_timer = None
 
-    elif command == "toggle sensor warning suppression":
+    elif command == "read voltage":
+        echo_voltage()
 
-        suppress_warnings = not suppress_warnings
-        rospy.loginfo("Sensor warning suppression set to " + str(suppress_warnings))
+    elif bool(re.match(re.compile("^read voltage [0-9]+"), command)):
+
+        period = float(command.split()[2])
+        if voltage_timer:
+            voltage_timer.shutdown()
+        voltage_timer = rospy.Timer(rospy.Duration(period), echo_voltage)
+
+    elif command == "stop voltage":
+
+        if voltage_timer:
+            voltage_timer.shutdown()
+        voltage_timer = None
 
 
 rospy.init_node("sensor_monitor")
 
 rospy.Subscriber("/commands", String, get_command)
 
-trackers = [
-    SensorTracker("Oxidizer tank pressure",            "psig",  [0, 900], True),
-    SensorTracker("Combustion chamber pressure",       "psig",  [0, 50]),
-    SensorTracker("Oxidizer tank temperature",         "F",     [0, 95]),
-    SensorTracker("Combustion chamber temperature 1", "F",     [0, 95]),
-    SensorTracker("Combustion chamber temperature 2", "F",     [0, 95])
+sensor_trackers = [
+    Tracker("Oxidizer tank pressure",           "psig"),
+    Tracker("Combustion chamber pressure",      "psig"),
+    Tracker("Oxidizer tank temperature",        "F"),
+    Tracker("Combustion chamber temperature 1", "F"),
+    Tracker("Combustion chamber temperature 2", "F"),
+    Tracker("Float switch")
 ]
 
-rospy.Subscriber("/sensors/ox_tank_transducer/pressure", Float32, trackers[0].get)
-rospy.Subscriber("/sensors/combustion_transducer/pressure", Float32, trackers[1].get)
-rospy.Subscriber("/sensors/ox_tank_thermocouple/temperature", Float32, trackers[2].get)
-rospy.Subscriber("/sensors/combustion_thermocouple_1/temperature", Float32, trackers[3].get)
-rospy.Subscriber("/sensors/combustion_thermocouple_2/temperature", Float32, trackers[4].get)
+voltage_trackers = [
+    Tracker("Oxidizer tank pressure",           "V"),
+    Tracker("Combustion chamber pressure",      "V"),
+    Tracker("Oxidizer tank temperature",        "V"),
+    Tracker("Combustion chamber temperature 1", "V"),
+    Tracker("Combustion chamber temperature 2", "V"),
+    Tracker("Float switch",                     "V")
+]
+
+rospy.Subscriber("/sensors/ox_tank_transducer/pressure", Float32, sensor_trackers[0].get)
+rospy.Subscriber("/sensors/combustion_transducer/pressure", Float32, sensor_trackers[1].get)
+rospy.Subscriber("/sensors/ox_tank_thermocouple/temperature", Float32, sensor_trackers[2].get)
+rospy.Subscriber("/sensors/combustion_thermocouple_1/temperature", Float32, sensor_trackers[3].get)
+rospy.Subscriber("/sensors/combustion_thermocouple_2/temperature", Float32, sensor_trackers[4].get)
+rospy.Subscriber("/sensors/float_switch/state", Bool, sensor_trackers[5].get)
+
+rospy.Subscriber("/sensors/ox_tank_transducer/voltage", Float32, voltage_trackers[0].get)
+rospy.Subscriber("/sensors/combustion_transducer/voltage", Float32, voltage_trackers[1].get)
+rospy.Subscriber("/sensors/ox_tank_thermocouple/voltage", Float32, voltage_trackers[2].get)
+rospy.Subscriber("/sensors/combustion_thermocouple_1/voltage", Float32, voltage_trackers[3].get)
+rospy.Subscriber("/sensors/combustion_thermocouple_2/voltage", Float32, voltage_trackers[4].get)
+rospy.Subscriber("/sensors/float_switch/voltage", Float32, voltage_trackers[5].get)
 
 rospy.spin()
+
