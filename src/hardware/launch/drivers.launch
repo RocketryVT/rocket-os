@@ -1,11 +1,11 @@
 
 <launch>
 
-    <include file="$(find hardware)/launch/ignition_valve_driver.launch" />
-    <include file="$(find hardware)/launch/vent_valve_driver.launch" />
-    <include file="$(find hardware)/launch/linear_actuator_driver.launch" />
-    <include file="$(find hardware)/launch/solenoid_driver.launch" />
-    <include file="$(find hardware)/launch/ematch_driver.launch" />
+    <include file="$(find hardware)/launch/injection_valve.launch" />
+    <include file="$(find hardware)/launch/abort_valve.launch" />
+    <include file="$(find hardware)/launch/linear_actuator.launch" />
+    <include file="$(find hardware)/launch/solenoid.launch" />
+    <include file="$(find hardware)/launch/ematch.launch" />
     <include file="$(find hardware)/launch/dispatcher.launch" />
 
 </launch>

@@ -1,0 +1,13 @@
+
+<launch>
+
+    <group ns="sensors">
+
+    <node name="float_switch" pkg="sensors"
+          type="liquid_level_switch_driver.py" output="screen"
+          args="AIN6">
+    </node>
+
+    </group>
+
+</launch>

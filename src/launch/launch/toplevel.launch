@@ -2,11 +2,16 @@
 <launch>
 
     <rosparam command="load" file="/home/debian/rocket-os/params.yaml" />
+
     <include file="$(find launch)/launch/logging.launch" />
+
+    <group ns="top">
+
     <include file="$(find launch)/launch/watchdog.launch" />
     <include file="$(find webserver)/launch/webserver.launch" />
     <include file="$(find launch)/launch/readiness_admin.launch" />
     <include file="$(find launch)/launch/listener.launch" />
-    <include file="$(find launch)/launch/rosnode_lister.launch" />
+
+    </group>
 
 </launch>

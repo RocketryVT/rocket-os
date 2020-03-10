@@ -1,0 +1,13 @@
+
+<launch>
+
+    <group ns="hardware">
+
+    <node name="injection_valve" pkg="hardware"
+          type="motor_driver.py" output="screen"
+          args="P9_17 P9_18">
+    </node>
+
+    </group>
+
+</launch>

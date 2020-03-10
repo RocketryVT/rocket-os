@@ -33,14 +33,14 @@ def control_loop(event):
     global nominal_state
     global current_state
 
-    secs = rospy.Time.now().to_sec() % 10
+    secs = rospy.Time.now().to_sec() % (opened_secs + closed_secs)
 
-    if (nominal_state and secs < 4) and not current_state:
+    if (nominal_state and secs < opened_secs) and not current_state:
         rospy.loginfo("Opening the solenoid")
         current_state = True
         gpio.output(ctrl_pin, gpio.HIGH)
 
-    elif not (nominal_state and secs < 4) and current_state:
+    elif not (nominal_state and secs < opened_secs) and current_state:
         rospy.loginfo("Closing the solenoid")
         current_state = False
         gpio.output(ctrl_pin, gpio.LOW)
@@ -49,13 +49,18 @@ def control_loop(event):
 gpio.cleanup()
 
 rospy.init_node("solenoid_driver");
-sys.argv = rospy.myargv(argv=sys.argv)
-if len(sys.argv) is not 2:
-    rospy.logerr("Requires a control pin via args")
+name = rospy.get_name()
+name = rospy.get_name()
+try:
+    ctrl_pin = rospy.get_param(name + "/pin")
+    opened_secs = rospy.get_param(name + "/opened")
+    closed_secs = rospy.get_param(name + "/closed")
+except:
+    rospy.logerr("Failed to retrieve configuration from rosparam server.")
+    rospy.signal_shutdown("Unavailable config.")
     exit()
-
-ctrl_pin = sys.argv[1]
 rospy.loginfo("Starting solenoid driver on pin " + ctrl_pin)
+rospy.loginfo("Using {} s, {} s open-close cycle.".format(opened_secs, closed_secs))
 
 success = False
 max_attempts = 10
@@ -78,9 +83,10 @@ if not success:
 
 gpio.output(ctrl_pin, gpio.LOW)
 
-name = rospy.get_name()
 rospy.Subscriber(name + "/command", Bool, recieve_command);
 rospy.Timer(rospy.Duration(0.5), control_loop)
+
+
 rospy.loginfo("Success.")
 rospy.spin()
 

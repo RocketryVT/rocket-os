@@ -1,0 +1,13 @@
+
+<launch>
+
+    <group ns="hardware">
+
+    <node name="abort_valve" pkg="hardware"
+          type="motor_driver.py" output="screen"
+          args="P9_11 P9_12">
+    </node>
+
+    </group>
+
+</launch>

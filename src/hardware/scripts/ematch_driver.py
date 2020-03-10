@@ -10,8 +10,6 @@ import signal
 import sys
 import random
 
-delay = 0.2 # seconds
-
 def signal_handler(sig, frame):
     gpio.cleanup()
     exit(0)
@@ -35,14 +33,18 @@ signal.signal(signal.SIGINT, signal_handler)
 gpio.cleanup()
 
 rospy.init_node("ematch_driver");
-sys.argv = rospy.myargv(argv=sys.argv)
-if len(sys.argv) is not 3:
-    rospy.logerr("Requires two control pins provided in args")
-    exit()
+name = rospy.get_name()
 
-ctrl_pin_a = sys.argv[1]
-ctrl_pin_b = sys.argv[2]
+try:
+    ctrl_pin_a = rospy.get_param(name + "/pin_a")
+    ctrl_pin_b = rospy.get_param(name + "/pin_b")
+    delay = rospy.get_param(name + "/delay")
+except:
+    rospy.logerr("Failed to retrieve configuration from rosparam server.")
+    rospy.signal_shutdown("Unavailable config.")
+    exit()
 rospy.loginfo("Starting e-match driver on pins " + ctrl_pin_a + ", " + ctrl_pin_b)
+rospy.loginfo("Using a delay of {} seconds.".format(delay))
 
 success = False
 max_attempts = 10
@@ -67,7 +69,6 @@ if not success:
 gpio.output(ctrl_pin_a, gpio.LOW)
 gpio.output(ctrl_pin_b, gpio.LOW)
 
-name = rospy.get_name()
 rospy.Subscriber(name + "/command", Empty, recieve_command);
 rospy.loginfo("Success.")
 rospy.spin()

@@ -31,12 +31,16 @@ def recieve_command(command):
 
 
 rospy.init_node("motor_driver", log_level=rospy.DEBUG);
-sys.argv = rospy.myargv(argv=sys.argv)
-if len(sys.argv) is not 3:
-    rospy.logerr("Requires two pins as arguments: <cw> <ccw>")
+name = rospy.get_name()
+
+try:
+    cw_pin = rospy.get_param(name + "/pin_a")
+    ccw_pin = rospy.get_param(name + "/pin_b")
+except:
+    rospy.logerr("Failed to retrieve pin config from rosparam server.")
+    rospy.signal_shutdown("Unavailable pin config.")
     exit()
-cw_pin = sys.argv[1]
-ccw_pin = sys.argv[2]
+
 rospy.loginfo("Starting DC motor driver on pins " + cw_pin + ", " + ccw_pin)
 
 success = False
@@ -61,7 +65,7 @@ if not success:
 
 gpio.output(cw_pin, gpio.LOW)
 gpio.output(ccw_pin, gpio.LOW)
-name = rospy.get_name()
+
 rospy.Subscriber(name + "/command", UInt8, recieve_command);
 rospy.loginfo("Success.")
 rospy.spin()
