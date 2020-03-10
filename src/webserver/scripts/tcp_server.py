@@ -50,6 +50,11 @@ def ping(event):
 
     if seconds > 2 and len(list_of_clients):
         rospy.logdebug("Sending keep-alive message.")
+    
+    led = "USR3"
+    gpio.output(led, gpio.HIGH)
+    rospy.sleep(0.1)
+    gpio.output(led, gpio.LOW)
 
 
 def exit_handler():
