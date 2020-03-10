@@ -2,6 +2,6 @@
 <launch>
 
     <node name="watchdog" pkg="launch"
-          type="watchdog" output="screen" />
+          type="binaydog.py" output="screen" />
 
 </launch>
