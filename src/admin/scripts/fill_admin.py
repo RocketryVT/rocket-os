@@ -1,17 +1,23 @@
 #! /usr/bin/env python
 
 import rospy
-from std_msgs.msg import String, UInt8, Bool, Float32
+from std_msgs.msg import String, Bool, UInt8, Float32
 
 last_pressure = None
 last_lls = None
 fill_ongoing = False
-max_safe_pressure = 1100 # psig
+max_safe_pressure = 900 # psig
+
+def toggle_fill(state):
+
+    global fill_ongoing
+    fill_ongoing = state
+    solenoid_cmd.publish(state)
 
 def print_relevant_data(event):
 
-    if last_pressure is not None and last_lls is not None and fill_ongoing:
-        rospy.loginfo("Current pressure: {:0.2f} psig; LLS: {}".format(last_pressure, last_lls))
+    if fill_ongoing:
+        rospy.loginfo("Current pressure: {} psig; LLS: {}".format(last_pressure, last_lls))
 
 def get_pressure(message):
 
@@ -21,7 +27,7 @@ def get_pressure(message):
 
     if message.data > max_safe_pressure and fill_ongoing:
         rospy.logwarn("Maximum safe pressure exceeded -- stopping fill!")
-        fill_ongoing = False
+        toggle_fill(False)
 
 def get_lls_reading(message):
 
@@ -31,20 +37,20 @@ def get_lls_reading(message):
 
     if message.data and fill_ongoing:
         rospy.logwarn("Liquid level switch tripped -- stopping fill!")
-        fill_ongoing = False
+        toggle_fill(False)
 
 def get_command(message):
 
     global fill_ongoing
     command = message.data
 
-    if command == "begin fill":
+    if command == "begin fill" or command == "start fill":
         rospy.logwarn("Beginning nitrous oxide fill.")
-        fill_ongoing = True
-
-    elif command == "end fill":
+        toggle_fill(True)       
+ 
+    elif command == "end fill" or command == "stop fill":
         rospy.logwarn("Ending nitrous oxide fill.")
-        fill_ongoing = False
+        toggle_fill(False)
 
 
 rospy.init_node("fill_admin")
@@ -52,7 +58,14 @@ rospy.init_node("fill_admin")
 rospy.Subscriber("/commands", String, get_command)
 rospy.Subscriber("/sensors/float_switch/state", Bool, get_lls_reading)
 rospy.Subscriber("/sensors/ox_tank_transducer/pressure", Float32, get_pressure)
+solenoid_cmd = rospy.Publisher("/hardware/solenoid/request", UInt8, queue_size=10)
 
-rospy.Timer(rospy.Duration(10), print_relevant_data)
+rospy.sleep(1)
+
+rospy.loginfo("Assuming primary control of the solenoid.")
+solenoid_cmd.publish(0)
+
+rospy.Timer(rospy.Duration(3), print_relevant_data)
 
 rospy.spin()
+
