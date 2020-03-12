@@ -1,0 +1,12 @@
+
+<launch>
+
+    <group ns="hardware">
+
+    <node name="scheduler" pkg="hardware"
+          type="scheduler.py" output="screen">
+    </node>
+
+    </group>
+
+</launch>

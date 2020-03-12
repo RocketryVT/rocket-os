@@ -3,7 +3,7 @@
 # solenoid_driver.py
 
 import rospy
-from std_msgs.msg import Bool
+from std_msgs.msg import UInt8
 import sys
 import Adafruit_BBIO.GPIO as gpio
 import time
@@ -20,11 +20,11 @@ def signal_handler(sig, frame):
 def recieve_command(command):
 
     global nominal_state
-    if command.data:
+    if command.data == 1:
         rospy.loginfo("Enable solenoid open cycle")
         nominal_state = True
 
-    else:
+    elif command.data == 0:
         rospy.loginfo("Disable solenoid open cycle")
         nominal_state = False
 
@@ -83,7 +83,7 @@ if not success:
 
 gpio.output(ctrl_pin, gpio.LOW)
 
-rospy.Subscriber(name + "/command", Bool, recieve_command);
+rospy.Subscriber(name + "/command", UInt8, recieve_command);
 rospy.Timer(rospy.Duration(0.5), control_loop)
 
 
