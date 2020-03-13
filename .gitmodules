@@ -1,6 +1,0 @@
-[submodule "src/models/lambda"]
-	path = src/models/lambda
-	url = https://github.com/jwade109/lambda
-[submodule "src/models/Lambda-Trajectory-Sim"]
-	path = src/models/Lambda-Trajectory-Sim
-	url = https://github.com/MattMarti/Lambda-Trajectory-Sim

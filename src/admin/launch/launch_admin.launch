@@ -1,0 +1,12 @@
+
+<launch>
+
+    <group ns="admin">
+
+    <node name="launch" pkg="admin"
+          type="launch_admin.py" output="screen">
+    </node>
+
+    </group>
+
+</launch>
