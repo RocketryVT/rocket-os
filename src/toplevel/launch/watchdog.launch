@@ -1,7 +1,7 @@
 
 <launch>
 
-    <node name="watchdog" pkg="launch"
+    <node name="watchdog" pkg="toplevel"
           type="binaydog.py" output="screen" />
 
 </launch>

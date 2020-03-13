@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(launch)
+project(admin)
 
 add_compile_options(-std=c++11)
 
@@ -19,5 +19,3 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(watchdog src/watchdog.cpp)
-target_link_libraries(watchdog ${catkin_LIBRARIES})

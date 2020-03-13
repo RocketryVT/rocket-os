@@ -1,7 +1,7 @@
 
 <launch>
 
-    <include file="$(find launch)/launch/toplevel.launch" />
+    <include file="$(find toplevel)/launch/toplevel.launch" />
     <include file="$(find hardware)/launch/hardware.launch" />
 
 </launch>

@@ -1,7 +1,7 @@
 
 <launch>
 
-    <node name="readiness_admin" pkg="launch"
+    <node name="readiness_admin" pkg="toplevel"
           type="readiness_admin.py" output="screen" />
 
 </launch>
