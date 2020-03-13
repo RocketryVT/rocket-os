@@ -1,0 +1,17 @@
+
+<launch>
+
+    <rosparam command="load" file="/home/debian/rocket-os/params.yaml" />
+
+    <include file="$(find toplevel)/launch/logging.launch" />
+
+    <group ns="top">
+
+    <include file="$(find toplevel)/launch/watchdog.launch" />
+    <include file="$(find webserver)/launch/webserver.launch" />
+    <include file="$(find toplevel)/launch/readiness_admin.launch" />
+    <include file="$(find toplevel)/launch/listener.launch" />
+
+    </group>
+
+</launch>
