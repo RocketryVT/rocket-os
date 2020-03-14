@@ -1,6 +1,6 @@
 <launch>
 
-    <node name="listener" pkg="launch"
+    <node name="listener" pkg="toplevel"
           type="listener.py" output="screen" />
 
 </launch>

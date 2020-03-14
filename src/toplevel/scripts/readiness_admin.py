@@ -56,18 +56,37 @@ def receive_command(string):
             global_readiness_level = new_level
             rospy.loginfo("Set readiness level to " + str(new_level))
 
+def write_overly_permissive_to_yaml(command):
+
+    try:
+        with open("/home/debian/rocket-os/params.yaml", "a+") as yaml:
+            yaml.write('\n# - {}: \"[10]"'.format(command))
+    except Exception as e:
+        rospy.logdebug("Error recording overly permissive command to YAML: {}".format(e))
+
 def get_requested_command(message):
 
     command = message.data
 
+    matches = []
     for regex in level_whitelist[global_readiness_level]:
         if bool(re.match(re.compile("^" + regex + "$"), command)):
-            rospy.logdebug("Command matches current pattern: " + regex + ", " + command)
-            pub_command.publish(command)
-            receive_command(command)
-            return
+            matches.append(regex)
 
-    rospy.logwarn("Command doesn't match any patterns in the current whitelist.")
+    # find the best match; that is; the least permissive one, roughly the longest one
+    matches = sorted(matches, key=len)
+    if matches:
+        rospy.logdebug("Command '{}' matches these patterns: {}".format(command, matches))
+        best_match = matches[-1]
+        if best_match == ".*":
+            rospy.logwarn("Command's best match was the wildcard pattern, '.*' --" +
+                          "This may represent a security vulnerability.")
+            write_overly_permissive_to_yaml(command)
+        pub_command.publish(command)
+        receive_command(command)
+
+    else:
+        rospy.logwarn("Command doesn't match any patterns in the current whitelist.")
 
 rospy.init_node("readiness_admin", log_level=rospy.DEBUG)
 
