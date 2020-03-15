@@ -39,16 +39,30 @@ def get_lls_reading(message):
         rospy.logwarn("Liquid level switch tripped -- stopping fill!")
         toggle_fill(False)
 
+def get_los(message):
+
+    seconds = message.data
+    if seconds and fill_ongoing:
+        rospy.logwarn("LOS detected -- stopping fill!")
+        toggle_fill(False)
+
+def get_readiness(message):
+
+    readiness = message.data
+    if readiness != 2 and fill_ongoing:
+        rospy.logwarn("Fill only enabled for readiness level 2.")
+        toggle_fill(False)
+
 def get_command(message):
 
     global fill_ongoing
     command = message.data
 
-    if command == "begin fill" or command == "start fill":
+    if command == "begin fill":
         rospy.logwarn("Beginning nitrous oxide fill.")
         toggle_fill(True)       
  
-    elif command == "end fill" or command == "stop fill":
+    elif command == "end fill":
         rospy.logwarn("Ending nitrous oxide fill.")
         toggle_fill(False)
 
@@ -56,6 +70,8 @@ def get_command(message):
 rospy.init_node("fill_admin")
 
 rospy.Subscriber("/commands", String, get_command)
+rospy.Subscriber("/los", Float32, get_los)
+rospy.Subscriber("/readiness_level", UInt8, get_readiness)
 rospy.Subscriber("/sensors/float_switch/state", Bool, get_lls_reading)
 rospy.Subscriber("/sensors/ox_tank_transducer/pressure", Float32, get_pressure)
 solenoid_cmd = rospy.Publisher("/hardware/solenoid/request", UInt8, queue_size=10)

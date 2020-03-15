@@ -22,7 +22,7 @@ vent_pressure_stop_psi:                 600
 /hardware/linear_actuator/pin_b:        "P9_23"
 
 /hardware/solenoid/pin:                 "P9_26"
-/hardware/solenoid/opened:              20
+/hardware/solenoid/opened:              30
 /hardware/solenoid/closed:              30
 
 # sensor pins and polling periods, in seconds
@@ -40,10 +40,12 @@ vent_pressure_stop_psi:                 600
 /sensors/float_switch/period:               0.2
 
 commands:
-- .*:                                   [10]
 - read data:                            "all"
 - read data .*:                         "all"
 - stop data:                            "all"
+- read voltage:                         "all"
+- read voltage .*:                      "all"
+- stop voltage:                         "all"
 - listen to .*:                         "all"
 - stop listening to .*:                 "all"
 - stop listening all:                   "all"
@@ -51,25 +53,29 @@ commands:
 - rostopic list:                        "all"
 - uptime:                               "all"
 - print readiness level:                "all"
-- set readiness [0-9]+:                 "all"
+- elevate readiness:                    "all"
+- reduce readiness:                     "all"
 - print whitelist:                      "all"
 - system .*:                            "all"
 - timeout:                              "all"
 - timeout .*:                           "all"
 - fork .*:                              "all"
+
 - all stop:                             "all"
-- open solenoid:                        [10]
-- close solenoid:                       [10]
-- open ignition valve:                  [10]
-- close ignition valve:                 [10]
-- extend linear actuator:               [10]
-- retract linear actuator:              [10]
-- open vent valve:                      [10]
-- close vent valve:                     [10]
-- crack vent valve:                     [10]
-- fire ematch:                          [10]
-- begin fill:                           [10]
-- end fill:                             [10]
-- launch:                               [10]
-- abort:                                [10]
-- toggle sensor warning suppression:    "all"
+- abort:                                "all"
+
+- open solenoid:                        []
+- close solenoid:                       []
+- open ignition valve:                  []
+- close ignition valve:                 []
+- extend linear actuator:               []
+- retract linear actuator:              []
+- open vent valve:                      []
+- close vent valve:                     []
+- crack vent valve:                     []
+- fire ematch:                          []
+
+- begin fill:                           [2]
+- end fill:                             [2, 3]
+- launch:                               [9]
+
