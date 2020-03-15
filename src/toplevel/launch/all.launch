@@ -2,6 +2,8 @@
 <launch>
 
     <include file="$(find toplevel)/launch/toplevel.launch" />
-    <include file="$(find hardware)/launch/hardware.launch" />
+    <include file="$(find hardware)/launch/drivers.launch" />
+    <include file="$(find sensors)/launch/sensors.launch" />
+    <include file="$(find admin)/launch/admin.launch" />
 
 </launch>
