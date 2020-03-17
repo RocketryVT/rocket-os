@@ -1,0 +1,546 @@
+Log beginning Tuesday, 17 March 2020 05:46:21 PM
+[INFO]  [2020-03-17 17:15:30.896502] [/top/tcp_server]: New connection: (0, ('192.168.1.111', 52973))
+[DEBUG] [2020-03-17 17:15:31.074893] [/top/tcp_server]: node[/top/tcp_server, http://gandalf:34279/] entering spin(), pid[4265]
+[DEBUG] [2020-03-17 17:15:31.221458] [/top/watchdog]: connecting to gandalf 33345
+[INFO]  [2020-03-17 17:15:31.211139] [/top/tcp_server]: 1 active connection(s)
+[DEBUG] [2020-03-17 17:15:31.477288] [/top/tcp_server]: connecting to gandalf 51345
+[INFO]  [2020-03-17 17:15:19.987106] [/logging/rosbag_record]: Subscribing to /uptime
+[DEBUG] [2020-03-17 17:15:31.952575] [/top/tcp_server]: connecting to gandalf 40267
+[DEBUG] [2020-03-17 17:15:32.035747] [/top/readiness_admin]: connecting to gandalf 40267
+[DEBUG] [2020-03-17 17:15:32.021365] [/top/tcp_server]: connecting to gandalf 42045
+[INFO]  [2020-03-17 17:15:32.259475] [/logging/rosbag_record]: Subscribing to /hardware/injection_valve/request
+[DEBUG] [2020-03-17 17:15:32.519081] [/hardware/scheduler]: connecting to gandalf 35065
+[INFO]  [2020-03-17 17:15:32.541442] [/sensors/combustion_thermocouple_2]: Starting thermocouple driver on ADC AIN2 and polling period 0.2 seconds.
+[INFO]  [2020-03-17 17:15:32.861366] [/sensors/combustion_thermocouple_1]: Starting thermocouple driver on ADC AIN1 and polling period 0.2 seconds.
+[INFO]  [2020-03-17 17:15:32.977713] [/sensors/combustion_transducer]: Starting pressure transducer driver on ADC AIN3 and polling period 0.2 seconds.
+[INFO]  [2020-03-17 17:15:32.983325] [/sensors/ox_tank_thermocouple]: Starting thermocouple driver on ADC AIN4 and polling period 0.2 seconds.
+[INFO]  [2020-03-17 17:15:33.131082] [/sensors/ox_tank_transducer]: Starting pressure transducer driver on ADC AIN5 and polling period 0.2 seconds.
+[INFO]  [2020-03-17 17:15:33.316766] [/sensors/float_switch]: Starting float switch driver on ADC AIN6 and polling period 0.2 seconds.
+[DEBUG] [2020-03-17 17:15:34.204154] [/hardware/scheduler]: connecting to gandalf 35065
+[INFO]  [2020-03-17 17:15:34.491277] [/logging/rosbag_record]: Subscribing to /hardware/ematch/command
+[DEBUG] [2020-03-17 17:15:35.145906] [/hardware/scheduler]: connecting to gandalf 35065
+[DEBUG] [2020-03-17 17:15:35.736167] [/hardware/scheduler]: node[/hardware/scheduler, http://gandalf:42429/] entering spin(), pid[4360]
+[DEBUG] [2020-03-17 17:15:35.925358] [/hardware/scheduler]: connecting to gandalf 35065
+[INFO]  [2020-03-17 17:15:36.034656] [/logging/rosbag_record]: Subscribing to /hardware/solenoid/request
+[WARN]  [2020-03-17 17:15:36.489573] [/hardware/ematch]: 1: Failed to configure. Waiting for 20 seconds before reattempt.
+[INFO]  [2020-03-17 17:15:37.114613] [/logging/rosbag_record]: Subscribing to /commands
+[INFO]  [2020-03-17 17:15:37.911889] [/logging/rosbag_record]: Subscribing to /hardware/injection_valve/command
+[INFO]  [2020-03-17 17:15:38.602401] [/logging/rosbag_record]: Subscribing to /los
+[WARN]  [2020-03-17 17:15:39.386754] [/hardware/linear_actuator]: 1: Failed to configure. Waiting for 7 seconds before reattempt.
+[INFO]  [2020-03-17 17:15:39.420741] [/logging/rosbag_record]: Subscribing to /hardware/abort_valve/request
+[INFO]  [2020-03-17 17:15:40.391508] [/logging/rosbag_record]: Subscribing to /sensors/combustion_thermocouple_1/temperature
+[INFO]  [2020-03-17 17:15:41.002229] [/logging/rosbag_record]: Subscribing to /readiness_level
+[INFO]  [2020-03-17 17:15:41.428257] [/logging/rosbag_record]: Subscribing to /sensors/ox_tank_thermocouple/temperature
+[INFO]  [2020-03-17 17:15:41.970038] [/logging/rosbag_record]: Subscribing to /sensors/combustion_transducer/pressure
+[WARN]  [2020-03-17 17:15:42.405137] [/hardware/abort_valve]: 1: Failed to configure. Waiting for 12 seconds before reattempt.
+[INFO]  [2020-03-17 17:15:42.597378] [/logging/rosbag_record]: Subscribing to /hardware/linear_actuator/request
+[INFO]  [2020-03-17 17:15:43.206813] [/logging/rosbag_record]: Subscribing to /sensors/combustion_thermocouple_2/temperature
+[INFO]  [2020-03-17 17:15:43.630254] [/logging/rosbag_record]: Subscribing to /requested_commands
+[INFO]  [2020-03-17 17:15:44.319821] [/logging/rosbag_record]: Subscribing to /sensors/combustion_thermocouple_2/voltage
+[INFO]  [2020-03-17 17:15:44.848234] [/logging/rosbag_record]: Subscribing to /sensors/ox_tank_transducer/voltage
+[INFO]  [2020-03-17 17:15:45.405973] [/logging/rosbag_record]: Subscribing to /hardware/linear_actuator/command
+[INFO]  [2020-03-17 17:15:45.959946] [/logging/rosbag_record]: Subscribing to /hardware/abort_valve/command
+[INFO]  [2020-03-17 17:15:46.457144] [/logging/rosbag_record]: Subscribing to /sensors/combustion_transducer/voltage
+[INFO]  [2020-03-17 17:15:47.395712] [/logging/rosbag_record]: Subscribing to /sensors/float_switch/state
+[INFO]  [2020-03-17 17:15:47.440862] [/hardware/linear_actuator]: Success.
+[DEBUG] [2020-03-17 17:15:47.615293] [/hardware/linear_actuator]: node[/hardware/linear_actuator, http://gandalf:34793/] entering spin(), pid[4334]
+[DEBUG] [2020-03-17 17:15:48.128484] [/hardware/linear_actuator]: connecting to gandalf 37963
+[INFO]  [2020-03-17 17:15:48.298854] [/hardware/solenoid]: Success.
+[INFO]  [2020-03-17 17:15:48.831166] [/hardware/injection_valve]: Success.
+[INFO]  [2020-03-17 17:15:49.035559] [/logging/rosbag_record]: Subscribing to /sensors/ox_tank_thermocouple/voltage
+[DEBUG] [2020-03-17 17:15:49.021851] [/hardware/injection_valve]: node[/hardware/injection_valve, http://gandalf:45383/] entering spin(), pid[4321]
+[DEBUG] [2020-03-17 17:15:49.344789] [/hardware/injection_valve]: connecting to gandalf 37963
+[INFO]  [2020-03-17 17:15:49.707447] [/logging/rosbag_record]: Subscribing to /sensors/ox_tank_transducer/pressure
+[INFO]  [2020-03-17 17:15:50.359310] [/logging/rosbag_record]: Subscribing to /hardware/solenoid/command
+[INFO]  [2020-03-17 17:15:51.021469] [/logging/rosbag_record]: Subscribing to /sensors/float_switch/voltage
+[INFO]  [2020-03-17 17:15:51.811365] [/logging/rosbag_record]: Subscribing to /sensors/combustion_thermocouple_1/voltage
+[DEBUG] [2020-03-17 17:15:54.469435] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:15:55.211903] [/hardware/abort_valve]: Success.
+[DEBUG] [2020-03-17 17:15:55.341098] [/hardware/abort_valve]: node[/hardware/abort_valve, http://gandalf:34167/] entering spin(), pid[4326]
+[DEBUG] [2020-03-17 17:15:55.628470] [/hardware/abort_valve]: connecting to gandalf 37963
+[INFO]  [2020-03-17 17:15:57.276997] [/hardware/ematch]: Success.
+[DEBUG] [2020-03-17 17:16:00.473674] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:16:04.472627] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:16:08.470025] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:16:12.469883] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:16:16.471493] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:16:19.223005] [/top/watchdog]: Runtime has reached: 1 minutes.
+[DEBUG] [2020-03-17 17:16:22.469797] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:16:26.469943] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:16:30.471925] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:16:34.471029] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:16:38.470194] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:16:42.473997] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:16:46.470229] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:16:50.470038] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:16:54.472091] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:16:58.469451] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:17:02.488115] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:17:06.469750] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:17:10.470020] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:17:14.470085] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:17:18.470227] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:17:19.220065] [/top/watchdog]: Runtime has reached: 2 minutes.
+[DEBUG] [2020-03-17 17:17:22.469613] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:17:26.486789] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:17:30.476669] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:17:34.469541] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:17:38.471423] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:17:42.471808] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:17:46.470986] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:17:50.469467] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:17:54.470203] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:17:58.471301] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:18:02.471128] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:18:06.471017] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:18:10.469953] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:18:14.470225] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:18:18.470833] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:18:19.209888] [/top/watchdog]: Runtime has reached: 3 minutes.
+[INFO]  [2020-03-17 17:18:19.405362] [/top/tcp_server]: Command from #0: toggle backdoor
+[WARN]  [2020-03-17 17:18:19.467443] [/top/readiness_admin]: Enabled backdoor. All commands now permitted.
+[DEBUG] [2020-03-17 17:18:22.469990] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:18:26.471868] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:18:27.532324] [/top/tcp_server]: Command from #0: open injection valve
+[DEBUG] [2020-03-17 17:18:28.134796] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:18:28.320457] [/hardware/scheduler]: Reservation for /hardware/injection_valve/request changed from None (-1), None to /hardware/dispatcher (2), 2.
+[INFO]  [2020-03-17 17:18:28.423368] [/hardware/injection_valve]: Turning the motor counterclockwise
+[DEBUG] [2020-03-17 17:18:30.469468] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:18:34.469538] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:18:38.471785] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:18:40.419369] [/top/tcp_server]: Command from #0: close injection valve
+[DEBUG] [2020-03-17 17:18:40.643606] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:18:40.771175] [/hardware/scheduler]: Reservation for /hardware/injection_valve/request changed from /hardware/dispatcher (2), 2 to /hardware/dispatcher (2), 1.
+[INFO]  [2020-03-17 17:18:40.844958] [/hardware/injection_valve]: Turning the motor clockwise
+[DEBUG] [2020-03-17 17:18:44.469469] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:18:48.469347] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:18:52.470209] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:18:56.469160] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:19:00.469122] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:19:01.676929] [/top/tcp_server]: Command from #0: open abort valve
+[DEBUG] [2020-03-17 17:19:01.797275] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:19:01.943724] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from None (-1), None to /hardware/dispatcher (2), 2.
+[INFO]  [2020-03-17 17:19:02.034497] [/hardware/abort_valve]: Turning the motor counterclockwise
+[DEBUG] [2020-03-17 17:19:04.471918] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:19:08.469672] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:19:12.469787] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:19:14.663292] [/top/tcp_server]: Command from #0: close abort valve
+[DEBUG] [2020-03-17 17:19:14.791893] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:19:14.937057] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 2 to /hardware/dispatcher (2), 1.
+[INFO]  [2020-03-17 17:19:15.027497] [/hardware/abort_valve]: Turning the motor clockwise
+[DEBUG] [2020-03-17 17:19:18.470049] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:19:19.222576] [/top/watchdog]: Runtime has reached: 4 minutes.
+[DEBUG] [2020-03-17 17:19:22.471316] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:19:26.469763] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:19:30.469332] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:19:34.469402] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:19:38.469260] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:19:42.471137] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:19:46.469780] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:19:50.469678] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:19:54.469443] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:19:58.469056] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:20:02.470816] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:20:05.906980] [/top/tcp_server]: Command from #0: enable solenoid
+[DEBUG] [2020-03-17 17:20:06.022047] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:20:06.115592] [/hardware/scheduler]: Reservation for /hardware/solenoid/request changed from None (-1), None to /hardware/dispatcher (2), 1.
+[INFO]  [2020-03-17 17:20:06.233386] [/hardware/solenoid]: Enable solenoid open cycle
+[INFO]  [2020-03-17 17:20:06.784375] [/hardware/solenoid]: Opening the solenoid
+[DEBUG] [2020-03-17 17:20:10.471312] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:20:14.469935] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:20:18.471848] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:20:19.198472] [/top/watchdog]: Runtime has reached: 5 minutes.
+[DEBUG] [2020-03-17 17:20:22.470835] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:20:26.471576] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:20:30.287902] [/hardware/solenoid]: Closing the solenoid
+[DEBUG] [2020-03-17 17:20:32.469251] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:20:36.470686] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:20:40.470820] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:20:44.472414] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:20:45.329351] [/top/tcp_server]: Command from #0: disable solenoid
+[DEBUG] [2020-03-17 17:20:45.440492] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:20:45.599008] [/hardware/scheduler]: Reservation for /hardware/solenoid/request changed from /hardware/dispatcher (2), 1 to /hardware/dispatcher (2), 0.
+[INFO]  [2020-03-17 17:20:45.644895] [/hardware/solenoid]: Disable solenoid open cycle
+[DEBUG] [2020-03-17 17:20:48.478183] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:20:52.470870] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:20:56.471252] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:21:00.470728] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:21:02.881671] [/top/tcp_server]: Command from #0: extend linear actuator
+[DEBUG] [2020-03-17 17:21:02.998747] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:21:03.079245] [/hardware/scheduler]: Reservation for /hardware/linear_actuator/request changed from None (-1), None to /hardware/dispatcher (2), 2.
+[INFO]  [2020-03-17 17:21:03.202173] [/hardware/linear_actuator]: Turning the motor counterclockwise
+[DEBUG] [2020-03-17 17:21:06.469988] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:21:08.951758] [/top/tcp_server]: Command from #0: retract linear actuator
+[DEBUG] [2020-03-17 17:21:09.039687] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:21:09.158869] [/hardware/scheduler]: Reservation for /hardware/linear_actuator/request changed from /hardware/dispatcher (2), 2 to /hardware/dispatcher (2), 1.
+[INFO]  [2020-03-17 17:21:09.229704] [/hardware/linear_actuator]: Turning the motor clockwise
+[DEBUG] [2020-03-17 17:21:12.469084] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:21:16.469167] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:21:19.211409] [/top/watchdog]: Runtime has reached: 6 minutes.
+[DEBUG] [2020-03-17 17:21:22.470104] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:21:26.470185] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:21:30.468980] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:21:34.471501] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:21:38.469026] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:21:42.470986] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:21:46.475756] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:21:50.471553] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:21:54.473057] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:21:58.469971] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:22:01.980558] [/top/tcp_server]: Command from #0: all stop
+[DEBUG] [2020-03-17 17:22:02.060410] [/top/readiness_admin]: Command 'all stop' matches these patterns: ['all stop']
+[DEBUG] [2020-03-17 17:22:02.206849] [/hardware/scheduler]: Recieved. Reservation tables unchanged.
+[DEBUG] [2020-03-17 17:22:02.324229] [/hardware/scheduler]: Reservation for /hardware/linear_actuator/request changed from /hardware/dispatcher (2), 1 to /hardware/dispatcher (2), 0.
+[DEBUG] [2020-03-17 17:22:02.400492] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 1 to /hardware/dispatcher (2), 0.
+[INFO]  [2020-03-17 17:22:02.565532] [/hardware/linear_actuator]: Stopping the motor
+[INFO]  [2020-03-17 17:22:02.625724] [/hardware/solenoid]: Disable solenoid open cycle
+[INFO]  [2020-03-17 17:22:02.687090] [/hardware/abort_valve]: Stopping the motor
+[DEBUG] [2020-03-17 17:22:02.436476] [/hardware/scheduler]: Reservation for /hardware/injection_valve/request changed from /hardware/dispatcher (2), 1 to /hardware/dispatcher (2), 0.
+[INFO]  [2020-03-17 17:22:02.757353] [/hardware/injection_valve]: Stopping the motor
+[DEBUG] [2020-03-17 17:22:06.480319] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:22:10.469894] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:22:14.469761] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:22:18.469956] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:22:19.213007] [/top/watchdog]: Runtime has reached: 7 minutes.
+[DEBUG] [2020-03-17 17:22:22.469507] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:22:25.592236] [/top/tcp_server]: Command from #0: open injection valve
+[DEBUG] [2020-03-17 17:22:25.665436] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:22:25.831599] [/hardware/scheduler]: Reservation for /hardware/injection_valve/request changed from /hardware/dispatcher (2), 0 to /hardware/dispatcher (2), 2.
+[INFO]  [2020-03-17 17:22:25.896106] [/hardware/injection_valve]: Turning the motor counterclockwise
+[DEBUG] [2020-03-17 17:22:28.470218] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:22:30.079139] [/top/tcp_server]: Command from #0: close injection valve
+[DEBUG] [2020-03-17 17:22:30.228661] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:22:30.359147] [/hardware/scheduler]: Reservation for /hardware/injection_valve/request changed from /hardware/dispatcher (2), 2 to /hardware/dispatcher (2), 1.
+[INFO]  [2020-03-17 17:22:30.432616] [/hardware/injection_valve]: Turning the motor clockwise
+[DEBUG] [2020-03-17 17:22:32.470647] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:22:34.410906] [/top/tcp_server]: Command from #0: open injection valve
+[DEBUG] [2020-03-17 17:22:34.479853] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:22:34.640964] [/hardware/scheduler]: Reservation for /hardware/injection_valve/request changed from /hardware/dispatcher (2), 1 to /hardware/dispatcher (2), 2.
+[INFO]  [2020-03-17 17:22:34.744178] [/hardware/injection_valve]: Turning the motor counterclockwise
+[INFO]  [2020-03-17 17:22:37.515275] [/top/tcp_server]: Command from #0: close injection valve
+[DEBUG] [2020-03-17 17:22:37.621967] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:22:37.755846] [/hardware/scheduler]: Reservation for /hardware/injection_valve/request changed from /hardware/dispatcher (2), 2 to /hardware/dispatcher (2), 1.
+[INFO]  [2020-03-17 17:22:37.835273] [/hardware/injection_valve]: Turning the motor clockwise
+[DEBUG] [2020-03-17 17:22:40.469678] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:22:43.671373] [/top/tcp_server]: Command from #0: open injection valve
+[DEBUG] [2020-03-17 17:22:43.823488] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:22:43.932115] [/hardware/scheduler]: Reservation for /hardware/injection_valve/request changed from /hardware/dispatcher (2), 1 to /hardware/dispatcher (2), 2.
+[INFO]  [2020-03-17 17:22:44.016423] [/hardware/injection_valve]: Turning the motor counterclockwise
+[INFO]  [2020-03-17 17:22:44.929445] [/top/tcp_server]: Command from #0: close injection valve
+[DEBUG] [2020-03-17 17:22:45.019411] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:22:45.124989] [/hardware/scheduler]: Reservation for /hardware/injection_valve/request changed from /hardware/dispatcher (2), 2 to /hardware/dispatcher (2), 1.
+[INFO]  [2020-03-17 17:22:45.244953] [/hardware/injection_valve]: Turning the motor clockwise
+[INFO]  [2020-03-17 17:22:46.436374] [/top/tcp_server]: Command from #0: open injection valve
+[DEBUG] [2020-03-17 17:22:46.523345] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:22:46.664156] [/hardware/scheduler]: Reservation for /hardware/injection_valve/request changed from /hardware/dispatcher (2), 1 to /hardware/dispatcher (2), 2.
+[INFO]  [2020-03-17 17:22:46.792534] [/hardware/injection_valve]: Turning the motor counterclockwise
+[INFO]  [2020-03-17 17:22:47.881371] [/top/tcp_server]: Command from #0: close injection valve
+[DEBUG] [2020-03-17 17:22:48.005943] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:22:48.105193] [/hardware/scheduler]: Reservation for /hardware/injection_valve/request changed from /hardware/dispatcher (2), 2 to /hardware/dispatcher (2), 1.
+[INFO]  [2020-03-17 17:22:48.215758] [/hardware/injection_valve]: Turning the motor clockwise
+[INFO]  [2020-03-17 17:22:49.358962] [/top/tcp_server]: Command from #0: open injection valve
+[DEBUG] [2020-03-17 17:22:49.473939] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:22:49.618747] [/hardware/scheduler]: Reservation for /hardware/injection_valve/request changed from /hardware/dispatcher (2), 1 to /hardware/dispatcher (2), 2.
+[INFO]  [2020-03-17 17:22:49.668514] [/hardware/injection_valve]: Turning the motor counterclockwise
+[INFO]  [2020-03-17 17:22:50.637211] [/top/tcp_server]: Command from #0: close injection valve
+[DEBUG] [2020-03-17 17:22:50.785173] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:22:50.927175] [/hardware/scheduler]: Reservation for /hardware/injection_valve/request changed from /hardware/dispatcher (2), 2 to /hardware/dispatcher (2), 1.
+[INFO]  [2020-03-17 17:22:51.003039] [/hardware/injection_valve]: Turning the motor clockwise
+[INFO]  [2020-03-17 17:22:51.972047] [/top/tcp_server]: Command from #0: open injection valve
+[DEBUG] [2020-03-17 17:22:52.059371] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:22:52.214070] [/hardware/scheduler]: Reservation for /hardware/injection_valve/request changed from /hardware/dispatcher (2), 1 to /hardware/dispatcher (2), 2.
+[INFO]  [2020-03-17 17:22:52.308733] [/hardware/injection_valve]: Turning the motor counterclockwise
+[INFO]  [2020-03-17 17:22:53.409200] [/top/tcp_server]: Command from #0: close injection valve
+[DEBUG] [2020-03-17 17:22:53.481847] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:22:53.632723] [/hardware/scheduler]: Reservation for /hardware/injection_valve/request changed from /hardware/dispatcher (2), 2 to /hardware/dispatcher (2), 1.
+[INFO]  [2020-03-17 17:22:53.719347] [/hardware/injection_valve]: Turning the motor clockwise
+[INFO]  [2020-03-17 17:22:54.893161] [/top/tcp_server]: Command from #0: open injection valve
+[DEBUG] [2020-03-17 17:22:55.034186] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:22:55.140039] [/hardware/scheduler]: Reservation for /hardware/injection_valve/request changed from /hardware/dispatcher (2), 1 to /hardware/dispatcher (2), 2.
+[INFO]  [2020-03-17 17:22:55.240003] [/hardware/injection_valve]: Turning the motor counterclockwise
+[INFO]  [2020-03-17 17:22:56.110148] [/top/tcp_server]: Command from #0: close injection valve
+[DEBUG] [2020-03-17 17:22:56.265850] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:22:56.427132] [/hardware/scheduler]: Reservation for /hardware/injection_valve/request changed from /hardware/dispatcher (2), 2 to /hardware/dispatcher (2), 1.
+[INFO]  [2020-03-17 17:22:56.500480] [/hardware/injection_valve]: Turning the motor clockwise
+[DEBUG] [2020-03-17 17:23:00.470078] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:23:04.469682] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:23:08.470169] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:23:12.470647] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:23:16.474967] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:23:19.210743] [/top/watchdog]: Runtime has reached: 8 minutes.
+[DEBUG] [2020-03-17 17:23:22.471018] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:23:26.469337] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:23:30.469773] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:23:34.470102] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:23:38.470592] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:23:42.473097] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:23:46.469970] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:23:50.470765] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:23:54.471370] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:23:58.469885] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:24:02.470910] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:24:06.471385] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:24:10.469534] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:24:10.877191] [/logging/rosbag_record]: Closing /home/debian/rocket-os/logs/LOG_2020-03-17-17-14-10_0.bag.
+[INFO]  [2020-03-17 17:24:11.608559] [/logging/rosbag_record]: Recording to /home/debian/rocket-os/logs/LOG_2020-03-17-17-24-11_1.bag.
+[DEBUG] [2020-03-17 17:24:14.470076] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:24:18.472217] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:24:19.214033] [/top/watchdog]: Runtime has reached: 9 minutes.
+[DEBUG] [2020-03-17 17:24:22.472365] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:24:26.470742] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:24:30.470698] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:24:34.469732] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:24:38.472027] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:24:42.469732] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:24:46.472503] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:24:50.470202] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:24:52.579640] [/top/tcp_server]: Command from #0: crack abort valve
+[DEBUG] [2020-03-17 17:24:52.671818] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:24:52.840571] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 0 to /hardware/dispatcher (2), 2.
+[INFO]  [2020-03-17 17:24:52.927181] [/hardware/abort_valve]: Turning the motor counterclockwise
+[DEBUG] [2020-03-17 17:24:52.990535] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 2 to /hardware/dispatcher (2), 0.
+[INFO]  [2020-03-17 17:24:53.066762] [/hardware/abort_valve]: Stopping the motor
+[DEBUG] [2020-03-17 17:24:56.469512] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:25:00.471127] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:25:01.948285] [/top/tcp_server]: Command from #0: crack abort valve
+[DEBUG] [2020-03-17 17:25:02.084975] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:25:02.233914] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 0 to /hardware/dispatcher (2), 2.
+[INFO]  [2020-03-17 17:25:02.310414] [/hardware/abort_valve]: Turning the motor counterclockwise
+[DEBUG] [2020-03-17 17:25:02.369772] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 2 to /hardware/dispatcher (2), 0.
+[INFO]  [2020-03-17 17:25:02.449501] [/hardware/abort_valve]: Stopping the motor
+[DEBUG] [2020-03-17 17:25:06.471499] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:25:08.429493] [/top/tcp_server]: Command from #0: crack abort valve
+[DEBUG] [2020-03-17 17:25:08.567976] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:25:08.676987] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 0 to /hardware/dispatcher (2), 2.
+[INFO]  [2020-03-17 17:25:08.808432] [/hardware/abort_valve]: Turning the motor counterclockwise
+[DEBUG] [2020-03-17 17:25:08.843935] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 2 to /hardware/dispatcher (2), 0.
+[INFO]  [2020-03-17 17:25:08.927665] [/hardware/abort_valve]: Stopping the motor
+[DEBUG] [2020-03-17 17:25:12.470813] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:25:14.673138] [/top/tcp_server]: Command from #0: crack abort valve
+[DEBUG] [2020-03-17 17:25:14.820080] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:25:14.939323] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 0 to /hardware/dispatcher (2), 2.
+[INFO]  [2020-03-17 17:25:15.027083] [/hardware/abort_valve]: Turning the motor counterclockwise
+[DEBUG] [2020-03-17 17:25:15.067723] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 2 to /hardware/dispatcher (2), 0.
+[INFO]  [2020-03-17 17:25:15.166529] [/hardware/abort_valve]: Stopping the motor
+[DEBUG] [2020-03-17 17:25:18.469899] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:25:19.216274] [/top/watchdog]: Runtime has reached: 10 minutes.
+[INFO]  [2020-03-17 17:25:21.257528] [/top/tcp_server]: Command from #0: close abort valve
+[DEBUG] [2020-03-17 17:25:21.405736] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:25:21.571197] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 0 to /hardware/dispatcher (2), 1.
+[INFO]  [2020-03-17 17:25:21.645134] [/hardware/abort_valve]: Turning the motor clockwise
+[INFO]  [2020-03-17 17:25:23.767716] [/top/tcp_server]: Command from #0: all stop
+[DEBUG] [2020-03-17 17:25:23.870962] [/top/readiness_admin]: Command 'all stop' matches these patterns: ['all stop']
+[DEBUG] [2020-03-17 17:25:24.019791] [/hardware/scheduler]: Recieved. Reservation tables unchanged.
+[DEBUG] [2020-03-17 17:25:24.145237] [/hardware/scheduler]: Recieved. Reservation tables unchanged.
+[DEBUG] [2020-03-17 17:25:24.232305] [/hardware/scheduler]: Reservation for /hardware/injection_valve/request changed from /hardware/dispatcher (2), 1 to /hardware/dispatcher (2), 0.
+[INFO]  [2020-03-17 17:25:24.363992] [/hardware/solenoid]: Disable solenoid open cycle
+[DEBUG] [2020-03-17 17:25:24.269937] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 1 to /hardware/dispatcher (2), 0.
+[INFO]  [2020-03-17 17:25:24.422932] [/hardware/injection_valve]: Stopping the motor
+[INFO]  [2020-03-17 17:25:24.522567] [/hardware/abort_valve]: Stopping the motor
+[INFO]  [2020-03-17 17:25:24.513179] [/hardware/linear_actuator]: Stopping the motor
+[DEBUG] [2020-03-17 17:25:28.470709] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:25:32.471549] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:25:34.060484] [/top/tcp_server]: Command from #0: open abort valve
+[DEBUG] [2020-03-17 17:25:34.190172] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:25:34.325325] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 0 to /hardware/dispatcher (2), 2.
+[INFO]  [2020-03-17 17:25:34.411136] [/hardware/abort_valve]: Turning the motor counterclockwise
+[INFO]  [2020-03-17 17:25:35.557258] [/top/tcp_server]: Command from #0: close abort valve
+[DEBUG] [2020-03-17 17:25:35.641563] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:25:35.793165] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 2 to /hardware/dispatcher (2), 1.
+[INFO]  [2020-03-17 17:25:35.896703] [/hardware/abort_valve]: Turning the motor clockwise
+[DEBUG] [2020-03-17 17:25:38.469943] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:25:42.470738] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:25:46.469828] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:25:50.470631] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:25:50.860630] [/top/tcp_server]: Command from #0: open abort valve
+[DEBUG] [2020-03-17 17:25:50.979483] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:25:51.062661] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 1 to /hardware/dispatcher (2), 2.
+[INFO]  [2020-03-17 17:25:51.143367] [/hardware/abort_valve]: Turning the motor counterclockwise
+[INFO]  [2020-03-17 17:25:52.011725] [/top/tcp_server]: Command from #0: close abort valve
+[DEBUG] [2020-03-17 17:25:52.075217] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:25:52.198673] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 2 to /hardware/dispatcher (2), 1.
+[INFO]  [2020-03-17 17:25:52.274672] [/hardware/abort_valve]: Turning the motor clockwise
+[INFO]  [2020-03-17 17:25:53.663883] [/top/tcp_server]: Command from #0: open abort valve
+[DEBUG] [2020-03-17 17:25:53.824591] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:25:53.918196] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 1 to /hardware/dispatcher (2), 2.
+[INFO]  [2020-03-17 17:25:54.033504] [/hardware/abort_valve]: Turning the motor counterclockwise
+[INFO]  [2020-03-17 17:25:54.863133] [/top/tcp_server]: Command from #0: close abort valve
+[DEBUG] [2020-03-17 17:25:55.001300] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[INFO]  [2020-03-17 17:25:55.196815] [/hardware/abort_valve]: Turning the motor clockwise
+[DEBUG] [2020-03-17 17:25:55.101199] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 2 to /hardware/dispatcher (2), 1.
+[INFO]  [2020-03-17 17:25:56.021809] [/top/tcp_server]: Command from #0: open abort valve
+[DEBUG] [2020-03-17 17:25:56.122239] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:25:56.249504] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 1 to /hardware/dispatcher (2), 2.
+[INFO]  [2020-03-17 17:25:56.352669] [/hardware/abort_valve]: Turning the motor counterclockwise
+[INFO]  [2020-03-17 17:25:57.201161] [/top/tcp_server]: Command from #0: close abort valve
+[DEBUG] [2020-03-17 17:25:57.275639] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:25:57.435448] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 2 to /hardware/dispatcher (2), 1.
+[INFO]  [2020-03-17 17:25:57.549410] [/hardware/abort_valve]: Turning the motor clockwise
+[INFO]  [2020-03-17 17:25:58.565935] [/top/tcp_server]: Command from #0: open abort valve
+[DEBUG] [2020-03-17 17:25:58.660808] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:25:58.829503] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 1 to /hardware/dispatcher (2), 2.
+[INFO]  [2020-03-17 17:25:58.896668] [/hardware/abort_valve]: Turning the motor counterclockwise
+[INFO]  [2020-03-17 17:25:59.720530] [/top/tcp_server]: Command from #0: close abort valve
+[DEBUG] [2020-03-17 17:25:59.843385] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:25:59.979252] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 2 to /hardware/dispatcher (2), 1.
+[INFO]  [2020-03-17 17:26:00.067814] [/hardware/abort_valve]: Turning the motor clockwise
+[INFO]  [2020-03-17 17:26:00.947063] [/top/tcp_server]: Command from #0: open abort valve
+[DEBUG] [2020-03-17 17:26:01.055262] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:26:01.187351] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 1 to /hardware/dispatcher (2), 2.
+[INFO]  [2020-03-17 17:26:01.260987] [/hardware/abort_valve]: Turning the motor counterclockwise
+[INFO]  [2020-03-17 17:26:01.942104] [/top/tcp_server]: Command from #0: close abort valve
+[DEBUG] [2020-03-17 17:26:02.080303] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2020-03-17 17:26:02.219334] [/hardware/scheduler]: Reservation for /hardware/abort_valve/request changed from /hardware/dispatcher (2), 2 to /hardware/dispatcher (2), 1.
+[INFO]  [2020-03-17 17:26:02.274953] [/hardware/abort_valve]: Turning the motor clockwise
+[DEBUG] [2020-03-17 17:26:04.473203] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:26:08.470172] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:26:12.470889] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:26:16.470047] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:26:19.216409] [/top/watchdog]: Runtime has reached: 11 minutes.
+[DEBUG] [2020-03-17 17:26:22.470259] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:26:26.469719] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:26:30.473178] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:26:33.509625] [/top/tcp_server]: Command from #0: read data
+[DEBUG] [2020-03-17 17:26:33.615776] [/top/readiness_admin]: Command 'read data' matches these patterns: ['read data']
+[INFO]  [2020-03-17 17:26:33.806958] [/sensors/monitor]: OTP: -105.73 psig / CCP: 484.38 psig / OTT: 371.31 F / CCT1: 678.73 F / CCT2: 719.24 F / FS: 0.00
+[DEBUG] [2020-03-17 17:26:36.472434] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:26:40.469518] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:26:44.470524] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:26:48.470515] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:26:52.470492] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:26:56.006504] [/top/tcp_server]: Command from #0: read voltage
+[DEBUG] [2020-03-17 17:26:56.047512] [/top/readiness_admin]: Command 'read voltage' matches these patterns: ['read voltage']
+[INFO]  [2020-03-17 17:26:56.208387] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.95 V / OTT: 1.02 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.01 V
+[DEBUG] [2020-03-17 17:26:58.469113] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:27:02.469630] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:27:06.470916] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:27:10.470593] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:27:14.469353] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:27:18.469758] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:27:19.219619] [/top/watchdog]: Runtime has reached: 12 minutes.
+[INFO]  [2020-03-17 17:27:19.454977] [/top/tcp_server]: Command from #0: system df -h
+[DEBUG] [2020-03-17 17:27:19.582742] [/top/readiness_admin]: Command 'system df -h' matches these patterns: ['system .*']
+[INFO]  [2020-03-17 17:27:19.641641] [/top/exec]: $ df -h
+[INFO]  [2020-03-17 17:27:20.249018] [/top/exec]: 
+Filesystem      Size  Used Avail Use% Mounted on
+udev            216M     0  216M   0% /dev
+tmpfs            49M  1.6M   47M   4% /run
+/dev/mmcblk0p1   59G  7.5G   49G  14% /
+tmpfs           243M  112K  243M   1% /dev/shm
+tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+tmpfs           243M     0  243M   0% /sys/fs/cgroup
+tmpfs            49M     0   49M   0% /run/user/1000
+
+[INFO]  [2020-03-17 17:27:20.345655] [/top/exec]: Finished with exit code 0
+[DEBUG] [2020-03-17 17:27:22.469855] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:27:26.469873] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:27:30.469750] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:27:34.469682] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:27:38.469298] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:27:42.469320] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:27:46.469770] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:27:50.471176] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:27:54.470023] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:27:58.471550] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:28:02.469645] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:28:06.471218] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:28:10.469995] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:28:14.469190] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:28:18.469036] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:28:19.187559] [/top/watchdog]: Runtime has reached: 13 minutes.
+[DEBUG] [2020-03-17 17:28:22.470184] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:28:26.469720] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:28:30.470482] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:28:34.469058] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:28:38.472124] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:28:42.469276] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:28:46.469659] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2020-03-17 17:28:50.469914] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2020-03-17 17:28:51.255472] [/top/tcp_server]: Command from #0: read voltage 1
+[DEBUG] [2020-03-17 17:28:51.409412] [/top/readiness_admin]: Command 'read voltage 1' matches these patterns: ['read voltage .*']
+[INFO]  [2020-03-17 17:28:52.548910] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.01 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.01 V
+[INFO]  [2020-03-17 17:28:53.550081] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:28:54.547814] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.73 V / FS: 0.04 V
+[INFO]  [2020-03-17 17:28:55.548508] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.73 V / FS: 0.01 V
+[INFO]  [2020-03-17 17:28:56.547737] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:28:57.548173] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:28:58.548260] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:28:59.548434] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:00.558712] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.93 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:01.548643] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.73 V / FS: 0.04 V
+[INFO]  [2020-03-17 17:29:02.548916] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.03 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:03.548667] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.01 V
+[INFO]  [2020-03-17 17:29:04.548232] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.01 V
+[INFO]  [2020-03-17 17:29:05.547591] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.01 V
+[INFO]  [2020-03-17 17:29:06.548295] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.01 V
+[INFO]  [2020-03-17 17:29:07.547734] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:08.547795] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:09.551637] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.69 V / FS: 0.03 V
+[INFO]  [2020-03-17 17:29:10.549942] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:11.561727] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:12.549322] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.01 V
+[INFO]  [2020-03-17 17:29:13.548329] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.01 V
+[INFO]  [2020-03-17 17:29:14.547688] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.01 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.00 V
+[INFO]  [2020-03-17 17:29:15.548442] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.95 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.01 V
+[INFO]  [2020-03-17 17:29:16.548680] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.95 V / OTT: 1.01 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:17.548398] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.95 V / OTT: 1.01 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.00 V
+[INFO]  [2020-03-17 17:29:18.548099] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.95 V / OTT: 1.01 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.01 V
+[DEBUG] [2020-03-17 17:29:19.191018] [/top/watchdog]: Runtime has reached: 14 minutes.
+[INFO]  [2020-03-17 17:29:19.549162] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.95 V / OTT: 1.01 V / CCT1: 1.67 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:20.549222] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.95 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:21.548639] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.00 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:22.549520] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.95 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:23.548719] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.95 V / OTT: 1.00 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:24.547367] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.95 V / OTT: 1.00 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:25.547950] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.95 V / OTT: 1.00 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:26.549417] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.95 V / OTT: 1.00 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:27.548138] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.00 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.03 V
+[INFO]  [2020-03-17 17:29:28.547781] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.00 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.01 V
+[INFO]  [2020-03-17 17:29:29.587792] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.01 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:30.549911] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.95 V / OTT: 1.00 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:31.548071] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.01 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.00 V
+[INFO]  [2020-03-17 17:29:32.547928] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:33.551722] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.01 V
+[INFO]  [2020-03-17 17:29:34.549115] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:35.550105] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.00 V
+[INFO]  [2020-03-17 17:29:36.550236] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:37.551534] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.70 V / FS: 0.04 V
+[INFO]  [2020-03-17 17:29:38.549139] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:39.549006] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:40.548584] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.03 V
+[INFO]  [2020-03-17 17:29:41.548438] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.73 V / FS: 0.03 V
+[INFO]  [2020-03-17 17:29:42.547829] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.03 V
+[INFO]  [2020-03-17 17:29:43.568141] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.03 V
+[INFO]  [2020-03-17 17:29:44.552646] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.00 V
+[INFO]  [2020-03-17 17:29:45.552152] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:29:46.560508] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.95 V / OTT: 1.02 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.03 V
+[INFO]  [2020-03-17 17:29:47.549913] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.95 V / OTT: 1.01 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.03 V
+[INFO]  [2020-03-17 17:29:48.555706] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.03 V
+[INFO]  [2020-03-17 17:29:49.552131] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.03 V
+[INFO]  [2020-03-17 17:29:50.550956] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.03 V
+[INFO]  [2020-03-17 17:29:51.549900] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.03 V
+[INFO]  [2020-03-17 17:29:52.546932] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.95 V / OTT: 1.01 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.03 V
+[INFO]  [2020-03-17 17:29:53.548299] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.01 V
+[INFO]  [2020-03-17 17:29:54.549799] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.03 V
+[INFO]  [2020-03-17 17:29:55.551888] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.04 V
+[INFO]  [2020-03-17 17:29:56.549182] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.00 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.04 V
+[INFO]  [2020-03-17 17:29:57.558056] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.64 V / CCT2: 1.74 V / FS: 0.01 V
+[INFO]  [2020-03-17 17:29:58.568314] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.04 V
+[INFO]  [2020-03-17 17:29:59.548546] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.95 V / OTT: 1.02 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:30:00.550591] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.95 V / OTT: 1.00 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:30:01.551651] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.03 V
+[INFO]  [2020-03-17 17:30:02.548389] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.04 V
+[INFO]  [2020-03-17 17:30:03.547815] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.04 V
+[INFO]  [2020-03-17 17:30:04.557597] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.00 V / CCT1: 1.64 V / CCT2: 1.74 V / FS: 0.03 V
+[INFO]  [2020-03-17 17:30:05.551504] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.01 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:30:06.547799] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.95 V / OTT: 1.02 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.03 V
+[INFO]  [2020-03-17 17:30:07.549972] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.03 V
+[INFO]  [2020-03-17 17:30:08.548159] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.00 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.03 V
+[INFO]  [2020-03-17 17:30:09.557080] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.04 V
+[INFO]  [2020-03-17 17:30:10.329347] [/top/tcp_server]: Command from #0: read data 1
+[DEBUG] [2020-03-17 17:30:10.423202] [/top/readiness_admin]: Command 'read data 1' matches these patterns: ['read data .*']
+[INFO]  [2020-03-17 17:30:10.612649] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.66 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:30:11.561643] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:30:11.640468] [/sensors/monitor]: OTP: -105.45 psig / CCP: 483.29 psig / OTT: 369.79 F / CCT1: 676.14 F / CCT2: 719.02 F / FS: 0.00
+[INFO]  [2020-03-17 17:30:12.561377] [/sensors/monitor]: OTP: 0.00 V / CCP: 0.94 V / OTT: 1.02 V / CCT1: 1.65 V / CCT2: 1.74 V / FS: 0.02 V
+[INFO]  [2020-03-17 17:30:12.633184] [/sensors/monitor]: OTP: -105.45 psig / CCP: 481.36 psig / OTT: 371.09 F / CCT1: 676.35 F / CCT2: 719.02 F / FS: 0.00
