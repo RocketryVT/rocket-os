@@ -22,8 +22,9 @@ def print_help_text():
 def set_readiness_level(new_level):
 
     global global_readiness_level
-    if new_level >= max_readiness_level or new_level < 0:
-        rospy.logwarn("Can't set readiness level -- must be in [0, " + str(len(level_whitelist) - 1) + "]")
+    if new_level > max_readiness_level or new_level < 0:
+        rospy.logwarn("Can't set readiness level -- " +
+            "must be in [0, {}]".format(max_readiness_level))
     else:
         global_readiness_level = new_level
         rospy.loginfo("Set readiness level to " + str(new_level))

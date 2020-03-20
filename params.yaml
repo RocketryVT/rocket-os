@@ -64,12 +64,15 @@ commands:
 - all stop:                             "all"
 - abort:                                "all"
 
-- open solenoid:                        []
-- close solenoid:                       []
+- enable solenoid:                      []
+- disable solenoid:                     []
+- stop ignition valve:                  []
 - open ignition valve:                  []
 - close ignition valve:                 []
+- stop linear actuator:                 []
 - extend linear actuator:               []
 - retract linear actuator:              []
+- stop vent valve:                      []
 - open vent valve:                      []
 - close vent valve:                     []
 - crack vent valve:                     []

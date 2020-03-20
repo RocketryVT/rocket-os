@@ -58,12 +58,14 @@ def ping(event):
 
 
 def exit_handler():
+    rospy.loginfo("Exiting.")
+    time = str(datetime.now())
+    broadcast(level_to_str(2) + " [" + time + "] [" + name + "]: Exiting.")
     try:
         global server
         server.close()
     except:
         pass
-    rospy.loginfo("Exiting.")
 
 
 def signal_handler(sig, frame):
@@ -186,6 +188,7 @@ if __name__ == "__main__":
         gpio.output(led, gpio.LOW)
 
     rospy.init_node("tcp_server", log_level=rospy.DEBUG)
+    name = rospy.get_name()
 
     list_of_clients = []
     total_connections = 0
