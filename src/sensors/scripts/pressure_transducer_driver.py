@@ -9,7 +9,15 @@ except:
 
 import rospy
 from sensors.msg import SensorReading
+from std_msgs.msg import Float32, String
 import sys
+import json
+
+
+def publish_vis(event):
+
+    pub_vis.publish(json.dumps(dictionary))
+
 
 def voltage_to_pressure(voltage):
 
@@ -17,9 +25,11 @@ def voltage_to_pressure(voltage):
     slope = 50/0.08;
     return slope*voltage + intercept;
 
+
 def read_and_publish(event):
 
     global sequence_number
+    global dictionary
 
     if adc:
         voltage = adc.read(adc_pin)*1.8
@@ -28,10 +38,11 @@ def read_and_publish(event):
     pressure = voltage_to_pressure(voltage)
     msg = SensorReading()
 
+    dictionary = { "voltage": voltage, "pressure": pressure }
+
     msg.header.seq = sequence_number
     sequence_number += 1
     msg.header.stamp = rospy.Time.now()
-
     msg.voltage = voltage
     msg.reading = pressure
     msg.unit = "psig"
@@ -66,8 +77,10 @@ if __name__ == "__main__":
         exit()
 
     publisher = rospy.Publisher(name, SensorReading, queue_size=10);
+    pub_vis = rospy.Publisher("/vis_update", String, queue_size=10);
     rospy.Timer(rospy.Duration(period), read_and_publish)
-
+    rospy.Timer(rospy.Duration(vis_period), publish_vis)
+    
     rospy.loginfo(("Starting pressure transducer driver on ADC {} " +
                    "and polling period {} seconds.").format(adc_pin, period))
     rospy.spin()
