@@ -1,10 +1,6 @@
 solenoid_open_time_sec:                 30
 solenoid_close_time_sec:                30
 
-thermocouple_polling_period_sec:        0.5
-transducer_polling_period_sec:          0.5
-float_switch_polling_period_sec:        1
-
 vent_pressure_start_psi:                900
 vent_pressure_stop_psi:                 600
 
@@ -27,17 +23,17 @@ vent_pressure_stop_psi:                 600
 
 # sensor pins and polling periods, in seconds
 /sensors/combustion_thermocouple_1/pin:     "AIN1"
-/sensors/combustion_thermocouple_1/period:  0.2
+/sensors/combustion_thermocouple_1/period:  1
 /sensors/combustion_thermocouple_2/pin:     "AIN2"
-/sensors/combustion_thermocouple_2/period:  0.2
+/sensors/combustion_thermocouple_2/period:  1
 /sensors/combustion_transducer/pin:         "AIN3"
-/sensors/combustion_transducer/period:      0.2
+/sensors/combustion_transducer/period:      0.25
 /sensors/ox_tank_thermocouple/pin:          "AIN4"
-/sensors/ox_tank_thermocouple/period:       0.2
+/sensors/ox_tank_thermocouple/period:       1
 /sensors/ox_tank_transducer/pin:            "AIN5"
-/sensors/ox_tank_transducer/period:         0.2
+/sensors/ox_tank_transducer/period:         0.25
 /sensors/float_switch/pin:                  "AIN6"
-/sensors/float_switch/period:               0.2
+/sensors/float_switch/period:               0.25
 
 commands:
 - read data:                            "all"
