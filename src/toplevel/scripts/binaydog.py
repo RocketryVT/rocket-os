@@ -70,7 +70,7 @@ if __name__ == "__main__":
     start_time = rospy.get_rostime()
     old_nodes = set()
 
-    rospy.Timer(rospy.Duration(10), check_on_nodes)
+    rospy.Timer(rospy.Duration(5), check_on_nodes)
     rospy.Timer(rospy.Duration(60), print_time)
     rospy.Timer(rospy.Duration(1), publish_time)
     rospy.Subscriber("/commands", String, get_command)

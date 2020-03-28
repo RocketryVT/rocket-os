@@ -8,4 +8,14 @@
     <include file="$(find sensors)/launch/ox_tank_transducer.launch" />
     <include file="$(find sensors)/launch/float_switch.launch" />
 
+    <!--
+    <group ns="sensors">
+
+    <node name="monitor" pkg="sensors"
+          type="sensor_monitor.py" output="screen">
+    </node>
+
+    </group>
+    -->
+
 </launch>
