@@ -9,6 +9,3 @@ find_package(
 )
 
 catkin_package()
-
-catkin_install_python(PROGRAMS scripts/webserver.py
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
