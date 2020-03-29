@@ -1,12 +1,9 @@
 #! /usr/bin/env python
 
 import rospy
-from std_msgs.msg import String, Bool, UInt8, Float32
+from std_msgs.msg import String, Float32, UInt8
+from sensors.msg import SensorReading
 
-last_pressure = None
-last_lls = None
-fill_ongoing = False
-max_safe_pressure = 900 # psig
 
 def toggle_fill(state):
 
@@ -14,30 +11,34 @@ def toggle_fill(state):
     fill_ongoing = state
     solenoid_cmd.publish(state)
 
+
 def print_relevant_data(event):
 
     if fill_ongoing:
         rospy.loginfo("Current pressure: {} psig; LLS: {}".format(last_pressure, last_lls))
 
+
 def get_pressure(message):
 
     global last_pressure
     global fill_ongoing
-    last_pressure = message.data
+    last_pressure = message.reading
 
-    if message.data > max_safe_pressure and fill_ongoing:
+    if message.reading > max_safe_pressure and fill_ongoing:
         rospy.logwarn("Maximum safe pressure exceeded -- stopping fill!")
         toggle_fill(False)
+
 
 def get_lls_reading(message):
 
     global last_lls
     global fill_ongoing
-    last_lls = message.data
+    last_lls = message.reading
 
-    if message.data and fill_ongoing:
+    if message.reading and fill_ongoing:
         rospy.logwarn("Liquid level switch tripped -- stopping fill!")
         toggle_fill(False)
+
 
 def get_los(message):
 
@@ -46,12 +47,14 @@ def get_los(message):
         rospy.logwarn("LOS detected -- stopping fill!")
         toggle_fill(False)
 
+
 def get_readiness(message):
 
     readiness = message.data
     if readiness != 2 and fill_ongoing:
         rospy.logwarn("Fill only enabled for readiness level 2.")
         toggle_fill(False)
+
 
 def get_command(message):
 
@@ -67,21 +70,28 @@ def get_command(message):
         toggle_fill(False)
 
 
-rospy.init_node("fill_admin")
+if __name__ == "__main__":
 
-rospy.Subscriber("/commands", String, get_command)
-rospy.Subscriber("/los", Float32, get_los)
-rospy.Subscriber("/readiness_level", UInt8, get_readiness)
-rospy.Subscriber("/sensors/float_switch/state", Bool, get_lls_reading)
-rospy.Subscriber("/sensors/ox_tank_transducer/pressure", Float32, get_pressure)
-solenoid_cmd = rospy.Publisher("/hardware/solenoid/request", UInt8, queue_size=10)
+    last_lls = None
+    last_pressure = None
+    fill_ongoing = False
+    max_safe_pressure = 900
 
-rospy.sleep(1)
+    rospy.init_node("fill_admin")
 
-rospy.loginfo("Assuming primary control of the solenoid.")
-solenoid_cmd.publish(0)
+    rospy.Subscriber("/commands", String, get_command)
+    rospy.Subscriber("/los", Float32, get_los)
+    rospy.Subscriber("/readiness_level", UInt8, get_readiness)
+    rospy.Subscriber("/sensors/float_switch", SensorReading, get_lls_reading)
+    rospy.Subscriber("/sensors/ox_tank_transducer", SensorReading, get_pressure)
+    solenoid_cmd = rospy.Publisher("/hardware/solenoid/request", UInt8, queue_size=10)
 
-rospy.Timer(rospy.Duration(3), print_relevant_data)
+    rospy.sleep(1)
 
-rospy.spin()
+    rospy.loginfo("Assuming primary control of the solenoid.")
+    solenoid_cmd.publish(0)
+
+    rospy.Timer(rospy.Duration(3), print_relevant_data)
+
+    rospy.spin()
 
