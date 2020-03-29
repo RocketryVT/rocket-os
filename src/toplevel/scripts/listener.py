@@ -7,7 +7,7 @@ import re
 
 def get_generic(msg):
     topic = msg._connection_header['topic']
-    rospy.loginfo(topic + ": " + str(msg))
+    rospy.loginfo(topic + ":\n" + str(msg))
 
 def listen_to(topic):
 
