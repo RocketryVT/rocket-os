@@ -3,31 +3,43 @@
 # motor_driver.py
 
 import rospy
-from std_msgs.msg import UInt8
+from hardware.msg import DriverCommand
 import sys
 import Adafruit_BBIO.GPIO as gpio
 import random
 
-STOP = 0
-CLOCKWISE = 1
-COUNTERCLOCKWISE = 2
 
-def recieve_command(command):
+def recieve_command(msg):
 
-    if command.data is STOP:
-        rospy.loginfo("Stopping the motor")
+    if msg.command == msg.RELEASE:
+        rospy.loginfo("Command from " + msg.source + ": release the motor")
+        rospy.loginfo("NOT IMPLEMENTED")
+
+    if msg.command == msg.STOP:
+        rospy.loginfo("Command from " + msg.source + ": stop the motor")
         gpio.output(cw_pin, gpio.LOW)
         gpio.output(ccw_pin, gpio.LOW)
 
-    elif command.data is CLOCKWISE:
-        rospy.loginfo("Turning the motor clockwise")
+    elif msg.command is msg.CLOSE:
+        rospy.loginfo("Command from " + msg.source + ": close the motor")
         gpio.output(cw_pin, gpio.HIGH)
         gpio.output(ccw_pin, gpio.LOW)
 
-    elif command.data is COUNTERCLOCKWISE:
-        rospy.loginfo("Turning the motor counterclockwise")
+    elif msg.command is msg.OPEN:
+        rospy.loginfo("Command from " + msg.source + ": open the motor")
         gpio.output(cw_pin, gpio.LOW)
         gpio.output(ccw_pin, gpio.HIGH)
+
+    elif msg.command is msg.PULSE_CLOSE:
+        rospy.loginfo("Command from " + msg.source + ": pulse-close " +
+            "the motor for {} seconds".format(dur))
+        rospy.loginfo("NOT IMPLEMENTED")
+
+    elif msg.command is msg.PULSE_OPEN:
+        dur = msg.pulse.to_sec()
+        rospy.loginfo("Command from " + msg.source + ": pulse-open " +
+            "the motor for {} seconds".format(dur))
+        rospy.loginfo("NOT IMPLEMENTED")
 
 
 rospy.init_node("motor_driver", log_level=rospy.DEBUG);
@@ -66,7 +78,7 @@ if not success:
 gpio.output(cw_pin, gpio.LOW)
 gpio.output(ccw_pin, gpio.LOW)
 
-rospy.Subscriber(name + "/command", UInt8, recieve_command);
+rospy.Subscriber(name, DriverCommand, recieve_command);
 rospy.loginfo("Success.")
 rospy.spin()
 
