@@ -43,7 +43,7 @@ if __name__ == "__main__":
     sequence_number = 0
 
     adc.setup()
-    rospy.init_node("thermocouple_driver");
+    rospy.init_node("thermocouple_driver", log_level=rospy.DEBUG);
 
     adc_pin = sys.argv[1]
     name = rospy.get_name()

@@ -37,7 +37,7 @@ if __name__ == "__main__":
     sequence_number = 0
 
     adc.setup()
-    rospy.init_node("pressure_transducer_driver")
+    rospy.init_node("pressure_transducer_driver", log_level=rospy.DEBUG)
 
     name = rospy.get_name()
     try:
