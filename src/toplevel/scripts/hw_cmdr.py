@@ -21,7 +21,7 @@ while True:
     pub = rospy.Publisher(topic, DriverCommand, queue_size=10)
     print("Source:"),
     dc.source = raw_input()
-    print("Command (release-0 stop-1 close-2 open-3 pulsec-4\npulseo-5 inactive-1 active-2 lock-1 fire-2):"),
+    print("Command (release-0 stop-1 close-2 open-3 pulsec-4 pulseo-5 inactive-6 active-7 lock-8 unlock-9 fire-10):"),
     dc.command = int(raw_input())
     print("Pulse (sec):"),
     dc.pulse = rospy.Duration(float(raw_input()))

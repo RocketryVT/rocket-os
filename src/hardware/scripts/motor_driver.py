@@ -8,31 +8,28 @@ import sys
 import Adafruit_BBIO.GPIO as gpio
 import random
 import yaml
+import driverlib
 
-def cmd2str(msg):
+def execute_motor_command(msg):
 
-    return str(yaml.load(str(msg)))
+    rospy.logdebug("Executing new command: " + driverlib.cmd2str(msg))
 
-def execute_command(msg):
-
-    rospy.logdebug("Executing new command: " + cmd2str(msg))
-
-    if msg.command == msg.STOP:
+    if msg.command is msg.MOTOR_STOP:
         rospy.loginfo("Command from " + msg.source + ": stop the motor")
         gpio.output(cw_pin, gpio.LOW)
         gpio.output(ccw_pin, gpio.LOW)
 
-    elif msg.command is msg.CLOSE:
+    elif msg.command is msg.MOTOR_CLOSE:
         rospy.loginfo("Command from " + msg.source + ": close the motor")
         gpio.output(cw_pin, gpio.HIGH)
         gpio.output(ccw_pin, gpio.LOW)
 
-    elif msg.command is msg.OPEN:
+    elif msg.command is msg.MOTOR_OPEN:
         rospy.loginfo("Command from " + msg.source + ": open the motor")
         gpio.output(cw_pin, gpio.LOW)
         gpio.output(ccw_pin, gpio.HIGH)
 
-    elif msg.command is msg.PULSE_CLOSE:
+    elif msg.command is msg.MOTOR_PULSE_CLOSE:
         rospy.loginfo("Command from " + msg.source + ": pulse-close " +
             "the motor for {} seconds".format(msg.pulse.to_sec()))
         rospy.loginfo("Closing...")
@@ -45,7 +42,7 @@ def execute_command(msg):
         elapsed = rospy.Time.now() - now
         rospy.loginfo("Stopped. {} seconds elapsed.".format(elapsed.to_sec()))
 
-    elif msg.command is msg.PULSE_OPEN:
+    elif msg.command is msg.MOTOR_PULSE_OPEN:
         dur = msg.pulse.to_sec()
         rospy.loginfo("Command from " + msg.source + ": pulse-open " +
             "the motor for {} seconds".format(msg.pulse.to_sec()))
@@ -58,46 +55,11 @@ def execute_command(msg):
         gpio.output(ccw_pin, gpio.LOW)
         elapsed = rospy.Time.now() - now
         rospy.loginfo("Stopped. {} seconds elapsed.".format(elapsed.to_sec()))
-    
-
-def get_highest_priority_command():
-
-    selected = None
-    for cmd in all_commands.values():
-        rospy.logdebug(">> " + cmd2str(cmd))
-        if selected is None or cmd.priority > selected.priority:
-            selected = cmd
-        elif cmd.priority == selected.priority:
-            if cmd.header.stamp < selected.header.stamp:
-                selected = cmd
-
-    rospy.logdebug("HPC: " + cmd2str(selected))
-    return selected
-
-
-def recieve_command(msg):
-
-    rospy.logdebug("Received new command: " + cmd2str(msg))
-
-    old_cmd = get_highest_priority_command()
-
-    # overwrite any previous command from this source
-    all_commands[msg.source] = msg
-    if msg.command == msg.RELEASE:
-        rospy.loginfo("Command from " + msg.source + ": release the motor")
-        all_commands.pop(msg.source)
-
-    new_cmd = get_highest_priority_command()
-
-    if new_cmd == old_cmd:
-        rospy.logdebug("HPC remains unchanged. Doing nothing.")
-    elif new_cmd is not None:
-        execute_command(new_cmd)
-
+    else:
+        rospy.logwarn("Unimplemented command: " + str(msg.command))
+        driverlib.nullify_command(msg) 
 
 if __name__ == "__main__":
-
-    all_commands = {}
 
     rospy.init_node("motor_driver", log_level=rospy.DEBUG);
     name = rospy.get_name()
@@ -115,7 +77,6 @@ if __name__ == "__main__":
     success = False
     max_attempts = 10
     for i in range(max_attempts):
-
         try:
             gpio.setup(cw_pin, gpio.OUT)
             gpio.setup(ccw_pin, gpio.OUT)
@@ -125,18 +86,19 @@ if __name__ == "__main__":
             rospy.logwarn(str(i) + ": Failed to configure. Waiting for " + \
                 str(sleep) + " seconds before reattempt.")
             rospy.sleep(sleep)
-
         if success:
             break
 
     if not success:
-        rospy.logerr("Failed to configure after " + str(max_attempts) + " attempts.")
+        rospy.logerr("Failed to configure after " + \
+            str(max_attempts) + " attempts.")
         exit()
 
     gpio.output(cw_pin, gpio.LOW)
     gpio.output(ccw_pin, gpio.LOW)
 
-    rospy.Subscriber(name, DriverCommand, recieve_command);
+    driverlib.callback(execute_motor_command)
+    rospy.Subscriber(name, DriverCommand, driverlib.receive_command);
     rospy.loginfo("Success.")
     rospy.spin()
 

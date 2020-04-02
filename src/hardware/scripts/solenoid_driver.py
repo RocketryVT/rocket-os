@@ -3,30 +3,32 @@
 # solenoid_driver.py
 
 import rospy
-from std_msgs.msg import UInt8
 import sys
 import Adafruit_BBIO.GPIO as gpio
 import time
 import signal
 import random
+from hardware.msg import DriverCommand
+import driverlib
 
-nominal_state = False
-current_state = False
 
 def signal_handler(sig, frame):
     gpio.cleanup()
     exit(0)
 
-def recieve_command(command):
+
+def execute_solenoid_command(msg):
 
     global nominal_state
-    if command.data == 1:
+    if msg.command == msg.SOLENOID_ACTIVE:
         rospy.loginfo("Enable solenoid open cycle")
         nominal_state = True
-
-    elif command.data == 0:
+    elif msg.command == msg.SOLENOID_INACTIVE:
         rospy.loginfo("Disable solenoid open cycle")
         nominal_state = False
+    else:
+        rospy.logwarn("Unimplemented command: " + str(msg.command))
+        driverlib.nullify_command(msg)
 
 def control_loop(event):
 
@@ -46,47 +48,55 @@ def control_loop(event):
         gpio.output(ctrl_pin, gpio.LOW)
 
 
-gpio.cleanup()
+if __name__ == "__main__":
 
-rospy.init_node("solenoid_driver");
-name = rospy.get_name()
-name = rospy.get_name()
-try:
-    ctrl_pin = rospy.get_param(name + "/pin")
-    opened_secs = rospy.get_param(name + "/opened")
-    closed_secs = rospy.get_param(name + "/closed")
-except:
-    rospy.logerr("Failed to retrieve configuration from rosparam server.")
-    rospy.signal_shutdown("Unavailable config.")
-    exit()
-rospy.loginfo("Starting solenoid driver on pin " + ctrl_pin)
-rospy.loginfo("Using {} s, {} s open-close cycle.".format(opened_secs, closed_secs))
+    nominal_state = False
+    current_state = False
 
-success = False
-max_attempts = 10
-for i in range(max_attempts):
+    gpio.cleanup()
 
+    rospy.init_node("solenoid_driver", log_level=rospy.DEBUG);
+    name = rospy.get_name()
+    name = rospy.get_name()
     try:
-        gpio.setup(ctrl_pin, gpio.OUT)
-        success = True
+        ctrl_pin = rospy.get_param(name + "/pin")
+        opened_secs = rospy.get_param(name + "/opened")
+        closed_secs = rospy.get_param(name + "/closed")
     except:
-        sleep = random.randint(1, 20)
-        rospy.logwarn(str(i) + ": Failed to configure. Waiting for " + str(sleep) + " seconds before reattempt.")
-        rospy.sleep(sleep)
+        rospy.logerr("Failed to retrieve configuration from rosparam server.")
+        rospy.signal_shutdown("Unavailable config.")
+        exit()
+    rospy.loginfo("Starting solenoid driver on pin " + ctrl_pin)
+    rospy.loginfo("Using {} s, {} s open-close cycle.".format( \
+        opened_secs, closed_secs))
 
-    if success:
-        break
+    success = False
+    max_attempts = 10
+    for i in range(max_attempts):
 
-if not success:
-    rospy.logerr("Failed to configure after " + str(max_attempts) + " attempts.")
-    exit()
+        try:
+            gpio.setup(ctrl_pin, gpio.OUT)
+            success = True
+        except:
+            sleep = random.randint(1, 20)
+            rospy.logwarn(str(i) + ": Failed to configure. " + \
+                "Waiting for " + str(sleep) + " seconds before reattempt.")
+            rospy.sleep(sleep)
 
-gpio.output(ctrl_pin, gpio.LOW)
+        if success:
+            break
 
-rospy.Subscriber(name + "/command", UInt8, recieve_command);
-rospy.Timer(rospy.Duration(0.5), control_loop)
+    if not success:
+        rospy.logerr("Failed to configure after " + \
+            str(max_attempts) + " attempts.")
+        exit()
 
+    gpio.output(ctrl_pin, gpio.LOW)
 
-rospy.loginfo("Success.")
-rospy.spin()
+    driverlib.callback(execute_solenoid_command)
+    rospy.Subscriber(name, DriverCommand, driverlib.receive_command);
+    rospy.Timer(rospy.Duration(0.5), control_loop)
+
+    rospy.loginfo("Success.")
+    rospy.spin()
 
