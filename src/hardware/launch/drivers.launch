@@ -6,7 +6,5 @@
     <include file="$(find hardware)/launch/linear_actuator.launch" />
     <include file="$(find hardware)/launch/solenoid.launch" />
     <include file="$(find hardware)/launch/ematch.launch" />
-    <include file="$(find hardware)/launch/dispatcher.launch" />
-    <include file="$(find hardware)/launch/scheduler.launch" />
 
 </launch>
