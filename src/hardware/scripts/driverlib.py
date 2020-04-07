@@ -4,6 +4,9 @@
 import rospy
 import yaml
 
+
+VERBOSE = False
+
 all_commands = {}
 
 
@@ -20,31 +23,37 @@ def cmd2str(msg):
 def get_highest_priority_command():
     selected = None
     for cmd in all_commands.values():
-        rospy.logdebug(">> " + cmd2str(cmd))
+        if VERBOSE:
+            rospy.logdebug(">> " + cmd2str(cmd))
         if selected is None or cmd.priority > selected.priority:
             selected = cmd
         elif cmd.priority == selected.priority:
             if cmd.header.stamp < selected.header.stamp:
                 selected = cmd
-    rospy.logdebug("HPC: " + cmd2str(selected))
+    if VERBOSE:
+        rospy.logdebug("HPC: " + cmd2str(selected))
     return selected
 
 
 def nullify_command(msg):
-    rospy.logdebug("Nullifying command: " + cmd2str(msg))
+    if VERBOSE:
+        rospy.logdebug("Nullifying command: " + cmd2str(msg))
     old_cmd = get_highest_priority_command()
     all_commands.pop(msg.source)
     new_cmd = get_highest_priority_command()
     if new_cmd == old_cmd:
-        rospy.logdebug("HPC remains unchanged. Doing nothing.")
+        if VERBOSE:
+            rospy.logdebug("HPC remains unchanged. Doing nothing.")
     elif new_cmd is not None:
-        rospy.loginfo("Executing queued command from " + msg.source + ".")
+        if VERBOSE:
+            rospy.loginfo("Executing queued command from " + msg.source + ".")
         execute_command(new_cmd)
 
 
 def receive_command(msg):
-    rospy.loginfo("Received new command from " + msg.source + \
-        ": " + str(msg.command))
+    if VERBOSE:
+        rospy.loginfo("Received new command from " + msg.source + \
+            ": " + str(msg.command))
     old_cmd = get_highest_priority_command()
     # overwrite any previous command from this source
     all_commands[msg.source] = msg
