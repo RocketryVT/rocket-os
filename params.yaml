@@ -60,19 +60,8 @@ commands:
 - all stop:                             "all"
 - abort:                                "all"
 
-- enable solenoid:                      []
-- disable solenoid:                     []
-- stop ignition valve:                  []
-- open ignition valve:                  []
-- close ignition valve:                 []
-- stop linear actuator:                 []
-- extend linear actuator:               []
-- retract linear actuator:              []
-- stop vent valve:                      []
-- open vent valve:                      []
-- close vent valve:                     []
-- crack vent valve:                     []
-- fire ematch:                          []
+- driver help:                          "all"
+- driver .*:                            []
 
 - begin fill:                           [2]
 - end fill:                             [2, 3]
