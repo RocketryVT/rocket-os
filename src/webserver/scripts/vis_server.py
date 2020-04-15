@@ -33,7 +33,7 @@ def get_ip():
 
 
 def broadcast(string):
-    rospy.logdebug("Debug")
+    rospy.logdebug(list_of_clients)
     rospy.loginfo(string)
 
     global last_broadcast
@@ -42,8 +42,9 @@ def broadcast(string):
     for client in list_of_clients:
         id, conn, addr = client
         try:
-            conn.send(string + "\n")
-        except:
+            conn.send(string.data)
+        except Exception as e:
+            print(e)
             conn.close()
             remove(client)
 
