@@ -2,3 +2,4 @@ build/
 devel/
 intall/
 .catkin_workspace
+*.pyc
