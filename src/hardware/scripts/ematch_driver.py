@@ -4,7 +4,6 @@
 
 import rospy
 from std_msgs.msg import Empty
-import Adafruit_BBIO.GPIO as gpio
 import time
 import signal
 import sys
@@ -12,8 +11,16 @@ import random
 from hardware.msg import DriverCommand
 import driverlib
 
+try:
+    import Adafruit_BBIO.GPIO as gpio
+except:
+    print("Failed to import Adafruit_BBIO.GPIO, running in desktop mode")
+    gpio = None
+
+
 def signal_handler(sig, frame):
-    gpio.cleanup()
+    if gpio:
+        gpio.cleanup()
     exit(0)
 
 
@@ -31,12 +38,15 @@ def execute_ematch_command(msg):
         driverlib.nullify_command(msg)
     elif msg.command is msg.EMATCH_FIRE and not locked:
         rospy.loginfo("Firing e-match.")
-        gpio.output(ctrl_pin_a, gpio.HIGH)
+        if gpio:
+            gpio.output(ctrl_pin_a, gpio.HIGH)
         time.sleep(delay)
-        gpio.output(ctrl_pin_b, gpio.HIGH)
+        if gpio:
+            gpio.output(ctrl_pin_b, gpio.HIGH)
         time.sleep(2)
-        gpio.output(ctrl_pin_a, gpio.LOW)
-        gpio.output(ctrl_pin_b, gpio.LOW)
+        if gpio:
+            gpio.output(ctrl_pin_a, gpio.LOW)
+            gpio.output(ctrl_pin_b, gpio.LOW)
     elif msg.command is msg.EMATCH_FIRE:
         rospy.logwarn(msg.source + " is attempting to issue a fire " + \
             "command -- the ematch has been locked. Denied.")
@@ -52,7 +62,8 @@ if __name__ == "__main__":
 
     signal.signal(signal.SIGINT, signal_handler)
 
-    gpio.cleanup()
+    if gpio:
+        gpio.cleanup()
 
     rospy.init_node("ematch_driver", log_level=rospy.DEBUG);
     name = rospy.get_name()
@@ -74,8 +85,9 @@ if __name__ == "__main__":
     for i in range(max_attempts):
 
         try:
-            gpio.setup(ctrl_pin_a, gpio.OUT)
-            gpio.setup(ctrl_pin_b, gpio.OUT)
+            if gpio:
+                gpio.setup(ctrl_pin_a, gpio.OUT)
+                gpio.setup(ctrl_pin_b, gpio.OUT)
             success = True
         except:
             sleep = random.randint(1, 20)
@@ -91,8 +103,9 @@ if __name__ == "__main__":
             str(max_attempts) + " attempts.")
         exit()
 
-    gpio.output(ctrl_pin_a, gpio.LOW)
-    gpio.output(ctrl_pin_b, gpio.LOW)
+    if gpio:
+        gpio.output(ctrl_pin_a, gpio.LOW)
+        gpio.output(ctrl_pin_b, gpio.LOW)
 
     driverlib.callback(execute_ematch_command)
     rospy.Subscriber(name, DriverCommand, driverlib.receive_command);
