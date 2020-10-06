@@ -4,7 +4,7 @@
 
 import Adafruit_BBIO.ADC as adc
 import rospy
-from std_msgs.msg import Float32
+from sensors.msg import SensorReading
 import sys
 
 def voltage_to_celsius(voltage):
@@ -21,36 +21,50 @@ def voltage_to_celsius(voltage):
 
 def read_and_publish(event):
 
+    global sequence_number
+
     voltage = adc.read(adc_pin)*1.8
     celsius = voltage_to_celsius(voltage)
-    pub_volt.publish(voltage)
-    pub_temp.publish(celsius)
+    msg = SensorReading()
+
+    msg.header.seq = sequence_number
+    sequence_number += 1
+    msg.header.stamp = rospy.Time.now()
+
+    msg.voltage = voltage
+    msg.reading = celsius
+    msg.unit = "celsius"
+
+    publisher.publish(msg)
 
 
-adc.setup()
-rospy.init_node("thermocouple_driver");
+if __name__ == "__main__":
 
-adc_pin = sys.argv[1]
-name = rospy.get_name()
-try:
-    adc_pin = rospy.get_param(name + "/pin")
-    period = rospy.get_param(name + "/period")
-except:
-    rospy.logerr("Failed to retrieve configuration from rosparam server.")
-    rospy.signal_shutdown("Unavailable config.")
-    exit()
+    sequence_number = 0
 
-all_pins = ["AIN{}".format(x) for x in range(0,7)]
-if adc_pin not in all_pins:
-    rospy.logerr("Provided pin " + adc_pin + " not a valid ADC pin (" + str(all_pins) + ")")
-    exit()
+    adc.setup()
+    rospy.init_node("thermocouple_driver", log_level=rospy.DEBUG);
 
-pub_temp = rospy.Publisher(name + "/temperature", Float32, queue_size=10);
-pub_volt = rospy.Publisher(name + "/voltage", Float32, queue_size=10);
-rospy.Timer(rospy.Duration(period), read_and_publish)
+    adc_pin = sys.argv[1]
+    name = rospy.get_name()
+    try:
+        adc_pin = rospy.get_param(name + "/pin")
+        period = rospy.get_param(name + "/period")
+    except:
+        rospy.logerr("Failed to retrieve configuration from rosparam server.")
+        rospy.signal_shutdown("Unavailable config.")
+        exit()
 
-rospy.loginfo(("Starting thermocouple driver on ADC {} " +
-               "and polling period {} seconds.").format(adc_pin, period))
+    all_pins = ["AIN{}".format(x) for x in range(0,7)]
+    if adc_pin not in all_pins:
+        rospy.logerr("Provided pin " + adc_pin + " not a valid ADC pin (" + str(all_pins) + ")")
+        exit()
 
-rospy.spin()
+    publisher = rospy.Publisher(name, SensorReading, queue_size=10);
+    rospy.Timer(rospy.Duration(period), read_and_publish)
+
+    rospy.loginfo(("Starting thermocouple driver on ADC {} " +
+                   "and polling period {} seconds.").format(adc_pin, period))
+
+    rospy.spin()
 

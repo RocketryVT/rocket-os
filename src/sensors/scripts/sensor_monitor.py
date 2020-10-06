@@ -2,6 +2,7 @@
 
 import rospy
 from std_msgs.msg import String, Bool, Float32
+from sensors.msg import SensorReading
 import numpy
 import re
 
@@ -12,38 +13,39 @@ class Tracker:
 
     def __init__(self, name, unit=None):
         self.name = name
-        self.unit = unit
         self.last = None
 
     def get(self, message):
 
-        self.last = message.data
+        self.last = message
 
-    def to_string(self):
+    def to_string(self, voltage=False):
 
         acronym = ''.join([x[0] for x in self.name.split()]).upper()
         if self.last is None:
-            return "{}: {}".format(acronym, self.last)
-        if self.unit is None:
-            return "{}: {:0.2f}".format(acronym, self.last)
-        return "{}: {:0.2f} {}".format(acronym, self.last, self.unit)
+            return "{}:     ".format(acronym)
+        if voltage:
+            return "{}: {:0.2f} V".format(acronym, self.last.voltage)
+        if self.last.unit == "":
+            return "{}: {:0.2f}".format(acronym, self.last.reading)
+        return "{}: {:0.2f} {}".format(acronym, self.last.reading, self.last.unit)
 
 
 def echo_sensors(event=None):
 
-    echo_list_of_trackers(sensor_trackers)
+    echo(False)
 
 
 def echo_voltage(event=None):
 
-    echo_list_of_trackers(voltage_trackers)
+    echo(True)
 
 
-def echo_list_of_trackers(trackers):
+def echo(print_voltage):
 
     output = ""
     for i, tracker in enumerate(trackers):
-        output += tracker.to_string()
+        output += tracker.to_string(print_voltage)
         if i < len(trackers) - 1:
             output = output + " / "
     rospy.loginfo(output)
@@ -89,41 +91,27 @@ def get_command(message):
         voltage_timer = None
 
 
-rospy.init_node("sensor_monitor")
+if __name__ == "__main__":
 
-rospy.Subscriber("/commands", String, get_command)
+    rospy.init_node("sensor_monitor", log_level=rospy.DEBUG)
 
-sensor_trackers = [
-    Tracker("Oxidizer tank pressure",           "psig"),
-    Tracker("Combustion chamber pressure",      "psig"),
-    Tracker("Oxidizer tank temperature",        "F"),
-    Tracker("Combustion chamber temperature 1", "F"),
-    Tracker("Combustion chamber temperature 2", "F"),
-    Tracker("Float switch")
-]
+    rospy.Subscriber("/commands", String, get_command)
 
-voltage_trackers = [
-    Tracker("Oxidizer tank pressure",           "V"),
-    Tracker("Combustion chamber pressure",      "V"),
-    Tracker("Oxidizer tank temperature",        "V"),
-    Tracker("Combustion chamber temperature 1", "V"),
-    Tracker("Combustion chamber temperature 2", "V"),
-    Tracker("Float switch",                     "V")
-]
+    trackers = [
+        Tracker("Oxidizer tank pressure"),
+        Tracker("Combustion chamber pressure"),
+        Tracker("Oxidizer tank temperature"),
+        Tracker("Combustion chamber temperature 1"),
+        Tracker("Combustion chamber temperature 2"),
+        Tracker("Float switch")
+    ]
 
-rospy.Subscriber("/sensors/ox_tank_transducer/pressure", Float32, sensor_trackers[0].get)
-rospy.Subscriber("/sensors/combustion_transducer/pressure", Float32, sensor_trackers[1].get)
-rospy.Subscriber("/sensors/ox_tank_thermocouple/temperature", Float32, sensor_trackers[2].get)
-rospy.Subscriber("/sensors/combustion_thermocouple_1/temperature", Float32, sensor_trackers[3].get)
-rospy.Subscriber("/sensors/combustion_thermocouple_2/temperature", Float32, sensor_trackers[4].get)
-rospy.Subscriber("/sensors/float_switch/state", Bool, sensor_trackers[5].get)
+    rospy.Subscriber("/sensors/ox_tank_transducer", SensorReading, trackers[0].get)
+    rospy.Subscriber("/sensors/combustion_transducer", SensorReading, trackers[1].get)
+    rospy.Subscriber("/sensors/ox_tank_thermocouple", SensorReading, trackers[2].get)
+    rospy.Subscriber("/sensors/combustion_thermocouple_1", SensorReading, trackers[3].get)
+    rospy.Subscriber("/sensors/combustion_thermocouple_2", SensorReading, trackers[4].get)
+    rospy.Subscriber("/sensors/float_switch", SensorReading, trackers[5].get)
 
-rospy.Subscriber("/sensors/ox_tank_transducer/voltage", Float32, voltage_trackers[0].get)
-rospy.Subscriber("/sensors/combustion_transducer/voltage", Float32, voltage_trackers[1].get)
-rospy.Subscriber("/sensors/ox_tank_thermocouple/voltage", Float32, voltage_trackers[2].get)
-rospy.Subscriber("/sensors/combustion_thermocouple_1/voltage", Float32, voltage_trackers[3].get)
-rospy.Subscriber("/sensors/combustion_thermocouple_2/voltage", Float32, voltage_trackers[4].get)
-rospy.Subscriber("/sensors/float_switch/voltage", Float32, voltage_trackers[5].get)
-
-rospy.spin()
+    rospy.spin()
 
