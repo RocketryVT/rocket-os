@@ -2,7 +2,11 @@
 
 # thermocouple_driver.py
 
-import Adafruit_BBIO.ADC as adc
+try:
+    import Adafruit_BBIO.ADC as adc
+except:
+    adc = None
+
 import rospy
 from sensors.msg import SensorReading
 import sys
@@ -17,7 +21,10 @@ def read_and_publish(event):
 
     global sequence_number
 
-    voltage = adc.read(adc_pin)*1.8
+    if adc:
+        voltage = adc.read(adc_pin)*1.8
+    else:
+        voltage = 0
     pressure = voltage_to_pressure(voltage)
     msg = SensorReading()
 
@@ -36,8 +43,12 @@ if __name__ == "__main__":
 
     sequence_number = 0
 
-    adc.setup()
     rospy.init_node("pressure_transducer_driver", log_level=rospy.DEBUG)
+
+    if adc:
+        adc.setup()
+    else:
+        rospy.logwarn("Failed to import Adafruit_BBIO.ADC, running in desktop mode")
 
     name = rospy.get_name()
     try:
