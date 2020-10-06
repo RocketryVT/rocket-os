@@ -65,6 +65,7 @@ if __name__ == "__main__":
     try:
         adc_pin = rospy.get_param(name + "/pin")
         period = rospy.get_param(name + "/period")
+        vis_period = rospy.get_param(name + "/vis_period")
     except:
         rospy.logerr("Failed to retrieve configuration from rosparam server.")
         rospy.signal_shutdown("Unavailable config.")
