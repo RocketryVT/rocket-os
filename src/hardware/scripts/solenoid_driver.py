@@ -13,7 +13,6 @@ import driverlib
 try:
     import Adafruit_BBIO.GPIO as gpio
 except:
-    print("Failed to import Adafruit_BBIO.GPIO, running in desktop mode")
     gpio = None
 
 
@@ -64,9 +63,12 @@ if __name__ == "__main__":
     if gpio:
         gpio.cleanup()
 
-    rospy.init_node("solenoid_driver", log_level=rospy.DEBUG);
+    rospy.init_node("solenoid_driver", log_level=rospy.DEBUG)
     name = rospy.get_name()
-    name = rospy.get_name()
+
+    if not gpio:
+        rospy.logwarn("Failed to import Adafruit_BBIO.gpio, running in desktop mode")
+
     try:
         ctrl_pin = rospy.get_param(name + "/pin")
         opened_secs = rospy.get_param(name + "/opened")

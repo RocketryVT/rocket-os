@@ -12,7 +12,6 @@ import driverlib
 try:
     import Adafruit_BBIO.GPIO as gpio
 except:
-    print("Failed to import Adafruit_BBIO.GPIO, running in desktop mode")
     gpio = None
 
 def execute_motor_command(msg):
@@ -83,6 +82,9 @@ if __name__ == "__main__":
         rospy.logerr("Failed to retrieve pin config from rosparam server.")
         rospy.signal_shutdown("Unavailable pin config.")
         exit()
+
+    if not gpio:
+        rospy.logwarn("Failed to import Adafruit_BBIO.gpio, running in desktop mode")
 
     rospy.loginfo("Starting DC motor driver on pins " + cw_pin + ", " + ccw_pin)
 

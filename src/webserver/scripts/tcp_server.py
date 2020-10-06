@@ -20,7 +20,6 @@ from rosgraph_msgs.msg import Log
 try:
     import Adafruit_BBIO.GPIO as gpio
 except:
-    print("Failed to import Adafruit_BBIO.GPIO, running on desktop mode")
     gpio = None
 
 
@@ -202,6 +201,9 @@ if __name__ == "__main__":
 
     rospy.init_node("tcp_server", log_level=rospy.DEBUG)
     name = rospy.get_name()
+
+    if not gpio:
+        rospy.logwarn("Failed to import Adafruit_BBIO.gpio, running in desktop mode")
 
     list_of_clients = []
     total_connections = 0

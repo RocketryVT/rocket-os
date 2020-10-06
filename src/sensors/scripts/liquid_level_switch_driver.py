@@ -5,7 +5,6 @@
 try:
     import Adafruit_BBIO.ADC as adc
 except:
-    print("Failed to import Adafruit_BBIO.ADC, running in desktop mode")
     adc = None
 
 import rospy

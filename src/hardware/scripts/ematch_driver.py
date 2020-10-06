@@ -14,7 +14,6 @@ import driverlib
 try:
     import Adafruit_BBIO.GPIO as gpio
 except:
-    print("Failed to import Adafruit_BBIO.GPIO, running in desktop mode")
     gpio = None
 
 
@@ -64,6 +63,8 @@ if __name__ == "__main__":
 
     if gpio:
         gpio.cleanup()
+    else:
+        rospy.logwarn("Failed to import Adafruit_BBIO.gpio, running in desktop mode")
 
     rospy.init_node("ematch_driver", log_level=rospy.DEBUG);
     name = rospy.get_name()
