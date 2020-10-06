@@ -14,7 +14,7 @@ from datetime import datetime
 import bitarray
 
 import rospy
-from std_msgs.msg import String, Float32
+from std_msgs.msg import String, Duration
 from rosgraph_msgs.msg import Log
 
 try:
@@ -149,10 +149,10 @@ def publish_los(event):
     global los_condition
 
     num_clients = len(list_of_clients)
-    los_duration = rospy.get_time() - los_start_time
+    los_duration = rospy.Time.now() - los_start_time
     if num_clients > 0:
-        los_start_time = rospy.get_time()
-        los_duration = 0
+        los_start_time = rospy.Time.now()
+        los_duration = rospy.Duration()
         if los_condition:
             rospy.loginfo("Connection with atleast one client restored.");
         los_condition = False
@@ -208,7 +208,7 @@ if __name__ == "__main__":
     list_of_clients = []
     total_connections = 0
     last_broadcast = datetime.now()
-    los_start_time = rospy.get_time()
+    los_start_time = rospy.Time.now()
     los_condition = False
     address = get_ip()
     port = 8001
@@ -231,7 +231,7 @@ if __name__ == "__main__":
 
     rospy.Subscriber("/rosout", Log, get_rosout)
     rospy.Subscriber("/requested_commands", String, blink_leds)
-    pub_los = rospy.Publisher("/los", Float32, queue_size=10)
+    pub_los = rospy.Publisher("/los", Duration, queue_size=10)
     pub_command = rospy.Publisher("/requested_commands", String, queue_size=10)
 
     rospy.Timer(rospy.Duration(2), ping)
