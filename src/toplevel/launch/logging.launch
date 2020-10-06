@@ -3,7 +3,7 @@
 
     <group ns="logging">
 
-    <arg name="log_destination" value="/home/debian/rocket-os/logs" />
+    <arg name="log_destination" value="$(find toplevel)/../../logs" />
 
     <node name="rosbag_record" pkg="rosbag" type="record"
           args="--split --duration=10m -a -o $(arg log_destination)/LOG"

@@ -2,7 +2,12 @@
 
 # liquid_level_switch_driver.py
 
-import Adafruit_BBIO.ADC as adc
+try:
+    import Adafruit_BBIO.ADC as adc
+except:
+    print("Failed to import Adafruit_BBIO.ADC, running in desktop mode")
+    adc = None
+
 import rospy
 from sensors.msg import SensorReading
 import sys
@@ -17,7 +22,10 @@ def read_and_publish(event):
 
     global sequence_number
 
-    voltage = adc.read(adc_pin)*1.8
+    if adc:
+        voltage = adc.read(adc_pin)*1.8
+    else:
+        voltage = 0
     state = voltage_to_state(voltage)
     msg = SensorReading()
 
@@ -36,8 +44,12 @@ if __name__ == "__main__":
 
     sequence_number = 0
 
-    adc.setup()
     rospy.init_node("float_switch_driver", log_level=rospy.DEBUG);
+
+    if adc:
+        adc.setup()
+    else:
+        rospy.logwarn("Failed to import Adafruit_BBIO.ADC, running in desktop mode")
 
     name = rospy.get_name()
     try:

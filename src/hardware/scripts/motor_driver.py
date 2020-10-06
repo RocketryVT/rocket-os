@@ -5,10 +5,15 @@
 import rospy
 from hardware.msg import DriverCommand
 import sys
-import Adafruit_BBIO.GPIO as gpio
 import random
 import yaml
 import driverlib
+
+try:
+    import Adafruit_BBIO.GPIO as gpio
+except:
+    print("Failed to import Adafruit_BBIO.GPIO, running in desktop mode")
+    gpio = None
 
 def execute_motor_command(msg):
 
@@ -16,29 +21,34 @@ def execute_motor_command(msg):
 
     if msg.command is msg.MOTOR_STOP:
         rospy.loginfo("Command from " + msg.source + ": stop the motor")
-        gpio.output(cw_pin, gpio.LOW)
-        gpio.output(ccw_pin, gpio.LOW)
+        if gpio:
+            gpio.output(cw_pin, gpio.LOW)
+            gpio.output(ccw_pin, gpio.LOW)
 
     elif msg.command is msg.MOTOR_CLOSE:
         rospy.loginfo("Command from " + msg.source + ": close the motor")
-        gpio.output(cw_pin, gpio.HIGH)
-        gpio.output(ccw_pin, gpio.LOW)
+        if gpio:
+            gpio.output(cw_pin, gpio.HIGH)
+            gpio.output(ccw_pin, gpio.LOW)
 
     elif msg.command is msg.MOTOR_OPEN:
         rospy.loginfo("Command from " + msg.source + ": open the motor")
-        gpio.output(cw_pin, gpio.LOW)
-        gpio.output(ccw_pin, gpio.HIGH)
+        if gpio:
+            gpio.output(cw_pin, gpio.LOW)
+            gpio.output(ccw_pin, gpio.HIGH)
 
     elif msg.command is msg.MOTOR_PULSE_CLOSE:
         rospy.loginfo("Command from " + msg.source + ": pulse-close " +
             "the motor for {} seconds".format(msg.pulse.to_sec()))
         rospy.loginfo("Closing...")
         now = rospy.Time.now()
-        gpio.output(cw_pin, gpio.HIGH)
-        gpio.output(ccw_pin, gpio.LOW)
+        if gpio:
+            gpio.output(cw_pin, gpio.HIGH)
+            gpio.output(ccw_pin, gpio.LOW)
         rospy.sleep(msg.pulse)
-        gpio.output(cw_pin, gpio.LOW)
-        gpio.output(ccw_pin, gpio.LOW)
+        if gpio:
+            gpio.output(cw_pin, gpio.LOW)
+            gpio.output(ccw_pin, gpio.LOW)
         elapsed = rospy.Time.now() - now
         rospy.loginfo("Stopped. {} seconds elapsed.".format(elapsed.to_sec()))
 
@@ -48,11 +58,13 @@ def execute_motor_command(msg):
             "the motor for {} seconds".format(msg.pulse.to_sec()))
         rospy.loginfo("Opening...")
         now = rospy.Time.now()
-        gpio.output(cw_pin, gpio.LOW)
-        gpio.output(ccw_pin, gpio.HIGH)
+        if gpio:
+            gpio.output(cw_pin, gpio.LOW)
+            gpio.output(ccw_pin, gpio.HIGH)
         rospy.sleep(msg.pulse)
-        gpio.output(cw_pin, gpio.LOW)
-        gpio.output(ccw_pin, gpio.LOW)
+        if gpio:
+            gpio.output(cw_pin, gpio.LOW)
+            gpio.output(ccw_pin, gpio.LOW)
         elapsed = rospy.Time.now() - now
         rospy.loginfo("Stopped. {} seconds elapsed.".format(elapsed.to_sec()))
     else:
@@ -78,8 +90,9 @@ if __name__ == "__main__":
     max_attempts = 10
     for i in range(max_attempts):
         try:
-            gpio.setup(cw_pin, gpio.OUT)
-            gpio.setup(ccw_pin, gpio.OUT)
+            if gpio:
+                gpio.setup(cw_pin, gpio.OUT)
+                gpio.setup(ccw_pin, gpio.OUT)
             success = True
         except:
             sleep = random.randint(1, 20)
@@ -94,8 +107,9 @@ if __name__ == "__main__":
             str(max_attempts) + " attempts.")
         exit()
 
-    gpio.output(cw_pin, gpio.LOW)
-    gpio.output(ccw_pin, gpio.LOW)
+    if gpio:
+        gpio.output(cw_pin, gpio.LOW)
+        gpio.output(ccw_pin, gpio.LOW)
 
     driverlib.callback(execute_motor_command)
     rospy.Subscriber(name, DriverCommand, driverlib.receive_command);

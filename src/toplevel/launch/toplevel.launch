@@ -1,7 +1,7 @@
 
 <launch>
 
-    <rosparam command="load" file="/home/debian/rocket-os/params.yaml" />
+    <rosparam command="load" file="$(find toplevel)/../../params.yaml" />
 
     <include file="$(find toplevel)/launch/logging.launch" />
 

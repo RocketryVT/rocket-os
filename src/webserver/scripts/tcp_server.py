@@ -16,7 +16,13 @@ import bitarray
 import rospy
 from std_msgs.msg import String, Float32
 from rosgraph_msgs.msg import Log
-import Adafruit_BBIO.GPIO as gpio
+
+try:
+    import Adafruit_BBIO.GPIO as gpio
+except:
+    print("Failed to import Adafruit_BBIO.GPIO, running on desktop mode")
+    gpio = None
+
 
 def get_ip():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -51,10 +57,11 @@ def ping(event):
     if seconds > 2 and len(list_of_clients):
         rospy.logdebug("Sending keep-alive message.")
     
-    led = "USR3"
-    gpio.output(led, gpio.HIGH)
-    rospy.sleep(0.1)
-    gpio.output(led, gpio.LOW)
+    if gpio:
+        led = "USR3"
+        gpio.output(led, gpio.HIGH)
+        rospy.sleep(0.1)
+        gpio.output(led, gpio.LOW)
 
 
 def exit_handler():
@@ -129,10 +136,12 @@ def level_to_str(level):
 def get_rosout(msg):
     time = str(datetime.fromtimestamp(msg.header.stamp.to_sec()))
     broadcast(level_to_str(msg.level) + " [" + time + "] [" + str(msg.name) + "]: " + msg.msg)
-    led = "USR0"
-    gpio.output(led, gpio.HIGH)
-    rospy.sleep(0.1)
-    gpio.output(led, gpio.LOW)
+
+    if gpio:
+        led = "USR0"
+        gpio.output(led, gpio.HIGH)
+        rospy.sleep(0.1)
+        gpio.output(led, gpio.LOW)
 
 
 def publish_los(event):
@@ -156,6 +165,9 @@ def publish_los(event):
 
 
 def blink_leds(message):
+
+    if not gpio:
+        return
 
     word = message.data
 
@@ -182,10 +194,11 @@ if __name__ == "__main__":
     atexit.register(exit_handler)
     signal.signal(signal.SIGINT, signal_handler)
 
-    LEDs =  [ "USR0", "USR1", "USR2", "USR3" ]
-    for led in LEDs:
-        gpio.setup(led, gpio.OUT)
-        gpio.output(led, gpio.LOW)
+    if gpio:
+        LEDs =  [ "USR0", "USR1", "USR2", "USR3" ]
+        for led in LEDs:
+            gpio.setup(led, gpio.OUT)
+            gpio.output(led, gpio.LOW)
 
     rospy.init_node("tcp_server", log_level=rospy.DEBUG)
     name = rospy.get_name()

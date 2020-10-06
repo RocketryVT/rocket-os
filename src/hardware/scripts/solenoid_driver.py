@@ -4,16 +4,22 @@
 
 import rospy
 import sys
-import Adafruit_BBIO.GPIO as gpio
 import time
 import signal
 import random
 from hardware.msg import DriverCommand
 import driverlib
 
+try:
+    import Adafruit_BBIO.GPIO as gpio
+except:
+    print("Failed to import Adafruit_BBIO.GPIO, running in desktop mode")
+    gpio = None
+
 
 def signal_handler(sig, frame):
-    gpio.cleanup()
+    if gpio:
+        gpio.cleanup()
     exit(0)
 
 
@@ -40,12 +46,14 @@ def control_loop(event):
     if (nominal_state and secs < opened_secs) and not current_state:
         rospy.loginfo("Opening the solenoid")
         current_state = True
-        gpio.output(ctrl_pin, gpio.HIGH)
+        if gpio:
+            gpio.output(ctrl_pin, gpio.HIGH)
 
     elif not (nominal_state and secs < opened_secs) and current_state:
         rospy.loginfo("Closing the solenoid")
         current_state = False
-        gpio.output(ctrl_pin, gpio.LOW)
+        if gpio:
+            gpio.output(ctrl_pin, gpio.LOW)
 
 
 if __name__ == "__main__":
@@ -53,7 +61,8 @@ if __name__ == "__main__":
     nominal_state = False
     current_state = False
 
-    gpio.cleanup()
+    if gpio:
+        gpio.cleanup()
 
     rospy.init_node("solenoid_driver", log_level=rospy.DEBUG);
     name = rospy.get_name()
@@ -75,7 +84,8 @@ if __name__ == "__main__":
     for i in range(max_attempts):
 
         try:
-            gpio.setup(ctrl_pin, gpio.OUT)
+            if gpio:
+                gpio.setup(ctrl_pin, gpio.OUT)
             success = True
         except:
             sleep = random.randint(1, 20)
@@ -91,7 +101,8 @@ if __name__ == "__main__":
             str(max_attempts) + " attempts.")
         exit()
 
-    gpio.output(ctrl_pin, gpio.LOW)
+    if gpio:
+        gpio.output(ctrl_pin, gpio.LOW)
 
     driverlib.callback(execute_solenoid_command)
     rospy.Subscriber(name, DriverCommand, driverlib.receive_command);
