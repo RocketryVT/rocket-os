@@ -1,0 +1,11 @@
+timestamp,data
+1587851246385365074,"""close solenoid"""
+1587851248640793074,"""open solenoid"""
+1587851250739945325,"""close ignition valve"""
+1587851252674627366,"""open ignition valve"""
+1587851255480069658,"""retract linear actuator"""
+1587851260887524201,"""extend linear actuator"""
+1587851263484682534,"""close vent valve"""
+1587851265008947785,"""open vent valve"""
+1587851266491471243,"""crack vent valve"""
+1587851267606687035,"""fire ematch"""
