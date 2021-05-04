@@ -76,3 +76,7 @@ timestamp,data
 1613699995119415328,"""driver topic=/hardware/linear_actuator priority=5 command=MOTOR_CLOSE"""
 1613700012796114455,"""driver topic=/hardware/abort_valve priority=5 command=MOTOR_STOP"""
 1613700055999163752,"""driver topic=/hardware/linear_actuator priority=5 command=MOTOR_STOP"""
+1613700083374560505,"""driver topic=/hardware/injection_valve priority=5 command=MOTOR_OPEN"""
+1613700142034577429,"""driver topic=/hardware/injection_valve priority=5 command=MOTOR_CLOSE"""
+1613700146332993513,"""driver topic=/hardware/abort_valve priority=5 command=MOTOR_OPEN"""
+1613700150154543680,"""driver topic=/hardware/solenoid priority=5 command=SOLENOID_INACTIVE"""
