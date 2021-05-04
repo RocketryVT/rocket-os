@@ -1,0 +1,2488 @@
+Log beginning Monday, 26 April 2021 02:06:16 PM
+[INFO]  [2021-02-18 20:22:33.506855] [/top/tcp_server]: New connection: (1, ('192.168.1.113', 64949))
+[INFO]  [2021-02-18 20:22:33.543016] [/top/tcp_server]: 2 active connection(s)
+[DEBUG] [2021-02-18 20:22:37.067997] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:22:38.166880] [/top/tcp_server]: Command from #1: hey wade
+[WARN]  [2021-02-18 20:22:38.366355] [/top/readiness_admin]: Command doesn't match any patterns in the current whitelist.
+[DEBUG] [2021-02-18 20:22:41.068560] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:22:45.074874] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:22:49.066020] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:22:49.506580] [/top/tcp_server]: Command from #0: we in boi
+[WARN]  [2021-02-18 20:22:49.628449] [/top/readiness_admin]: Command doesn't match any patterns in the current whitelist.
+[INFO]  [2021-02-18 20:22:52.829626] [/top/tcp_server]: Command from #1: toggle backdoor
+[WARN]  [2021-02-18 20:22:52.873928] [/top/readiness_admin]: Enabled backdoor. All commands now permitted.
+[DEBUG] [2021-02-18 20:22:53.876369] [/top/watchdog]: Runtime has reached: 1 minutes.
+[DEBUG] [2021-02-18 20:22:57.092375] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:22:57.231861] [/top/tcp_server]: Command from #1: driver topic=/hardware/abort_valve priority=5 command=MOTOR_OPEN
+[DEBUG] [2021-02-18 20:22:57.338547] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:22:57.874237] [/hardware/abort_valve]: connecting to 192.168.1.101 32971
+[INFO]  [2021-02-18 20:22:58.392998] [/logging/rosbag_record]: Subscribing to /hardware/abort_valve
+[DEBUG] [2021-02-18 20:22:58.885521] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613697777, "nsecs": 462800979}, "frame_id": "", "seq": 0}, "command": 3, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:22:58.954721] [/hardware/abort_valve]: Executing new command: /admin/adam_driver: 3 (0.000 s), P5
+[INFO]  [2021-02-18 20:22:59.027832] [/hardware/abort_valve]: Command from /admin/adam_driver: open the motor
+[DEBUG] [2021-02-18 20:23:03.111875] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:23:07.084337] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:23:11.086040] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:23:15.087917] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:23:19.095185] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:23:23.092470] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:23:27.123444] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:23:31.078298] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:23:35.075071] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:23:39.102729] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:23:43.078645] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:23:47.086839] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:23:51.076805] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:23:53.854580] [/top/watchdog]: Runtime has reached: 2 minutes.
+[DEBUG] [2021-02-18 20:23:57.095859] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:24:01.101438] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:24:05.087416] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:24:09.094642] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:24:13.084934] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:24:17.083606] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:24:21.114735] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:24:25.087806] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:24:29.096969] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:24:33.082694] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:24:37.076479] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:24:41.067260] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:24:45.077798] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:24:49.094304] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:24:53.069682] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:24:53.830213] [/top/watchdog]: Runtime has reached: 3 minutes.
+[DEBUG] [2021-02-18 20:24:57.150601] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:25:01.087202] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:25:05.079522] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:25:09.097156] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:25:13.083098] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:25:17.076121] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:25:21.078462] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:26:44.315419] [/top/tcp_server]: New connection: (2, ('192.168.1.113', 65080))
+[INFO]  [2021-02-18 20:26:44.366214] [/top/tcp_server]: 3 active connection(s)
+[DEBUG] [2021-02-18 20:26:47.069303] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:26:47.851438] [/top/tcp_server]: Command from #2: back
+[DEBUG] [2021-02-18 20:26:47.917887] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:26:51.067624] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:26:53.827329] [/top/watchdog]: Runtime has reached: 5 minutes.
+[DEBUG] [2021-02-18 20:26:57.128310] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:27:01.092476] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:27:05.079764] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:27:09.098979] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:27:13.085765] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:27:17.083969] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:27:19.086328] [/top/tcp_server]: Command from #0: yay
+[DEBUG] [2021-02-18 20:27:19.174633] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[INFO]  [2021-02-18 20:27:22.324686] [/top/tcp_server]: Command from #0: ima head over
+[DEBUG] [2021-02-18 20:27:22.374823] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:27:25.076349] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:27:29.101557] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:27:33.102964] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:27:33.992993] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[INFO]  [2021-02-18 20:27:33.831992] [/top/tcp_server]: Command from #2: driver topic=/hardware/abort_valve priority=5 command=MOTOR_STOP
+[INFO]  [2021-02-18 20:27:33.901850] [/top/tcp_server]: Client #0 has disconnected
+[INFO]  [2021-02-18 20:27:34.048133] [/top/tcp_server]: 2 client(s) remaining
+[DEBUG] [2021-02-18 20:27:34.349504] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698054, "nsecs": 55886030}, "frame_id": "", "seq": 1}, "command": 1, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:27:34.415352] [/hardware/abort_valve]: Executing new command: /admin/adam_driver: 1 (0.000 s), P5
+[INFO]  [2021-02-18 20:27:34.457119] [/hardware/abort_valve]: Command from /admin/adam_driver: stop the motor
+[DEBUG] [2021-02-18 20:27:37.068285] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:27:41.092453] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:27:41.726666] [/top/tcp_server]: Command from #2: driver topic=/hardware/abort_valve priority=5 command=MOTOR_OPEN
+[DEBUG] [2021-02-18 20:27:41.807346] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:27:42.082846] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698061, "nsecs": 869534015}, "frame_id": "", "seq": 2}, "command": 3, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:27:42.138342] [/hardware/abort_valve]: Executing new command: /admin/adam_driver: 3 (0.000 s), P5
+[INFO]  [2021-02-18 20:27:42.165094] [/hardware/abort_valve]: Command from /admin/adam_driver: open the motor
+[DEBUG] [2021-02-18 20:27:45.070866] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:27:46.484374] [/top/tcp_server]: Command from #2: driver topic=/hardware/abort_valve priority=5 command=MOTOR_CLOSE
+[DEBUG] [2021-02-18 20:27:46.549402] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:27:46.857937] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698066, "nsecs": 610764980}, "frame_id": "", "seq": 3}, "command": 2, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:27:46.897089] [/hardware/abort_valve]: Executing new command: /admin/adam_driver: 2 (0.000 s), P5
+[INFO]  [2021-02-18 20:27:46.956751] [/hardware/abort_valve]: Command from /admin/adam_driver: close the motor
+[DEBUG] [2021-02-18 20:27:49.077018] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:27:53.090607] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:27:53.813755] [/top/watchdog]: Runtime has reached: 6 minutes.
+[INFO]  [2021-02-18 20:27:55.101393] [/top/tcp_server]: Command from #2: driver topic=/hardware/abort_valve priority=5 command=MOTOR_STOP
+[DEBUG] [2021-02-18 20:27:55.174925] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:27:55.435758] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698075, "nsecs": 237452030}, "frame_id": "", "seq": 4}, "command": 1, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:27:55.487378] [/hardware/abort_valve]: Executing new command: /admin/adam_driver: 1 (0.000 s), P5
+[INFO]  [2021-02-18 20:27:55.515328] [/hardware/abort_valve]: Command from /admin/adam_driver: stop the motor
+[DEBUG] [2021-02-18 20:27:59.066900] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:28:03.095670] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:28:07.077426] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:28:11.109037] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:28:15.075509] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:28:18.818181] [/top/tcp_server]: Command from #2: driver topic=/hardware/injection_valve priority=5 command=MOTOR_OPEN
+[DEBUG] [2021-02-18 20:28:18.895812] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:28:19.394379] [/hardware/injection_valve]: connecting to 192.168.1.101 32971
+[INFO]  [2021-02-18 20:28:19.437151] [/logging/rosbag_record]: Subscribing to /hardware/injection_valve
+[DEBUG] [2021-02-18 20:28:20.250243] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698098, "nsecs": 947683095}, "frame_id": "", "seq": 5}, "command": 3, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:28:20.311288] [/hardware/injection_valve]: Executing new command: /admin/adam_driver: 3 (0.000 s), P5
+[INFO]  [2021-02-18 20:28:20.374074] [/hardware/injection_valve]: Command from /admin/adam_driver: open the motor
+[DEBUG] [2021-02-18 20:28:23.074232] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:28:27.080823] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:28:27.224504] [/top/tcp_server]: Command from #2: driver topic=/hardware/injection_valve priority=5 command=MOTOR_CLOSE
+[DEBUG] [2021-02-18 20:28:27.333752] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:28:27.593667] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698107, "nsecs": 388797998}, "frame_id": "", "seq": 6}, "command": 2, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:28:27.643971] [/hardware/injection_valve]: Executing new command: /admin/adam_driver: 2 (0.000 s), P5
+[INFO]  [2021-02-18 20:28:27.675484] [/hardware/injection_valve]: Command from /admin/adam_driver: close the motor
+[DEBUG] [2021-02-18 20:28:31.103377] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:28:32.062607] [/top/tcp_server]: Command from #2: driver topic=/hardware/injection_valve priority=5 command=MOTOR_STOP
+[DEBUG] [2021-02-18 20:28:32.159985] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:28:32.455283] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698112, "nsecs": 227669000}, "frame_id": "", "seq": 7}, "command": 1, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:28:32.508433] [/hardware/injection_valve]: Executing new command: /admin/adam_driver: 1 (0.000 s), P5
+[INFO]  [2021-02-18 20:28:32.554704] [/hardware/injection_valve]: Command from /admin/adam_driver: stop the motor
+[INFO]  [2021-02-18 20:28:34.208264] [/top/tcp_server]: New connection: (3, ('192.168.1.111', 36786))
+[INFO]  [2021-02-18 20:28:34.256632] [/top/tcp_server]: 3 active connection(s)
+[DEBUG] [2021-02-18 20:28:37.078749] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:28:41.068136] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:28:45.109745] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:28:49.091204] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:28:50.768372] [/top/tcp_server]: Command from #2: driver topic=/hardware/solenoid priority=5 command=SOLENOID_ACTIVE
+[DEBUG] [2021-02-18 20:28:50.847939] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:28:51.338482] [/hardware/solenoid]: connecting to 192.168.1.101 32971
+[INFO]  [2021-02-18 20:28:51.478793] [/logging/rosbag_record]: Subscribing to /hardware/solenoid
+[DEBUG] [2021-02-18 20:28:52.214842] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698130, "nsecs": 897357940}, "frame_id": "", "seq": 8}, "command": 7, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[INFO]  [2021-02-18 20:28:52.282986] [/hardware/solenoid]: Enable solenoid open cycle
+[DEBUG] [2021-02-18 20:28:53.827874] [/top/watchdog]: Runtime has reached: 7 minutes.
+[DEBUG] [2021-02-18 20:28:57.075791] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:29:00.440744] [/hardware/solenoid]: Opening the solenoid
+[DEBUG] [2021-02-18 20:29:03.069596] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:29:07.079872] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:29:11.100746] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:29:15.067528] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:29:19.106669] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:29:23.068646] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:29:27.067439] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:29:30.436068] [/hardware/solenoid]: Closing the solenoid
+[DEBUG] [2021-02-18 20:29:33.076016] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:29:35.494384] [/top/tcp_server]: Command from #2: driver topic=/hardware/solenoid priority=5 command=SOLENOID_INACTIVE
+[DEBUG] [2021-02-18 20:29:35.570138] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:29:35.891950] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698175, "nsecs": 622616052}, "frame_id": "", "seq": 9}, "command": 6, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[INFO]  [2021-02-18 20:29:35.953329] [/hardware/solenoid]: Disable solenoid open cycle
+[DEBUG] [2021-02-18 20:29:39.075481] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:29:43.096359] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:29:47.072684] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:29:51.098340] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:29:51.671394] [/top/tcp_server]: Command from #2: driver topic=/hardware/linear_actuator priority=5 command=MOTOR_OPEN
+[DEBUG] [2021-02-18 20:29:51.751693] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:29:52.136405] [/hardware/linear_actuator]: connecting to 192.168.1.101 32971
+[INFO]  [2021-02-18 20:29:52.371855] [/logging/rosbag_record]: Subscribing to /hardware/linear_actuator
+[DEBUG] [2021-02-18 20:29:53.135890] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698191, "nsecs": 818670034}, "frame_id": "", "seq": 10}, "command": 3, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:29:53.179735] [/hardware/linear_actuator]: Executing new command: /admin/adam_driver: 3 (0.000 s), P5
+[INFO]  [2021-02-18 20:29:53.222460] [/hardware/linear_actuator]: Command from /admin/adam_driver: open the motor
+[DEBUG] [2021-02-18 20:29:53.817516] [/top/watchdog]: Runtime has reached: 8 minutes.
+[INFO]  [2021-02-18 20:29:56.514106] [/top/tcp_server]: Command from #3: oh boi
+[DEBUG] [2021-02-18 20:29:56.574799] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:29:59.074455] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:30:03.098259] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:30:03.302013] [/top/readiness_admin]: Command 'all stop' matches these patterns: ['all stop']
+[INFO]  [2021-02-18 20:30:03.200599] [/top/tcp_server]: Command from #3: all stop
+[DEBUG] [2021-02-18 20:30:07.073873] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:30:11.110248] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:30:15.087012] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:30:17.965574] [/top/tcp_server]: Command from #2: driver topic=/hardware/linear_actuator priority=5 command=MOTOR_STOP
+[DEBUG] [2021-02-18 20:30:18.044016] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:30:18.272642] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698218, "nsecs": 98387002}, "frame_id": "", "seq": 11}, "command": 1, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:30:18.394713] [/hardware/linear_actuator]: Executing new command: /admin/adam_driver: 1 (0.000 s), P5
+[INFO]  [2021-02-18 20:30:18.449428] [/hardware/linear_actuator]: Command from /admin/adam_driver: stop the motor
+[DEBUG] [2021-02-18 20:30:21.081115] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:30:25.086958] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:30:29.101562] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:30:33.095915] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:30:37.067515] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:30:41.077770] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:30:45.083544] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:30:49.074825] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:30:53.067851] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:30:53.815720] [/top/watchdog]: Runtime has reached: 9 minutes.
+[DEBUG] [2021-02-18 20:30:57.081398] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:30:58.361637] [/logging/rosbag_record]: Closing /home/debian/rocket-os/src/toplevel/../../logs/LOG_2021-02-18-20-20-58_0.bag.
+[INFO]  [2021-02-18 20:30:58.631825] [/logging/rosbag_record]: Recording to /home/debian/rocket-os/src/toplevel/../../logs/LOG_2021-02-18-20-30-58_1.bag.
+[DEBUG] [2021-02-18 20:31:01.078508] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:31:05.074043] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:31:09.068287] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:31:13.066508] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:31:17.066759] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:31:21.066666] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:31:25.067360] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:33:21.709066] [/top/tcp_server]: New connection: (8, ('192.168.1.113', 65181))
+[INFO]  [2021-02-18 20:33:21.730963] [/top/tcp_server]: 2 active connection(s)
+[INFO]  [2021-02-18 20:33:23.486365] [/top/tcp_server]: Command from #8: driver topic=/hardware/linear_actuator priority=5 command=MOTOR_STOP
+[DEBUG] [2021-02-18 20:33:23.529975] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:33:23.619749] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698403, "nsecs": 550975084}, "frame_id": "", "seq": 15}, "command": 1, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:33:23.642794] [/hardware/linear_actuator]: Executing new command: /admin/adam_driver: 1 (0.000 s), P5
+[INFO]  [2021-02-18 20:33:23.666667] [/hardware/linear_actuator]: Command from /admin/adam_driver: stop the motor
+[INFO]  [2021-02-18 20:33:26.795530] [/top/tcp_server]: Command from #8: driver topic=/hardware/abort_valve priority=5 command=MOTOR_CLOSE
+[DEBUG] [2021-02-18 20:33:26.854283] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:33:27.053581] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698406, "nsecs": 898116111}, "frame_id": "", "seq": 16}, "command": 2, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:33:27.093874] [/hardware/abort_valve]: Executing new command: /admin/adam_driver: 2 (0.000 s), P5
+[INFO]  [2021-02-18 20:33:27.125998] [/hardware/abort_valve]: Command from /admin/adam_driver: close the motor
+[DEBUG] [2021-02-18 20:33:31.068487] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:33:34.229340] [/top/tcp_server]: Command from #8: driver topic=/hardware/abort_valve priority=5 command=MOTOR_OPEN
+[DEBUG] [2021-02-18 20:33:34.256525] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:33:34.382598] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698414, "nsecs": 283528089}, "frame_id": "", "seq": 17}, "command": 3, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:33:34.410902] [/hardware/abort_valve]: Executing new command: /admin/adam_driver: 3 (0.000 s), P5
+[INFO]  [2021-02-18 20:33:34.434957] [/hardware/abort_valve]: Command from /admin/adam_driver: open the motor
+[DEBUG] [2021-02-18 20:33:37.066981] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:33:41.074045] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:33:45.075789] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:33:49.074124] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:33:53.073845] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:33:53.837706] [/top/watchdog]: Runtime has reached: 12 minutes.
+[DEBUG] [2021-02-18 20:33:57.071747] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:34:01.073563] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:34:05.075978] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:34:09.072742] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:34:12.654560] [/top/tcp_server]: Command from #8: driver topic=/hardware/abort_valve priority=5 command=MOTOR_STOP
+[DEBUG] [2021-02-18 20:34:12.682514] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:34:12.787454] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698452, "nsecs": 702349901}, "frame_id": "", "seq": 18}, "command": 1, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:34:12.817152] [/hardware/abort_valve]: Executing new command: /admin/adam_driver: 1 (0.000 s), P5
+[INFO]  [2021-02-18 20:34:12.849871] [/hardware/abort_valve]: Command from /admin/adam_driver: stop the motor
+[INFO]  [2021-02-18 20:34:14.017813] [/top/tcp_server]: Command from #8: driver topic=/hardware/linear_actuator priority=5 command=MOTOR_STOP
+[DEBUG] [2021-02-18 20:34:14.089389] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:34:14.280569] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698454, "nsecs": 121927976}, "frame_id": "", "seq": 19}, "command": 1, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:34:14.331526] [/hardware/linear_actuator]: Executing new command: /admin/adam_driver: 1 (0.000 s), P5
+[INFO]  [2021-02-18 20:34:14.362505] [/hardware/linear_actuator]: Command from /admin/adam_driver: stop the motor
+[INFO]  [2021-02-18 20:34:14.953266] [/top/tcp_server]: Command from #8: driver topic=/hardware/injection_valve priority=5 command=MOTOR_STOP
+[DEBUG] [2021-02-18 20:34:14.990480] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:34:15.092750] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698455, "nsecs": 19195079}, "frame_id": "", "seq": 20}, "command": 1, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:34:15.118150] [/hardware/injection_valve]: Executing new command: /admin/adam_driver: 1 (0.000 s), P5
+[INFO]  [2021-02-18 20:34:15.145319] [/hardware/injection_valve]: Command from /admin/adam_driver: stop the motor
+[INFO]  [2021-02-18 20:34:15.720180] [/top/tcp_server]: Command from #8: driver topic=/hardware/solenoid priority=5 command=SOLENOID_INACTIVE
+[DEBUG] [2021-02-18 20:34:15.770748] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:34:15.994966] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698455, "nsecs": 828619003}, "frame_id": "", "seq": 21}, "command": 6, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[INFO]  [2021-02-18 20:34:16.035187] [/hardware/solenoid]: Disable solenoid open cycle
+[DEBUG] [2021-02-18 20:34:19.074553] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:34:23.077368] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:34:27.076508] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:34:31.078240] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:34:35.078883] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:34:39.075172] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:34:43.076388] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:34:44.955586] [/top/tcp_server]: Command from #8: driver topic=/hardware/abort_valve priority=5 command=MOTOR_OPEN
+[DEBUG] [2021-02-18 20:34:44.995157] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:34:45.097859] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698485, "nsecs": 25362014}, "frame_id": "", "seq": 22}, "command": 3, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:34:45.123864] [/hardware/abort_valve]: Executing new command: /admin/adam_driver: 3 (0.000 s), P5
+[INFO]  [2021-02-18 20:34:45.144634] [/hardware/abort_valve]: Command from /admin/adam_driver: open the motor
+[DEBUG] [2021-02-18 20:34:49.074997] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:34:53.077921] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:34:53.826492] [/top/watchdog]: Runtime has reached: 13 minutes.
+[DEBUG] [2021-02-18 20:34:57.075012] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:35:01.073613] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:35:05.073855] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:35:09.075747] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:35:13.073303] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:35:13.247117] [/top/tcp_server]: Command from #8: driver topic=/hardware/abort_valve priority=5 command=MOTOR_STOP
+[DEBUG] [2021-02-18 20:35:13.284554] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:35:13.392631] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698513, "nsecs": 331430912}, "frame_id": "", "seq": 23}, "command": 1, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:35:13.424215] [/hardware/abort_valve]: Executing new command: /admin/adam_driver: 1 (0.000 s), P5
+[INFO]  [2021-02-18 20:35:13.449550] [/hardware/abort_valve]: Command from /admin/adam_driver: stop the motor
+[DEBUG] [2021-02-18 20:35:17.074862] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:35:21.072079] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:35:25.073400] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:35:29.070903] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:35:33.070717] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:35:37.069949] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:35:41.074203] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:35:45.067100] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:35:49.067527] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:35:53.075664] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:35:53.811551] [/top/watchdog]: Runtime has reached: 14 minutes.
+[DEBUG] [2021-02-18 20:35:57.071961] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:36:01.073858] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:36:05.067707] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:36:09.077102] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:36:13.071285] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:36:17.072777] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:36:21.070214] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:36:25.072460] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:36:28.585115] [/top/tcp_server]: connecting to 192.168.1.101 37313
+[DEBUG] [2021-02-18 20:36:31.068718] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:36:34.173969] [/top/tcp_server]: connecting to 192.168.1.101 37313
+[INFO]  [2021-02-18 20:36:34.548402] [/top/watchdog]: /rostopic_24506_1613698586806 has been born.
+[DEBUG] [2021-02-18 20:36:34.625281] [/sensors/ox_tank_transducer]: publisher connection to [/rostopic_24506_1613698586806] terminated, see errorlog for details:
+Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 1075, in publish
+    c.write_data(data)
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/impl/tcpros_pubsub.py", line 413, in write_data
+    raise error
+error: [Errno 104] Connection reset by peer
+
+[DEBUG] [2021-02-18 20:36:37.075578] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:36:41.074093] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:36:44.187180] [/top/watchdog]: /rostopic_24506_1613698586806 has died.
+[DEBUG] [2021-02-18 20:36:47.066715] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:36:49.427264] [/top/tcp_server]: connecting to 192.168.1.101 45707
+[DEBUG] [2021-02-18 20:36:53.075606] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:36:53.825945] [/top/watchdog]: Runtime has reached: 15 minutes.
+[INFO]  [2021-02-18 20:36:54.094291] [/top/watchdog]: /rostopic_25063_1613698608051 has been born.
+[DEBUG] [2021-02-18 20:36:57.073850] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:36:57.802728] [/top/tcp_server]: connecting to 192.168.1.101 45707
+[DEBUG] [2021-02-18 20:37:01.068435] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:37:03.867982] [/top/watchdog]: /rostopic_25063_1613698608051 has died.
+[INFO]  [2021-02-18 20:37:05.677529] [/top/tcp_server]: Command from #8: driver topic=/hardware/solenoid priority=5 command=SOLENOID_INACTIVE
+[DEBUG] [2021-02-18 20:37:05.706603] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:37:05.846897] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698625, "nsecs": 752013921}, "frame_id": "", "seq": 24}, "command": 6, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[INFO]  [2021-02-18 20:37:05.873677] [/hardware/solenoid]: Disable solenoid open cycle
+[INFO]  [2021-02-18 20:37:06.639124] [/top/tcp_server]: Command from #8: driver topic=/hardware/injection_valve priority=5 command=MOTOR_STOP
+[DEBUG] [2021-02-18 20:37:06.679309] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:37:06.897311] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698626, "nsecs": 723637104}, "frame_id": "", "seq": 25}, "command": 1, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:37:06.929249] [/hardware/injection_valve]: Executing new command: /admin/adam_driver: 1 (0.000 s), P5
+[INFO]  [2021-02-18 20:37:06.972510] [/hardware/injection_valve]: Command from /admin/adam_driver: stop the motor
+[INFO]  [2021-02-18 20:37:07.493665] [/top/tcp_server]: Command from #8: driver topic=/hardware/linear_actuator priority=5 command=MOTOR_STOP
+[DEBUG] [2021-02-18 20:37:07.549305] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:37:07.737613] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698627, "nsecs": 590029954}, "frame_id": "", "seq": 26}, "command": 1, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:37:07.777957] [/hardware/linear_actuator]: Executing new command: /admin/adam_driver: 1 (0.000 s), P5
+[INFO]  [2021-02-18 20:37:07.826008] [/hardware/linear_actuator]: Command from /admin/adam_driver: stop the motor
+[INFO]  [2021-02-18 20:37:08.350335] [/top/tcp_server]: Command from #8: driver topic=/hardware/abort_valve priority=5 command=MOTOR_STOP
+[DEBUG] [2021-02-18 20:37:08.395861] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:37:08.626552] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698628, "nsecs": 437448978}, "frame_id": "", "seq": 27}, "command": 1, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:37:08.687387] [/hardware/abort_valve]: Executing new command: /admin/adam_driver: 1 (0.000 s), P5
+[INFO]  [2021-02-18 20:37:08.753520] [/hardware/abort_valve]: Command from /admin/adam_driver: stop the motor
+[DEBUG] [2021-02-18 20:37:11.076465] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:37:15.074727] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:37:19.078814] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:37:20.606410] [/top/tcp_server]: New connection: (9, ('192.168.1.115', 50303))
+[INFO]  [2021-02-18 20:37:20.628501] [/top/tcp_server]: 3 active connection(s)
+[DEBUG] [2021-02-18 20:37:23.075411] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:37:27.076416] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:37:31.075371] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:37:35.075003] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:37:39.072150] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:37:40.152353] [/top/tcp_server]: Command from #8: driver topic=/hardware/abort_valve priority=5 command=MOTOR_OPEN
+[DEBUG] [2021-02-18 20:37:40.203708] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:37:40.430317] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698660, "nsecs": 250730991}, "frame_id": "", "seq": 28}, "command": 3, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:37:40.464143] [/hardware/abort_valve]: Executing new command: /admin/adam_driver: 3 (0.000 s), P5
+[INFO]  [2021-02-18 20:37:40.495402] [/hardware/abort_valve]: Command from /admin/adam_driver: open the motor
+[DEBUG] [2021-02-18 20:37:43.078028] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:37:47.067500] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:37:47.806981] [/top/tcp_server]: Command from #8: driver topic=/hardware/abort_valve priority=5 command=MOTOR_CLOSE
+[DEBUG] [2021-02-18 20:37:47.854014] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:37:47.952014] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698667, "nsecs": 875715017}, "frame_id": "", "seq": 29}, "command": 2, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:37:47.982819] [/hardware/abort_valve]: Executing new command: /admin/adam_driver: 2 (0.000 s), P5
+[INFO]  [2021-02-18 20:37:48.005745] [/hardware/abort_valve]: Command from /admin/adam_driver: close the motor
+[DEBUG] [2021-02-18 20:37:51.066827] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:37:53.491458] [/top/tcp_server]: Command from #8: driver topic=/hardware/abort_valve priority=5 command=MOTOR_STOP
+[DEBUG] [2021-02-18 20:37:53.543741] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:37:53.765953] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698673, "nsecs": 583478927}, "frame_id": "", "seq": 30}, "command": 1, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:37:53.798812] [/hardware/abort_valve]: Executing new command: /admin/adam_driver: 1 (0.000 s), P5
+[DEBUG] [2021-02-18 20:37:53.849781] [/top/watchdog]: Runtime has reached: 16 minutes.
+[INFO]  [2021-02-18 20:37:53.880669] [/hardware/abort_valve]: Command from /admin/adam_driver: stop the motor
+[INFO]  [2021-02-18 20:37:56.543811] [/top/tcp_server]: Command from #8: driver topic=/hardware/abort_valve priority=5 command=MOTOR_PULSE_OPEN pulse=2
+[DEBUG] [2021-02-18 20:37:56.586935] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:37:56.771901] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698676, "nsecs": 626807928}, "frame_id": "", "seq": 31}, "command": 5, "pulse": {"secs": 2, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:37:56.794594] [/hardware/abort_valve]: Executing new command: /admin/adam_driver: 5 (2.000 s), P5
+[INFO]  [2021-02-18 20:37:56.833141] [/hardware/abort_valve]: Command from /admin/adam_driver: pulse-open the motor for 2.0 seconds
+[INFO]  [2021-02-18 20:37:56.856652] [/hardware/abort_valve]: Opening...
+[INFO]  [2021-02-18 20:37:58.879416] [/hardware/abort_valve]: Stopped. 2.003838062 seconds elapsed.
+[DEBUG] [2021-02-18 20:38:01.071055] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:38:05.072559] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:38:06.041633] [/top/tcp_server]: Command from #8: driver topic=/hardware/abort_valve priority=5 command=MOTOR_CLOSE
+[DEBUG] [2021-02-18 20:38:06.076352] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:38:06.279543] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698686, "nsecs": 112107992}, "frame_id": "", "seq": 32}, "command": 2, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:38:06.331473] [/hardware/abort_valve]: Executing new command: /admin/adam_driver: 2 (0.000 s), P5
+[INFO]  [2021-02-18 20:38:06.366768] [/hardware/abort_valve]: Command from /admin/adam_driver: close the motor
+[DEBUG] [2021-02-18 20:38:09.078448] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:38:11.972130] [/top/tcp_server]: Command from #8: driver topic=/hardware/abort_valve priority=5 command=MOTOR_STOP
+[DEBUG] [2021-02-18 20:38:12.007843] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:38:12.151503] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698692, "nsecs": 38553953}, "frame_id": "", "seq": 33}, "command": 1, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:38:12.181880] [/hardware/abort_valve]: Executing new command: /admin/adam_driver: 1 (0.000 s), P5
+[INFO]  [2021-02-18 20:38:12.222466] [/hardware/abort_valve]: Command from /admin/adam_driver: stop the motor
+[DEBUG] [2021-02-18 20:38:15.077821] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:38:15.523018] [/top/tcp_server]: Command from #8: driver topic=/hardware/injection_valve priority=5 command=MOTOR_OPEN
+[DEBUG] [2021-02-18 20:38:15.565606] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:38:15.767019] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698695, "nsecs": 605777978}, "frame_id": "", "seq": 34}, "command": 3, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:38:15.796824] [/hardware/injection_valve]: Executing new command: /admin/adam_driver: 3 (0.000 s), P5
+[INFO]  [2021-02-18 20:38:15.837418] [/hardware/injection_valve]: Command from /admin/adam_driver: open the motor
+[DEBUG] [2021-02-18 20:38:19.079188] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:38:20.302905] [/top/tcp_server]: Command from #8: driver topic=/hardware/injection_valve priority=5 command=MOTOR_CLOSE
+[DEBUG] [2021-02-18 20:38:20.365292] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:38:20.575755] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698700, "nsecs": 411556005}, "frame_id": "", "seq": 35}, "command": 2, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:38:20.597674] [/hardware/injection_valve]: Executing new command: /admin/adam_driver: 2 (0.000 s), P5
+[INFO]  [2021-02-18 20:38:20.624816] [/hardware/injection_valve]: Command from /admin/adam_driver: close the motor
+[INFO]  [2021-02-18 20:38:21.853232] [/top/tcp_server]: Command from #8: driver topic=/hardware/injection_valve priority=5 command=MOTOR_STOP
+[DEBUG] [2021-02-18 20:38:21.885650] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:38:21.986569] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698701, "nsecs": 907776117}, "frame_id": "", "seq": 36}, "command": 1, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:38:22.013140] [/hardware/injection_valve]: Executing new command: /admin/adam_driver: 1 (0.000 s), P5
+[INFO]  [2021-02-18 20:38:22.041126] [/hardware/injection_valve]: Command from /admin/adam_driver: stop the motor
+[DEBUG] [2021-02-18 20:38:25.076370] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:38:29.074534] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:38:33.073474] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:38:34.815172] [/top/tcp_server]: Command from #8: driver topic=/hardware/injection_valve priority=5 command=MOTOR_OPEN
+[DEBUG] [2021-02-18 20:38:34.859620] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:38:34.957785] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698714, "nsecs": 877890110}, "frame_id": "", "seq": 37}, "command": 3, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:38:34.987993] [/hardware/injection_valve]: Executing new command: /admin/adam_driver: 3 (0.000 s), P5
+[INFO]  [2021-02-18 20:38:35.017720] [/hardware/injection_valve]: Command from /admin/adam_driver: open the motor
+[DEBUG] [2021-02-18 20:38:39.076252] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:38:39.278669] [/top/tcp_server]: Command from #8: driver topic=/hardware/injection_valve priority=5 command=MOTOR_CLOSE
+[DEBUG] [2021-02-18 20:38:39.380209] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:38:39.651963] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613698719, "nsecs": 456197977}, "frame_id": "", "seq": 38}, "command": 2, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:38:39.679760] [/hardware/injection_valve]: Executing new command: /admin/adam_driver: 2 (0.000 s), P5
+[INFO]  [2021-02-18 20:38:39.710178] [/hardware/injection_valve]: Command from /admin/adam_driver: close the motor
+[DEBUG] [2021-02-18 20:38:43.077990] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:38:47.072661] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:38:51.077184] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:38:53.831979] [/top/watchdog]: Runtime has reached: 17 minutes.
+[DEBUG] [2021-02-18 20:38:57.075366] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:39:01.072510] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:39:05.072319] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:39:09.070638] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:39:13.072336] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:39:17.073362] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:39:21.068259] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:39:25.073800] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:39:29.073628] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:39:33.072611] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:39:37.075757] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:39:41.074679] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:39:45.073423] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:39:49.075932] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:39:53.074237] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:39:53.823478] [/top/watchdog]: Runtime has reached: 18 minutes.
+[DEBUG] [2021-02-18 20:39:57.079738] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:40:01.077637] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:40:05.071168] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:40:09.076527] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:40:13.077518] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:40:17.077762] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:40:21.076218] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:40:25.077411] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:40:29.076584] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:40:33.075024] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:40:37.080226] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:40:41.075944] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:40:45.074475] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:40:49.076062] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:40:53.078120] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:40:53.815980] [/top/watchdog]: Runtime has reached: 19 minutes.
+[DEBUG] [2021-02-18 20:40:57.070262] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:40:58.221545] [/logging/rosbag_record]: Closing /home/debian/rocket-os/src/toplevel/../../logs/LOG_2021-02-18-20-30-58_1.bag.
+[INFO]  [2021-02-18 20:40:58.359245] [/logging/rosbag_record]: Recording to /home/debian/rocket-os/src/toplevel/../../logs/LOG_2021-02-18-20-40-58_2.bag.
+[INFO]  [2021-02-18 20:40:59.335462] [/top/tcp_server]: Command from #7: hey what's the status? ETA on test?
+[DEBUG] [2021-02-18 20:40:59.364693] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:41:03.074605] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:41:07.075018] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:41:11.073487] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:41:15.074451] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:41:19.074313] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:41:23.074361] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:41:27.072344] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:41:31.073160] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:41:35.074375] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:41:39.075041] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:41:43.075922] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:41:47.078177] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:41:51.075061] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:41:53.813276] [/top/watchdog]: Runtime has reached: 20 minutes.
+[INFO]  [2021-02-18 20:41:55.235478] [/top/tcp_server]: Command from #9: everything went alright plugged in, moving on to cold flow prep
+[DEBUG] [2021-02-18 20:41:55.271205] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:41:59.074457] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:42:03.072481] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:42:07.066276] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:42:07.621631] [/top/tcp_server]: Command from #9: connecting solenoid now
+[DEBUG] [2021-02-18 20:42:07.647461] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:42:11.068218] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:42:12.636364] [/top/tcp_server]: Command from #7: bondi: "I thought this was cold flow prep"
+[DEBUG] [2021-02-18 20:42:12.660434] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:42:15.074655] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:42:19.074373] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:42:23.069588] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:42:24.082600] [/top/tcp_server]: Command from #9: lmao
+[DEBUG] [2021-02-18 20:42:24.128002] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:42:27.067526] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:42:31.074926] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:42:35.072189] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:42:39.074467] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:42:43.074238] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:42:47.068257] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:42:51.066653] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:42:53.831035] [/top/watchdog]: Runtime has reached: 21 minutes.
+[INFO]  [2021-02-18 20:46:15.807910] [/top/tcp_server]: New connection: (10, ('192.168.1.113', 65372))
+[INFO]  [2021-02-18 20:46:15.834718] [/top/tcp_server]: 4 active connection(s)
+[DEBUG] [2021-02-18 20:46:19.073755] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:46:23.074604] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:46:27.068177] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:46:31.073470] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:46:32.722489] [/top/tcp_server]: Command from #10: listen to /sensors/ox_tank_transducer
+[DEBUG] [2021-02-18 20:46:32.761906] [/top/readiness_admin]: Command 'listen to /sensors/ox_tank_transducer' matches these patterns: ['listen to .*']
+[INFO]  [2021-02-18 20:46:32.988704] [/top/listener]: Subscribed to /sensors/ox_tank_transducer
+[INFO]  [2021-02-18 20:46:33.098344] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5870
+  stamp: 
+    secs: 1613699193
+    nsecs:  69339990
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[INFO]  [2021-02-18 20:46:33.337390] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5871
+  stamp: 
+    secs: 1613699193
+    nsecs: 319129943
+  frame_id: ''
+unit: "psig"
+voltage: 0.222857147455
+reading: 3.52933430672
+[INFO]  [2021-02-18 20:46:33.585782] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5872
+  stamp: 
+    secs: 1613699193
+    nsecs: 569654941
+  frame_id: ''
+unit: "psig"
+voltage: 0.222857147455
+reading: 3.52933430672
+[INFO]  [2021-02-18 20:46:33.834354] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5873
+  stamp: 
+    secs: 1613699193
+    nsecs: 819480895
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[INFO]  [2021-02-18 20:46:34.084058] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5874
+  stamp: 
+    secs: 1613699194
+    nsecs:  69730043
+  frame_id: ''
+unit: "psig"
+voltage: 0.221098899841
+reading: 2.56428933144
+[INFO]  [2021-02-18 20:46:34.336995] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5875
+  stamp: 
+    secs: 1613699194
+    nsecs: 319062948
+  frame_id: ''
+unit: "psig"
+voltage: 0.223296701908
+reading: 3.77059555054
+[INFO]  [2021-02-18 20:46:34.586150] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5876
+  stamp: 
+    secs: 1613699194
+    nsecs: 570822000
+  frame_id: ''
+unit: "psig"
+voltage: 0.223736256361
+reading: 4.01185703278
+[INFO]  [2021-02-18 20:46:34.835454] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5877
+  stamp: 
+    secs: 1613699194
+    nsecs: 819197893
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[INFO]  [2021-02-18 20:46:35.086786] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5878
+  stamp: 
+    secs: 1613699195
+    nsecs:  70967912
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[INFO]  [2021-02-18 20:46:35.338346] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5879
+  stamp: 
+    secs: 1613699195
+    nsecs: 319143056
+  frame_id: ''
+unit: "psig"
+voltage: 0.221098899841
+reading: 2.56428933144
+[INFO]  [2021-02-18 20:46:35.583634] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5880
+  stamp: 
+    secs: 1613699195
+    nsecs: 570708990
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[INFO]  [2021-02-18 20:46:35.846514] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5881
+  stamp: 
+    secs: 1613699195
+    nsecs: 819066047
+  frame_id: ''
+unit: "psig"
+voltage: 0.221978023648
+reading: 3.04681181908
+[INFO]  [2021-02-18 20:46:36.084375] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5882
+  stamp: 
+    secs: 1613699196
+    nsecs:  69663047
+  frame_id: ''
+unit: "psig"
+voltage: 0.220659345388
+reading: 2.32302808762
+[INFO]  [2021-02-18 20:46:36.335237] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5883
+  stamp: 
+    secs: 1613699196
+    nsecs: 319166898
+  frame_id: ''
+unit: "psig"
+voltage: 0.221978023648
+reading: 3.04681181908
+[INFO]  [2021-02-18 20:46:36.585655] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5884
+  stamp: 
+    secs: 1613699196
+    nsecs: 569981098
+  frame_id: ''
+unit: "psig"
+voltage: 0.220659345388
+reading: 2.32302808762
+[INFO]  [2021-02-18 20:46:36.834924] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5885
+  stamp: 
+    secs: 1613699196
+    nsecs: 819021940
+  frame_id: ''
+unit: "psig"
+voltage: 0.221538454294
+reading: 2.80555057526
+[INFO]  [2021-02-18 20:46:37.086896] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5886
+  stamp: 
+    secs: 1613699197
+    nsecs:  69675922
+  frame_id: ''
+unit: "psig"
+voltage: 0.220659345388
+reading: 2.32302808762
+[INFO]  [2021-02-18 20:46:37.336324] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5887
+  stamp: 
+    secs: 1613699197
+    nsecs: 319732904
+  frame_id: ''
+unit: "psig"
+voltage: 0.221098899841
+reading: 2.56428933144
+[INFO]  [2021-02-18 20:46:37.586071] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5888
+  stamp: 
+    secs: 1613699197
+    nsecs: 569574117
+  frame_id: ''
+unit: "psig"
+voltage: 0.223736256361
+reading: 4.01185703278
+[INFO]  [2021-02-18 20:46:37.835787] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5889
+  stamp: 
+    secs: 1613699197
+    nsecs: 819539070
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[INFO]  [2021-02-18 20:46:38.085937] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5890
+  stamp: 
+    secs: 1613699198
+    nsecs:  70061922
+  frame_id: ''
+unit: "psig"
+voltage: 0.222857147455
+reading: 3.52933430672
+[INFO]  [2021-02-18 20:46:38.338014] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5891
+  stamp: 
+    secs: 1613699198
+    nsecs: 319701910
+  frame_id: ''
+unit: "psig"
+voltage: 0.222857147455
+reading: 3.52933430672
+[INFO]  [2021-02-18 20:46:38.589584] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5892
+  stamp: 
+    secs: 1613699198
+    nsecs: 572829008
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[INFO]  [2021-02-18 20:46:38.838087] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5893
+  stamp: 
+    secs: 1613699198
+    nsecs: 819241046
+  frame_id: ''
+unit: "psig"
+voltage: 0.221538454294
+reading: 2.80555057526
+[INFO]  [2021-02-18 20:46:39.090939] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5894
+  stamp: 
+    secs: 1613699199
+    nsecs:  69506883
+  frame_id: ''
+unit: "psig"
+voltage: 0.221098899841
+reading: 2.56428933144
+[INFO]  [2021-02-18 20:46:39.335811] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5895
+  stamp: 
+    secs: 1613699199
+    nsecs: 319236993
+  frame_id: ''
+unit: "psig"
+voltage: 0.223736256361
+reading: 4.01185703278
+[INFO]  [2021-02-18 20:46:39.588660] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5896
+  stamp: 
+    secs: 1613699199
+    nsecs: 570625066
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[INFO]  [2021-02-18 20:46:39.838813] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5897
+  stamp: 
+    secs: 1613699199
+    nsecs: 819292068
+  frame_id: ''
+unit: "psig"
+voltage: 0.222857147455
+reading: 3.52933430672
+[INFO]  [2021-02-18 20:46:40.089981] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5898
+  stamp: 
+    secs: 1613699200
+    nsecs:  73299884
+  frame_id: ''
+unit: "psig"
+voltage: 0.221098899841
+reading: 2.56428933144
+[INFO]  [2021-02-18 20:46:40.338408] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5899
+  stamp: 
+    secs: 1613699200
+    nsecs: 319132089
+  frame_id: ''
+unit: "psig"
+voltage: 0.221978023648
+reading: 3.04681181908
+[INFO]  [2021-02-18 20:46:40.587753] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5900
+  stamp: 
+    secs: 1613699200
+    nsecs: 569701910
+  frame_id: ''
+unit: "psig"
+voltage: 0.221098899841
+reading: 2.56428933144
+[INFO]  [2021-02-18 20:46:40.837559] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5901
+  stamp: 
+    secs: 1613699200
+    nsecs: 819370031
+  frame_id: ''
+unit: "psig"
+voltage: 0.219340652227
+reading: 1.59924423695
+[INFO]  [2021-02-18 20:46:41.090160] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5902
+  stamp: 
+    secs: 1613699201
+    nsecs:  72308063
+  frame_id: ''
+unit: "psig"
+voltage: 0.221978023648
+reading: 3.04681181908
+[INFO]  [2021-02-18 20:46:41.336261] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5903
+  stamp: 
+    secs: 1613699201
+    nsecs: 319319963
+  frame_id: ''
+unit: "psig"
+voltage: 0.220219776034
+reading: 2.0817668438
+[INFO]  [2021-02-18 20:46:41.588416] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5904
+  stamp: 
+    secs: 1613699201
+    nsecs: 570283889
+  frame_id: ''
+unit: "psig"
+voltage: 0.221538454294
+reading: 2.80555057526
+[INFO]  [2021-02-18 20:46:41.836778] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5905
+  stamp: 
+    secs: 1613699201
+    nsecs: 819067955
+  frame_id: ''
+unit: "psig"
+voltage: 0.222857147455
+reading: 3.52933430672
+[INFO]  [2021-02-18 20:46:42.088170] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5906
+  stamp: 
+    secs: 1613699202
+    nsecs:  69209098
+  frame_id: ''
+unit: "psig"
+voltage: 0.221098899841
+reading: 2.56428933144
+[INFO]  [2021-02-18 20:46:42.337355] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5907
+  stamp: 
+    secs: 1613699202
+    nsecs: 319894075
+  frame_id: ''
+unit: "psig"
+voltage: 0.222857147455
+reading: 3.52933430672
+[INFO]  [2021-02-18 20:46:42.592429] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5908
+  stamp: 
+    secs: 1613699202
+    nsecs: 569953918
+  frame_id: ''
+unit: "psig"
+voltage: 0.222857147455
+reading: 3.52933430672
+[INFO]  [2021-02-18 20:46:42.835733] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5909
+  stamp: 
+    secs: 1613699202
+    nsecs: 819206953
+  frame_id: ''
+unit: "psig"
+voltage: 0.221538454294
+reading: 2.80555057526
+[INFO]  [2021-02-18 20:46:43.090007] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5910
+  stamp: 
+    secs: 1613699203
+    nsecs:  70462942
+  frame_id: ''
+unit: "psig"
+voltage: 0.221098899841
+reading: 2.56428933144
+[INFO]  [2021-02-18 20:46:43.336611] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5911
+  stamp: 
+    secs: 1613699203
+    nsecs: 319623947
+  frame_id: ''
+unit: "psig"
+voltage: 0.221538454294
+reading: 2.80555057526
+[INFO]  [2021-02-18 20:46:43.591376] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5912
+  stamp: 
+    secs: 1613699203
+    nsecs: 569899082
+  frame_id: ''
+unit: "psig"
+voltage: 0.221538454294
+reading: 2.80555057526
+[INFO]  [2021-02-18 20:46:43.844370] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5913
+  stamp: 
+    secs: 1613699203
+    nsecs: 822596073
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[INFO]  [2021-02-18 20:46:44.087450] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5914
+  stamp: 
+    secs: 1613699204
+    nsecs:  69235086
+  frame_id: ''
+unit: "psig"
+voltage: 0.221538454294
+reading: 2.80555057526
+[INFO]  [2021-02-18 20:46:44.334318] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5915
+  stamp: 
+    secs: 1613699204
+    nsecs: 319093942
+  frame_id: ''
+unit: "psig"
+voltage: 0.220219776034
+reading: 2.0817668438
+[INFO]  [2021-02-18 20:46:44.588636] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5916
+  stamp: 
+    secs: 1613699204
+    nsecs: 570123910
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[INFO]  [2021-02-18 20:46:44.837848] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5917
+  stamp: 
+    secs: 1613699204
+    nsecs: 822031021
+  frame_id: ''
+unit: "psig"
+voltage: 0.222857147455
+reading: 3.52933430672
+[INFO]  [2021-02-18 20:46:45.089970] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5918
+  stamp: 
+    secs: 1613699205
+    nsecs:  68793058
+  frame_id: ''
+unit: "psig"
+voltage: 0.221098899841
+reading: 2.56428933144
+[INFO]  [2021-02-18 20:46:45.338519] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5919
+  stamp: 
+    secs: 1613699205
+    nsecs: 320497989
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[INFO]  [2021-02-18 20:46:45.588687] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5920
+  stamp: 
+    secs: 1613699205
+    nsecs: 569773912
+  frame_id: ''
+unit: "psig"
+voltage: 0.221098899841
+reading: 2.56428933144
+[DEBUG] [2021-02-18 20:47:15.333516] [/sensors/ox_tank_transducer]: ERROR: Broken Pipe
+[INFO]  [2021-02-18 20:46:49.847846] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5937
+  stamp: 
+    secs: 1613699209
+    nsecs: 823767900
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[DEBUG] [2021-02-18 20:46:59.081894] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:47:01.086602] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:46:50.592293] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5940
+  stamp: 
+    secs: 1613699210
+    nsecs: 571913003
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[DEBUG] [2021-02-18 20:47:03.084507] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:46:50.838552] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5941
+  stamp: 
+    secs: 1613699210
+    nsecs: 819032907
+  frame_id: ''
+unit: "psig"
+voltage: 0.220659345388
+reading: 2.32302808762
+[INFO]  [2021-02-18 20:47:04.331845] [/top/tcp_server]: New connection: (11, ('192.168.1.114', 51632))
+[INFO]  [2021-02-18 20:46:51.091282] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5942
+  stamp: 
+    secs: 1613699211
+    nsecs:  70497035
+  frame_id: ''
+unit: "psig"
+voltage: 0.224175825715
+reading: 4.25311803818
+[INFO]  [2021-02-18 20:47:04.394592] [/top/tcp_server]: 5 active connection(s)
+[INFO]  [2021-02-18 20:46:51.342586] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5943
+  stamp: 
+    secs: 1613699211
+    nsecs: 322585105
+  frame_id: ''
+unit: "psig"
+voltage: 0.223296701908
+reading: 3.77059555054
+[DEBUG] [2021-02-18 20:47:05.090320] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:46:51.608501] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5944
+  stamp: 
+    secs: 1613699211
+    nsecs: 572169065
+  frame_id: ''
+unit: "psig"
+voltage: 0.221538454294
+reading: 2.80555057526
+[DEBUG] [2021-02-18 20:47:07.084321] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:46:51.853840] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5945
+  stamp: 
+    secs: 1613699211
+    nsecs: 830147027
+  frame_id: ''
+unit: "psig"
+voltage: 0.221538454294
+reading: 2.80555057526
+[DEBUG] [2021-02-18 20:47:09.097712] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:46:52.086045] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5946
+  stamp: 
+    secs: 1613699212
+    nsecs:  69212913
+  frame_id: ''
+unit: "psig"
+voltage: 0.221978023648
+reading: 3.04681181908
+[DEBUG] [2021-02-18 20:47:11.074980] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:46:52.337979] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5947
+  stamp: 
+    secs: 1613699212
+    nsecs: 319081068
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[INFO]  [2021-02-18 20:47:11.733526] [/top/tcp_server]: New connection: (12, ('192.168.1.113', 65384))
+[INFO]  [2021-02-18 20:46:52.587532] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5948
+  stamp: 
+    secs: 1613699212
+    nsecs: 569626092
+  frame_id: ''
+unit: "psig"
+voltage: 0.223736256361
+reading: 4.01185703278
+[INFO]  [2021-02-18 20:47:11.782606] [/top/tcp_server]: 6 active connection(s)
+[INFO]  [2021-02-18 20:46:52.847154] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5949
+  stamp: 
+    secs: 1613699212
+    nsecs: 821774959
+  frame_id: ''
+unit: "psig"
+voltage: 0.222857147455
+reading: 3.52933430672
+[DEBUG] [2021-02-18 20:47:13.101969] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:46:53.094368] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5950
+  stamp: 
+    secs: 1613699213
+    nsecs:  69762945
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[INFO]  [2021-02-18 20:47:14.923385] [/top/tcp_server]: Command from #12: stop listening all
+[INFO]  [2021-02-18 20:46:53.341321] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5951
+  stamp: 
+    secs: 1613699213
+    nsecs: 319993972
+  frame_id: ''
+unit: "psig"
+voltage: 0.220659345388
+reading: 2.32302808762
+[INFO]  [2021-02-18 20:47:15.363953] [/top/tcp_server]: Client #7 has disconnected
+[INFO]  [2021-02-18 20:46:53.591359] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5952
+  stamp: 
+    secs: 1613699213
+    nsecs: 573831081
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[INFO]  [2021-02-18 20:47:15.464120] [/top/tcp_server]: 5 client(s) remaining
+[INFO]  [2021-02-18 20:46:53.858480] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5953
+  stamp: 
+    secs: 1613699213
+    nsecs: 819190979
+  frame_id: ''
+unit: "psig"
+voltage: 0.222857147455
+reading: 3.52933430672
+[INFO]  [2021-02-18 20:47:16.518639] [/top/tcp_server]: Command from #12: stop listening all
+[INFO]  [2021-02-18 20:46:54.089886] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5954
+  stamp: 
+    secs: 1613699214
+    nsecs:  69777965
+  frame_id: ''
+unit: "psig"
+voltage: 0.221978023648
+reading: 3.04681181908
+[INFO]  [2021-02-18 20:47:17.713551] [/top/tcp_server]: New connection: (13, ('192.168.1.111', 36868))
+[INFO]  [2021-02-18 20:46:54.341219] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5955
+  stamp: 
+    secs: 1613699214
+    nsecs: 319333076
+  frame_id: ''
+unit: "psig"
+voltage: 0.221538454294
+reading: 2.80555057526
+[INFO]  [2021-02-18 20:47:17.765844] [/top/tcp_server]: 6 active connection(s)
+[INFO]  [2021-02-18 20:46:54.587187] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5956
+  stamp: 
+    secs: 1613699214
+    nsecs: 571681022
+  frame_id: ''
+unit: "psig"
+voltage: 0.223296701908
+reading: 3.77059555054
+[DEBUG] [2021-02-18 20:47:19.082655] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:46:54.848195] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5957
+  stamp: 
+    secs: 1613699214
+    nsecs: 819871902
+  frame_id: ''
+unit: "psig"
+voltage: 0.223296701908
+reading: 3.77059555054
+[INFO]  [2021-02-18 20:47:20.826500] [/top/tcp_server]: Command from #12: hello
+[INFO]  [2021-02-18 20:46:55.093558] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5958
+  stamp: 
+    secs: 1613699215
+    nsecs:  74518918
+  frame_id: ''
+unit: "psig"
+voltage: 0.222857147455
+reading: 3.52933430672
+[DEBUG] [2021-02-18 20:47:21.089365] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:46:55.344141] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5959
+  stamp: 
+    secs: 1613699215
+    nsecs: 320796012
+  frame_id: ''
+unit: "psig"
+voltage: 0.221978023648
+reading: 3.04681181908
+[DEBUG] [2021-02-18 20:47:23.081601] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:46:55.584527] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5960
+  stamp: 
+    secs: 1613699215
+    nsecs: 570060968
+  frame_id: ''
+unit: "psig"
+voltage: 0.222857147455
+reading: 3.52933430672
+[DEBUG] [2021-02-18 20:47:25.081528] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:46:55.853731] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5961
+  stamp: 
+    secs: 1613699215
+    nsecs: 819030046
+  frame_id: ''
+unit: "psig"
+voltage: 0.221538454294
+reading: 2.80555057526
+[DEBUG] [2021-02-18 20:47:27.083559] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:46:56.090612] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5962
+  stamp: 
+    secs: 1613699216
+    nsecs:  69468021
+  frame_id: ''
+unit: "psig"
+voltage: 0.220659345388
+reading: 2.32302808762
+[DEBUG] [2021-02-18 20:47:29.069855] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:46:56.343415] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5963
+  stamp: 
+    secs: 1613699216
+    nsecs: 319118976
+  frame_id: ''
+unit: "psig"
+voltage: 0.220219776034
+reading: 2.0817668438
+[INFO]  [2021-02-18 20:47:29.914980] [/top/tcp_server]: New connection: (14, ('192.168.1.111', 36872))
+[INFO]  [2021-02-18 20:46:56.591043] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5964
+  stamp: 
+    secs: 1613699216
+    nsecs: 569911956
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[INFO]  [2021-02-18 20:47:30.025878] [/top/tcp_server]: 7 active connection(s)
+[INFO]  [2021-02-18 20:46:56.841476] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5965
+  stamp: 
+    secs: 1613699216
+    nsecs: 820156097
+  frame_id: ''
+unit: "psig"
+voltage: 0.221538454294
+reading: 2.80555057526
+[DEBUG] [2021-02-18 20:47:31.078871] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:46:57.092261] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5966
+  stamp: 
+    secs: 1613699217
+    nsecs:  70597887
+  frame_id: ''
+unit: "psig"
+voltage: 0.221098899841
+reading: 2.56428933144
+[INFO]  [2021-02-18 20:47:32.837739] [/top/tcp_server]: New connection: (15, ('192.168.1.113', 65390))
+[INFO]  [2021-02-18 20:46:57.343864] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5967
+  stamp: 
+    secs: 1613699217
+    nsecs: 323172092
+  frame_id: ''
+unit: "psig"
+voltage: 0.222857147455
+reading: 3.52933430672
+[INFO]  [2021-02-18 20:47:32.918001] [/top/tcp_server]: 8 active connection(s)
+[INFO]  [2021-02-18 20:46:57.590653] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5968
+  stamp: 
+    secs: 1613699217
+    nsecs: 570720911
+  frame_id: ''
+unit: "psig"
+voltage: 0.223296701908
+reading: 3.77059555054
+[DEBUG] [2021-02-18 20:47:33.070675] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:46:57.849343] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5969
+  stamp: 
+    secs: 1613699217
+    nsecs: 821566104
+  frame_id: ''
+unit: "psig"
+voltage: 0.221978023648
+reading: 3.04681181908
+[DEBUG] [2021-02-18 20:47:35.098191] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:46:58.092617] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5970
+  stamp: 
+    secs: 1613699218
+    nsecs:  70878982
+  frame_id: ''
+unit: "psig"
+voltage: 0.222857147455
+reading: 3.52933430672
+[DEBUG] [2021-02-18 20:47:37.095667] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:46:58.339824] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5971
+  stamp: 
+    secs: 1613699218
+    nsecs: 321137905
+  frame_id: ''
+unit: "psig"
+voltage: 0.221098899841
+reading: 2.56428933144
+[DEBUG] [2021-02-18 20:47:39.108466] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:46:58.596331] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5972
+  stamp: 
+    secs: 1613699218
+    nsecs: 573327064
+  frame_id: ''
+unit: "psig"
+voltage: 0.223736256361
+reading: 4.01185703278
+[DEBUG] [2021-02-18 20:47:41.085733] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:46:58.833885] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5973
+  stamp: 
+    secs: 1613699218
+    nsecs: 819166898
+  frame_id: ''
+unit: "psig"
+voltage: 0.221978023648
+reading: 3.04681181908
+[DEBUG] [2021-02-18 20:47:43.123374] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:46:59.100289] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5974
+  stamp: 
+    secs: 1613699219
+    nsecs:  72077989
+  frame_id: ''
+unit: "psig"
+voltage: 0.221978023648
+reading: 3.04681181908
+[DEBUG] [2021-02-18 20:47:45.136084] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:46:59.337521] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5975
+  stamp: 
+    secs: 1613699219
+    nsecs: 319139003
+  frame_id: ''
+unit: "psig"
+voltage: 0.223736256361
+reading: 4.01185703278
+[INFO]  [2021-02-18 20:47:45.925825] [/top/tcp_server]: Client #8 has disconnected
+[INFO]  [2021-02-18 20:46:59.595357] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5976
+  stamp: 
+    secs: 1613699219
+    nsecs: 571280956
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[INFO]  [2021-02-18 20:47:46.053701] [/top/tcp_server]: 7 client(s) remaining
+[INFO]  [2021-02-18 20:46:59.834657] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5977
+  stamp: 
+    secs: 1613699219
+    nsecs: 819118976
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[INFO]  [2021-02-18 20:47:46.186508] [/top/tcp_server]: Client #11 has disconnected
+[INFO]  [2021-02-18 20:47:00.086414] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5978
+  stamp: 
+    secs: 1613699220
+    nsecs:  69691896
+  frame_id: ''
+unit: "psig"
+voltage: 0.221098899841
+reading: 2.56428933144
+[INFO]  [2021-02-18 20:47:46.314290] [/top/tcp_server]: 6 client(s) remaining
+[INFO]  [2021-02-18 20:47:00.335128] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5979
+  stamp: 
+    secs: 1613699220
+    nsecs: 319204092
+  frame_id: ''
+unit: "psig"
+voltage: 0.220219776034
+reading: 2.0817668438
+[DEBUG] [2021-02-18 20:47:47.102342] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:00.590178] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5980
+  stamp: 
+    secs: 1613699220
+    nsecs: 569825887
+  frame_id: ''
+unit: "psig"
+voltage: 0.222857147455
+reading: 3.52933430672
+[INFO]  [2021-02-18 20:47:47.324410] [/top/tcp_server]: Client #10 has disconnected
+[INFO]  [2021-02-18 20:48:34.182700] [/top/watchdog]: /rostopic_9414_1613699305763 has been born.
+[INFO]  [2021-02-18 20:47:00.835413] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5981
+  stamp: 
+    secs: 1613699220
+    nsecs: 819092988
+  frame_id: ''
+unit: "psig"
+voltage: 0.221538454294
+reading: 2.80555057526
+[DEBUG] [2021-02-18 20:48:53.821753] [/top/watchdog]: Runtime has reached: 27 minutes.
+[INFO]  [2021-02-18 20:47:47.423635] [/top/tcp_server]: 5 client(s) remaining
+[INFO]  [2021-02-18 20:47:01.095249] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5982
+  stamp: 
+    secs: 1613699221
+    nsecs:  69675922
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[INFO]  [2021-02-18 20:47:47.517177] [/top/tcp_server]: Client #13 has disconnected
+[INFO]  [2021-02-18 20:47:01.342521] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5983
+  stamp: 
+    secs: 1613699221
+    nsecs: 323921918
+  frame_id: ''
+unit: "psig"
+voltage: 0.223296701908
+reading: 3.77059555054
+[INFO]  [2021-02-18 20:47:47.592503] [/top/tcp_server]: 4 client(s) remaining
+[INFO]  [2021-02-18 20:47:01.586034] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5984
+  stamp: 
+    secs: 1613699221
+    nsecs: 569706916
+  frame_id: ''
+unit: "psig"
+voltage: 0.221098899841
+reading: 2.56428933144
+[INFO]  [2021-02-18 20:47:47.672447] [/top/tcp_server]: Client #15 has disconnected
+[INFO]  [2021-02-18 20:47:01.834156] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5985
+  stamp: 
+    secs: 1613699221
+    nsecs: 819014072
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[INFO]  [2021-02-18 20:47:47.731340] [/top/tcp_server]: 3 client(s) remaining
+[INFO]  [2021-02-18 20:47:02.095226] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5986
+  stamp: 
+    secs: 1613699222
+    nsecs:  71856021
+  frame_id: ''
+unit: "psig"
+voltage: 0.221098899841
+reading: 2.56428933144
+[INFO]  [2021-02-18 20:47:47.896278] [/top/tcp_server]: Client #14 has disconnected
+[INFO]  [2021-02-18 20:47:02.339031] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5987
+  stamp: 
+    secs: 1613699222
+    nsecs: 319029092
+  frame_id: ''
+unit: "psig"
+voltage: 0.221538454294
+reading: 2.80555057526
+[INFO]  [2021-02-18 20:47:47.937088] [/top/tcp_server]: 2 client(s) remaining
+[INFO]  [2021-02-18 20:47:02.593306] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5988
+  stamp: 
+    secs: 1613699222
+    nsecs: 569854021
+  frame_id: ''
+unit: "psig"
+voltage: 0.221978023648
+reading: 3.04681181908
+[INFO]  [2021-02-18 20:47:48.081659] [/top/tcp_server]: Client #12 has disconnected
+[INFO]  [2021-02-18 20:47:02.834185] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5989
+  stamp: 
+    secs: 1613699222
+    nsecs: 819119930
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[INFO]  [2021-02-18 20:47:48.107556] [/top/tcp_server]: 1 client(s) remaining
+[INFO]  [2021-02-18 20:47:03.095510] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5990
+  stamp: 
+    secs: 1613699223
+    nsecs:  69647073
+  frame_id: ''
+unit: "psig"
+voltage: 0.221978023648
+reading: 3.04681181908
+[INFO]  [2021-02-18 20:47:03.336166] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5991
+  stamp: 
+    secs: 1613699223
+    nsecs: 319586992
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[DEBUG] [2021-02-18 20:47:53.067506] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:03.590314] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5992
+  stamp: 
+    secs: 1613699223
+    nsecs: 569852113
+  frame_id: ''
+unit: "psig"
+voltage: 0.221098899841
+reading: 2.56428933144
+[DEBUG] [2021-02-18 20:47:57.074468] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:03.846976] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5993
+  stamp: 
+    secs: 1613699223
+    nsecs: 819104909
+  frame_id: ''
+unit: "psig"
+voltage: 0.221978023648
+reading: 3.04681181908
+[DEBUG] [2021-02-18 20:47:59.073533] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:04.095139] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5994
+  stamp: 
+    secs: 1613699224
+    nsecs:  71646928
+  frame_id: ''
+unit: "psig"
+voltage: 0.221978023648
+reading: 3.04681181908
+[DEBUG] [2021-02-18 20:48:01.073500] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:04.335289] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5995
+  stamp: 
+    secs: 1613699224
+    nsecs: 319643974
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[DEBUG] [2021-02-18 20:48:03.072015] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:04.590083] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5996
+  stamp: 
+    secs: 1613699224
+    nsecs: 570250988
+  frame_id: ''
+unit: "psig"
+voltage: 0.221978023648
+reading: 3.04681181908
+[DEBUG] [2021-02-18 20:48:05.072829] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:04.846723] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5997
+  stamp: 
+    secs: 1613699224
+    nsecs: 819427013
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[DEBUG] [2021-02-18 20:48:07.072718] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:05.087059] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5998
+  stamp: 
+    secs: 1613699225
+    nsecs:  70382118
+  frame_id: ''
+unit: "psig"
+voltage: 0.221098899841
+reading: 2.56428933144
+[INFO]  [2021-02-18 20:48:07.605962] [/top/tcp_server]: New connection: (16, ('192.168.1.111', 36878))
+[INFO]  [2021-02-18 20:47:05.341300] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 5999
+  stamp: 
+    secs: 1613699225
+    nsecs: 319201946
+  frame_id: ''
+unit: "psig"
+voltage: 0.221098899841
+reading: 2.56428933144
+[INFO]  [2021-02-18 20:48:07.631094] [/top/tcp_server]: 2 active connection(s)
+[INFO]  [2021-02-18 20:47:05.587453] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6000
+  stamp: 
+    secs: 1613699225
+    nsecs: 570486068
+  frame_id: ''
+unit: "psig"
+voltage: 0.221538454294
+reading: 2.80555057526
+[DEBUG] [2021-02-18 20:48:09.067427] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:05.836259] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6001
+  stamp: 
+    secs: 1613699225
+    nsecs: 823472023
+  frame_id: ''
+unit: "psig"
+voltage: 0.221978023648
+reading: 3.04681181908
+[DEBUG] [2021-02-18 20:48:11.066802] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:06.091367] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6002
+  stamp: 
+    secs: 1613699226
+    nsecs:  70265054
+  frame_id: ''
+unit: "psig"
+voltage: 0.220219776034
+reading: 2.0817668438
+[DEBUG] [2021-02-18 20:48:13.067176] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:06.338279] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6003
+  stamp: 
+    secs: 1613699226
+    nsecs: 319292068
+  frame_id: ''
+unit: "psig"
+voltage: 0.220219776034
+reading: 2.0817668438
+[DEBUG] [2021-02-18 20:48:15.073957] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:06.587810] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6004
+  stamp: 
+    secs: 1613699226
+    nsecs: 570334911
+  frame_id: ''
+unit: "psig"
+voltage: 0.223736256361
+reading: 4.01185703278
+[DEBUG] [2021-02-18 20:48:19.084408] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:06.836525] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6005
+  stamp: 
+    secs: 1613699226
+    nsecs: 819094896
+  frame_id: ''
+unit: "psig"
+voltage: 0.220659345388
+reading: 2.32302808762
+[DEBUG] [2021-02-18 20:48:21.085814] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:07.089582] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6006
+  stamp: 
+    secs: 1613699227
+    nsecs:  69962024
+  frame_id: ''
+unit: "psig"
+voltage: 0.221538454294
+reading: 2.80555057526
+[DEBUG] [2021-02-18 20:48:23.085023] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:07.338212] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6007
+  stamp: 
+    secs: 1613699227
+    nsecs: 319678068
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[DEBUG] [2021-02-18 20:48:25.086439] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:07.586964] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6008
+  stamp: 
+    secs: 1613699227
+    nsecs: 569555997
+  frame_id: ''
+unit: "psig"
+voltage: 0.222857147455
+reading: 3.52933430672
+[INFO]  [2021-02-18 20:48:25.734296] [/top/tcp_server]: New connection: (17, ('192.168.1.113', 65408))
+[INFO]  [2021-02-18 20:47:07.845650] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6009
+  stamp: 
+    secs: 1613699227
+    nsecs: 819281101
+  frame_id: ''
+unit: "psig"
+voltage: 0.221538454294
+reading: 2.80555057526
+[INFO]  [2021-02-18 20:48:25.809609] [/top/tcp_server]: 3 active connection(s)
+[INFO]  [2021-02-18 20:47:08.092583] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6010
+  stamp: 
+    secs: 1613699228
+    nsecs:  74428081
+  frame_id: ''
+unit: "psig"
+voltage: 0.221538454294
+reading: 2.80555057526
+[DEBUG] [2021-02-18 20:48:27.096231] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:08.341825] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6011
+  stamp: 
+    secs: 1613699228
+    nsecs: 319261074
+  frame_id: ''
+unit: "psig"
+voltage: 0.222857147455
+reading: 3.52933430672
+[DEBUG] [2021-02-18 20:48:27.914985] [/top/tcp_server]: connecting to 192.168.1.101 38467
+[INFO]  [2021-02-18 20:47:08.588126] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6012
+  stamp: 
+    secs: 1613699228
+    nsecs: 569603919
+  frame_id: ''
+unit: "psig"
+voltage: 0.221538454294
+reading: 2.80555057526
+[DEBUG] [2021-02-18 20:48:29.090742] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:08.845822] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6013
+  stamp: 
+    secs: 1613699228
+    nsecs: 819689989
+  frame_id: ''
+unit: "psig"
+voltage: 0.222417578101
+reading: 3.2880730629
+[DEBUG] [2021-02-18 20:48:31.085375] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:09.089881] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6014
+  stamp: 
+    secs: 1613699229
+    nsecs:  70070981
+  frame_id: ''
+unit: "psig"
+voltage: 0.220659345388
+reading: 2.32302808762
+[DEBUG] [2021-02-18 20:48:33.087996] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:09.341143] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6015
+  stamp: 
+    secs: 1613699229
+    nsecs: 319971084
+  frame_id: ''
+unit: "psig"
+voltage: 0.222857147455
+reading: 3.52933430672
+[DEBUG] [2021-02-18 20:48:35.084759] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:09.590432] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6016
+  stamp: 
+    secs: 1613699229
+    nsecs: 570050954
+  frame_id: ''
+unit: "psig"
+voltage: 0.221978023648
+reading: 3.04681181908
+[INFO]  [2021-02-18 20:48:35.478691] [/top/tcp_server]: Command from #17: elevate readiness
+[INFO]  [2021-02-18 20:47:09.845228] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6017
+  stamp: 
+    secs: 1613699229
+    nsecs: 820302009
+  frame_id: ''
+unit: "psig"
+voltage: 0.220659345388
+reading: 2.32302808762
+[DEBUG] [2021-02-18 20:48:37.094113] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:10.090973] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6018
+  stamp: 
+    secs: 1613699230
+    nsecs:  69519042
+  frame_id: ''
+unit: "psig"
+voltage: 0.222857147455
+reading: 3.52933430672
+[INFO]  [2021-02-18 20:48:37.612140] [/top/tcp_server]: New connection: (18, ('192.168.1.113', 65412))
+[INFO]  [2021-02-18 20:47:10.338876] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6019
+  stamp: 
+    secs: 1613699230
+    nsecs: 319447994
+  frame_id: ''
+unit: "psig"
+voltage: 0.223296701908
+reading: 3.77059555054
+[INFO]  [2021-02-18 20:48:37.675267] [/top/tcp_server]: 4 active connection(s)
+[INFO]  [2021-02-18 20:47:10.590465] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6020
+  stamp: 
+    secs: 1613699230
+    nsecs: 570030927
+  frame_id: ''
+unit: "psig"
+voltage: 0.221098899841
+reading: 2.56428933144
+[DEBUG] [2021-02-18 20:48:39.075136] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:10.838239] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6021
+  stamp: 
+    secs: 1613699230
+    nsecs: 819519996
+  frame_id: ''
+unit: "psig"
+voltage: 0.221098899841
+reading: 2.56428933144
+[DEBUG] [2021-02-18 20:48:41.069732] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:11.091748] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6022
+  stamp: 
+    secs: 1613699231
+    nsecs:  71377038
+  frame_id: ''
+unit: "psig"
+voltage: 0.220659345388
+reading: 2.32302808762
+[DEBUG] [2021-02-18 20:48:43.101147] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:11.340558] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6023
+  stamp: 
+    secs: 1613699231
+    nsecs: 319071054
+  frame_id: ''
+unit: "psig"
+voltage: 0.221978023648
+reading: 3.04681181908
+[INFO]  [2021-02-18 20:48:45.016699] [/top/tcp_server]: New connection: (19, ('192.168.1.113', 65414))
+[INFO]  [2021-02-18 20:47:11.593598] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6024
+  stamp: 
+    secs: 1613699231
+    nsecs: 569648981
+  frame_id: ''
+unit: "psig"
+voltage: 0.221538454294
+reading: 2.80555057526
+[INFO]  [2021-02-18 20:48:45.119633] [/top/tcp_server]: 5 active connection(s)
+[INFO]  [2021-02-18 20:47:11.845847] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6025
+  stamp: 
+    secs: 1613699231
+    nsecs: 819092035
+  frame_id: ''
+unit: "psig"
+voltage: 0.221978023648
+reading: 3.04681181908
+[DEBUG] [2021-02-18 20:48:45.152644] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:12.093573] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6026
+  stamp: 
+    secs: 1613699232
+    nsecs:  69879055
+  frame_id: ''
+unit: "psig"
+voltage: 0.221978023648
+reading: 3.04681181908
+[DEBUG] [2021-02-18 20:48:47.102887] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:12.344313] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6027
+  stamp: 
+    secs: 1613699232
+    nsecs: 327256917
+  frame_id: ''
+unit: "psig"
+voltage: 0.223296701908
+reading: 3.77059555054
+[DEBUG] [2021-02-18 20:48:49.107803] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:47:12.593306] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6028
+  stamp: 
+    secs: 1613699232
+    nsecs: 569796085
+  frame_id: ''
+unit: "psig"
+voltage: 0.223296701908
+reading: 3.77059555054
+[INFO]  [2021-02-18 20:48:49.452748] [/top/tcp_server]: Client #9 has disconnected
+[INFO]  [2021-02-18 20:47:12.845250] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6029
+  stamp: 
+    secs: 1613699232
+    nsecs: 819190979
+  frame_id: ''
+unit: "psig"
+voltage: 0.221978023648
+reading: 3.04681181908
+[INFO]  [2021-02-18 20:47:13.092237] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6030
+  stamp: 
+    secs: 1613699233
+    nsecs:  69380044
+  frame_id: ''
+unit: "psig"
+voltage: 0.223296701908
+reading: 3.77059555054
+[INFO]  [2021-02-18 20:48:49.535532] [/top/tcp_server]: 4 client(s) remaining
+[INFO]  [2021-02-18 20:47:13.343614] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6031
+  stamp: 
+    secs: 1613699233
+    nsecs: 324173927
+  frame_id: ''
+unit: "psig"
+voltage: 0.223296701908
+reading: 3.77059555054
+[INFO]  [2021-02-18 20:48:49.640658] [/top/tcp_server]: Client #17 has disconnected
+[INFO]  [2021-02-18 20:47:13.586806] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6032
+  stamp: 
+    secs: 1613699233
+    nsecs: 569210052
+  frame_id: ''
+unit: "psig"
+voltage: 0.220659345388
+reading: 2.32302808762
+[INFO]  [2021-02-18 20:48:49.658213] [/top/tcp_server]: Client #18 has disconnected
+[INFO]  [2021-02-18 20:47:13.851045] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6033
+  stamp: 
+    secs: 1613699233
+    nsecs: 824297904
+  frame_id: ''
+unit: "psig"
+voltage: 0.221978023648
+reading: 3.04681181908
+[INFO]  [2021-02-18 20:48:49.696817] [/top/tcp_server]: 2 client(s) remaining
+[INFO]  [2021-02-18 20:47:14.089893] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6034
+  stamp: 
+    secs: 1613699234
+    nsecs:  69396972
+  frame_id: ''
+unit: "psig"
+voltage: 0.223736256361
+reading: 4.01185703278
+[INFO]  [2021-02-18 20:48:49.745625] [/top/tcp_server]: 2 client(s) remaining
+[INFO]  [2021-02-18 20:47:14.345621] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6035
+  stamp: 
+    secs: 1613699234
+    nsecs: 319766998
+  frame_id: ''
+unit: "psig"
+voltage: 0.221538454294
+reading: 2.80555057526
+[INFO]  [2021-02-18 20:48:49.887784] [/top/tcp_server]: Client #16 has disconnected
+[INFO]  [2021-02-18 20:47:14.587274] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6036
+  stamp: 
+    secs: 1613699234
+    nsecs: 569602012
+  frame_id: ''
+unit: "psig"
+voltage: 0.222857147455
+reading: 3.52933430672
+[INFO]  [2021-02-18 20:48:49.919355] [/top/tcp_server]: 1 client(s) remaining
+[INFO]  [2021-02-18 20:47:14.845701] [/top/listener]: /sensors/ox_tank_transducer:
+header: 
+  seq: 6037
+  stamp: 
+    secs: 1613699234
+    nsecs: 819066047
+  frame_id: ''
+unit: "psig"
+voltage: 0.221978023648
+reading: 3.04681181908
+[INFO]  [2021-02-18 20:48:50.410860] [/top/tcp_server]: New connection: (20, ('192.168.1.114', 57811))
+[INFO]  [2021-02-18 20:47:15.139810] [/top/listener]: Stopped listening to /sensors/ox_tank_transducer
+[INFO]  [2021-02-18 20:48:50.435202] [/top/tcp_server]: 2 active connection(s)
+[INFO]  [2021-02-18 20:48:51.042607] [/top/tcp_server]: Command from #19: stop listening all
+[INFO]  [2021-02-18 20:48:51.802063] [/top/tcp_server]: Command from #19: stop listening all
+[INFO]  [2021-02-18 20:48:52.023038] [/top/tcp_server]: Command from #19: stop listening all
+[INFO]  [2021-02-18 20:48:52.951482] [/top/tcp_server]: Command from #19: stop listening all
+[INFO]  [2021-02-18 20:48:53.746753] [/top/tcp_server]: Command from #19: stop listening all
+[INFO]  [2021-02-18 20:48:53.926535] [/top/tcp_server]: Command from #19: stop listening all
+[INFO]  [2021-02-18 20:48:54.501692] [/top/tcp_server]: Command from #19: stop listening all
+[INFO]  [2021-02-18 20:48:54.727255] [/top/tcp_server]: Command from #19: stop listening all
+[INFO]  [2021-02-18 20:48:59.143859] [/top/tcp_server]: Command from #19: stop listening all
+[DEBUG] [2021-02-18 20:49:03.074376] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:49:07.067779] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:49:11.074050] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:49:15.067431] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:47:20.897268] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:48:35.552309] [/top/readiness_admin]: Command 'elevate readiness' matches these patterns: ['elevate readiness']
+[INFO]  [2021-02-18 20:48:35.633375] [/top/readiness_admin]: Set readiness level to 1
+[DEBUG] [2021-02-18 20:48:51.109970] [/top/readiness_admin]: Command 'stop listening all' matches these patterns: ['stop listening all']
+[DEBUG] [2021-02-18 20:48:51.876162] [/top/readiness_admin]: Command 'stop listening all' matches these patterns: ['stop listening all']
+[DEBUG] [2021-02-18 20:48:52.050929] [/top/readiness_admin]: Command 'stop listening all' matches these patterns: ['stop listening all']
+[DEBUG] [2021-02-18 20:48:52.980574] [/top/readiness_admin]: Command 'stop listening all' matches these patterns: ['stop listening all']
+[DEBUG] [2021-02-18 20:48:53.789719] [/top/readiness_admin]: Command 'stop listening all' matches these patterns: ['stop listening all']
+[DEBUG] [2021-02-18 20:48:53.978426] [/top/readiness_admin]: Command 'stop listening all' matches these patterns: ['stop listening all']
+[DEBUG] [2021-02-18 20:48:54.546625] [/top/readiness_admin]: Command 'stop listening all' matches these patterns: ['stop listening all']
+[DEBUG] [2021-02-18 20:48:54.761513] [/top/readiness_admin]: Command 'stop listening all' matches these patterns: ['stop listening all']
+[DEBUG] [2021-02-18 20:48:59.182267] [/top/readiness_admin]: Command 'stop listening all' matches these patterns: ['stop listening all']
+[DEBUG] [2021-02-18 20:49:19.066091] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:49:21.713335] [/top/tcp_server]: Command from #19: reduce readiness
+[DEBUG] [2021-02-18 20:49:21.753736] [/top/readiness_admin]: Command 'reduce readiness' matches these patterns: ['reduce readiness']
+[INFO]  [2021-02-18 20:49:21.804617] [/top/readiness_admin]: Set readiness level to 0
+[DEBUG] [2021-02-18 20:49:25.077974] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:49:26.813365] [/top/tcp_server]: Command from #19: toggle backdoor
+[INFO]  [2021-02-18 20:49:26.872181] [/top/readiness_admin]: Backdoor disabled.
+[INFO]  [2021-02-18 20:49:28.364660] [/top/tcp_server]: Command from #19: toggle backdoor
+[WARN]  [2021-02-18 20:49:28.404315] [/top/readiness_admin]: Enabled backdoor. All commands now permitted.
+[DEBUG] [2021-02-18 20:49:31.076037] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:49:35.078492] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:49:37.516416] [/top/tcp_server]: New connection: (21, ('192.168.1.111', 36884))
+[INFO]  [2021-02-18 20:49:37.544536] [/top/tcp_server]: 3 active connection(s)
+[DEBUG] [2021-02-18 20:49:41.083075] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:49:45.067065] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:49:49.075036] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:49:53.078821] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:49:53.813352] [/top/watchdog]: Runtime has reached: 28 minutes.
+[DEBUG] [2021-02-18 20:49:57.074457] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:50:01.068009] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:50:05.074068] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:50:09.073178] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:50:10.268321] [/top/tcp_server]: connecting to 192.168.1.101 44363
+[DEBUG] [2021-02-18 20:50:13.075520] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:50:14.106432] [/top/watchdog]: /rostopic_11707_1613699408671 has been born.
+[DEBUG] [2021-02-18 20:50:17.080747] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:50:21.067741] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:50:25.081472] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:50:29.073759] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:50:33.066722] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:50:37.068524] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:50:40.078266] [/top/tcp_server]: Command from #19: driver topic=/hardware/solenoid priority=5 command=SOLENOID_ACTIVE
+[DEBUG] [2021-02-18 20:50:40.129492] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:50:40.381607] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613699440, "nsecs": 167877912}, "frame_id": "", "seq": 39}, "command": 7, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[INFO]  [2021-02-18 20:50:40.418836] [/hardware/solenoid]: Enable solenoid open cycle
+[DEBUG] [2021-02-18 20:50:43.073579] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:50:47.073471] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:50:51.074720] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:50:53.836395] [/top/watchdog]: Runtime has reached: 29 minutes.
+[DEBUG] [2021-02-18 20:50:57.067384] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:50:58.220284] [/logging/rosbag_record]: Closing /home/debian/rocket-os/src/toplevel/../../logs/LOG_2021-02-18-20-40-58_2.bag.
+[INFO]  [2021-02-18 20:50:58.405298] [/logging/rosbag_record]: Recording to /home/debian/rocket-os/src/toplevel/../../logs/LOG_2021-02-18-20-50-58_3.bag.
+[INFO]  [2021-02-18 20:51:00.434234] [/hardware/solenoid]: Opening the solenoid
+[DEBUG] [2021-02-18 20:51:03.074991] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:51:07.074093] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:51:11.073425] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:51:15.073561] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:51:19.071906] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:51:23.066382] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:51:27.071745] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:51:30.434176] [/hardware/solenoid]: Closing the solenoid
+[DEBUG] [2021-02-18 20:51:33.075016] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:51:37.073702] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:51:41.080757] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:51:45.067569] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:51:49.072533] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:51:53.067536] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:51:53.811567] [/top/watchdog]: Runtime has reached: 30 minutes.
+[DEBUG] [2021-02-18 20:51:57.072158] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:52:00.434476] [/hardware/solenoid]: Opening the solenoid
+[DEBUG] [2021-02-18 20:52:03.066681] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:52:07.067110] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:52:11.072699] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:52:11.779265] [/top/tcp_server]: Command from #19: driver topic=/hardware/abort_valve priority=5 command=MOTOR_PULSE_OPEN pulse=2
+[DEBUG] [2021-02-18 20:52:11.837073] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:52:12.031781] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613699531, "nsecs": 891452074}, "frame_id": "", "seq": 40}, "command": 5, "pulse": {"secs": 2, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:52:12.059893] [/hardware/abort_valve]: Executing new command: /admin/adam_driver: 5 (2.000 s), P5
+[INFO]  [2021-02-18 20:52:12.108273] [/hardware/abort_valve]: Command from /admin/adam_driver: pulse-open the motor for 2.0 seconds
+[INFO]  [2021-02-18 20:52:12.139899] [/hardware/abort_valve]: Opening...
+[INFO]  [2021-02-18 20:52:14.175212] [/hardware/abort_valve]: Stopped. 2.007743835 seconds elapsed.
+[DEBUG] [2021-02-18 20:52:17.066983] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:52:21.078385] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:52:25.077257] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:52:29.077722] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:52:30.433423] [/hardware/solenoid]: Closing the solenoid
+[DEBUG] [2021-02-18 20:52:33.078048] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:52:37.074281] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:52:41.072590] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:52:45.076675] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:52:49.078622] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:52:53.067570] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:52:53.814126] [/top/watchdog]: Runtime has reached: 31 minutes.
+[DEBUG] [2021-02-18 20:52:57.078465] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:53:00.433625] [/hardware/solenoid]: Opening the solenoid
+[DEBUG] [2021-02-18 20:53:03.079524] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:53:07.078184] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:53:11.081671] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:53:15.081606] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:53:19.084462] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:53:23.078986] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:53:27.078194] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:53:30.433732] [/hardware/solenoid]: Closing the solenoid
+[DEBUG] [2021-02-18 20:53:33.073983] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:53:37.073703] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:53:41.067288] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:53:45.073753] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:53:49.069189] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:53:53.067661] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:53:53.814172] [/top/watchdog]: Runtime has reached: 32 minutes.
+[DEBUG] [2021-02-18 20:53:57.075478] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:54:00.434357] [/hardware/solenoid]: Opening the solenoid
+[DEBUG] [2021-02-18 20:54:03.072557] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:54:07.067755] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:54:11.069181] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:54:15.067442] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:54:19.073247] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:54:23.067219] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:54:27.070343] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:54:30.435501] [/hardware/solenoid]: Closing the solenoid
+[DEBUG] [2021-02-18 20:54:33.073110] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:54:37.069267] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:54:41.076098] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:54:45.072788] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:54:49.073774] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:54:53.076164] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:54:53.851558] [/top/watchdog]: Runtime has reached: 33 minutes.
+[DEBUG] [2021-02-18 20:54:57.073784] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:55:00.433563] [/hardware/solenoid]: Opening the solenoid
+[DEBUG] [2021-02-18 20:55:03.070718] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:55:07.077229] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:55:11.075709] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:55:15.076194] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:55:19.072136] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:55:23.068086] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:55:27.070978] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:55:30.434106] [/hardware/solenoid]: Closing the solenoid
+[DEBUG] [2021-02-18 20:55:33.072184] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:55:37.068141] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:55:41.067480] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:55:45.072442] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:55:49.075505] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:55:53.074724] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:55:53.809382] [/top/watchdog]: Runtime has reached: 34 minutes.
+[DEBUG] [2021-02-18 20:55:57.073039] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:56:00.433461] [/hardware/solenoid]: Opening the solenoid
+[DEBUG] [2021-02-18 20:56:03.067407] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:56:07.073756] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:56:11.074729] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:56:15.075266] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:56:19.075070] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:56:23.079058] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:56:27.071450] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:56:30.433452] [/hardware/solenoid]: Closing the solenoid
+[DEBUG] [2021-02-18 20:56:33.080025] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:56:37.070055] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:56:41.075988] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:56:45.071870] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:56:49.077365] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:56:53.074399] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:56:53.845545] [/top/watchdog]: Runtime has reached: 35 minutes.
+[DEBUG] [2021-02-18 20:56:57.077574] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:57:00.433852] [/hardware/solenoid]: Opening the solenoid
+[DEBUG] [2021-02-18 20:57:03.079258] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:57:07.067063] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:57:11.067538] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:57:15.066220] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:57:19.067505] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:57:23.082143] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:57:27.067495] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:57:30.435559] [/hardware/solenoid]: Closing the solenoid
+[DEBUG] [2021-02-18 20:57:33.067316] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:57:37.071999] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:57:41.067099] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:57:45.072468] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:57:49.079414] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:57:53.067803] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:57:53.815948] [/top/watchdog]: Runtime has reached: 36 minutes.
+[DEBUG] [2021-02-18 20:57:57.067861] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:58:00.434352] [/hardware/solenoid]: Opening the solenoid
+[DEBUG] [2021-02-18 20:58:03.067623] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:58:07.072449] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:58:11.081382] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:58:15.073840] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:58:19.078714] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:58:23.076038] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:58:27.078536] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:58:30.434169] [/hardware/solenoid]: Closing the solenoid
+[DEBUG] [2021-02-18 20:58:33.075965] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:58:37.081960] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:58:41.074869] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:58:45.069619] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:58:49.076813] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:58:53.073480] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:58:53.817352] [/top/watchdog]: Runtime has reached: 37 minutes.
+[DEBUG] [2021-02-18 20:58:57.075076] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:59:00.434168] [/hardware/solenoid]: Opening the solenoid
+[DEBUG] [2021-02-18 20:59:03.074164] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:59:07.070702] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:59:07.835304] [/top/tcp_server]: Command from #19: driver topic=/hardware/solenoid priority=5 command=SOLENOID_INACTIVE
+[DEBUG] [2021-02-18 20:59:07.890006] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:59:08.037167] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613699947, "nsecs": 913532972}, "frame_id": "", "seq": 41}, "command": 6, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[INFO]  [2021-02-18 20:59:08.057563] [/hardware/solenoid]: Disable solenoid open cycle
+[INFO]  [2021-02-18 20:59:08.433539] [/hardware/solenoid]: Closing the solenoid
+[DEBUG] [2021-02-18 20:59:11.081397] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 20:59:12.114254] [/top/tcp_server]: Command from #19: driver topic=/hardware/abort_valve priority=5 command=MOTOR_CLOSE
+[DEBUG] [2021-02-18 20:59:12.143375] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:59:12.287108] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613699952, "nsecs": 163676977}, "frame_id": "", "seq": 42}, "command": 2, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:59:12.358406] [/hardware/abort_valve]: Executing new command: /admin/adam_driver: 2 (0.000 s), P5
+[INFO]  [2021-02-18 20:59:12.394866] [/hardware/abort_valve]: Command from /admin/adam_driver: close the motor
+[DEBUG] [2021-02-18 20:59:15.067801] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:59:19.072457] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:59:23.070818] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:59:27.073338] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:59:31.075476] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:59:35.072516] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:59:39.080159] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:59:43.075044] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:59:47.067144] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:59:51.076474] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 20:59:53.836131] [/top/watchdog]: Runtime has reached: 38 minutes.
+[INFO]  [2021-02-18 20:59:55.059746] [/top/tcp_server]: Command from #19: driver topic=/hardware/linear_actuator priority=5 command=MOTOR_CLOSE
+[DEBUG] [2021-02-18 20:59:55.121679] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 20:59:55.245857] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613699995, "nsecs": 147625923}, "frame_id": "", "seq": 43}, "command": 2, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 20:59:55.276094] [/hardware/linear_actuator]: Executing new command: /admin/adam_driver: 2 (0.000 s), P5
+[INFO]  [2021-02-18 20:59:55.342688] [/hardware/linear_actuator]: Command from /admin/adam_driver: close the motor
+[DEBUG] [2021-02-18 20:59:59.074943] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:00:03.083574] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:00:07.082628] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:00:11.077682] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 21:00:12.742700] [/top/tcp_server]: Command from #19: driver topic=/hardware/abort_valve priority=5 command=MOTOR_STOP
+[DEBUG] [2021-02-18 21:00:12.793822] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 21:00:13.033895] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613700012, "nsecs": 859680891}, "frame_id": "", "seq": 44}, "command": 1, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 21:00:13.058778] [/hardware/abort_valve]: Executing new command: /admin/adam_driver: 1 (0.000 s), P5
+[INFO]  [2021-02-18 21:00:13.117643] [/hardware/abort_valve]: Command from /admin/adam_driver: stop the motor
+[DEBUG] [2021-02-18 21:00:17.079737] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:00:21.068527] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:00:25.066572] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:00:29.067169] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:00:33.067503] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:00:37.068210] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:00:41.075810] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:00:45.069598] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:00:49.077074] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:00:53.080826] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:00:53.817398] [/top/watchdog]: Runtime has reached: 39 minutes.
+[INFO]  [2021-02-18 21:00:55.956048] [/top/tcp_server]: Command from #19: driver topic=/hardware/linear_actuator priority=5 command=MOTOR_STOP
+[DEBUG] [2021-02-18 21:00:56.002109] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 21:00:56.134960] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613700056, "nsecs": 33848047}, "frame_id": "", "seq": 45}, "command": 1, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 21:00:56.154122] [/hardware/linear_actuator]: Executing new command: /admin/adam_driver: 1 (0.000 s), P5
+[INFO]  [2021-02-18 21:00:56.184317] [/hardware/linear_actuator]: Command from /admin/adam_driver: stop the motor
+[INFO]  [2021-02-18 21:00:58.222032] [/logging/rosbag_record]: Closing /home/debian/rocket-os/src/toplevel/../../logs/LOG_2021-02-18-20-50-58_3.bag.
+[INFO]  [2021-02-18 21:00:58.307908] [/logging/rosbag_record]: Recording to /home/debian/rocket-os/src/toplevel/../../logs/LOG_2021-02-18-21-00-58_4.bag.
+[DEBUG] [2021-02-18 21:01:01.074602] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:01:05.078581] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:01:09.072177] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:01:13.068354] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:01:17.067385] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:01:21.073723] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 21:01:23.351467] [/top/tcp_server]: Command from #19: driver topic=/hardware/injection_valve priority=5 command=MOTOR_OPEN
+[DEBUG] [2021-02-18 21:01:23.384455] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 21:01:23.611050] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613700083, "nsecs": 429358959}, "frame_id": "", "seq": 46}, "command": 3, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 21:01:23.652493] [/hardware/injection_valve]: Executing new command: /admin/adam_driver: 3 (0.000 s), P5
+[INFO]  [2021-02-18 21:01:23.682973] [/hardware/injection_valve]: Command from /admin/adam_driver: open the motor
+[DEBUG] [2021-02-18 21:01:27.073319] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:01:31.072349] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:01:35.068033] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:01:39.081365] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:01:43.073763] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:01:47.073803] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:01:51.073672] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:01:53.834881] [/top/watchdog]: Runtime has reached: 40 minutes.
+[DEBUG] [2021-02-18 21:01:57.073774] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:02:01.074168] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:02:05.067042] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:02:09.073414] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:02:13.076826] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:02:17.082560] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:02:21.073299] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 21:02:21.972065] [/top/tcp_server]: Command from #19: driver topic=/hardware/injection_valve priority=5 command=MOTOR_CLOSE
+[DEBUG] [2021-02-18 21:02:22.036287] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 21:02:22.250404] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613700142, "nsecs": 83909988}, "frame_id": "", "seq": 47}, "command": 2, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 21:02:22.286821] [/hardware/injection_valve]: Executing new command: /admin/adam_driver: 2 (0.000 s), P5
+[INFO]  [2021-02-18 21:02:22.351040] [/hardware/injection_valve]: Command from /admin/adam_driver: close the motor
+[DEBUG] [2021-02-18 21:02:25.073491] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 21:02:26.267172] [/top/tcp_server]: Command from #19: driver topic=/hardware/abort_valve priority=5 command=MOTOR_OPEN
+[DEBUG] [2021-02-18 21:02:26.310201] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 21:02:26.459785] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613700146, "nsecs": 374994039}, "frame_id": "", "seq": 48}, "command": 3, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[DEBUG] [2021-02-18 21:02:26.507949] [/hardware/abort_valve]: Executing new command: /admin/adam_driver: 3 (0.000 s), P5
+[INFO]  [2021-02-18 21:02:26.543486] [/hardware/abort_valve]: Command from /admin/adam_driver: open the motor
+[DEBUG] [2021-02-18 21:02:29.066212] [/top/tcp_server]: Sending keep-alive message.
+[INFO]  [2021-02-18 21:02:30.131983] [/top/tcp_server]: Command from #19: driver topic=/hardware/solenoid priority=5 command=SOLENOID_INACTIVE
+[DEBUG] [2021-02-18 21:02:30.156278] [/top/readiness_admin]: Backdoor allowing otherwise disallowed command.
+[DEBUG] [2021-02-18 21:02:30.278115] [/admin/adam_driver]: {"priority": 5, "header": {"stamp": {"secs": 1613700150, "nsecs": 175885915}, "frame_id": "", "seq": 49}, "command": 6, "pulse": {"secs": 0, "nsecs": 0}, "source": "/admin/adam_driver"}
+[INFO]  [2021-02-18 21:02:30.315527] [/hardware/solenoid]: Disable solenoid open cycle
+[DEBUG] [2021-02-18 21:02:33.068039] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:02:37.068445] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:02:41.082220] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:02:45.067350] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:02:49.076759] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:02:53.083114] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:02:53.837305] [/top/watchdog]: Runtime has reached: 41 minutes.
+[DEBUG] [2021-02-18 21:02:57.066452] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:03:01.067539] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:03:05.068710] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:03:09.070256] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:03:13.085947] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:03:17.069510] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:03:21.070508] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:03:25.073628] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:03:29.073250] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:03:33.075100] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:03:37.069940] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:03:41.076338] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:03:45.067569] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:03:49.072636] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:03:53.072565] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:03:53.858773] [/top/watchdog]: Runtime has reached: 42 minutes.
+[DEBUG] [2021-02-18 21:03:57.073180] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:04:01.072592] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:04:05.067319] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:04:09.067207] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:04:13.074885] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:04:17.077711] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:04:21.066959] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:04:25.069284] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:04:29.072355] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:04:33.067310] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:04:37.072758] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:04:41.071992] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:04:45.076259] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:04:49.067401] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:04:53.073663] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:04:53.846025] [/top/watchdog]: Runtime has reached: 43 minutes.
+[DEBUG] [2021-02-18 21:04:57.071624] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:05:01.069181] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:05:05.067831] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:05:09.071834] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:05:13.069390] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:05:17.076675] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:05:21.066903] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:05:25.068004] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:05:29.066752] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:05:33.067425] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:05:37.073877] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:05:41.067229] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:05:45.078984] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:05:49.089551] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:05:53.085623] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:05:53.816094] [/top/watchdog]: Runtime has reached: 44 minutes.
+[DEBUG] [2021-02-18 21:05:57.072293] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:06:01.092030] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:06:05.093309] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:06:09.083316] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:06:13.085804] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:06:17.092454] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:06:21.083604] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:06:25.083694] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:06:29.093957] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:06:33.081971] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:06:37.088154] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:06:41.082534] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:06:45.086209] [/top/tcp_server]: Sending keep-alive message.
+[DEBUG] [2021-02-18 21:06:49.079645] [/top/tcp_server]: Sending keep-alive message.
