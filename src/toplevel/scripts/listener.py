@@ -1,15 +1,38 @@
 #! /usr/bin/env python
 
+'''
+Listener: ?????????????????????????
+
+		  Available Actions: 
+				+ 
+				
+		  Data Managed:
+			    + 
+
+		  Num of Functions: 4
+
+'''
+
+
 import rospy
 import rostopic
 from std_msgs.msg import String
 import re
 
 def get_generic(msg):
+
+	'''
+		?????????????????????????????
+	'''
+
     topic = msg._connection_header['topic']
     rospy.loginfo(topic + ":\n" + str(msg))
 
 def listen_to(topic):
+
+	'''
+		Begins listening to a given topic
+	'''
 
     if topic == "/rosout" or topic == "/rosout_agg":
         rospy.loginfo("Can't subscribe to /rosout or /rosout_agg.")
@@ -17,14 +40,17 @@ def listen_to(topic):
     
     topics = [n for n, t in rospy.get_published_topics()]
 
+	#IF: Topic is not in list of published topics
     if topic not in topics:
         rospy.loginfo("Can't subscribe to " + topic + "; hasn't been published yet")
         return
 
+	#IF: Topic is already in your list of Topic Subscriptions
     if topic in subscribed.keys():
         rospy.loginfo("Already subscribed to " + topic)
         return
-        
+    
+	#Subscribe to given Topic	
     type = rostopic.get_topic_class(topic)
     if type:
         sub = rospy.Subscriber(topic, type[0], get_generic)
@@ -32,6 +58,10 @@ def listen_to(topic):
         rospy.loginfo("Subscribed to " + topic)
 
 def stop_listening(topic):
+
+	'''
+		Stops listening to a given topic
+	'''
 
     if topic not in subscribed.keys():
         rospy.loginfo("Not currently listening to " + topic)
@@ -42,6 +72,10 @@ def stop_listening(topic):
     rospy.loginfo("Stopped listening to " + topic)
 
 def receive_command(msg):
+
+	'''
+		?????????????????????????
+	'''
 
     command = msg.data
 
@@ -59,6 +93,9 @@ def receive_command(msg):
 
 subscribed = {}
 
+#Initialize Node
 rospy.init_node("listener")
+
+#Set Subsription
 rospy.Subscriber("/commands", String, receive_command)
 rospy.spin()

@@ -1,5 +1,18 @@
 #! /usr/bin/env python
 
+
+'''
+Interactive Test: ??????????????????????
+
+				  Available Actions: 
+					+ 
+				
+				  Data Managed:
+					  + 
+
+				  Num of Functions: 5
+'''
+
 import rospy
 from std_msgs.msg import String, Bool, Empty
 import sys
@@ -10,15 +23,34 @@ status = False # whether the test has passed
 
 def publish_status(frame):
 
+	'''
+		Publishes the status of a test
+		
+		True: Test Passed
+		False: Test did not pass
+		
+		@param frame: ??????????????
+	'''
+
     publisher.publish(status)
 
 def receive_reset_request(message):
+
+	'''
+		Resets the satus variable to False
+		
+		@param messaage: ??????????????????
+	'''
 
     global status
     status = False
     rospy.loginfo("Recieved reset request.")
 
 def idiot_test(index):
+
+	'''
+		??????????????????????????????
+	'''
 
     if len(questions) <= index:
         rospy.loginfo("Test passed!")
@@ -33,6 +65,13 @@ def idiot_test(index):
 
 def verify_response(resp):
 
+	'''
+		Verifies that the given Response parameter matches the expected_response
+		
+		@param resp: response to be verified
+		
+	'''
+
     print("Verifying response")
     global question_index
     if expected_response == resp:
@@ -45,6 +84,10 @@ def verify_response(resp):
 
 
 def get_command(message):
+
+	'''
+		???????????????????????
+	'''
 
     global question_index
     command = message.data
@@ -68,10 +111,15 @@ def get_command(message):
 sys.argv = rospy.myargv(argv=sys.argv)
 sys.argv.pop(0)
 
+#Initialize Node
 rospy.init_node("interactive_test")
 name = rospy.get_name()
+
+#Set Subscriptions
 rospy.Subscriber("/commands", String, get_command)
 rospy.Subscriber(name + "/reset", Empty, receive_reset_request)
+
+#Set Publisher
 publisher = rospy.Publisher(name + "/status", Bool, queue_size=10)
 
 if len(sys.argv) < 3:
@@ -88,6 +136,7 @@ questions = []
 for i in range(1, len(sys.argv[1:]), 2):
     questions.append((sys.argv[i], sys.argv[i+1]))
 
+#???????????????????????????
 rospy.Timer(rospy.Duration(1), publish_status)
 rospy.spin()
 
