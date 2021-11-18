@@ -1,15 +1,30 @@
 #! /usr/bin/env python
 
+
+'''
+Driver Admin: Initiates various driver commands
+				
+			  Available Actions: 
+				  + WHAT ARE THESE COMMANDS????????????????????????????????/
+
+			  + Num of Functions: 2
+'''
+
 import rospy
 from std_msgs.msg import String
 from hardware.msg import DriverCommand
-import re
+import re #Regular Expressions Library
 import yaml
 import json
 
 
 def on_shutdown():
 
+	'''
+		What is RELEASE command???????????????????????????????????????????
+	'''
+
+	#Add relevant Data to your message
     dc = DriverCommand()
     dc.header.stamp = rospy.Time.now()
     dc.header.seq = sequence_count
@@ -25,9 +40,16 @@ def on_shutdown():
 
 def receive_command(msg):
 
+	'''
+		Handles driver commands
+		
+		@param msg: DriverCommand messsage
+	'''
+
     global sequence_count
 
     command = msg.data
+	#LOOK INTO LATER. ?????????????????????????????????????????????????
     pattern = re.compile("[\\,\/,\w]+=[\\,\/,\w]+")
 
     if command == "driver help":
@@ -40,13 +62,17 @@ def receive_command(msg):
             "command=SOLENOID_ACTIVE pulse=2.3\n")
 
     elif command.startswith("driver"):
-        dict = {}
+        
+		#Add relevant Data to your message
+		dict = {}
         dc = DriverCommand()
         dc.header.seq = sequence_count
         sequence_count += 1
         dc.header.stamp = rospy.Time.now()
         topic = None
         dc.source = name
+		
+		#LOOK INTO LATER. ?????????????????????????????????????????????????
         for x in re.findall(pattern, command):
             key, value = x.split("=")
             dict[key] = value
@@ -87,8 +113,11 @@ if __name__ == "__main__":
     publishers = {}
     sequence_count = 0
 
+	#Initialize Node
     rospy.init_node("driver_admin", log_level=rospy.DEBUG)
     name = rospy.get_name()
+	
+	#Set Subscription
     rospy.Subscriber("/commands", String, receive_command)
     rospy.on_shutdown(on_shutdown)
     rospy.spin()

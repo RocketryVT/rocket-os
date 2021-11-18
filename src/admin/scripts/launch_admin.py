@@ -1,9 +1,27 @@
 #! /usr/bin/env python
 
+'''
+Launch Admin: Manages the Launch Countdown and Launch of the vehicle.
+
+			  Available Actions: 
+				  + Start Countdown to Launch
+				  + Ignite vehicle
+				  + Abort Launch (Stop Countdown)
+						
+			  + Num of Functions: 5
+'''
+
 import rospy
 from std_msgs.msg import String, UInt8, Empty
 
 def decrement_countdown(event):
+
+	'''
+		Decrement the count down to Launch 
+		Launch = T - 0
+		
+		@param event: Not used
+	'''
 
     global remaining
     
@@ -17,6 +35,11 @@ def decrement_countdown(event):
 
 
 def no_turning_back():
+
+	'''
+		Ignites the vehicle for launch.
+		Once this function is called, there is indeed no turning back.
+	'''
 
     # execute this if we definitely want to launch
     stop_timer()
@@ -36,13 +59,23 @@ def no_turning_back():
 
 def start_timer():
 
+	'''
+		Starts the Launch countdown timer
+	'''
+
     global remaining
     global countdown_timer
     remaining = countdown_maximum
+	
+	#Frequency that messages are published to the Topic
     countdown_timer = rospy.Timer(rospy.Duration(1), decrement_countdown)
 
 
 def stop_timer():
+
+	'''
+		Stops the Launch countdown timer
+	'''
 
     global remaining
     global countdown_timer
@@ -52,6 +85,15 @@ def stop_timer():
 
 
 def get_command(message):
+
+	'''
+		Begins the countdown timer if it has not started.
+		
+		If countdown timer is already running, 
+		passing any command to this function will abort the launch
+		
+		@param message: The launch command [launch]
+	'''
 
     command = message.data
 
@@ -70,8 +112,13 @@ if __name__ == "__main__":
     remaining = countdown_maximum
     countdown_timer = None
 
+	#Initialize Node
     rospy.init_node("launch_admin")
+	
+	#Set Subscriptions
     rospy.Subscriber("/commands", String, get_command)
+	
+	#Set Publisher
     pub_commands = rospy.Publisher("/requested_commands", String, queue_size=10)
 
     # launch involves injection valve, ematch, abort valve

@@ -1,17 +1,38 @@
 #! /usr/bin/env python
 
+
+'''
+Levels of 
+Readiness Admin: Manages the "Readiness Levels"
+
+				Available Actions: 
+					+ Publish Readiness Level
+					+ Display commands available for give Readiness Level
+					+ Set & Change Readiness Level
+
+				Num of Functions: 5
+'''
+
 import rospy
 from std_msgs.msg import String, UInt8
 import re
 
 
 def publish_readiness_level(event):
+	
+	'''
+		Publishes the vehicle's Readiness Level
+		@param event: Not used
+	'''
 
     pub_level.publish(global_readiness_level)
 
 
 def print_help_text():
 
+	'''
+		Prints available commands according to the current Readiness Level
+	'''
     message = "Available commands are...\n\n"
     for id, cmd, permission in whitelist:
         if global_readiness_level in permission or backdoor:
@@ -20,6 +41,15 @@ def print_help_text():
 
 
 def set_readiness_level(new_level):
+	
+	'''
+		Sets the Readiness Level according to the given parameter.
+		
+		A warning is printed if the given parameter is not in the
+		Readiness Level range.
+		
+		@param new_level: Readiness Level
+	'''
 
     global global_readiness_level
     if new_level > max_readiness_level or new_level < 0:
@@ -31,6 +61,18 @@ def set_readiness_level(new_level):
 
 
 def receive_command(string):
+	
+	'''
+		Performs 'Readiness Level'-based actions according to the given command.
+		
+		@param string: A command	
+			
+			+ Commands
+				 print whitelist
+				 print readiness level
+				 elevate readiness
+				 reduce readiness
+	'''
 
     global global_readiness_level
 
@@ -52,10 +94,15 @@ def receive_command(string):
 
 
 def get_requested_command(message):
+	
+	'''
+		?????????????????????????????????
+	'''
 
     global backdoor
     command = message.data
 
+	#IF: command is "toggle backdoor"
     if command == "toggle backdoor":
         backdoor = not backdoor
         if backdoor:
@@ -64,27 +111,32 @@ def get_requested_command(message):
             rospy.loginfo("Backdoor disabled.")
         return
 
-    matches = []
+	#ELSE: Find commads most similar to the parameter passed
+	matches = []
     for id, regex, permission in whitelist:
         if bool(re.match(re.compile("^" + regex + "$"), command)) and global_readiness_level in permission:
             matches.append(regex)
 
-    if matches:
+	if matches:
         rospy.logdebug("Command '{}' matches these patterns: {}".format(command, matches))
         best_match = matches[-1]
         pub_command.publish(command)
         receive_command(command)
-    elif backdoor:
+    
+	elif backdoor:
         rospy.logdebug("Backdoor allowing otherwise disallowed command.")
         pub_command.publish(command)
         receive_command(command)
-    else:
+    
+	#No matches to command parameter
+	else:
         rospy.logwarn("Command doesn't match any patterns in the current whitelist.")
 
 
 if __name__ == "__main__":
 
-    rospy.init_node("readiness_admin", log_level=rospy.DEBUG)
+    #Initialize Node
+	rospy.init_node("readiness_admin", log_level=rospy.DEBUG)
 
     global_readiness_level = 0
     max_readiness_level = 9
@@ -93,12 +145,14 @@ if __name__ == "__main__":
 
     commands = None
     try:
+		#Returns Values From Parameter Server
         commands = rospy.get_param("/commands")
     except:
         rospy.logerr("Failed to get commands from parameter server. Exiting.")
         rospy.signal_shutdown("Parameters unavailable.")
         exit()
 
+	#Adding commands to whitelist??????????
     for id, dict in enumerate(commands):
         cmd = dict.keys()[0]
         privelage = dict[cmd]
@@ -106,10 +160,14 @@ if __name__ == "__main__":
             privelage = range(0, max_readiness_level + 1)
         whitelist.append((id, cmd, privelage))
 
+	#Set Subscription
     rospy.Subscriber("/requested_commands", String, get_requested_command)
+	
+	#Set Publishers
     pub_level = rospy.Publisher("/readiness_level", UInt8, queue_size=10)
     pub_command = rospy.Publisher("/commands", String, queue_size=10)
 
+	#Frequency that messages are published to the Topic
     rospy.Timer(rospy.Duration(1), publish_readiness_level)
 
     rospy.spin()

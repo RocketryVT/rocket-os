@@ -2,6 +2,13 @@
 
 # liquid_level_switch_driver.py
 
+'''
+Liquid Level Switch: Senses when liquid level has reached
+					 a predetermined limit and returns a HIGH state.
+
+					+ Num of Functions: 2
+'''
+
 try:
     import Adafruit_BBIO.ADC as adc
 except:
@@ -14,28 +21,49 @@ import sys
 
 def voltage_to_state(voltage):
 
+	'''
+		Any voltage above 1.6V returns a HIGH state
+		Any voltage 1.6V or below returns a LOW state
+		
+		@param voltage: The voltage input
+		@return: The pin's state based on the voltage reading (HIGH or LOW) 
+	'''
     return voltage > 1.6
 
 
 def read_and_publish(event):
 
+	'''
+		Read ADC values
+		Convert ADC Values to Voltage 
+		Determine State of Pin (Based off voltage info)
+		Send Publish Voltage and Pin State data
+		
+		@param event: Not used
+	'''
+
     global sequence_number
 
     if adc:
+		#Convert ADC reading to Voltage
         voltage = adc.read(adc_pin)*1.8
     else:
         voltage = 0
+		
+	#Convert Voltage to HIGH or LOW State.
     state = voltage_to_state(voltage)
-    msg = SensorReading()
+    
+	msg = SensorReading()
 
+	#Add relevant Data to message
     msg.header.seq = sequence_number
     sequence_number += 1
     msg.header.stamp = rospy.Time.now()
-
     msg.voltage = voltage
     msg.reading = state
     msg.unit = ""
 
+	#Publish message
     publisher.publish(msg)
 
 
@@ -43,6 +71,7 @@ if __name__ == "__main__":
 
     sequence_number = 0
 
+	#Initialize Node
     rospy.init_node("float_switch_driver", log_level=rospy.DEBUG);
 
     if adc:
@@ -51,20 +80,25 @@ if __name__ == "__main__":
         rospy.logwarn("Failed to import Adafruit_BBIO.ADC, running in desktop mode")
 
     name = rospy.get_name()
-    try:
-        adc_pin = rospy.get_param(name + "/pin")
-        period = rospy.get_param(name + "/period")
+	try:
+		#Return Values From Parameter Server 
+        adc_pin = rospy.get_param(name + "/pin") # - Get ADC Pin Num
+        period = rospy.get_param(name + "/period") # - Get ADC message Transmission Frequency (sec)
     except:
         rospy.logerr("Failed to retrieve configuration from rosparam server.")
         rospy.signal_shutdown("Unavailable config.")
         exit()
 
+	#Check if adc_pin matches AIN1 - AIN6. If not Exit program.
     all_pins = ["AIN{}".format(x) for x in range(0,7)]
     if adc_pin not in all_pins:
         rospy.logerr("Provided pin " + adc_pin + " not a valid ADC pin (" + str(all_pins) + ")")
         exit()
 
+	#Set Publisher
     publisher = rospy.Publisher(name, SensorReading, queue_size=10);
+	
+	#Frequency that messages are published to the Topic
     rospy.Timer(rospy.Duration(period), read_and_publish)
 
     rospy.loginfo(("Starting float switch driver on ADC {} " +
