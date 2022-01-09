@@ -24,6 +24,7 @@ except:
 
 
 def get_ip():
+
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     try:
         s.connect(('10.255.255.255', 1))
@@ -79,6 +80,10 @@ def signal_handler(sig, frame):
 
 
 def remove(client):
+    '''
+        Remove specified client from list of clients.
+    '''
+
     if client in list_of_clients:
         try:
             list_of_clients.remove(client)
@@ -103,6 +108,9 @@ def clientthread(idno, conn, addr):
 
 
 def handle_connections(event):
+    '''
+        Add new client connections to list of clients
+    '''
     global total_connections
     try:
         conn, addr = server.accept()
@@ -150,14 +158,18 @@ def publish_los(event):
 
     num_clients = len(list_of_clients)
     los_duration = rospy.Time.now() - los_start_time
+    
+    #Client connections available
     if num_clients > 0:
         los_start_time = rospy.Time.now()
-        los_duration = rospy.Duration()
+        los_duration = rospy.Duration() #Set default duration of 0 sec & 0 nanosec
         if los_condition:
-            rospy.loginfo("Connection with atleast one client restored.");
+            rospy.loginfo("Connection with atleast one client restored.")
         los_condition = False
+    
+    #No client connections available
     elif not los_condition:
-        rospy.logwarn("LOS condition detected!");
+        rospy.logwarn("LOS condition detected!")
         los_condition = True
 
     pub_los.publish(los_duration)

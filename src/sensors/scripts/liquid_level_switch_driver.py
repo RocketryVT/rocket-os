@@ -98,7 +98,7 @@ if __name__ == "__main__":
 	#Set Publisher
     publisher = rospy.Publisher(name, SensorReading, queue_size=10);
 	
-	#Frequency that messages are published to the Topic
+	#Set message Publishing Frequency
     rospy.Timer(rospy.Duration(period), read_and_publish)
 
     rospy.loginfo(("Starting float switch driver on ADC {} " +

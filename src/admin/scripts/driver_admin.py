@@ -2,10 +2,11 @@
 
 
 '''
-Driver Admin: Initiates various driver commands
+Driver Admin: Receives and publishes various driver commands to a topic indicated by user
 				
 			  Available Actions: 
-				  + WHAT ARE THESE COMMANDS????????????????????????????????/
+				  + Receive and publish DriverCommand messages to desired topic
+                  + Close off access to driver & shutdown.
 
 			  + Num of Functions: 2
 '''
@@ -21,7 +22,8 @@ import json
 def on_shutdown():
 
 	'''
-		What is RELEASE command???????????????????????????????????????????
+		Go through every topic DriverCommands are being published to
+        and send a DriverCommand to 'release node's control over driver'.
 	'''
 
 	#Add relevant Data to your message
@@ -49,7 +51,7 @@ def receive_command(msg):
     global sequence_count
 
     command = msg.data
-	#LOOK INTO LATER. ?????????????????????????????????????????????????
+	#Look for key=value pattern
     pattern = re.compile("[\\,\/,\w]+=[\\,\/,\w]+")
 
     if command == "driver help":
@@ -63,7 +65,7 @@ def receive_command(msg):
 
     elif command.startswith("driver"):
         
-		#Add relevant Data to your message
+		#Set up new DriverCommand message template
 		dict = {}
         dc = DriverCommand()
         dc.header.seq = sequence_count
@@ -72,11 +74,12 @@ def receive_command(msg):
         topic = None
         dc.source = name
 		
-		#LOOK INTO LATER. ?????????????????????????????????????????????????
+		#Go through every key=value pair in the received command
         for x in re.findall(pattern, command):
             key, value = x.split("=")
             dict[key] = value
 
+            #Populate your DriverCommand parameters
             try:
                 if key == "topic":
                     if value not in publishers.keys():
@@ -110,6 +113,7 @@ def receive_command(msg):
 
 if __name__ == "__main__":
 
+    #Dictionary of topics to publish DriverCommand messages to
     publishers = {}
     sequence_count = 0
 

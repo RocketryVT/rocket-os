@@ -1,16 +1,15 @@
 #! /usr/bin/env python
 
 '''
-Listener: ?????????????????????????
+Listener: Receives commands to listen to or stop listening to a particular topic,
+            then carries out the commands.
 
 		  Available Actions: 
-				+ 
-				
-		  Data Managed:
-			    + 
+				+ Listen to a topic
+                + Stop listening to a topic
+                + Receive commands pertaining to topic listening.
 
 		  Num of Functions: 4
-
 '''
 
 
@@ -74,7 +73,12 @@ def stop_listening(topic):
 def receive_command(msg):
 
 	'''
-		?????????????????????????
+		Takes as input commands to listen to or stop listening to a given topic,
+        and calls listen_to() or stop_listening() on the topic specified.
+        @param msg: Carries the command
+                        - listen to (Topic)
+                        - stop listening to (Topic)
+                        - stop listening all
 	'''
 
     command = msg.data
