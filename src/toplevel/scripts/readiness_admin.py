@@ -7,7 +7,7 @@ Readiness Admin: Manages the "Readiness Levels"
 
 				Available Actions: 
 					+ Publish Readiness Level
-					+ Display commands available for give Readiness Level
+					+ Display commands available for given Readiness Level
 					+ Set & Change Readiness Level
 
 				Num of Functions: 5
@@ -96,13 +96,19 @@ def receive_command(string):
 def get_requested_command(message):
 	
 	'''
-		?????????????????????????????????
+		1. Publishes requested command.
+        2. Updates Readiness Level based on requested command.
+
+        If backdoor is enabled steps 1 & 2 are 
+        performed on any non-whitelisted commands. 
+
+        @param message: requested command
 	'''
 
     global backdoor
     command = message.data
 
-	#IF: command is "toggle backdoor"
+	#Enable or disable backdoor
     if command == "toggle backdoor":
         backdoor = not backdoor
         if backdoor:
@@ -111,7 +117,7 @@ def get_requested_command(message):
             rospy.loginfo("Backdoor disabled.")
         return
 
-	#ELSE: Find commads most similar to the parameter passed
+    #Check for closest matches
 	matches = []
     for id, regex, permission in whitelist:
         if bool(re.match(re.compile("^" + regex + "$"), command)) and global_readiness_level in permission:
@@ -145,14 +151,14 @@ if __name__ == "__main__":
 
     commands = None
     try:
-		#Returns Values From Parameter Server
+		#Returns 'commands' dictionary From Parameter Server
         commands = rospy.get_param("/commands")
     except:
         rospy.logerr("Failed to get commands from parameter server. Exiting.")
         rospy.signal_shutdown("Parameters unavailable.")
         exit()
 
-	#Adding commands to whitelist??????????
+	#Adding every command (& its privelage info) in Parameter Server to whitelist.
     for id, dict in enumerate(commands):
         cmd = dict.keys()[0]
         privelage = dict[cmd]
@@ -167,7 +173,7 @@ if __name__ == "__main__":
     pub_level = rospy.Publisher("/readiness_level", UInt8, queue_size=10)
     pub_command = rospy.Publisher("/commands", String, queue_size=10)
 
-	#Frequency that messages are published to the Topic
+	#Set message Publishing Frequency
     rospy.Timer(rospy.Duration(1), publish_readiness_level)
 
     rospy.spin()

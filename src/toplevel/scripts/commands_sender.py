@@ -1,7 +1,8 @@
 #! /usr/bin/env python
 
 '''
-Commands Sender: ????????????
+Commands Sender: Sets up a prompt for users to input commands
+                and publishes the user inputs to "/commands" topic.
 
 '''
 
@@ -12,12 +13,13 @@ import signal
 def signal_handler(frame, sig):
 
 	'''
-		Description Here
+		Closes the Commands Sender node.
 	'''
 
     print("")
     exit()
 
+#If Key Interrupt (Ctrl-C or Delete) detected, call signal_handler
 signal.signal(signal.SIGINT, signal_handler)
 
 rospy.init_node("command_sender")

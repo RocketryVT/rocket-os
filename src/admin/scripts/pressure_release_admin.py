@@ -3,9 +3,6 @@
 '''
 Pressure Release Admin: Monitors and displays the state 
 						of the pressure sensor.
-							
-						Data Managed:
-							+ Pressure Data
 						
 						+ Num of Functions: 4
 '''
@@ -19,13 +16,13 @@ def receive_message(msg):
 
 	'''
 		Receives pressure readings.
-		Turns on Active Control???????????????????? when pressure is too high.
+		Turns on Active Control when pressure is too high.
 		
 		@param msg: Pressure reading
 	'''
 
     global current_pressure 
-    global active_control
+    global active_control #Whether pressure release admin has control (True) or not (False)
 
     current_pressure = msg.reading
 
@@ -50,7 +47,7 @@ def pressure_high():
 def pressure_ok():
 
 	'''
-		Prints & Logs ... ?????????????????????
+		Prints & Logs that Pressure Release Admin no longer has control.
 	'''
 
     rospy.loginfo("vent valve is not longer controled by pressure release admin")
@@ -86,7 +83,7 @@ if __name__ == "__main__":
 	#Set Publisher
     pub = rospy.Publisher("/hardware/vent_valve/request", UInt8, queue_size=10)
 
-	#Frequency that messages are published to the Topic
+	#Set message Publishing Frequency
     check_timer = rospy.Timer(rospy.Duration(5), publish_pressure)
 
     rospy.spin()

@@ -2,15 +2,9 @@
 
 
 '''
-Interactive Test: ??????????????????????
+Interactive Test: Request answers to idiot test questions and publish results 
+                    of test (PASS or FAIL).
 
-				  Available Actions: 
-					+ 
-				
-				  Data Managed:
-					  + 
-
-				  Num of Functions: 5
 '''
 
 import rospy
@@ -29,7 +23,7 @@ def publish_status(frame):
 		True: Test Passed
 		False: Test did not pass
 		
-		@param frame: ??????????????
+		@param frame: 
 	'''
 
     publisher.publish(status)
@@ -39,7 +33,7 @@ def receive_reset_request(message):
 	'''
 		Resets the satus variable to False
 		
-		@param messaage: ??????????????????
+		@param messaage: 
 	'''
 
     global status
@@ -49,7 +43,10 @@ def receive_reset_request(message):
 def idiot_test(index):
 
 	'''
-		??????????????????????????????
+		Prints each question until all questions have been answered,
+        then the user has passed. (See idiot.launch)
+
+        @param index: The current question_index
 	'''
 
     if len(questions) <= index:
@@ -66,7 +63,7 @@ def idiot_test(index):
 def verify_response(resp):
 
 	'''
-		Verifies that the given Response parameter matches the expected_response
+		Verifies that the given response parameter matches the expected_response
 		
 		@param resp: response to be verified
 		
@@ -86,7 +83,8 @@ def verify_response(resp):
 def get_command(message):
 
 	'''
-		???????????????????????
+		Receives the inputs to answer the idiot check questions.
+        @param message: idiotcheck name & answers to idiot questions.
 	'''
 
     global question_index
@@ -97,7 +95,7 @@ def get_command(message):
 
     elif command == name_of_test and not question_index:
         rospy.loginfo("Beginning interactive test: " + name_of_test)
-        idiot_test(question_index)
+        idiot_test(question_index) 
         question_index = 1
 
     elif (command == "yes" or command == "no") and question_index:
@@ -136,7 +134,7 @@ questions = []
 for i in range(1, len(sys.argv[1:]), 2):
     questions.append((sys.argv[i], sys.argv[i+1]))
 
-#???????????????????????????
+#Set message Publishing Frequency
 rospy.Timer(rospy.Duration(1), publish_status)
 rospy.spin()
 
