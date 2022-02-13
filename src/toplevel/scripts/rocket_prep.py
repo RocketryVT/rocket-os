@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 '''
 Description: 9 Levels of Readiness
-	
+
 	- Very much unfinished
 '''
 import rospy
@@ -13,7 +13,6 @@ try:
     import Adafruit_BBIO.GPIO as gpio
 except:
     gpio = None
-	
 
 
 def set_sensorpins_low():
@@ -31,7 +30,8 @@ def set_sensorpins_low():
 		ox_transd = rospy.get_param("/sensors/ox_tank_transducer/pin")
 		float_sw = rospy.get_param("/sensors/float_switch/pin")
 
-		pins = [comb_thermo_1, comb_thermo_1, comb_transd, ox_thermo, ox_transd, float_sw]
+		pins = [comb_thermo_1, comb_thermo_1,
+		    comb_transd, ox_thermo, ox_transd, float_sw]
 
 	except:
 		rospy.logerr("Failed to retrieve pin config from rosparam server.")
@@ -41,12 +41,11 @@ def set_sensorpins_low():
 		try:
 			if gpio:
 				gpio.output(pin, gpio.LOW)
-		except: 
+		except:
 			rospy.logerr("Failed to set {} LOW.".format(pin))
 			return 0
-	
-	return 1
 
+	return 1
 
 
 def close_valves():
@@ -54,10 +53,10 @@ def close_valves():
 		Close all valves.
 	'''
 
-	abort_valve.publish(1) # close abort valve
-	injection_valve.publish(1) # close injection valve
+	abort_valve.publish(1)  # close abort valve
+	injection_valve.publish(1)  # close injection valve
 
-	#Solenoid command setup (Close solenoid)
+	# Solenoid command setup (Close solenoid)
     dc = DriverCommand()
     dc.header.stamp = rospy.Time.now()
     dc.source = name
@@ -131,15 +130,15 @@ def abort():
 		Initiate abort sequence.
 	'''
 
-	#1. Close Ignition Valve <-- The Hell is this?
+	# 1. Close Ignition Valve <-- The Hell is this?
 
 
-	#2. Detach the Umbilical <-- The Hell is this?
+	# 2. Detach the Umbilical <-- There has to be linear actuator node somewhere...
 
 
-	#3. Fully Open Vent & Abort Valve (Indefinitely)
+	# 3. Fully Open Vent & Abort Valve (Indefinitely)
 	abort_valve.publish(2) # Open abort valve
-	#what is the "vent"?
+	# what is the "vent"?
 
 	rospy.logerr("20 min LOS. Aborting.")
 	exit()
@@ -150,6 +149,7 @@ def abort():
 
 def level_master():
 	'''
+		This function might end up not being necessary...
 		Calls readiness level procedure according to current readiness level.
 		@param los_status: Amount of time signal has been lost. (0.0 sec if No LOS)
 	'''
@@ -189,7 +189,7 @@ def start_level_0():
 	'''
 
 	global idiot_status
-	#What is Continuity??
+	# What is Continuity??
 	if set_sensorpins_low() == 0:
 		return
 
@@ -231,7 +231,7 @@ def start_level_2(los_status):
 	global tank_full
 	fillCommands.publish("begin fill")
 	if los_status > 0.0:
-		#Elevate sensor monitor permissions to correct off-nominal readings
+		# Elevate sensor monitor permissions to correct off-nominal readings
 
 		if timer(1200, True) == 1:
 			abort()
@@ -255,14 +255,14 @@ def start_level_3(los_status):
 		@param: los_status:
 	'''	
 
-	#Reasses rocket state
+	# Reasses rocket state
 	
-	#Disconnect umbillical (Is there a linear actuator node anywhere?).
+	# Disconnect umbillical (Is there a linear actuator node anywhere?).
 	linact_a = rospy.get_param("/hardware/linear_actuator/pin_a")
 	linact_b = rospy.get_param("/hardware/linear_actuator/pin_b")
 	try:
 			if gpio:
-				#I don't know the HIGH-LOW sequence for this.
+				# I don't know the HIGH-LOW sequence for this.
 				gpio.output(linact_a, gpio.HIGH)
 				gpio.output(linact_b, gpio.HIGH)
 		except: 
@@ -270,14 +270,14 @@ def start_level_3(los_status):
 			return
 
 	if los_status > 0.0:
-		#Elevate sensor monitor permissions to correct off-nominal readings
+		# Elevate sensor monitor permissions to correct off-nominal readings
 
 		if timer(1200, True) == 1:
 			abort()
 			
 	else:
 
-		#Check for fill disconnect <-Whaaaa?
+		# Check for fill disconnect <-Whaaaa?
 		
 		commands.publish("elevate readiness")
 
@@ -295,7 +295,7 @@ def start_level_4(los_status):
 
 	global idiot_status
 	if los_status > 0.0:
-		#Elevate sensor monitor permissions to correct off-nominal readings
+		# Elevate sensor monitor permissions to correct off-nominal readings
 
 		if timer(1200, True) == 1:
 			abort()
@@ -315,18 +315,18 @@ def start_level_5(los_status):
 		@param: los_status:
 	'''
 
-	#Arm Rocket
-	#What Vent to close?
+	# Arm Rocket
+	# What Vent to close?
 	abort_valve.publish(1) # close abort valve
 
 	if los_status > 0.0:
-		#Elevate sensor monitor permissions to correct off-nominal readings
+		# Elevate sensor monitor permissions to correct off-nominal readings
 
 		if timer(1200, True) == 1:
 			abort()
 			
 	else:
-		#Check that rocket is armed. If true, publish.
+		# Check that rocket is armed. If true, publish.
 		commands.publish("elevate readiness")
 
 		
@@ -342,13 +342,13 @@ def start_level_6(los_status):
 	'''
 
 	if los_status > 0.0:
-		#Elevate sensor monitor permissions to correct off-nominal readings
+		# Elevate sensor monitor permissions to correct off-nominal readings
 
 		if timer(1200, True) == 1:
 			abort()
 			
 	else:
-		#Where to send "get ready to rumble" command?
+		# Where to send "get ready to rumble" command?
 
 		commands.publish("elevate readiness")
 
@@ -365,7 +365,7 @@ def start_level_7(los_status):
 	'''
 
 	if los_status > 0.0:
-		#Elevate sensor monitor permissions to correct off-nominal readings
+		# Elevate sensor monitor permissions to correct off-nominal readings
 
 		if timer(1200, True) == 1:
 			abort()
@@ -384,8 +384,8 @@ def start_level_8():
 		Commands: (anything) | abort
 	'''
 
-	#On completion of countdown
-	#What are the commands "system fortune" and "cowsay"?
+	# On completion of countdown
+	# What are the commands "system fortune" and "cowsay"?
 	commands.publish("elevate readiness")
 
 		
@@ -399,13 +399,9 @@ def start_level_9():
 			+ Wait [20 min]
 			+ Abort
 	'''
-	#Check that ematch has been lit I assume?
+	# Check that ematch has been lit I assume?
 	timer(1200, False)
 	abort()
-
-
-
-
 
 
 
@@ -420,13 +416,13 @@ if __name__ == "__main__":
 
 	try:
 
-		#Set Subscriptions
+		# Set Subscriptions
 		rospy.Subscriber("/readiness_level", UInt8, update_readiness) 
 		rospy.Subscriber("idiot_checker_one/status", Bool, update_idiot_status)
 		rospy.Subscriber("tank_state", Bool, update_tankfull_state)
 		rospy.Subscriber("/los", Float32, update_los)
 		
-		#Set Publishers
+		# Set Publishers
 		commands = rospy.Publisher("/requested_commands", String, queue_size=10)
 		fillCommands = rospy.Publisher("/commands", String, queue_size=10)
 		injection_valve = rospy.Publisher("/hardware/injection_valve/request", UInt8, queue_size=10)
