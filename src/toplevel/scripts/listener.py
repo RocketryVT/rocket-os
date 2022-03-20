@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 '''
 Listener: Receives commands to listen to or stop listening to a particular topic,
