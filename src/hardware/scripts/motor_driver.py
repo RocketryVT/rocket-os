@@ -17,9 +17,9 @@ import yaml
 import driverlib
 
 try:
-import Adafruit_BBIO.GPIO as gpio
+    import Adafruit_BBIO.GPIO as gpio
 except:
-gpio = None
+    gpio = None
 
 
 def execute_motor_command(msg):

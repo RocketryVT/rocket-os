@@ -40,7 +40,7 @@ def listen_to(topic):
 
     # IF: Topic is not in list of published topics
     if topic not in topics:
-    rospy.loginfo("Can't subscribe to " + topic + "; hasn't been published yet")
+        rospy.loginfo("Can't subscribe to " + topic + "; hasn't been published yet")
     return
 
     # IF: Topic is already in your list of Topic Subscriptions
