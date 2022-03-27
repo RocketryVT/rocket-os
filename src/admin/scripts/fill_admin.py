@@ -4,11 +4,11 @@
 '''
 Fill Admin: Manages the vehicle filling process
 
-			Available Actions:
-				+ Start & Stop vehicle fill process
-				+ Set state of Solenoid valve
+            Available Actions:
+                + Start & Stop vehicle fill process
+                + Set state of Solenoid valve
 
-			Num of Functions: 9
+            Num of Functions: 9
 '''
 
 import rospy
@@ -18,11 +18,11 @@ from hardware.msg import DriverCommand
 
 
 def on_shutdown():
-	'''
-		Closes Solenoid Valve.
-	'''
+    '''
+        Closes Solenoid Valve.
+    '''
 
-	# Add relevant Data to your message
+    # Add relevant Data to your message
     dc = DriverCommand()
     dc.header.stamp = rospy.Time.now()
     dc.source = name
@@ -34,41 +34,41 @@ def on_shutdown():
 
 
 def toggle_fill(state):
-	
-	'''
-		Sets the state of the fill process according to the parameter passed.
-		(HIGH = Fill / LOW = No Fill)
-		
-		@param state: True or False
-	'''
-	
+    
+    '''
+        Sets the state of the fill process according to the parameter passed.
+        (HIGH = Fill / LOW = No Fill)
+        
+        @param state: True or False
+    '''
+    
     global fill_ongoing
     fill_ongoing = state
     set_solenoid(state)
 
 
 def print_relevant_data(event):
-	
-	'''
-		Prints & Logs Current Pressure and state of the LLS (Liquid Level Switch)
-		
-		@param event: Not used
-	'''
-	
+    
+    '''
+        Prints & Logs Current Pressure and state of the LLS (Liquid Level Switch)
+        
+        @param event: Not used
+    '''
+    
     if fill_ongoing:
         rospy.loginfo("Current pressure: {} psig; LLS: {}".format(last_pressure, last_lls))
 
 
 def get_pressure(message):
-	
-	'''
-		Gets the current pressure.
-		If the pressure is too high during an ongoing fill, 
-		the fill is halted.
-		
-		@param message: SensorReading message type - pressure readings
-	'''
-	
+    
+    '''
+        Gets the current pressure.
+        If the pressure is too high during an ongoing fill, 
+        the fill is halted.
+        
+        @param message: SensorReading message type - pressure readings
+    '''
+    
     global last_pressure
     global fill_ongoing
     last_pressure = message.reading
@@ -79,15 +79,15 @@ def get_pressure(message):
 
 
 def get_lls_reading(message):
-	
-	'''
-		Checks if the liquid level has reached its limit.
-		If the Liquid Level Switch has been tripped (indicated by a True state)
-		during an ongoing fill, the fill is halted.
-		
-		@param message: SensorReading message type - state of Liquid Level Switch
-	'''
-	
+    
+    '''
+        Checks if the liquid level has reached its limit.
+        If the Liquid Level Switch has been tripped (indicated by a True state)
+        during an ongoing fill, the fill is halted.
+        
+        @param message: SensorReading message type - state of Liquid Level Switch
+    '''
+    
     global last_lls
     global fill_ongoing
     global full
@@ -101,15 +101,15 @@ def get_lls_reading(message):
 
 
 def get_los(message):
-	
-	'''
-		Checks for Loss of Signal.
-		If Loss of Signal has been detected (indicated by a True state)
-		during an ongoing fill, the fill is halted.
-		
-		@param message: Loss of Signal
-	'''
-	
+    
+    '''
+        Checks for Loss of Signal.
+        If Loss of Signal has been detected (indicated by a True state)
+        during an ongoing fill, the fill is halted.
+        
+        @param message: Loss of Signal
+    '''
+    
     seconds = message.data
     if seconds and fill_ongoing:
         rospy.logwarn("LOS detected -- stopping fill!")
@@ -117,26 +117,26 @@ def get_los(message):
 
 
 def get_readiness(message):
-	
-	'''
-		Get vehicle's current Level of Readiness
-		
-		@param message: A number indicating the Level of Readiness
-	'''
-	
+    
+    '''
+        Get vehicle's current Level of Readiness
+        
+        @param message: A number indicating the Level of Readiness
+    '''
+    
     global current_readiness
     current_readiness = message.data
 
 
 def set_solenoid(state):
-	
-	'''
-		Sets Solenoid to Active or Inactive based on the given parameter
-		
-		@param state: True (Set to Active) or False (Set to Inactive)
-	'''
-	
-	# Add relevant Data to your message
+    
+    '''
+        Sets Solenoid to Active or Inactive based on the given parameter
+        
+        @param state: True (Set to Active) or False (Set to Inactive)
+    '''
+    
+    # Add relevant Data to your message
     dc = DriverCommand()
     dc.header.stamp = rospy.Time.now()
     dc.source = name
@@ -149,13 +149,13 @@ def set_solenoid(state):
 
 
 def get_command(message):
-	
-	'''
-		Starts or Stops the vehicle fill process based on the given parameter.
-		
-		@param message: fill commands [begin fill, end fill]
-	'''
-	
+    
+    '''
+        Starts or Stops the vehicle fill process based on the given parameter.
+        
+        @param message: fill commands [begin fill, end fill]
+    '''
+    
     global fill_ongoing
     command = message.data
 
@@ -176,7 +176,7 @@ def get_command(message):
 
 
 if __name__ == "__main__":
-	
+    
     last_lls = None
     last_pressure = None
     fill_ongoing = False
@@ -185,18 +185,18 @@ if __name__ == "__main__":
     current_readiness = None
     full = False
 
-	# Initialize Node
+    # Initialize Node
     rospy.init_node("fill_admin", log_level=rospy.DEBUG)
     name = rospy.get_name()
 
-	# Set Subscriptions
+    # Set Subscriptions
     rospy.Subscriber("/commands", String, get_command)
     rospy.Subscriber("/los", Float32, get_los)
     rospy.Subscriber("/readiness_level", UInt8, get_readiness)
     rospy.Subscriber("/sensors/float_switch", SensorReading, get_lls_reading)
     rospy.Subscriber("/sensors/ox_tank_transducer", SensorReading, get_pressure)
-	
-	# Set Publisher
+    
+    # Set Publisher
     solenoid_cmd = rospy.Publisher("/hardware/solenoid", DriverCommand, queue_size=10)
     tank_state = rospy.Publisher("tank_state", Bool, queue_size=10)
 
@@ -207,7 +207,7 @@ if __name__ == "__main__":
 
     rospy.on_shutdown(on_shutdown)
 
-	# Set message Publishing Frequency
+    # Set message Publishing Frequency
     rospy.Timer(rospy.Duration(3), print_relevant_data)
 
     rospy.spin()
