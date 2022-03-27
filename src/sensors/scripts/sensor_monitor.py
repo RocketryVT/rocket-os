@@ -17,6 +17,7 @@ import re
 sensor_timer = None
 voltage_timer = None
 
+
 class Tracker:
 
 	'''
@@ -121,7 +122,7 @@ def get_command(message):
 
 if __name__ == "__main__":
 
-	#Initialize Node
+	# Initialize Node
     rospy.init_node("sensor_monitor", log_level=rospy.DEBUG)
 
     rospy.Subscriber("/commands", String, get_command)
@@ -135,7 +136,7 @@ if __name__ == "__main__":
         Tracker("Float switch")
     ]
 
-	#Set Subscriptions
+	# Set Subscriptions
     rospy.Subscriber("/sensors/ox_tank_transducer", SensorReading, trackers[0].get)
     rospy.Subscriber("/sensors/combustion_transducer", SensorReading, trackers[1].get)
     rospy.Subscriber("/sensors/ox_tank_thermocouple", SensorReading, trackers[2].get)

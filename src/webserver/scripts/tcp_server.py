@@ -56,7 +56,7 @@ def ping(event):
 
     if seconds > 2 and len(list_of_clients):
         rospy.logdebug("Sending keep-alive message.")
-    
+
     if gpio:
         led = "USR3"
         gpio.output(led, gpio.HIGH)
@@ -119,7 +119,7 @@ def handle_connections(event):
         list_of_clients.append(client)
         rospy.loginfo("New connection: " + str((idno, addr)))
         rospy.loginfo(str(len(list_of_clients)) + " active connection(s)")
-        start_new_thread(clientthread, (idno,conn,addr))
+        start_new_thread(clientthread, (idno, conn, addr))
         total_connections += 1
     except Exception as e:
         pass
@@ -142,7 +142,8 @@ def level_to_str(level):
 
 def get_rosout(msg):
     time = str(datetime.fromtimestamp(msg.header.stamp.to_sec()))
-    broadcast(level_to_str(msg.level) + " [" + time + "] [" + str(msg.name) + "]: " + msg.msg)
+    broadcast(level_to_str(msg.level) +
+              " [" + time + "] [" + str(msg.name) + "]: " + msg.msg)
 
     if gpio:
         led = "USR0"
@@ -158,16 +159,16 @@ def publish_los(event):
 
     num_clients = len(list_of_clients)
     los_duration = rospy.Time.now() - los_start_time
-    
-    #Client connections available
+
+    # Client connections available
     if num_clients > 0:
         los_start_time = rospy.Time.now()
-        los_duration = rospy.Duration() #Set default duration of 0 sec & 0 nanosec
+        los_duration = rospy.Duration()  # Set default duration of 0 sec & 0 nanosec
         if los_condition:
             rospy.loginfo("Connection with atleast one client restored.")
         los_condition = False
-    
-    #No client connections available
+
+    # No client connections available
     elif not los_condition:
         rospy.logwarn("LOS condition detected!")
         los_condition = True
@@ -200,13 +201,13 @@ def blink_leds(message):
 
 
 if __name__ == "__main__":
-   
-    # register signal handler and exit handler 
+
+    # register signal handler and exit handler
     atexit.register(exit_handler)
     signal.signal(signal.SIGINT, signal_handler)
 
     if gpio:
-        LEDs =  [ "USR0", "USR1", "USR2", "USR3" ]
+        LEDs = ["USR0", "USR1", "USR2", "USR3"]
         for led in LEDs:
             gpio.setup(led, gpio.OUT)
             gpio.output(led, gpio.LOW)
@@ -215,7 +216,8 @@ if __name__ == "__main__":
     name = rospy.get_name()
 
     if not gpio:
-        rospy.logwarn("Failed to import Adafruit_BBIO.gpio, running in desktop mode")
+        rospy.logwarn(
+            "Failed to import Adafruit_BBIO.gpio, running in desktop mode")
 
     list_of_clients = []
     total_connections = 0
@@ -234,7 +236,8 @@ if __name__ == "__main__":
     try:
         server.bind((address, port))
     except:
-        rospy.logerr("Error binding to IP and port provided. Please double check.")
+        rospy.logerr(
+            "Error binding to IP and port provided. Please double check.")
         rospy.signal_shutdown("Failed to initialize server.")
         exit()
     server.listen(10)
@@ -251,4 +254,3 @@ if __name__ == "__main__":
     rospy.Timer(rospy.Duration(1), publish_los)
 
     rospy.spin()
-

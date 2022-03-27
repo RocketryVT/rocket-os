@@ -2,7 +2,7 @@
 
 
 '''
-Interactive Test: Request answers to idiot test questions and publish results 
+Interactive Test: Request answers to idiot test questions and publish results
                     of test (PASS or FAIL).
 
 '''
@@ -13,17 +13,17 @@ import sys
 
 question_index = 0
 expected_response = None
-status = False # whether the test has passed
+status = False  # whether the test has passed
+
 
 def publish_status(frame):
-
 	'''
 		Publishes the status of a test
-		
+
 		True: Test Passed
 		False: Test did not pass
-		
-		@param frame: 
+
+		@param frame:
 	'''
 
     publisher.publish(status)
@@ -109,15 +109,15 @@ def get_command(message):
 sys.argv = rospy.myargv(argv=sys.argv)
 sys.argv.pop(0)
 
-#Initialize Node
+# Initialize Node
 rospy.init_node("interactive_test")
 name = rospy.get_name()
 
-#Set Subscriptions
+# Set Subscriptions
 rospy.Subscriber("/commands", String, get_command)
 rospy.Subscriber(name + "/reset", Empty, receive_reset_request)
 
-#Set Publisher
+# Set Publisher
 publisher = rospy.Publisher(name + "/status", Bool, queue_size=10)
 
 if len(sys.argv) < 3:
@@ -134,7 +134,7 @@ questions = []
 for i in range(1, len(sys.argv[1:]), 2):
     questions.append((sys.argv[i], sys.argv[i+1]))
 
-#Set message Publishing Frequency
+# Set message Publishing Frequency
 rospy.Timer(rospy.Duration(1), publish_status)
 rospy.spin()
 

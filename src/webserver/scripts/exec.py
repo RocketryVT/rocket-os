@@ -2,12 +2,15 @@
 
 import rospy
 import subprocess
-import signal, fcntl, os
+import signal
+import fcntl
+import os
 from std_msgs.msg import String
 
 rospy.init_node("exec", log_level=rospy.DEBUG)
 
 timeout = 10
+
 
 def get_command(cmd):
 
@@ -26,23 +29,22 @@ def get_command(cmd):
             try:
                 timeout = float(tokens[1])
                 rospy.loginfo("Set command timeout to {} seconds.".
-                    format(timeout))
+                              format(timeout))
             except:
                 rospy.logerr("Error parsing command - expecting: timeout %f")
 
     if tokens[0] == "fork":
         rospy.loginfo("$ " + " ".join(tokens[1:]))
         process = subprocess.Popen(" ".join(tokens[1:]),
-            shell=True)
+                                   shell=True)
         rospy.loginfo("Done.")
-
 
     if tokens[0] == "system":
         rospy.loginfo("$ " + " ".join(tokens[1:]))
         p = subprocess.Popen(" ".join(tokens[1:]),
-            shell=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE)
+                             shell=True,
+                             stdout=subprocess.PIPE,
+                             stderr=subprocess.PIPE)
 
         start = rospy.get_rostime()
 
@@ -78,7 +80,7 @@ def get_command(cmd):
                 elif stderr:
                     rospy.logerr(stderr)
                 rospy.logwarn("""Command timed out after"""
-                    """ {} seconds.""".format(timeout))
+                              """ {} seconds.""".format(timeout))
                 return
 
         stdout, stderr = p.communicate()
@@ -93,6 +95,7 @@ def get_command(cmd):
             rospy.logerr(stderr)
         exit = p.poll()
         rospy.loginfo("Finished with exit code " + str(exit))
+
 
 sub = rospy.Subscriber("/commands", String, get_command)
 

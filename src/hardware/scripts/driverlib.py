@@ -10,20 +10,18 @@ Driver Library: Brief Description
 import rospy
 import yaml
 
-
 VERBOSE = False
 
 all_commands = {}
 
 
 def cmd2str(msg):
-
 	'''
 		Convert the message details to a string
-		
+
 		@param msg: Messgae to convert to a string
 	'''
-	
+
     if msg is None:
         return str(msg)
     return "{}: {} ({:0.3f} s), P{}".format(

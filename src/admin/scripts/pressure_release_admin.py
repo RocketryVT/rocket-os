@@ -1,9 +1,9 @@
 #! /usr/bin/env python3
 
 '''
-Pressure Release Admin: Monitors and displays the state 
+Pressure Release Admin: Monitors and displays the state
 						of the pressure sensor.
-						
+
 						+ Num of Functions: 4
 '''
 
@@ -13,11 +13,10 @@ from sensors.msg import SensorReading
 
 
 def receive_message(msg):
-
 	'''
 		Receives pressure readings.
 		Turns on Active Control when pressure is too high.
-		
+
 		@param msg: Pressure reading
 	'''
 
@@ -74,16 +73,16 @@ if __name__ == "__main__":
     active_control = False
     current_pressure = None
 
-	#Initialize Node
+	# Initialize Node
     rospy.init_node("release_admin", log_level=rospy.DEBUG)
 
-	#Set Subscription
+	# Set Subscription
     sub = rospy.Subscriber("/sensors/ox_tank_transducer", SensorReading, receive_message)
 	
-	#Set Publisher
+	# Set Publisher
     pub = rospy.Publisher("/hardware/vent_valve/request", UInt8, queue_size=10)
 
-	#Set message Publishing Frequency
+	# Set message Publishing Frequency
     check_timer = rospy.Timer(rospy.Duration(5), publish_pressure)
 
     rospy.spin()

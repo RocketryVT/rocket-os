@@ -4,7 +4,7 @@
 '''
 Fill Admin: Manages the vehicle filling process
 
-			Available Actions: 
+			Available Actions:
 				+ Start & Stop vehicle fill process
 				+ Set state of Solenoid valve
 
@@ -18,12 +18,11 @@ from hardware.msg import DriverCommand
 
 
 def on_shutdown():
-	
 	'''
 		Closes Solenoid Valve.
 	'''
-	
-	#Add relevant Data to your message
+
+	# Add relevant Data to your message
     dc = DriverCommand()
     dc.header.stamp = rospy.Time.now()
     dc.source = name
@@ -137,7 +136,7 @@ def set_solenoid(state):
 		@param state: True (Set to Active) or False (Set to Inactive)
 	'''
 	
-	#Add relevant Data to your message
+	# Add relevant Data to your message
     dc = DriverCommand()
     dc.header.stamp = rospy.Time.now()
     dc.source = name
@@ -186,18 +185,18 @@ if __name__ == "__main__":
     current_readiness = None
     full = False
 
-	#Initialize Node
+	# Initialize Node
     rospy.init_node("fill_admin", log_level=rospy.DEBUG)
     name = rospy.get_name()
 
-	#Set Subscriptions
+	# Set Subscriptions
     rospy.Subscriber("/commands", String, get_command)
     rospy.Subscriber("/los", Float32, get_los)
     rospy.Subscriber("/readiness_level", UInt8, get_readiness)
     rospy.Subscriber("/sensors/float_switch", SensorReading, get_lls_reading)
     rospy.Subscriber("/sensors/ox_tank_transducer", SensorReading, get_pressure)
 	
-	#Set Publisher
+	# Set Publisher
     solenoid_cmd = rospy.Publisher("/hardware/solenoid", DriverCommand, queue_size=10)
     tank_state = rospy.Publisher("tank_state", Bool, queue_size=10)
 
@@ -208,7 +207,7 @@ if __name__ == "__main__":
 
     rospy.on_shutdown(on_shutdown)
 
-	#Set message Publishing Frequency
+	# Set message Publishing Frequency
     rospy.Timer(rospy.Duration(3), print_relevant_data)
 
     rospy.spin()

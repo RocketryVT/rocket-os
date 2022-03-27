@@ -3,23 +3,23 @@
 '''
 Launch Admin: Manages the Launch Countdown and Launch of the vehicle.
 
-			  Available Actions: 
+			  Available Actions:
 				  + Start Countdown to Launch
 				  + Ignite vehicle
 				  + Abort Launch (Stop Countdown)
-						
+
 			  + Num of Functions: 5
 '''
 
 import rospy
 from std_msgs.msg import String, UInt8, Empty
 
-def decrement_countdown(event):
 
+def decrement_countdown(event):
 	'''
-		Decrement the count down to Launch 
+		Decrement the count down to Launch
 		Launch = T - 0
-		
+
 		@param event: Not used
 	'''
 
@@ -67,7 +67,7 @@ def start_timer():
     global countdown_timer
     remaining = countdown_maximum
 	
-	#Frequency that messages are published to the Topic
+	# Frequency that messages are published to the Topic
     countdown_timer = rospy.Timer(rospy.Duration(1), decrement_countdown)
 
 
@@ -112,13 +112,13 @@ if __name__ == "__main__":
     remaining = countdown_maximum
     countdown_timer = None
 
-	#Initialize Node
+	# Initialize Node
     rospy.init_node("launch_admin")
 	
-	#Set Subscriptions
+	# Set Subscriptions
     rospy.Subscriber("/commands", String, get_command)
 	
-	#Set Publisher
+	# Set Publisher
     pub_commands = rospy.Publisher("/requested_commands", String, queue_size=10)
 
     # launch involves injection valve, ematch, abort valve

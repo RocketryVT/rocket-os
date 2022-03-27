@@ -5,7 +5,7 @@ import rospy
 import sys
 import rosnode
 from std_msgs.msg import String, Float32
-from std_msgs.msg import Duration 
+from std_msgs.msg import Duration
 import ros
 from rosgraph_msgs.msg import Log
 
@@ -17,9 +17,10 @@ def publish_time(event):
 
 
 def print_time(event):
-    uptime = Duration();
+    uptime = Duration()
     uptime.data = event.current_real - start_time
-    rospy.logdebug("Runtime has reached: " + str(int(uptime.data.secs/60)) + " minutes.")
+    rospy.logdebug("Runtime has reached: " +
+                   str(int(uptime.data.secs/60)) + " minutes.")
 
 
 def check_on_nodes(event):
@@ -44,21 +45,22 @@ def get_command(message):
         nodes.sort()
         output = "\n" + "\n".join(nodes) + "\n"
         rospy.loginfo(output)
-    
+
     if cmd == "rostopic list":
         topics = rospy.get_published_topics()
         topics.sort(key=lambda x: x[0])
-        output = "\n" + "\n".join([x.ljust(60) + y for (x, y) in topics]) + "\n"
+        output = "\n" + \
+            "\n".join([x.ljust(60) + y for (x, y) in topics]) + "\n"
         rospy.loginfo(output)
 
     if cmd == "uptime":
         seconds = (rospy.get_rostime() - start_time).secs
         hours = int(seconds/3600)
-        seconds -= hours*3600;
-        minutes = int(seconds/60);
-        seconds -= minutes*60;
+        seconds -= hours*3600
+        minutes = int(seconds/60)
+        seconds -= minutes*60
         rospy.loginfo(("Uptime has reached {} hours, {} minutes, " +
-                       "{} seconds.").format(hours, minutes, seconds));
+                       "{} seconds.").format(hours, minutes, seconds))
 
 
 if __name__ == "__main__":
@@ -76,4 +78,3 @@ if __name__ == "__main__":
     rospy.Subscriber("/commands", String, get_command)
 
     rospy.spin()
-

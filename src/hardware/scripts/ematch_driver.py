@@ -5,7 +5,7 @@
 '''
 E-Match: An electronic fireworks igniter.
 		 They're pretty cool.
-		 
+
 		 + Num of Functions: 2
 '''
 
@@ -25,14 +25,13 @@ except:
 
 
 def signal_handler(sig, frame):
-    
 	''' Resets All Pins You've Used to INPUT.
 		Then Exits Program.
-		
+
 		@param sig: Not used
 		@param frame: Not used
 	'''
-	
+
 	if gpio:
         gpio.cleanup()
     exit(0)
@@ -50,21 +49,21 @@ def execute_ematch_command(msg):
 
     global locked
 
-    #If Locking E-Match: Set locked variable to True
+    # If Locking E-Match: Set locked variable to True
 	if msg.command is msg.EMATCH_LOCK:
         rospy.loginfo("Ematch locked by " + msg.source + \
             ", with priority " + str(msg.priority) + ".")
         locked = True
     
-	#If Unlocking E-Match: Set locked variable to False
+	# If Unlocking E-Match: Set locked variable to False
 	elif msg.command is msg.EMATCH_UNLOCK:
         rospy.logwarn("Ematch unlocked by " + msg.source + ".")
         locked = False
 		
-		#?????????????????????????????????????????
+		# ?????????????????????????????????????????
         driverlib.nullify_command(msg)
     
-	#If Firing while E-Match is Unlocked:
+	# If Firing while E-Match is Unlocked:
 	elif msg.command is msg.EMATCH_FIRE and not locked:
         rospy.loginfo("Firing e-match.")
         if gpio:
@@ -77,13 +76,13 @@ def execute_ematch_command(msg):
             gpio.output(ctrl_pin_a, gpio.LOW)
             gpio.output(ctrl_pin_b, gpio.LOW)
     
-	#If Firing while E-Match is Locked:
+	# If Firing while E-Match is Locked:
 	elif msg.command is msg.EMATCH_FIRE:
         rospy.logwarn(msg.source + " is attempting to issue a fire " + \
             "command -- the ematch has been locked. Denied.")
         driverlib.nullify_command(msg)
     
-	#If Some other Commmand: Warn that command did nothing.
+	# If Some other Commmand: Warn that command did nothing.
 	else:
         rospy.logwarn("Unimplemented command: " + str(msg.command))
         driverlib.nullify_command(msg)
@@ -100,12 +99,12 @@ if __name__ == "__main__":
     else:
         rospy.logwarn("Failed to import Adafruit_BBIO.gpio, running in desktop mode")
 
-	#Initialize Node
+	# Initialize Node
     rospy.init_node("ematch_driver", log_level=rospy.DEBUG);
     name = rospy.get_name()
 
     try:
-		#Returns Values From Parameter Server 
+		# Returns Values From Parameter Server 
         ctrl_pin_a = rospy.get_param(name + "/pin_a") # - Get Control Pin A Num
         ctrl_pin_b = rospy.get_param(name + "/pin_b") # - Get Control Pin B Num
         delay = rospy.get_param(name + "/delay") # - Get E-Match Delay amount
@@ -119,7 +118,7 @@ if __name__ == "__main__":
 
     success = False
     max_attempts = 10
-    #Try ([max_attempts] times at most) to set the 2 E-Match Pins to Output
+    # Try ([max_attempts] times at most) to set the 2 E-Match Pins to Output
 	for i in range(max_attempts):
         try:
             if gpio:
@@ -134,22 +133,22 @@ if __name__ == "__main__":
         if success:
             break
 
-	#If Failure to Configure Pins: Log Diagnostics and EXIT.
+	# If Failure to Configure Pins: Log Diagnostics and EXIT.
     if not success:
         rospy.logerr("Failed to configure after " + \
             str(max_attempts) + " attempts.")
         exit()
 
-	#Set Newly Configured Output Pins to LOW
+	# Set Newly Configured Output Pins to LOW
     if gpio:
         gpio.output(ctrl_pin_a, gpio.LOW)
         gpio.output(ctrl_pin_b, gpio.LOW)
 
-	#???????????????????????????????????????? 
+	# ???????????????????????????????????????? 
     driverlib.callback(execute_ematch_command)
 	
-	#Set Subscription. 
-	#(Send incomming messages to driverlib.receive_commands)
+	# Set Subscription. 
+	# (Send incomming messages to driverlib.receive_commands)
     rospy.Subscriber(name, DriverCommand, driverlib.receive_command);
     rospy.loginfo("Success.")
     rospy.spin()

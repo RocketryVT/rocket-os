@@ -4,7 +4,7 @@
 Listener: Receives commands to listen to or stop listening to a particular topic,
             then carries out the commands.
 
-		  Available Actions: 
+		  Available Actions:
 				+ Listen to a topic
                 + Stop listening to a topic
                 + Receive commands pertaining to topic listening.
@@ -18,8 +18,8 @@ import rostopic
 from std_msgs.msg import String
 import re
 
-def get_generic(msg):
 
+def get_generic(msg):
 	'''
 		?????????????????????????????
 	'''
@@ -39,17 +39,17 @@ def listen_to(topic):
     
     topics = [n for n, t in rospy.get_published_topics()]
 
-	#IF: Topic is not in list of published topics
+	# IF: Topic is not in list of published topics
     if topic not in topics:
         rospy.loginfo("Can't subscribe to " + topic + "; hasn't been published yet")
         return
 
-	#IF: Topic is already in your list of Topic Subscriptions
+	# IF: Topic is already in your list of Topic Subscriptions
     if topic in subscribed.keys():
         rospy.loginfo("Already subscribed to " + topic)
         return
     
-	#Subscribe to given Topic	
+	# Subscribe to given Topic	
     type = rostopic.get_topic_class(topic)
     if type:
         sub = rospy.Subscriber(topic, type[0], get_generic)
@@ -97,9 +97,9 @@ def receive_command(msg):
 
 subscribed = {}
 
-#Initialize Node
+# Initialize Node
 rospy.init_node("listener")
 
-#Set Subsription
+# Set Subsription
 rospy.Subscriber("/commands", String, receive_command)
 rospy.spin()

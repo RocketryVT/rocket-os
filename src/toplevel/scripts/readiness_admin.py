@@ -2,10 +2,10 @@
 
 
 '''
-Levels of 
+Levels of
 Readiness Admin: Manages the "Readiness Levels"
 
-				Available Actions: 
+				Available Actions:
 					+ Publish Readiness Level
 					+ Display commands available for given Readiness Level
 					+ Set & Change Readiness Level
@@ -19,7 +19,6 @@ import re
 
 
 def publish_readiness_level(event):
-	
 	'''
 		Publishes the vehicle's Readiness Level
 		@param event: Not used
@@ -108,7 +107,7 @@ def get_requested_command(message):
     global backdoor
     command = message.data
 
-	#Enable or disable backdoor
+	# Enable or disable backdoor
     if command == "toggle backdoor":
         backdoor = not backdoor
         if backdoor:
@@ -117,7 +116,7 @@ def get_requested_command(message):
             rospy.loginfo("Backdoor disabled.")
         return
 
-    #Check for closest matches
+    # Check for closest matches
 	matches = []
     for id, regex, permission in whitelist:
         if bool(re.match(re.compile("^" + regex + "$"), command)) and global_readiness_level in permission:
@@ -134,14 +133,14 @@ def get_requested_command(message):
         pub_command.publish(command)
         receive_command(command)
     
-	#No matches to command parameter
+	# No matches to command parameter
 	else:
         rospy.logwarn("Command doesn't match any patterns in the current whitelist.")
 
 
 if __name__ == "__main__":
 
-    #Initialize Node
+    # Initialize Node
 	rospy.init_node("readiness_admin", log_level=rospy.DEBUG)
 
     global_readiness_level = 0
@@ -151,14 +150,14 @@ if __name__ == "__main__":
 
     commands = None
     try:
-		#Returns 'commands' dictionary From Parameter Server
+		# Returns 'commands' dictionary From Parameter Server
         commands = rospy.get_param("/commands")
     except:
         rospy.logerr("Failed to get commands from parameter server. Exiting.")
         rospy.signal_shutdown("Parameters unavailable.")
         exit()
 
-	#Adding every command (& its privelage info) in Parameter Server to whitelist.
+	# Adding every command (& its privelage info) in Parameter Server to whitelist.
     for id, dict in enumerate(commands):
         cmd = dict.keys()[0]
         privelage = dict[cmd]
@@ -166,14 +165,14 @@ if __name__ == "__main__":
             privelage = range(0, max_readiness_level + 1)
         whitelist.append((id, cmd, privelage))
 
-	#Set Subscription
+	# Set Subscription
     rospy.Subscriber("/requested_commands", String, get_requested_command)
 	
-	#Set Publishers
+	# Set Publishers
     pub_level = rospy.Publisher("/readiness_level", UInt8, queue_size=10)
     pub_command = rospy.Publisher("/commands", String, queue_size=10)
 
-	#Set message Publishing Frequency
+	# Set message Publishing Frequency
     rospy.Timer(rospy.Duration(1), publish_readiness_level)
 
     rospy.spin()

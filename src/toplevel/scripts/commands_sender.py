@@ -10,8 +10,8 @@ import rospy
 from std_msgs.msg import String
 import signal
 
-def signal_handler(frame, sig):
 
+def signal_handler(frame, sig):
 	'''
 		Closes the Commands Sender node.
 	'''
@@ -19,7 +19,7 @@ def signal_handler(frame, sig):
     print("")
     exit()
 
-#If Key Interrupt (Ctrl-C or Delete) detected, call signal_handler
+# If Key Interrupt (Ctrl-C or Delete) detected, call signal_handler
 signal.signal(signal.SIGINT, signal_handler)
 
 rospy.init_node("command_sender")
