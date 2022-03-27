@@ -3,8 +3,8 @@
 '''
 Sensor Monitor: ...
 
-			  + Num of Functions: 4
-			  + Num of Classes: 1
+              + Num of Functions: 4
+              + Num of Classes: 1
 '''
 
 
@@ -20,9 +20,9 @@ voltage_timer = None
 
 class Tracker:
 
-	'''
-		?
-	'''
+    '''
+        ?
+    '''
 
     def __init__(self, name, unit=None):
         self.name = name
@@ -45,28 +45,25 @@ class Tracker:
 
 
 def echo_sensors(event=None):
-
-	'''
-		?
-	'''
+    '''
+        ?
+    '''
 
     echo(False)
 
 
 def echo_voltage(event=None):
-
-	'''
-		?
-	'''
+    '''
+        ?
+    '''
 
     echo(True)
 
 
 def echo(print_voltage):
-
-	'''
-		?
-	'''
+    '''
+        ?
+    '''
 
     output = ""
     for i, tracker in enumerate(trackers):
@@ -77,10 +74,9 @@ def echo(print_voltage):
 
 
 def get_command(message):
-
-	'''
-		?
-	'''
+    '''
+        ?
+    '''
 
     global sensor_timer
     global voltage_timer
@@ -122,7 +118,7 @@ def get_command(message):
 
 if __name__ == "__main__":
 
-	# Initialize Node
+    # Initialize Node
     rospy.init_node("sensor_monitor", log_level=rospy.DEBUG)
 
     rospy.Subscriber("/commands", String, get_command)
@@ -136,13 +132,17 @@ if __name__ == "__main__":
         Tracker("Float switch")
     ]
 
-	# Set Subscriptions
-    rospy.Subscriber("/sensors/ox_tank_transducer", SensorReading, trackers[0].get)
-    rospy.Subscriber("/sensors/combustion_transducer", SensorReading, trackers[1].get)
-    rospy.Subscriber("/sensors/ox_tank_thermocouple", SensorReading, trackers[2].get)
-    rospy.Subscriber("/sensors/combustion_thermocouple_1", SensorReading, trackers[3].get)
-    rospy.Subscriber("/sensors/combustion_thermocouple_2", SensorReading, trackers[4].get)
+    # Set Subscriptions
+    rospy.Subscriber("/sensors/ox_tank_transducer",
+                     SensorReading, trackers[0].get)
+    rospy.Subscriber("/sensors/combustion_transducer",
+                     SensorReading, trackers[1].get)
+    rospy.Subscriber("/sensors/ox_tank_thermocouple",
+                     SensorReading, trackers[2].get)
+    rospy.Subscriber("/sensors/combustion_thermocouple_1",
+                     SensorReading, trackers[3].get)
+    rospy.Subscriber("/sensors/combustion_thermocouple_2",
+                     SensorReading, trackers[4].get)
     rospy.Subscriber("/sensors/float_switch", SensorReading, trackers[5].get)
 
     rospy.spin()
-

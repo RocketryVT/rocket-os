@@ -12,12 +12,13 @@ import signal
 
 
 def signal_handler(frame, sig):
-	'''
-		Closes the Commands Sender node.
-	'''
+    '''
+        Closes the Commands Sender node.
+    '''
 
     print("")
     exit()
+
 
 # If Key Interrupt (Ctrl-C or Delete) detected, call signal_handler
 signal.signal(signal.SIGINT, signal_handler)

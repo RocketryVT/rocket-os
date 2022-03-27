@@ -17,24 +17,24 @@ status = False  # whether the test has passed
 
 
 def publish_status(frame):
-	'''
-		Publishes the status of a test
+    '''
+        Publishes the status of a test
 
-		True: Test Passed
-		False: Test did not pass
+        True: Test Passed
+        False: Test did not pass
 
-		@param frame:
-	'''
+        @param frame:
+    '''
 
     publisher.publish(status)
 
 def receive_reset_request(message):
 
-	'''
-		Resets the satus variable to False
-		
-		@param messaage: 
-	'''
+    '''
+        Resets the satus variable to False
+        
+        @param messaage: 
+    '''
 
     global status
     status = False
@@ -42,12 +42,12 @@ def receive_reset_request(message):
 
 def idiot_test(index):
 
-	'''
-		Prints each question until all questions have been answered,
+    '''
+        Prints each question until all questions have been answered,
         then the user has passed. (See idiot.launch)
 
         @param index: The current question_index
-	'''
+    '''
 
     if len(questions) <= index:
         rospy.loginfo("Test passed!")
@@ -62,12 +62,12 @@ def idiot_test(index):
 
 def verify_response(resp):
 
-	'''
-		Verifies that the given response parameter matches the expected_response
-		
-		@param resp: response to be verified
-		
-	'''
+    '''
+        Verifies that the given response parameter matches the expected_response
+        
+        @param resp: response to be verified
+        
+    '''
 
     print("Verifying response")
     global question_index
@@ -82,10 +82,10 @@ def verify_response(resp):
 
 def get_command(message):
 
-	'''
-		Receives the inputs to answer the idiot check questions.
+    '''
+        Receives the inputs to answer the idiot check questions.
         @param message: idiotcheck name & answers to idiot questions.
-	'''
+    '''
 
     global question_index
     command = message.data
