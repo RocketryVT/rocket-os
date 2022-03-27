@@ -29,7 +29,7 @@ def main():
         print("Writing bag file: " + args.outputbag)
         print("Matching topics against patters: '%s'" % ' '.join(topics))
 
-    with Bag(args.outputbag, 'w') as o: 
+    with Bag(args.outputbag, 'w') as o:
         for ifile in args.inputbag:
             matchedtopics = []
             included_count = 0

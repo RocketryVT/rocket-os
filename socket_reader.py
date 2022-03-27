@@ -8,7 +8,7 @@ import sys
 # stops it or it encounters an error.
 #
 # It takes the IP address and port of the TCP socket as arguments.
-# 
+#
 # Wade Foster
 # jwade109@vt.edu
 
@@ -62,4 +62,3 @@ if __name__ == "__main__":
     except Exception as e:
         print("\nExiting: " + str(type(e)) + ", " + str(e))
         exit()
-
