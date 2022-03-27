@@ -20,51 +20,50 @@ import re
 
 
 def get_generic(msg):
-	'''
-		?????????????????????????????
-	'''
-
+    '''
+    ?????????????????????????????
+    '''
     topic = msg._connection_header['topic']
     rospy.loginfo(topic + ":\n" + str(msg))
 
 def listen_to(topic):
 
-	'''
-		Begins listening to a given topic
-	'''
+    '''
+    Begins listening to a given topic
+    '''
 
     if topic == "/rosout" or topic == "/rosout_agg":
         rospy.loginfo("Can't subscribe to /rosout or /rosout_agg.")
-        return
-    
+    return
+
     topics = [n for n, t in rospy.get_published_topics()]
 
-	# IF: Topic is not in list of published topics
+    # IF: Topic is not in list of published topics
     if topic not in topics:
-        rospy.loginfo("Can't subscribe to " + topic + "; hasn't been published yet")
-        return
+    rospy.loginfo("Can't subscribe to " + topic + "; hasn't been published yet")
+    return
 
-	# IF: Topic is already in your list of Topic Subscriptions
+    # IF: Topic is already in your list of Topic Subscriptions
     if topic in subscribed.keys():
-        rospy.loginfo("Already subscribed to " + topic)
-        return
-    
-	# Subscribe to given Topic	
+        rospy.loginfo("Already subscribed to " + topic)     
+    return
+
+    # Subscribe to given Topic	
     type = rostopic.get_topic_class(topic)
     if type:
         sub = rospy.Subscriber(topic, type[0], get_generic)
         subscribed[topic] = sub
-        rospy.loginfo("Subscribed to " + topic)
+    rospy.loginfo("Subscribed to " + topic)
 
 def stop_listening(topic):
 
-	'''
-		Stops listening to a given topic
-	'''
+    '''
+    Stops listening to a given topic
+    '''
 
     if topic not in subscribed.keys():
         rospy.loginfo("Not currently listening to " + topic)
-        return
+    return
 
     subscribed[topic].unregister()
     del subscribed[topic]
@@ -72,14 +71,14 @@ def stop_listening(topic):
 
 def receive_command(msg):
 
-	'''
-		Takes as input commands to listen to or stop listening to a given topic,
-        and calls listen_to() or stop_listening() on the topic specified.
-        @param msg: Carries the command
-                        - listen to (Topic)
-                        - stop listening to (Topic)
-                        - stop listening all
-	'''
+    '''
+    Takes as input commands to listen to or stop listening to a given topic,
+    and calls listen_to() or stop_listening() on the topic specified.
+    @param msg: Carries the command
+    - listen to (Topic)
+    - stop listening to (Topic)
+    - stop listening all
+    '''
 
     command = msg.data
 

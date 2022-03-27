@@ -5,7 +5,7 @@
 import socket
 import select
 import sys
-from thread import *
+from _thread import *
 import atexit
 import signal
 import time
