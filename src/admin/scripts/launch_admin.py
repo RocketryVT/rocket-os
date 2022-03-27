@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 '''
 Launch Admin: Manages the Launch Countdown and Launch of the vehicle.
