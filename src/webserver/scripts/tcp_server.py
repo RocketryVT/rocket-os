@@ -23,106 +23,15 @@ except:
     gpio = None
 
 
-def get_ip():
-
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    try:
-        s.connect(('10.255.255.255', 1))
-        IP = s.getsockname()[0]
-    except:
-        IP = '127.0.0.1'
-    finally:
-        s.close()
-    return IP
-
-
-def broadcast(string):
-
-    global last_broadcast
-    last_broadcast = datetime.now()
-
-    for client in list_of_clients:
-        id, conn, addr = client
-        try:
-            conn.send(string + "\n")
-        except:
-            conn.close()
-            remove(client)
-
-
-def ping(event):
-
-    seconds = (datetime.now() - last_broadcast).total_seconds()
-
-    if seconds > 2 and len(list_of_clients):
-        rospy.logdebug("Sending keep-alive message.")
-
-    if gpio:
-        led = "USR3"
-        gpio.output(led, gpio.HIGH)
-        rospy.sleep(0.1)
-        gpio.output(led, gpio.LOW)
-
-
 def exit_handler():
     rospy.loginfo("Exiting.")
     time = str(datetime.now())
-    broadcast(level_to_str(2) + " [" + time + "] [" + name + "]: Exiting.")
-    try:
-        global server
-        server.close()
-    except:
-        pass
+    pineapple_client.publish(level_to_str(2) + " [" + time + "] [" + name + "]: Exiting.")
+
 
 
 def signal_handler(sig, frame):
     exit()
-
-
-def remove(client):
-    '''
-        Remove specified client from list of clients.
-    '''
-
-    if client in list_of_clients:
-        try:
-            list_of_clients.remove(client)
-            idno, conn, addr = client
-            rospy.loginfo("Client #" + str(idno) + " has disconnected")
-            rospy.loginfo(str(len(list_of_clients)) + " client(s) remaining")
-        except:
-            pass
-
-
-def clientthread(idno, conn, addr):
-
-    while True:
-        try:
-            message = conn.recv(2048).rstrip()
-            if message:
-                rospy.loginfo("Command from #" + str(idno) + ": " + message)
-                pub_command.publish(message)
-        except Exception as e:
-            if e.errno is 9:
-                exit()
-
-
-def handle_connections(event):
-    '''
-        Add new client connections to list of clients
-    '''
-    global total_connections
-    try:
-        conn, addr = server.accept()
-        idno = total_connections
-        client = (idno, conn, addr)
-        list_of_clients.append(client)
-        rospy.loginfo("New connection: " + str((idno, addr)))
-        rospy.loginfo(str(len(list_of_clients)) + " active connection(s)")
-        start_new_thread(clientthread, (idno, conn, addr))
-        total_connections += 1
-    except Exception as e:
-        pass
 
 
 def level_to_str(level):
@@ -142,8 +51,8 @@ def level_to_str(level):
 
 def get_rosout(msg):
     time = str(datetime.fromtimestamp(msg.header.stamp.to_sec()))
-    broadcast(level_to_str(msg.level) +
-              " [" + time + "] [" + str(msg.name) + "]: " + msg.msg)
+    pineapple_client.publish(level_to_str(msg.level) + " [" + time + "] [" + str(msg.name) + "]: " + msg.msg)
+
 
     if gpio:
         led = "USR0"
@@ -151,17 +60,23 @@ def get_rosout(msg):
         rospy.sleep(0.1)
         gpio.output(led, gpio.LOW)
 
+def last_event(event):
+    global last_event_time
+    last_event_time = rospy.Time.now().to_sec()
+
 
 def publish_los(event):
+    global last_event_time
+
 
     global los_start_time
     global los_condition
 
-    num_clients = len(list_of_clients)
     los_duration = rospy.Time.now() - los_start_time
-
+    los_duration_secs = rospy.Time.now().to_sec() - last_event_time
     # Client connections available
-    if num_clients > 0:
+    if los_duration_secs < 10:
+        print("ahhhhhhhh")
         los_start_time = rospy.Time.now()
         los_duration = rospy.Duration()  # Set default duration of 0 sec & 0 nanosec
         if los_condition:
@@ -219,38 +134,19 @@ if __name__ == "__main__":
         rospy.logwarn(
             "Failed to import Adafruit_BBIO.gpio, running in desktop mode")
 
-    list_of_clients = []
-    total_connections = 0
     last_broadcast = datetime.now()
     los_start_time = rospy.Time.now()
     los_condition = False
-    address = get_ip()
-    port = 8001
-
-    rospy.loginfo("Attempting to start server at " + address + ":" + str(port))
-
-    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    server.setblocking(False)
-
-    try:
-        server.bind((address, port))
-    except:
-        rospy.logerr(
-            "Error binding to IP and port provided. Please double check.")
-        rospy.signal_shutdown("Failed to initialize server.")
-        exit()
-    server.listen(10)
-
-    rospy.loginfo("Started server at " + address + ":" + str(port))
 
     rospy.Subscriber("/rosout", Log, get_rosout)
     rospy.Subscriber("/requested_commands", String, blink_leds)
+    rospy.Subscriber("/keep_alive", String, last_event)
+
     pub_los = rospy.Publisher("/los", Duration, queue_size=10)
     pub_command = rospy.Publisher("/requested_commands", String, queue_size=10)
-
-    rospy.Timer(rospy.Duration(2), ping)
-    rospy.Timer(rospy.Duration(0.1), handle_connections)
+    pineapple_client = rospy.Publisher("/client_out", String, queue_size=10)
+    last_event_time = rospy.Time.now().to_sec() - 99
+    
     rospy.Timer(rospy.Duration(1), publish_los)
 
     rospy.spin()
