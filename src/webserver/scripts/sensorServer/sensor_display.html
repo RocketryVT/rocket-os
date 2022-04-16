@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <title>Sensor CSV Display</title>
+    <style type = "text/css">
+        .chartBox {
+            width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div class="chartBox">
+        <canvas id="PressureChart"></canvas>
+    </div>
+    <div class="chartBox">
+        <canvas id="TemperatureChart"></canvas>
+    </div>
+
+    <script>
+        chartIt();
+        
+        async function chartIt() {
+            const data = await getData();
+            const ctx1 = document.getElementById('PressureChart').getContext('2d');
+            const pressureChart = new Chart(ctx1, {
+                type:'line',
+                data: {
+                    labels: data.xs,
+                    datasets: [
+                        {
+                        label: 'Pressure 1',
+                        data: data.ys_1,
+                        fill: false,
+                        borderColor: 'rgb(255, 99, 7)',
+                        tension: 0.1
+                        },
+
+                        {
+                        label: 'Pressure 2',
+                        data: data.ys_2,
+                        fill: false,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                        }
+                    ]
+                },
+            });
+
+            const ctx2 = document.getElementById('TemperatureChart').getContext('2d');
+            const temperatureChart = new Chart(ctx2, {
+                type:'line',
+                data: {
+                    labels: data.xs,
+                    datasets: [
+                        {
+                        label: 'Temperature 1',
+                        data: data.ys_3,
+                        fill: false,
+                        borderColor: 'rgb(153, 255, 1)',
+                        tension: 0.1
+                        },
+
+                        {
+                        label: 'Temperature 2',
+                        data: data.ys_4,
+                        fill: false,
+                        borderColor: 'rgb(255, 0, 0)',
+                        tension: 0.1
+                        }
+                    ]
+                },
+            });
+        }
+
+        async function getData() {
+            const xs = [];
+            const ys_1 = [];
+            const ys_2 = [];
+            const ys_3 = [];
+            const ys_4 = [];
+
+            const response = await fetch('SensorStuff.csv');
+            const data = await response.text();
+            
+            const table = data.split('\n').slice(1);
+            table.forEach(row => {
+                const columns = row.split(',');
+                const time = columns[0];
+                xs.push(parseFloat(time));
+
+                const pressure_1 = columns[1];
+                ys_1.push(parseFloat(pressure_1));
+                const pressure_2 = columns[2];
+                ys_2.push(parseFloat(pressure_2));
+                
+                const temperature_1 = columns[3];
+                ys_3.push(parseFloat(temperature_1));
+                const temperature_2 = columns[4];
+                ys_4.push(parseFloat(temperature_2));
+
+                console.log(time, pressure_1, pressure_2, 
+                    temperature_1, temperature_2);
+            });
+            return { xs, ys_1, ys_2, ys_3, ys_4 };
+        }
+    </script>
+</body>
+</html>
+
+
+

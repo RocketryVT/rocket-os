@@ -105,12 +105,13 @@ def get_los(message):
 	
 	'''
 		Checks for Loss of Signal.
-		If Loss of Signal has been detected (indicated by a True state)
-		during an ongoing fill, the fill is halted.
+		If Loss of Signal has been detected during an ongoing fill, 
+                the fill is halted.
 		
 		@param message: Loss of Signal
 	'''
 	
+    # Number of seconds LOS has persisted. Fill stopped if seconds > 0.
     seconds = message.data
     if seconds and fill_ongoing:
         rospy.logwarn("LOS detected -- stopping fill!")

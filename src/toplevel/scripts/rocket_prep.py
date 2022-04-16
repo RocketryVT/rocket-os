@@ -414,7 +414,12 @@ if __name__ == "__main__":
 	los_status = 0.0
 	admin_priority = 4 # Check for correct priority (Example in fill_admin)
 
+	
+
 	try:
+	
+		#Initialize Node
+		rospy.init_node("rocket_prep", log_level=rospy.DEBUG)
 
 		# Set Subscriptions
 		rospy.Subscriber("/readiness_level", UInt8, update_readiness) 
