@@ -5,7 +5,7 @@ Launch Admin: Manages the Launch Countdown and Launch of the vehicle.
 
 			  Available Actions: 
 				  + Start Countdown to Launch
-				  + Ignite vehicle
+				  + Fire ematches for launch
 				  + Abort Launch (Stop Countdown)
 						
 			  + Num of Functions: 5
@@ -37,7 +37,7 @@ def decrement_countdown(event):
 def no_turning_back():
 
 	'''
-		Ignites the vehicle for launch.
+		Fire ematches for launch
 		Once this function is called, there is indeed no turning back.
 	'''
 

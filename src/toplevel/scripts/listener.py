@@ -1,4 +1,4 @@
-#! /usr/bin/env python3
+#/usr/bin/env python3
 
 '''
 Listener: Receives commands to listen to or stop listening to a particular topic,
@@ -21,7 +21,8 @@ import re
 def get_generic(msg):
 
 	'''
-		?????????????????????????????
+		Take a message of undetermined type and log it;
+                extracting its source topic from the connection header.
 	'''
 
     topic = msg._connection_header['topic']
